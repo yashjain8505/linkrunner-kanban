@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Linkrunner — Customer Status</title>
+<style>
+  :root {
+    --bg:           #F5F1E8;
+    --bg-2:         #FAF7EF;
+    --surface:      #FFFFFF;
+    --surface-2:    #FBF9F4;
+    --border:       #E5DFD0;
+    --border-strong:#D3CBB6;
+    --text:         #1F1F1E;
+    --text-2:       #3C3C3B;
+    --muted:        #76746C;
+    --accent:       #CC785C;
+    --accent-deep:  #A85D43;
+    --accent-soft:  #F4DDD2;
+    --danger:       #B54848;
+    --green:        #5D8059;
+    --green-soft:   #E3EDE2;
+    --shadow:       0 1px 2px rgba(31,31,30,0.04), 0 2px 8px rgba(31,31,30,0.04);
+    --shadow-card:  0 1px 2px rgba(31,31,30,0.05);
+  }
+  * { box-sizing: border-box; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
+    color: var(--text);
+    background: var(--bg);
+    overflow: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Loading overlay */
+  .loading-overlay {
+    position: fixed; inset: 0;
+    background: var(--bg);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    transition: opacity 0.3s;
+  }
+  .loading-overlay.hidden { opacity: 0; pointer-events: none; }
+  .loading-text { color: var(--muted); font-size: 15px; }
+  .spinner {
+    width: 18px; height: 18px;
+    border: 2px solid var(--border);
+    border-top-color: var(--accent);
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    display: inline-block;
+    margin-right: 10px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+
+  header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 22px;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+  }
+  header h1 {
+    font-family: ui-serif, "Iowan Old Style", Charter, Georgia, serif;
+    font-size: 20px;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin: 0;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  header h1 .mark { display: inline-block; width: 10px; height: 10px; background: var(--accent); border-radius: 50%; transform: translateY(-2px); margin-right: 4px; }
+  header h1 .sub { color: var(--muted); font-weight: 400; font-style: italic; font-size: 16px; }
+
+  .toolbar { display: flex; gap: 8px; align-items: center; }
+
+  /* Sync status */
+  .sync-status {
+    display: flex; align-items: center; gap: 6px;
+    font-size: 12px; color: var(--muted);
+    padding: 5px 10px;
+    border-radius: 6px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+  }
+  .sync-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+  .sync-status.synced .sync-dot { background: var(--green); }
+  .sync-status.saving .sync-dot { background: var(--accent); animation: pulse 1s infinite; }
+  .sync-status.error  .sync-dot { background: var(--danger); }
+  .sync-status.readonly .sync-dot { background: var(--border-strong); }
+  @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  .btn {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    color: var(--text);
+    padding: 7px 13px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: background 0.12s, border-color 0.12s;
+  }
+  .btn:hover { background: var(--surface-2); border-color: var(--border-strong); }
+  .btn.primary { background: var(--accent); border-color: var(--accent); color: var(--surface); }
+  .btn.primary:hover { background: var(--accent-deep); border-color: var(--accent-deep); }
+  .btn.danger { color: var(--danger); }
+  .btn.danger:hover { background: #FCEFEF; }
+  .btn.small { padding: 5px 10px; font-size: 12px; }
+
+  .board {
+    display: flex;
+    gap: 12px;
+    padding: 16px;
+    height: calc(100vh - 61px);
+    align-items: stretch;
+    overflow: hidden;
+  }
+
+  .column {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    flex: 1 1 0;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    box-shadow: var(--shadow);
+    overflow: hidden;
+    transition: box-shadow 0.15s;
+  }
+  .column.col-dragging { opacity: 0.55; }
+  .column.drop-before { box-shadow: -3px 0 0 0 var(--accent), var(--shadow); }
+  .column.drop-after  { box-shadow:  3px 0 0 0 var(--accent), var(--shadow); }
+
+  .column-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 13px 11px;
+    border-bottom: 1px solid var(--border);
+    cursor: grab;
+    user-select: none;
+    background: var(--surface-2);
+  }
+  .column-header:active { cursor: grabbing; }
+  .column-title {
+    display: flex; align-items: center; gap: 8px;
+    font-size: 12.5px; font-weight: 600; letter-spacing: 0.01em;
+    min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+  }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex-shrink: 0; }
+  .count {
+    color: var(--muted); font-size: 11.5px;
+    background: var(--surface); padding: 1px 8px;
+    border-radius: 10px; border: 1px solid var(--border);
+    flex-shrink: 0;
+  }
+  .cards { padding: 10px; overflow-y: auto; flex: 1; min-height: 60px; }
+  .cards.drop-target { background: var(--accent-soft); }
+
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 10px 11px;
+    margin-bottom: 8px;
+    cursor: grab;
+    box-shadow: var(--shadow-card);
+    transition: border-color 0.12s, box-shadow 0.12s;
+  }
+  .card:hover { border-color: var(--border-strong); box-shadow: 0 2px 6px rgba(31,31,30,0.08); }
+  .card:active { cursor: grabbing; }
+  .card.dragging { opacity: 0.4; }
+  .card .name { font-weight: 600; font-size: 13px; line-height: 1.35; word-break: break-word; }
+  .card .meta { color: var(--muted); font-size: 11.5px; margin-top: 4px; word-break: break-word; }
+  .card .notes { color: var(--text-2); font-size: 12px; margin-top: 6px; white-space: pre-wrap; word-break: break-word; line-height: 1.4; }
+  .card .row { display: flex; justify-content: space-between; gap: 6px; align-items: flex-start; }
+  .card .actions { display: flex; gap: 4px; opacity: 0; transition: opacity 0.12s; flex-shrink: 0; }
+  .card:hover .actions { opacity: 1; }
+  .icon-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 2px 5px; border-radius: 4px; font-family: inherit; }
+  .icon-btn:hover { color: var(--text); background: var(--surface-2); }
+
+  /* Channel chip */
+  .channel-chip {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10.5px; padding: 2px 7px; border-radius: 5px;
+    background: var(--surface-2); color: var(--text-2);
+    border: 1px solid var(--border); font-weight: 500;
+  }
+  .channel-chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; display: inline-block; }
+  .ch-whatsapp::before { background: #5D8059; }
+  .ch-slack::before    { background: #876FAB; }
+  .ch-email::before    { background: #7A98B8; }
+  .ch-none { background: transparent; color: var(--muted); border-style: dashed; }
+  .ch-none::before { background: var(--border-strong); }
+
+  .add-card-wrap { padding: 0 10px 10px; }
+  .add-card {
+    color: var(--muted); background: transparent;
+    border: 1px dashed var(--border-strong); border-radius: 7px;
+    padding: 7px 10px; width: 100%; cursor: pointer;
+    font-size: 12px; font-family: inherit;
+    transition: color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  .add-card:hover { color: var(--accent-deep); border-color: var(--accent); background: var(--accent-soft); }
+
+  /* Read-only overlay on cards */
+  .readonly .card { cursor: default; }
+  .readonly .card:active { cursor: default; }
+  .readonly .add-card { display: none; }
+  .readonly .column-header { cursor: default; }
+  .readonly .card .actions { display: none !important; }
+
+  /* Modal */
+  .modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(31,31,30,0.35);
+    display: none; align-items: center; justify-content: center;
+    z-index: 50;
+  }
+  .modal-backdrop.open { display: flex; }
+  .modal {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    width: 460px; max-width: 92vw;
+    padding: 22px;
+    box-shadow: 0 20px 40px rgba(31,31,30,0.18);
+  }
+  .modal h3 {
+    margin: 0 0 16px 0;
+    font-family: ui-serif, "Iowan Old Style", Charter, Georgia, serif;
+    font-size: 17px; font-weight: 500; letter-spacing: -0.01em;
+  }
+  .field { margin-bottom: 12px; }
+  .field label { display: block; font-size: 12px; color: var(--muted); margin-bottom: 5px; }
+  .field input, .field textarea, .field select {
+    width: 100%; background: var(--surface);
+    border: 1px solid var(--border); color: var(--text);
+    border-radius: 6px; padding: 8px 10px;
+    font-size: 13px; font-family: inherit;
+  }
+  .field input:focus, .field textarea:focus, .field select:focus {
+    outline: none; border-color: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+  }
+  .field textarea { min-height: 72px; resize: vertical; }
+  .field .hint { font-size: 11.5px; color: var(--muted); margin-top: 4px; }
+  .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
+  .error-msg { color: var(--danger); font-size: 12px; margin-top: 6px; }
+
+  /* Column accent dots */
+  .col-no-show .dot          { background: #A39E91; }
+  .col-demo-done .dot        { background: #7A98B8; }
+  .col-email-first .dot      { background: #9D8AB0; }
+  .col-email-second .dot     { background: #7C6A95; }
+  .col-price-neg .dot        { background: var(--accent); }
+  .col-integration .dot      { background: #7E9879; }
+  .col-account-created .dot  { background: #5D8059; }
+
+  .cards::-webkit-scrollbar { width: 8px; }
+  .cards::-webkit-scrollbar-track { background: transparent; }
+  .cards::-webkit-scrollbar-thumb { background: rgba(118,116,108,0.25); border-radius: 4px; }
+
+  @media (max-width: 1100px) {
+    .board { overflow-x: auto; }
+    .column { flex: 0 0 210px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="loading-overlay" id="loadingOverlay">
+  <div class="loading-text"><span class="spinner"></span>Loading board...</div>
+</div>
+
+<header>
+  <h1>
+    <span class="mark"></span>Linkrunner <span class="sub">— Customer Status</span>
+  </h1>
+  <div class="toolbar">
+    <div class="sync-status readonly" id="syncStatus">
+      <span class="sync-dot"></span>
+      <span id="syncLabel">Read-only</span>
+    </div>
+    <button class="btn small" id="refreshBtn" title="Refresh data">Refresh</button>
+    <button class="btn small" id="settingsBtn">Settings</button>
+    <button class="btn small" id="exportBtn">Export</button>
+    <button class="btn primary" id="addBtn">+ Add company</button>
+  </div>
+</header>
+
+<div class="board" id="board"></div>
+
+<!-- Card modal -->
+<div class="modal-backdrop" id="cardModal">
+  <div class="modal">
+    <h3 id="modalTitle">Add company</h3>
+    <div class="field">
+      <label>Company *</label>
+      <input id="f-name" type="text" placeholder="e.g. Acme Mobility" />
+    </div>
+    <div class="field">
+      <label>Contact</label>
+      <input id="f-contact" type="text" placeholder="Name / email / role" />
+    </div>
+    <div class="field">
+      <label>Stage</label>
+      <select id="f-stage"></select>
+    </div>
+    <div class="field">
+      <label>Communication channel</label>
+      <select id="f-channel">
+        <option value="none">Not set up</option>
+        <option value="whatsapp">WhatsApp</option>
+        <option value="slack">Slack</option>
+        <option value="email">Email</option>
+      </select>
+    </div>
+    <div class="field">
+      <label>Notes</label>
+      <textarea id="f-notes" placeholder="Anything useful — last touch, signals, links..."></textarea>
+    </div>
+    <div class="modal-actions">
+      <button class="btn danger" id="deleteBtn" style="display:none">Delete</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="cancelBtn">Cancel</button>
+      <button class="btn primary" id="saveBtn">Save</button>
+    </div>
+  </div>
+</div>
+
+<!-- Settings modal -->
+<div class="modal-backdrop" id="settingsModal">
+  <div class="modal">
+    <h3>Settings</h3>
+    <div class="field">
+      <label>GitHub Personal Access Token</label>
+      <input id="s-token" type="password" placeholder="github_pat_..." />
+      <div class="hint">
+        Create a fine-grained token at GitHub &gt; Settings &gt; Developer settings &gt; Fine-grained tokens.
+        Give it <strong>Contents: Read and write</strong> permission on this repo only.
+      </div>
+      <div class="error-msg" id="s-error" style="display:none"></div>
+    </div>
+    <div class="modal-actions">
+      <button class="btn danger" id="s-disconnect" style="display:none">Disconnect</button>
+      <span style="flex:1"></span>
+      <button class="btn" id="s-cancel">Cancel</button>
+      <button class="btn primary" id="s-save">Connect</button>
+    </div>
+  </div>
+</div>
+
+<script>
+// ─── Config ────────────────────────────────────────────────────────────────
+const CONFIG = {
+  owner: 'yashjain8505',
+  repo: 'linkrunner-kanban',
+  file: 'data.json',
+  pollInterval: 30000,
+};
+
+const API_BASE = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.file}`;
+
+// ─── Columns ───────────────────────────────────────────────────────────────
+const COLUMNS = [
+  { id: 'no-show',            title: 'No show',            cls: 'col-no-show' },
+  { id: 'demo-done',          title: 'Demo done',          cls: 'col-demo-done' },
+  { id: 'email-first-sent',   title: 'Email first sent',   cls: 'col-email-first' },
+  { id: 'email-second-sent',  title: 'Email second sent',  cls: 'col-email-second' },
+  { id: 'price-negotiations', title: 'Price negotiations', cls: 'col-price-neg' },
+  { id: 'integration-started',title: 'Integration started',cls: 'col-integration' },
+  { id: 'account-created',    title: 'Account created',    cls: 'col-account-created' },
+];
+const COLUMN_BY_ID = Object.fromEntries(COLUMNS.map(c => [c.id, c]));
+
+// ─── Base64 helpers (Unicode-safe) ─────────────────────────────────────────
+function toBase64(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+
+function fromBase64(b64) {
+  const binary = atob(b64.replace(/\n/g, ''));
+  const bytes = new Uint8Array(binary.length);
+  for (let i = 0; i < binary.length; i++) bytes[i] = binary.charCodeAt(i);
+  return new TextDecoder().decode(bytes);
+}
+
+// ─── Token management ──────────────────────────────────────────────────────
+const TOKEN_KEY = 'lr-kanban-token';
+function getToken() { return localStorage.getItem(TOKEN_KEY); }
+function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
+function clearToken() { localStorage.removeItem(TOKEN_KEY); }
+function isEditable() { return !!getToken(); }
+
+// ─── State ─────────────────────────────────────────────────────────────────
+let state = createEmptyState();
+let currentSha = null;
+let saveTimeout = null;
+let isSaving = false;
+let pollTimer = null;
+let dragType = null;
+let dragColumnId = null;
+let editingId = null;
+
+function createEmptyState() {
+  const order = {};
+  COLUMNS.forEach(c => order[c.id] = []);
+  return { cards: {}, order, columnOrder: COLUMNS.map(c => c.id) };
+}
+
+function ensureColumns(s) {
+  if (!s.order) s.order = {};
+  COLUMNS.forEach(c => { if (!s.order[c.id]) s.order[c.id] = []; });
+  if (!s.columnOrder || !Array.isArray(s.columnOrder)) {
+    s.columnOrder = COLUMNS.map(c => c.id);
+  } else {
+    s.columnOrder = s.columnOrder.filter(id => COLUMN_BY_ID[id]);
+    COLUMNS.forEach(c => { if (!s.columnOrder.includes(c.id)) s.columnOrder.push(c.id); });
+  }
+  if (!s.cards) s.cards = {};
+}
+
+function uid() { return Math.random().toString(36).slice(2, 10); }
+
+// ─── GitHub API ────────────────────────────────────────────────────────────
+async function loadData() {
+  const headers = { 'Accept': 'application/vnd.github.v3+json' };
+  const token = getToken();
+  if (token) headers['Authorization'] = `Bearer ${token}`;
+
+  const res = await fetch(API_BASE + '?t=' + Date.now(), { headers, cache: 'no-store' });
+
+  if (res.status === 404) {
+    state = createEmptyState();
+    currentSha = null;
+    if (token) await saveToGitHub();
+    return;
+  }
+
+  if (!res.ok) throw new Error(`Load failed: ${res.status}`);
+
+  const json = await res.json();
+  currentSha = json.sha;
+  const content = fromBase64(json.content);
+  state = JSON.parse(content);
+  ensureColumns(state);
+}
+
+async function saveToGitHub() {
+  const token = getToken();
+  if (!token || isSaving) return;
+
+  isSaving = true;
+  setSyncStatus('saving');
+
+  try {
+    const content = toBase64(JSON.stringify(state, null, 2));
+    const body = { message: 'Update kanban board', content };
+    if (currentSha) body.sha = currentSha;
+
+    const res = await fetch(API_BASE, {
+      method: 'PUT',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+        'Accept': 'application/vnd.github.v3+json',
+      },
+      body: JSON.stringify(body),
+    });
+
+    if (res.status === 409) {
+      await loadData();
+      render();
+      setSyncStatus('synced');
+      return;
+    }
+
+    if (res.status === 401 || res.status === 403) {
+      setSyncStatus('error', 'Token invalid');
+      return;
+    }
+
+    if (!res.ok) throw new Error(`Save failed: ${res.status}`);
+
+    const json = await res.json();
+    currentSha = json.content.sha;
+    setSyncStatus('synced');
+  } catch (e) {
+    console.error('Save error:', e);
+    setSyncStatus('error', 'Save failed');
+  } finally {
+    isSaving = false;
+  }
+}
+
+function scheduleSave() {
+  clearTimeout(saveTimeout);
+  saveTimeout = setTimeout(() => saveToGitHub(), 1500);
+}
+
+// ─── Polling ───────────────────────────────────────────────────────────────
+function startPolling() {
+  stopPolling();
+  pollTimer = setInterval(async () => {
+    try {
+      const headers = { 'Accept': 'application/vnd.github.v3+json' };
+      const token = getToken();
+      if (token) headers['Authorization'] = `Bearer ${token}`;
+
+      const res = await fetch(API_BASE + '?t=' + Date.now(), { headers, cache: 'no-store' });
+      if (!res.ok) return;
+      const json = await res.json();
+      if (json.sha !== currentSha) {
+        currentSha = json.sha;
+        const content = fromBase64(json.content);
+        state = JSON.parse(content);
+        ensureColumns(state);
+        render();
+      }
+    } catch (e) {
+      console.error('Poll error:', e);
+    }
+  }, CONFIG.pollInterval);
+}
+
+function stopPolling() {
+  clearInterval(pollTimer);
+  pollTimer = null;
+}
+
+// ─── Sync status ───────────────────────────────────────────────────────────
+function setSyncStatus(status, detail) {
+  const el = document.getElementById('syncStatus');
+  const label = document.getElementById('syncLabel');
+  el.className = 'sync-status ' + status;
+  const labels = {
+    synced: 'Synced',
+    saving: 'Saving...',
+    error: detail || 'Error',
+    readonly: 'Read-only',
+  };
+  label.textContent = labels[status] || status;
+}
+
+// ─── Render ────────────────────────────────────────────────────────────────
+function render() {
+  const board = document.getElementById('board');
+  board.innerHTML = '';
+  board.className = isEditable() ? 'board' : 'board readonly';
+
+  state.columnOrder.forEach(colId => {
+    const col = COLUMN_BY_ID[colId];
+    if (!col) return;
+    const ids = state.order[col.id] || [];
+    const colEl = document.createElement('div');
+    colEl.className = `column ${col.cls}`;
+    colEl.dataset.stage = col.id;
+
+    colEl.innerHTML = `
+      <div class="column-header" draggable="${isEditable()}" title="${isEditable() ? 'Drag to reorder' : ''}">
+        <div class="column-title"><span class="dot"></span>${col.title}</div>
+        <span class="count">${ids.length}</span>
+      </div>
+      <div class="cards" data-stage="${col.id}"></div>
+      <div class="add-card-wrap">
+        <button class="add-card" data-stage="${col.id}">+ Add</button>
+      </div>
+    `;
+    board.appendChild(colEl);
+
+    const cardsEl = colEl.querySelector('.cards');
+    ids.forEach(cardId => {
+      const card = state.cards[cardId];
+      if (!card) return;
+      cardsEl.appendChild(renderCard(card));
+    });
+
+    if (isEditable()) {
+      attachCardDropZone(cardsEl);
+      attachColumnDrag(colEl);
+      colEl.querySelector('.add-card').addEventListener('click', e => {
+        e.stopPropagation();
+        openCardModal(null, col.id);
+      });
+    }
+  });
+}
+
+function renderCard(card) {
+  const el = document.createElement('div');
+  el.className = 'card';
+  el.draggable = isEditable();
+  el.dataset.id = card.id;
+
+  const dateStr = card.updated ? new Date(card.updated).toLocaleDateString() : '';
+
+  el.innerHTML = `
+    <div class="row">
+      <div class="name"></div>
+      <div class="actions">
+        <button class="icon-btn" data-act="edit" title="Edit">&#9998;</button>
+        <button class="icon-btn" data-act="del"  title="Delete">&#10005;</button>
+      </div>
+    </div>
+    <div class="channel-row" style="margin-top:6px"></div>
+    <div class="meta"></div>
+    <div class="notes"></div>
+  `;
+
+  el.querySelector('.name').textContent = card.name || '(unnamed)';
+
+  const channelRow = el.querySelector('.channel-row');
+  const channel = card.channel || 'none';
+  const channelLabels = { whatsapp: 'WhatsApp', slack: 'Slack', email: 'Email' };
+  if (channel === 'none') {
+    channelRow.innerHTML = `<span class="channel-chip ch-none">No channel</span>`;
+  } else {
+    channelRow.innerHTML = `<span class="channel-chip ch-${channel}">${channelLabels[channel]}</span>`;
+  }
+
+  const metaParts = [];
+  if (card.contact) metaParts.push(card.contact);
+  if (dateStr) metaParts.push(dateStr);
+  el.querySelector('.meta').textContent = metaParts.join(' • ');
+
+  const notesEl = el.querySelector('.notes');
+  if (card.notes) notesEl.textContent = card.notes;
+  else notesEl.style.display = 'none';
+
+  if (isEditable()) {
+    el.addEventListener('dragstart', e => {
+      dragType = 'card';
+      el.classList.add('dragging');
+      e.dataTransfer.setData('text/plain', card.id);
+      e.dataTransfer.effectAllowed = 'move';
+      e.stopPropagation();
+    });
+    el.addEventListener('dragend', () => { el.classList.remove('dragging'); dragType = null; });
+
+    el.querySelector('[data-act="edit"]').addEventListener('click', e => { e.stopPropagation(); openCardModal(card.id, card.stage); });
+    el.querySelector('[data-act="del"]').addEventListener('click', e => {
+      e.stopPropagation();
+      if (confirm(`Delete "${card.name}"?`)) { deleteCard(card.id); }
+    });
+    el.addEventListener('click', () => openCardModal(card.id, card.stage));
+  }
+
+  return el;
+}
+
+// ─── Card drag-and-drop ────────────────────────────────────────────────────
+function attachCardDropZone(zone) {
+  zone.addEventListener('dragover', e => {
+    if (dragType !== 'card') return;
+    e.preventDefault();
+    e.dataTransfer.dropEffect = 'move';
+    zone.classList.add('drop-target');
+  });
+  zone.addEventListener('dragleave', e => { if (e.target === zone) zone.classList.remove('drop-target'); });
+  zone.addEventListener('drop', e => {
+    if (dragType !== 'card') return;
+    e.preventDefault();
+    zone.classList.remove('drop-target');
+    const cardId = e.dataTransfer.getData('text/plain');
+    if (cardId) moveCard(cardId, zone.dataset.stage, computeInsertIndex(zone, e.clientY));
+  });
+}
+
+function computeInsertIndex(zone, y) {
+  const cards = [...zone.querySelectorAll('.card:not(.dragging)')];
+  for (let i = 0; i < cards.length; i++) {
+    const rect = cards[i].getBoundingClientRect();
+    if (y < rect.top + rect.height / 2) return i;
+  }
+  return cards.length;
+}
+
+// ─── Column drag-and-drop ──────────────────────────────────────────────────
+function attachColumnDrag(colEl) {
+  const header = colEl.querySelector('.column-header');
+  header.addEventListener('dragstart', e => {
+    dragType = 'column';
+    dragColumnId = colEl.dataset.stage;
+    colEl.classList.add('col-dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/x-column', dragColumnId);
+  });
+  header.addEventListener('dragend', () => {
+    colEl.classList.remove('col-dragging');
+    dragType = null;
+    dragColumnId = null;
+    document.querySelectorAll('.column').forEach(c => { c.classList.remove('drop-before', 'drop-after'); });
+  });
+
+  colEl.addEventListener('dragover', e => {
+    if (dragType !== 'column' || colEl.dataset.stage === dragColumnId) return;
+    e.preventDefault();
+    const rect = colEl.getBoundingClientRect();
+    const isLeft = e.clientX < rect.left + rect.width / 2;
+    colEl.classList.toggle('drop-before', isLeft);
+    colEl.classList.toggle('drop-after', !isLeft);
+  });
+  colEl.addEventListener('dragleave', () => { colEl.classList.remove('drop-before', 'drop-after'); });
+  colEl.addEventListener('drop', e => {
+    if (dragType !== 'column' || !dragColumnId || colEl.dataset.stage === dragColumnId) return;
+    e.preventDefault();
+    const rect = colEl.getBoundingClientRect();
+    const isLeft = e.clientX < rect.left + rect.width / 2;
+    reorderColumns(dragColumnId, colEl.dataset.stage, isLeft ? 'before' : 'after');
+  });
+}
+
+function reorderColumns(fromId, toId, position) {
+  const order = state.columnOrder.filter(id => id !== fromId);
+  let toIdx = order.indexOf(toId);
+  if (toIdx < 0) return;
+  if (position === 'after') toIdx += 1;
+  order.splice(toIdx, 0, fromId);
+  state.columnOrder = order;
+  scheduleSave();
+  render();
+}
+
+// ─── Card CRUD ─────────────────────────────────────────────────────────────
+function moveCard(cardId, toStage, toIndex) {
+  const card = state.cards[cardId];
+  if (!card) return;
+  state.order[card.stage] = state.order[card.stage].filter(id => id !== cardId);
+  const arr = state.order[toStage];
+  if (toIndex == null || toIndex > arr.length) toIndex = arr.length;
+  arr.splice(toIndex, 0, cardId);
+  card.stage = toStage;
+  card.updated = Date.now();
+  scheduleSave();
+  render();
+}
+
+function deleteCard(id) {
+  const card = state.cards[id];
+  if (!card) return;
+  state.order[card.stage] = state.order[card.stage].filter(x => x !== id);
+  delete state.cards[id];
+  scheduleSave();
+  render();
+}
+
+// ─── Card modal ────────────────────────────────────────────────────────────
+function openCardModal(cardId, defaultStage) {
+  if (!isEditable()) {
+    openSettingsModal();
+    return;
+  }
+  editingId = cardId;
+  const modal = document.getElementById('cardModal');
+  const stageSel = document.getElementById('f-stage');
+  stageSel.innerHTML = state.columnOrder
+    .map(id => COLUMN_BY_ID[id]).filter(Boolean)
+    .map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+
+  if (cardId) {
+    const c = state.cards[cardId];
+    document.getElementById('modalTitle').textContent = 'Edit company';
+    document.getElementById('f-name').value = c.name || '';
+    document.getElementById('f-contact').value = c.contact || '';
+    document.getElementById('f-notes').value = c.notes || '';
+    document.getElementById('f-channel').value = c.channel || 'none';
+    stageSel.value = c.stage;
+    document.getElementById('deleteBtn').style.display = '';
+  } else {
+    document.getElementById('modalTitle').textContent = 'Add company';
+    document.getElementById('f-name').value = '';
+    document.getElementById('f-contact').value = '';
+    document.getElementById('f-notes').value = '';
+    document.getElementById('f-channel').value = 'none';
+    stageSel.value = defaultStage || state.columnOrder[0];
+    document.getElementById('deleteBtn').style.display = 'none';
+  }
+  modal.classList.add('open');
+  setTimeout(() => document.getElementById('f-name').focus(), 30);
+}
+
+function closeCardModal() {
+  document.getElementById('cardModal').classList.remove('open');
+  editingId = null;
+}
+
+function saveCardModal() {
+  const name = document.getElementById('f-name').value.trim();
+  if (!name) { document.getElementById('f-name').focus(); return; }
+  const contact = document.getElementById('f-contact').value.trim();
+  const notes = document.getElementById('f-notes').value.trim();
+  const stage = document.getElementById('f-stage').value;
+  const channel = document.getElementById('f-channel').value;
+
+  if (editingId) {
+    const card = state.cards[editingId];
+    const oldStage = card.stage;
+    card.name = name;
+    card.contact = contact;
+    card.notes = notes;
+    card.channel = channel;
+    card.updated = Date.now();
+    if (oldStage !== stage) {
+      state.order[oldStage] = state.order[oldStage].filter(id => id !== editingId);
+      state.order[stage].push(editingId);
+      card.stage = stage;
+    }
+  } else {
+    const id = uid();
+    state.cards[id] = { id, name, contact, notes, stage, channel, updated: Date.now() };
+    state.order[stage].push(id);
+  }
+  scheduleSave();
+  closeCardModal();
+  render();
+}
+
+// ─── Settings modal ────────────────────────────────────────────────────────
+function openSettingsModal() {
+  const modal = document.getElementById('settingsModal');
+  const tokenInput = document.getElementById('s-token');
+  const errorEl = document.getElementById('s-error');
+  const disconnectBtn = document.getElementById('s-disconnect');
+  errorEl.style.display = 'none';
+
+  const existing = getToken();
+  if (existing) {
+    tokenInput.value = existing;
+    disconnectBtn.style.display = '';
+  } else {
+    tokenInput.value = '';
+    disconnectBtn.style.display = 'none';
+  }
+  modal.classList.add('open');
+  setTimeout(() => tokenInput.focus(), 30);
+}
+
+function closeSettingsModal() {
+  document.getElementById('settingsModal').classList.remove('open');
+}
+
+async function saveSettings() {
+  const token = document.getElementById('s-token').value.trim();
+  const errorEl = document.getElementById('s-error');
+  errorEl.style.display = 'none';
+
+  if (!token) {
+    errorEl.textContent = 'Please enter a token.';
+    errorEl.style.display = '';
+    return;
+  }
+
+  try {
+    const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}`, {
+      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' },
+    });
+    if (res.status === 401 || res.status === 403) {
+      errorEl.textContent = 'Token is invalid or does not have access to this repo.';
+      errorEl.style.display = '';
+      return;
+    }
+    if (!res.ok) {
+      errorEl.textContent = `GitHub API error: ${res.status}`;
+      errorEl.style.display = '';
+      return;
+    }
+  } catch (e) {
+    errorEl.textContent = 'Network error. Please try again.';
+    errorEl.style.display = '';
+    return;
+  }
+
+  setToken(token);
+  closeSettingsModal();
+  setSyncStatus('synced');
+  await loadData();
+  render();
+  startPolling();
+}
+
+function disconnectToken() {
+  clearToken();
+  closeSettingsModal();
+  setSyncStatus('readonly');
+  render();
+}
+
+// ─── Export ─────────────────────────────────────────────────────────────────
+function exportJSON() {
+  const blob = new Blob([JSON.stringify(state, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `linkrunner-kanban-${new Date().toISOString().slice(0, 10)}.json`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ─── Wire up ───────────────────────────────────────────────────────────────
+document.getElementById('addBtn').addEventListener('click', () => {
+  if (!isEditable()) { openSettingsModal(); return; }
+  openCardModal(null, state.columnOrder[0]);
+});
+document.getElementById('cancelBtn').addEventListener('click', closeCardModal);
+document.getElementById('saveBtn').addEventListener('click', saveCardModal);
+document.getElementById('deleteBtn').addEventListener('click', () => {
+  if (editingId && confirm('Delete this company?')) { deleteCard(editingId); closeCardModal(); }
+});
+document.getElementById('cardModal').addEventListener('click', e => { if (e.target.id === 'cardModal') closeCardModal(); });
+
+document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
+document.getElementById('s-cancel').addEventListener('click', closeSettingsModal);
+document.getElementById('s-save').addEventListener('click', saveSettings);
+document.getElementById('s-disconnect').addEventListener('click', disconnectToken);
+document.getElementById('settingsModal').addEventListener('click', e => { if (e.target.id === 'settingsModal') closeSettingsModal(); });
+
+document.getElementById('refreshBtn').addEventListener('click', async () => {
+  setSyncStatus('saving');
+  try { await loadData(); render(); setSyncStatus(isEditable() ? 'synced' : 'readonly'); }
+  catch (e) { setSyncStatus('error', 'Refresh failed'); }
+});
+
+document.getElementById('exportBtn').addEventListener('click', exportJSON);
+
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') { closeCardModal(); closeSettingsModal(); }
+  if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
+    if (document.getElementById('cardModal').classList.contains('open')) saveCardModal();
+    else if (document.getElementById('settingsModal').classList.contains('open')) saveSettings();
+  }
+});
+
+// ─── Init ──────────────────────────────────────────────────────────────────
+async function init() {
+  try {
+    await loadData();
+    render();
+    setSyncStatus(isEditable() ? 'synced' : 'readonly');
+    startPolling();
+  } catch (e) {
+    console.error('Init error:', e);
+    state = createEmptyState();
+    render();
+    setSyncStatus('error', 'Load failed');
+  } finally {
+    const overlay = document.getElementById('loadingOverlay');
+    overlay.classList.add('hidden');
+    setTimeout(() => overlay.remove(), 300);
+  }
+}
+
+init();
+</script>
+</body>
+</html>
