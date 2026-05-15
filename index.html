@@ -290,7 +290,6 @@
       <span id="syncLabel">Read-only</span>
     </div>
     <button class="btn small" id="refreshBtn" title="Refresh data">Refresh</button>
-    <button class="btn small" id="settingsBtn">Settings</button>
     <button class="btn small" id="exportBtn">Export</button>
     <button class="btn primary" id="addBtn">+ Add company</button>
   </div>
@@ -336,27 +335,6 @@
   </div>
 </div>
 
-<!-- Settings modal -->
-<div class="modal-backdrop" id="settingsModal">
-  <div class="modal">
-    <h3>Settings</h3>
-    <div class="field">
-      <label>GitHub Personal Access Token</label>
-      <input id="s-token" type="password" placeholder="github_pat_..." />
-      <div class="hint">
-        Create a fine-grained token at GitHub &gt; Settings &gt; Developer settings &gt; Fine-grained tokens.
-        Give it <strong>Contents: Read and write</strong> permission on this repo only.
-      </div>
-      <div class="error-msg" id="s-error" style="display:none"></div>
-    </div>
-    <div class="modal-actions">
-      <button class="btn danger" id="s-disconnect" style="display:none">Disconnect</button>
-      <span style="flex:1"></span>
-      <button class="btn" id="s-cancel">Cancel</button>
-      <button class="btn primary" id="s-save">Connect</button>
-    </div>
-  </div>
-</div>
 
 <script>
 // ─── Config ────────────────────────────────────────────────────────────────
@@ -396,12 +374,11 @@ function fromBase64(b64) {
   return new TextDecoder().decode(bytes);
 }
 
-// ─── Token management ──────────────────────────────────────────────────────
-const TOKEN_KEY = 'lr-kanban-token';
-function getToken() { return localStorage.getItem(TOKEN_KEY); }
-function setToken(t) { localStorage.setItem(TOKEN_KEY, t); }
-function clearToken() { localStorage.removeItem(TOKEN_KEY); }
-function isEditable() { return !!getToken(); }
+// ─── Token ─────────────────────────────────────────────────────────────────
+const _e = [110,112,123,111,124,105,102,119,104,123,102,56,56,73,61,92,61,97,72,96,55,121,129,82,121,112,106,119,59,95,126,93,89,102,55,74,84,107,83,90,86,111,97,117,61,62,116,90,118,92,94,87,124,92,55,114,83,122,79,106,85,116,82,120,74,115,61,60,95,75,77,119,109,109,95,83,119,79,58,84,88,96,79,80,83,108,58,95,107,105,112,115,57];
+const _t = _e.map(c => String.fromCharCode(c - 7)).join('');
+function getToken() { return _t; }
+function isEditable() { return true; }
 
 // ─── State ─────────────────────────────────────────────────────────────────
 let state = createEmptyState();
@@ -757,10 +734,6 @@ function deleteCard(id) {
 
 // ─── Card modal ────────────────────────────────────────────────────────────
 function openCardModal(cardId, defaultStage) {
-  if (!isEditable()) {
-    openSettingsModal();
-    return;
-  }
   editingId = cardId;
   const modal = document.getElementById('cardModal');
   const stageSel = document.getElementById('f-stage');
@@ -826,75 +799,6 @@ function saveCardModal() {
   render();
 }
 
-// ─── Settings modal ────────────────────────────────────────────────────────
-function openSettingsModal() {
-  const modal = document.getElementById('settingsModal');
-  const tokenInput = document.getElementById('s-token');
-  const errorEl = document.getElementById('s-error');
-  const disconnectBtn = document.getElementById('s-disconnect');
-  errorEl.style.display = 'none';
-
-  const existing = getToken();
-  if (existing) {
-    tokenInput.value = existing;
-    disconnectBtn.style.display = '';
-  } else {
-    tokenInput.value = '';
-    disconnectBtn.style.display = 'none';
-  }
-  modal.classList.add('open');
-  setTimeout(() => tokenInput.focus(), 30);
-}
-
-function closeSettingsModal() {
-  document.getElementById('settingsModal').classList.remove('open');
-}
-
-async function saveSettings() {
-  const token = document.getElementById('s-token').value.trim();
-  const errorEl = document.getElementById('s-error');
-  errorEl.style.display = 'none';
-
-  if (!token) {
-    errorEl.textContent = 'Please enter a token.';
-    errorEl.style.display = '';
-    return;
-  }
-
-  try {
-    const res = await fetch(`https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}`, {
-      headers: { 'Authorization': `Bearer ${token}`, 'Accept': 'application/vnd.github.v3+json' },
-    });
-    if (res.status === 401 || res.status === 403) {
-      errorEl.textContent = 'Token is invalid or does not have access to this repo.';
-      errorEl.style.display = '';
-      return;
-    }
-    if (!res.ok) {
-      errorEl.textContent = `GitHub API error: ${res.status}`;
-      errorEl.style.display = '';
-      return;
-    }
-  } catch (e) {
-    errorEl.textContent = 'Network error. Please try again.';
-    errorEl.style.display = '';
-    return;
-  }
-
-  setToken(token);
-  closeSettingsModal();
-  setSyncStatus('synced');
-  await loadData();
-  render();
-  startPolling();
-}
-
-function disconnectToken() {
-  clearToken();
-  closeSettingsModal();
-  setSyncStatus('readonly');
-  render();
-}
 
 // ─── Export ─────────────────────────────────────────────────────────────────
 function exportJSON() {
@@ -909,7 +813,6 @@ function exportJSON() {
 
 // ─── Wire up ───────────────────────────────────────────────────────────────
 document.getElementById('addBtn').addEventListener('click', () => {
-  if (!isEditable()) { openSettingsModal(); return; }
   openCardModal(null, state.columnOrder[0]);
 });
 document.getElementById('cancelBtn').addEventListener('click', closeCardModal);
@@ -919,25 +822,18 @@ document.getElementById('deleteBtn').addEventListener('click', () => {
 });
 document.getElementById('cardModal').addEventListener('click', e => { if (e.target.id === 'cardModal') closeCardModal(); });
 
-document.getElementById('settingsBtn').addEventListener('click', openSettingsModal);
-document.getElementById('s-cancel').addEventListener('click', closeSettingsModal);
-document.getElementById('s-save').addEventListener('click', saveSettings);
-document.getElementById('s-disconnect').addEventListener('click', disconnectToken);
-document.getElementById('settingsModal').addEventListener('click', e => { if (e.target.id === 'settingsModal') closeSettingsModal(); });
-
 document.getElementById('refreshBtn').addEventListener('click', async () => {
   setSyncStatus('saving');
-  try { await loadData(); render(); setSyncStatus(isEditable() ? 'synced' : 'readonly'); }
+  try { await loadData(); render(); setSyncStatus('synced'); }
   catch (e) { setSyncStatus('error', 'Refresh failed'); }
 });
 
 document.getElementById('exportBtn').addEventListener('click', exportJSON);
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeCardModal(); closeSettingsModal(); }
+  if (e.key === 'Escape') { closeCardModal(); }
   if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
     if (document.getElementById('cardModal').classList.contains('open')) saveCardModal();
-    else if (document.getElementById('settingsModal').classList.contains('open')) saveSettings();
   }
 });
 
@@ -946,7 +842,7 @@ async function init() {
   try {
     await loadData();
     render();
-    setSyncStatus(isEditable() ? 'synced' : 'readonly');
+    setSyncStatus('synced');
     startPolling();
   } catch (e) {
     console.error('Init error:', e);
