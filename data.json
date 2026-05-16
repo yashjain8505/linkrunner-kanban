@@ -339,6 +339,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922669888
+    },
+    "pt0qyu7q": {
+      "id": "pt0qyu7q",
+      "name": "Vedic Rishi Astro",
+      "contact": "Harshal",
+      "notes": "They want web attribution also",
+      "stage": "demo-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922692404
     }
   },
   "order": {
@@ -369,6 +379,7 @@
       "m40phmwr"
     ],
     "demo-next": [
+      "pt0qyu7q",
       "gufmt1s8",
       "ho5wxkdf"
     ],
