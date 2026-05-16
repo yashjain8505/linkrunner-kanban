@@ -559,6 +559,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923877880
+    },
+    "s3jqncwo": {
+      "id": "s3jqncwo",
+      "name": "Borzodelivery",
+      "contact": "",
+      "notes": "We can't add much value here, CMO is not convinced",
+      "stage": "demo-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923896396
     }
   },
   "order": {
@@ -593,6 +603,7 @@
       "m40phmwr"
     ],
     "demo-next": [
+      "s3jqncwo",
       "33y7lvb2",
       "pt0qyu7q",
       "gufmt1s8",
