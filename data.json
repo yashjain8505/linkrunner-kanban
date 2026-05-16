@@ -429,6 +429,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923690479
+    },
+    "vam3d726": {
+      "id": "vam3d726",
+      "name": "Marzi Life",
+      "contact": "",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923703246
     }
   },
   "order": {
@@ -479,6 +489,7 @@
     "price-negotiations": [],
     "integration-started": [],
     "paying-customer": [
+      "vam3d726",
       "k1mnj1sy",
       "wuenmqqy",
       "czl1xufg"
