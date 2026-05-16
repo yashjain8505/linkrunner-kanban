@@ -609,6 +609,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778924237032
+    },
+    "9mbxstiy": {
+      "id": "9mbxstiy",
+      "name": "Wedmegood",
+      "contact": "Himanshi and Anshul",
+      "notes": "They want to focus on App campaigns, interested | High Intent",
+      "stage": "email-second-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778924280698
     }
   },
   "order": {
@@ -656,6 +666,7 @@
       "78q13wkn"
     ],
     "email-second-sent": [
+      "9mbxstiy",
       "csp5s88v",
       "aqbhlx5y",
       "j74u2llv"
