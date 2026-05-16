@@ -209,6 +209,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921741311
+    },
+    "2p2bekng": {
+      "id": "2p2bekng",
+      "name": "Sid's Farm",
+      "contact": "Manisha Kar",
+      "notes": "Convinced about Linkrunner\nReachout Mid June, they don't run much ads in May",
+      "stage": "snoozed-date",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778921784427
     }
   },
   "order": {
@@ -245,6 +255,7 @@
       "yrlt40z4"
     ],
     "snoozed-date": [
+      "2p2bekng",
       "q672hpid",
       "w8wg8lt1"
     ],
