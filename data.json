@@ -649,6 +649,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925531689
+    },
+    "5z3o34x4": {
+      "id": "5z3o34x4",
+      "name": "Flattrade",
+      "contact": "",
+      "notes": "High Intent",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778925541790
     }
   },
   "order": {
@@ -692,6 +702,7 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
+      "5z3o34x4",
       "3l9o1g32",
       "pstfria7",
       "vvk5pc8n",
