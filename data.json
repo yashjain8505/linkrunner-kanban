@@ -519,6 +519,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923825680
+    },
+    "9k1vcmcu": {
+      "id": "9k1vcmcu",
+      "name": "Zavo",
+      "contact": "",
+      "notes": "",
+      "stage": "integration-started",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923832330
     }
   },
   "order": {
@@ -571,7 +581,9 @@
     "follow-up-2-done": [],
     "comms-setup": [],
     "price-negotiations": [],
-    "integration-started": [],
+    "integration-started": [
+      "9k1vcmcu"
+    ],
     "paying-customer": [
       "91wwb4nn",
       "vam3d726",
