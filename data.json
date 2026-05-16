@@ -509,6 +509,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923820495
+    },
+    "91wwb4nn": {
+      "id": "91wwb4nn",
+      "name": "Pukaar AI",
+      "contact": "",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923825680
     }
   },
   "order": {
@@ -563,6 +573,7 @@
     "price-negotiations": [],
     "integration-started": [],
     "paying-customer": [
+      "91wwb4nn",
       "vam3d726",
       "k1mnj1sy",
       "wuenmqqy",
