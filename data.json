@@ -469,10 +469,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923760763
+    },
+    "temuo6y6": {
+      "id": "temuo6y6",
+      "name": "Rupeezy",
+      "contact": "",
+      "notes": "",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923766196
     }
   },
   "order": {
     "no-show": [
+      "temuo6y6",
       "vsh95rf2",
       "ouc9x28k",
       "g3xkms91",
