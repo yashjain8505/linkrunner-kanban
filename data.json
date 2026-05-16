@@ -379,10 +379,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923644712
+    },
+    "vsh95rf2": {
+      "id": "vsh95rf2",
+      "name": "Koinpark",
+      "contact": "",
+      "notes": "",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923652212
     }
   },
   "order": {
     "no-show": [
+      "vsh95rf2",
       "ouc9x28k",
       "g3xkms91",
       "xg1j2doj",
