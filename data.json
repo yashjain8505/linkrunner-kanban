@@ -369,6 +369,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923607779
+    },
+    "chmufx22": {
+      "id": "chmufx22",
+      "name": "Epik",
+      "contact": "",
+      "notes": "More web focused, low IQ team",
+      "stage": "snoozed-cycle",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923644712
     }
   },
   "order": {
@@ -429,7 +439,9 @@
       "w8wg8lt1",
       "blcof8hu"
     ],
-    "snoozed-cycle": []
+    "snoozed-cycle": [
+      "chmufx22"
+    ]
   },
   "columnOrder": [
     "no-show",
