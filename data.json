@@ -569,6 +569,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923912930
+    },
+    "vvk5pc8n": {
+      "id": "vvk5pc8n",
+      "name": "Bhanzu",
+      "contact": "",
+      "notes": "Ask if their director of product is back",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923944463
     }
   },
   "order": {
@@ -610,6 +620,7 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
+      "vvk5pc8n",
       "av70z6q0",
       "78q13wkn"
     ],
