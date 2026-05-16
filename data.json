@@ -45,10 +45,10 @@
       "name": "Hudle",
       "contact": "fahad",
       "notes": "Interested to switch, contract ending in August",
-      "stage": "demo-no-next",
+      "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778920126330
+      "updated": 1778921690811
     },
     "e0187631": {
       "id": "e0187631",
@@ -220,7 +220,6 @@
       "5zwhb2lh",
       "pvp5qqng",
       "59kn0ucx",
-      "w8wg8lt1",
       "vob9lx36",
       "m40phmwr"
     ],
@@ -235,7 +234,9 @@
       "bkzuzvd2",
       "yrlt40z4"
     ],
-    "snoozed-date": [],
+    "snoozed-date": [
+      "w8wg8lt1"
+    ],
     "snoozed-cycle": []
   },
   "columnOrder": [
