@@ -169,6 +169,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920969778
+    },
+    "k3455fqr": {
+      "id": "k3455fqr",
+      "name": "Kindlife",
+      "contact": "Shubham",
+      "notes": "They are happy using Adjust - Chief of Staff is the decision maker\n\nCan try to re-engage around December 2026",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778921023161
     }
   },
   "order": {
@@ -178,6 +188,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "k3455fqr",
       "gcz7ymaj",
       "k0b1maan",
       "zugpsqkx",
