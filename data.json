@@ -349,6 +349,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922692404
+    },
+    "cm1lafe7": {
+      "id": "cm1lafe7",
+      "name": "Ozi Kids",
+      "contact": "Shail Patel",
+      "notes": "Contract ending in August",
+      "stage": "snoozed-date",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922733087
     }
   },
   "order": {
@@ -402,6 +412,7 @@
       "yrlt40z4"
     ],
     "snoozed-date": [
+      "cm1lafe7",
       "2p2bekng",
       "q672hpid",
       "w8wg8lt1",
