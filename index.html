@@ -295,6 +295,7 @@
   .section .add-card-wrap { padding: 0 10px 8px; }
 
   /* Column accent dots */
+  .col-demo-sched .dot          { background: #4A90B8; }
   .col-no-show .dot            { background: #A39E91; }
   .col-demo-no-next .dot       { background: #B08A7A; }
   .col-demo-next .dot          { background: #7A98B8; }
@@ -393,6 +394,7 @@ const API_BASE = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/co
 
 // ─── Columns ───────────────────────────────────────────────────────────────
 const COLUMNS = [
+  { id: 'demo-scheduled',     title: 'Demo Scheduled',            cls: 'col-demo-sched' },
   { id: 'no-show',            title: 'No show',                  cls: 'col-no-show' },
   { id: 'demo-no-next',       title: 'Demo done — no next steps',cls: 'col-demo-no-next' },
   { id: 'demo-next',          title: 'Not Interested / Lost',    cls: 'col-demo-next' },
@@ -406,7 +408,7 @@ const COLUMNS = [
   { id: 'attention-needed',   title: 'Attention needed',         cls: 'col-attention' },
   { id: 'snoozed', title: 'Snoozed', cls: 'col-snoozed', sections: [
     { id: 'snoozed-date', title: 'Date approaching' },
-    { id: 'snoozed-cycle', title: 'Long sale cycle' },
+    { id: 'snoozed-cycle', title: 'Long Sales cycle' },
   ]},
 ];
 const COLUMN_BY_ID = Object.fromEntries(COLUMNS.map(c => [c.id, c]));
