@@ -589,10 +589,21 @@
       "channel": "slack",
       "touchDate": "",
       "updated": 1778924049381
+    },
+    "o2nade60": {
+      "id": "o2nade60",
+      "name": "Libas",
+      "contact": "",
+      "notes": "",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778924058463
     }
   },
   "order": {
     "no-show": [
+      "o2nade60",
       "temuo6y6",
       "vsh95rf2",
       "ouc9x28k",
