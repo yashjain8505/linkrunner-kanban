@@ -619,6 +619,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778924280698
+    },
+    "pstfria7": {
+      "id": "pstfria7",
+      "name": "Lovelocal",
+      "contact": "",
+      "notes": "\"Had a good call with Saket - he has the potential to be a minor champion of LR at Lovelocal but he is not the right POC - the right POC will be someone from their growth team as he mentioned since they use AppsFlyer on a day to day basis. \n\nHe mentioned that they use AF for basic purposes and they sometimes face challenges with affiliates tracking. Pricing might be a good wedge here along with support\"",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778925477623
     }
   },
   "order": {
@@ -661,6 +671,7 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
+      "pstfria7",
       "vvk5pc8n",
       "av70z6q0",
       "78q13wkn"
