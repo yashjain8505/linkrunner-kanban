@@ -499,6 +499,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923812812
+    },
+    "a57swvwj": {
+      "id": "a57swvwj",
+      "name": "SuperK",
+      "contact": "",
+      "notes": "",
+      "stage": "attention-needed",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923820495
     }
   },
   "order": {
@@ -559,6 +569,7 @@
       "czl1xufg"
     ],
     "attention-needed": [
+      "a57swvwj",
       "fw4loszp",
       "bkzuzvd2",
       "yrlt40z4"
