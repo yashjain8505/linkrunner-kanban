@@ -2,20 +2,26 @@
   "cards": {},
   "order": {
     "no-show": [],
-    "demo-done": [],
+    "demo-no-next": [],
+    "demo-next": [],
     "email-first-sent": [],
     "email-second-sent": [],
+    "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [],
-    "account-created": []
+    "paying-customer": [],
+    "attention-needed": []
   },
   "columnOrder": [
     "no-show",
-    "demo-done",
+    "demo-no-next",
+    "demo-next",
     "email-first-sent",
     "email-second-sent",
+    "comms-setup",
     "price-negotiations",
     "integration-started",
-    "account-created"
+    "paying-customer",
+    "attention-needed"
   ]
 }

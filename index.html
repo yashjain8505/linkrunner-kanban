@@ -201,18 +201,6 @@
   }
   .card-field .label { font-weight: 500; flex-shrink: 0; }
   .card-field .value { color: var(--text-2); font-weight: 500; }
-  .card-details {
-    font-size: 11.5px;
-    color: var(--text-2);
-    margin-top: 4px;
-    white-space: pre-wrap;
-    word-break: break-word;
-    line-height: 1.4;
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-line-clamp: 2;
-    -webkit-box-orient: vertical;
-  }
   .touch-date { color: var(--accent-deep); font-weight: 600; font-size: 11px; }
 
   /* Channel badge */
@@ -287,13 +275,16 @@
   .error-msg { color: var(--danger); font-size: 12px; margin-top: 6px; }
 
   /* Column accent dots */
-  .col-no-show .dot          { background: #A39E91; }
-  .col-demo-done .dot        { background: #7A98B8; }
-  .col-email-first .dot      { background: #9D8AB0; }
-  .col-email-second .dot     { background: #7C6A95; }
-  .col-price-neg .dot        { background: var(--accent); }
-  .col-integration .dot      { background: #7E9879; }
-  .col-account-created .dot  { background: #5D8059; }
+  .col-no-show .dot            { background: #A39E91; }
+  .col-demo-no-next .dot       { background: #B08A7A; }
+  .col-demo-next .dot          { background: #7A98B8; }
+  .col-email-first .dot        { background: #9D8AB0; }
+  .col-email-second .dot       { background: #7C6A95; }
+  .col-comms-setup .dot        { background: #5D9E8F; }
+  .col-price-neg .dot          { background: var(--accent); }
+  .col-integration .dot        { background: #7E9879; }
+  .col-paying .dot             { background: #5D8059; }
+  .col-attention .dot          { background: #C47040; }
 
   .cards::-webkit-scrollbar { width: 8px; }
   .cards::-webkit-scrollbar-track { background: transparent; }
@@ -358,10 +349,6 @@
       <input id="f-touchdate" type="date" />
     </div>
     <div class="field">
-      <label>Details</label>
-      <textarea id="f-details" placeholder="App name, vertical, deal size, key context..."></textarea>
-    </div>
-    <div class="field">
       <label>Notes</label>
       <textarea id="f-notes" placeholder="Quick notes — last conversation, next steps..."></textarea>
     </div>
@@ -388,13 +375,16 @@ const API_BASE = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/co
 
 // ─── Columns ───────────────────────────────────────────────────────────────
 const COLUMNS = [
-  { id: 'no-show',            title: 'No show',            cls: 'col-no-show' },
-  { id: 'demo-done',          title: 'Demo done',          cls: 'col-demo-done' },
-  { id: 'email-first-sent',   title: 'Email first sent',   cls: 'col-email-first' },
-  { id: 'email-second-sent',  title: 'Email second sent',  cls: 'col-email-second' },
-  { id: 'price-negotiations', title: 'Price negotiations', cls: 'col-price-neg' },
-  { id: 'integration-started',title: 'Integration started',cls: 'col-integration' },
-  { id: 'account-created',    title: 'Account created',    cls: 'col-account-created' },
+  { id: 'no-show',            title: 'No show',                  cls: 'col-no-show' },
+  { id: 'demo-no-next',       title: 'Demo done — no next steps',cls: 'col-demo-no-next' },
+  { id: 'demo-next',          title: 'Demo done — next steps',   cls: 'col-demo-next' },
+  { id: 'email-first-sent',   title: 'Email first sent',         cls: 'col-email-first' },
+  { id: 'email-second-sent',  title: 'Email second sent',        cls: 'col-email-second' },
+  { id: 'comms-setup',        title: 'Comms channel set up',     cls: 'col-comms-setup' },
+  { id: 'price-negotiations', title: 'Price negotiations',       cls: 'col-price-neg' },
+  { id: 'integration-started',title: 'Integration started',      cls: 'col-integration' },
+  { id: 'paying-customer',    title: 'Paying customer',          cls: 'col-paying' },
+  { id: 'attention-needed',   title: 'Attention needed',         cls: 'col-attention' },
 ];
 const COLUMN_BY_ID = Object.fromEntries(COLUMNS.map(c => [c.id, c]));
 
@@ -636,7 +626,6 @@ function renderCard(card) {
     <div class="touch-row"></div>
     <div class="card-divider"></div>
     <div class="channel-section"></div>
-    <div class="details-row"></div>
     <div class="notes"></div>
   `;
 
@@ -661,14 +650,6 @@ function renderCard(card) {
     channelSection.innerHTML = `<div class="card-field"><span class="label">Channel:</span> <span class="channel-badge ch-none">Not set up</span></div>`;
   } else {
     channelSection.innerHTML = `<div class="card-field"><span class="label">Channel:</span> <span class="channel-badge ch-${channel}">${channelLabels[channel]}</span></div>`;
-  }
-
-  const detailsRow = el.querySelector('.details-row');
-  if (card.details) {
-    detailsRow.innerHTML = `<div class="card-details"></div>`;
-    detailsRow.querySelector('.card-details').textContent = card.details;
-  } else {
-    detailsRow.style.display = 'none';
   }
 
   const notesEl = el.querySelector('.notes');
@@ -809,7 +790,6 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
     document.getElementById('f-touchdate').value = c.touchDate || '';
-    document.getElementById('f-details').value = c.details || '';
     stageSel.value = c.stage;
     document.getElementById('deleteBtn').style.display = '';
   } else {
@@ -819,7 +799,6 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
     document.getElementById('f-touchdate').value = '';
-    document.getElementById('f-details').value = '';
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
   }
@@ -840,7 +819,6 @@ function saveCardModal() {
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
   const touchDate = document.getElementById('f-touchdate').value;
-  const details = document.getElementById('f-details').value.trim();
 
   if (editingId) {
     const card = state.cards[editingId];
@@ -850,7 +828,6 @@ function saveCardModal() {
     card.notes = notes;
     card.channel = channel;
     card.touchDate = touchDate;
-    card.details = details;
     card.updated = Date.now();
     if (oldStage !== stage) {
       state.order[oldStage] = state.order[oldStage].filter(id => id !== editingId);
@@ -859,7 +836,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, touchDate, details, updated: Date.now() };
+    state.cards[id] = { id, name, contact, notes, stage, channel, touchDate, updated: Date.now() };
     state.order[stage].push(id);
   }
   scheduleSave();
