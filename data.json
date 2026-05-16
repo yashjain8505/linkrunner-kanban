@@ -149,6 +149,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920897211
+    },
+    "gcz7ymaj": {
+      "id": "gcz7ymaj",
+      "name": "FRND",
+      "contact": "Sampath",
+      "notes": "Sampath liked the product, they have a year long contract with Appsflyer. Reachout in January 2027",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920942195
     }
   },
   "order": {
@@ -158,6 +168,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "gcz7ymaj",
       "k0b1maan",
       "zugpsqkx",
       "tqk99o89",
