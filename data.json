@@ -39,6 +39,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920054498
+    },
+    "w8wg8lt1": {
+      "id": "w8wg8lt1",
+      "name": "Hudle",
+      "contact": "fahad",
+      "notes": "Interested to switch, contract ending in August",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920126330
     }
   },
   "order": {
@@ -47,7 +57,8 @@
       "bxywn2zj",
       "5zwhb2lh",
       "pvp5qqng",
-      "59kn0ucx"
+      "59kn0ucx",
+      "w8wg8lt1"
     ],
     "demo-next": [],
     "email-first-sent": [],
