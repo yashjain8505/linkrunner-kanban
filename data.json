@@ -159,6 +159,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920942195
+    },
+    "yrlt40z4": {
+      "id": "yrlt40z4",
+      "name": "KisanKonnect",
+      "contact": "Reema",
+      "notes": "She replied to the email, never rescheduled the demo",
+      "stage": "attention-needed",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920969778
     }
   },
   "order": {
@@ -189,6 +199,7 @@
     "integration-started": [],
     "paying-customer": [],
     "attention-needed": [
+      "yrlt40z4",
       "bkzuzvd2"
     ]
   },
