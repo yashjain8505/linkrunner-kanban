@@ -688,8 +688,8 @@
     "demo-scheduled": []
   },
   "columnOrder": [
-    "demo-scheduled",
     "no-show",
+    "demo-scheduled",
     "demo-no-next",
     "demo-next",
     "email-first-sent",
@@ -700,7 +700,6 @@
     "integration-started",
     "paying-customer",
     "attention-needed",
-    "snoozed",
-    "follow-up-1"
+    "snoozed"
   ]
 }
