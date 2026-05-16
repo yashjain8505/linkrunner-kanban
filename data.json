@@ -489,6 +489,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923790163
+    },
+    "gz295rcq": {
+      "id": "gz295rcq",
+      "name": "Samco Securities",
+      "contact": "",
+      "notes": "They have a contract with Appsflyer that was renewed March 2026. We need to add Aayasha to our monthly newsletters as well. She mentioned that the entire team (tech, product, marketing etc) are heavily using AF in their day to day workflows.",
+      "stage": "snoozed-cycle",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923812812
     }
   },
   "order": {
@@ -561,6 +571,7 @@
       "blcof8hu"
     ],
     "snoozed-cycle": [
+      "gz295rcq",
       "c522yy4q",
       "chmufx22"
     ]
