@@ -1,29 +1,7 @@
 {
-  "cards": {
-    "bfgg0729": {
-      "id": "bfgg0729",
-      "name": "abcf",
-      "contact": "",
-      "notes": "",
-      "stage": "no-show",
-      "channel": "none",
-      "updated": 1778916325785
-    },
-    "3byuta3q": {
-      "id": "3byuta3q",
-      "name": "askdbseif",
-      "contact": "",
-      "notes": "",
-      "stage": "no-show",
-      "channel": "none",
-      "updated": 1778918403942
-    }
-  },
+  "cards": {},
   "order": {
-    "no-show": [
-      "bfgg0729",
-      "3byuta3q"
-    ],
+    "no-show": [],
     "demo-done": [],
     "email-first-sent": [],
     "email-second-sent": [],
