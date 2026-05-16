@@ -579,6 +579,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923944463
+    },
+    "n5qjsfkv": {
+      "id": "n5qjsfkv",
+      "name": "Banza",
+      "contact": "",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "slack",
+      "touchDate": "",
+      "updated": 1778924049381
     }
   },
   "order": {
@@ -636,6 +646,7 @@
       "9k1vcmcu"
     ],
     "paying-customer": [
+      "n5qjsfkv",
       "91wwb4nn",
       "vam3d726",
       "k1mnj1sy",
@@ -662,7 +673,8 @@
       "gz295rcq",
       "c522yy4q",
       "chmufx22"
-    ]
+    ],
+    "follow-up-1": []
   },
   "columnOrder": [
     "no-show",
@@ -676,6 +688,7 @@
     "integration-started",
     "paying-customer",
     "attention-needed",
-    "snoozed"
+    "snoozed",
+    "follow-up-1"
   ]
 }
