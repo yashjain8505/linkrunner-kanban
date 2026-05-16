@@ -389,6 +389,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923652212
+    },
+    "wuenmqqy": {
+      "id": "wuenmqqy",
+      "name": "SnapTV",
+      "contact": "",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923658029
     }
   },
   "order": {
@@ -436,6 +446,7 @@
     "price-negotiations": [],
     "integration-started": [],
     "paying-customer": [
+      "wuenmqqy",
       "czl1xufg"
     ],
     "attention-needed": [
