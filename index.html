@@ -121,15 +121,15 @@
     padding: 16px;
     height: calc(100vh - 61px);
     align-items: stretch;
-    overflow: hidden;
+    overflow-x: auto;
+    overflow-y: hidden;
   }
 
   .column {
     background: var(--surface);
     border: 1px solid var(--border);
     border-radius: 10px;
-    flex: 1 1 0;
-    min-width: 0;
+    flex: 0 0 220px;
     display: flex;
     flex-direction: column;
     box-shadow: var(--shadow);
@@ -297,10 +297,6 @@
   .cards::-webkit-scrollbar-track { background: transparent; }
   .cards::-webkit-scrollbar-thumb { background: rgba(118,116,108,0.25); border-radius: 4px; }
 
-  @media (max-width: 1100px) {
-    .board { overflow-x: auto; }
-    .column { flex: 0 0 210px; }
-  }
 </style>
 </head>
 <body>
