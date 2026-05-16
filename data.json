@@ -485,10 +485,10 @@
       "name": "Desi Farms",
       "contact": "",
       "notes": "She'll reschedule for sure",
-      "stage": "no-show",
+      "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923790163
+      "updated": 1778923855430
     },
     "gz295rcq": {
       "id": "gz295rcq",
@@ -553,7 +553,6 @@
   },
   "order": {
     "no-show": [
-      "1sstb062",
       "temuo6y6",
       "vsh95rf2",
       "ouc9x28k",
@@ -617,7 +616,8 @@
       "a57swvwj",
       "fw4loszp",
       "bkzuzvd2",
-      "yrlt40z4"
+      "yrlt40z4",
+      "1sstb062"
     ],
     "snoozed-date": [
       "cm1lafe7",
