@@ -439,6 +439,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923703246
+    },
+    "c522yy4q": {
+      "id": "c522yy4q",
+      "name": "Swish",
+      "contact": "",
+      "notes": "Wait for Appsflyer to fuck up one more time",
+      "stage": "snoozed-cycle",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923722663
     }
   },
   "order": {
@@ -507,6 +517,7 @@
       "blcof8hu"
     ],
     "snoozed-cycle": [
+      "c522yy4q",
       "chmufx22"
     ]
   },
