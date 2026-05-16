@@ -59,6 +59,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920302665
+    },
+    "vob9lx36": {
+      "id": "vob9lx36",
+      "name": "POP Club",
+      "contact": "Mirza",
+      "notes": "Will try to use for Influencer Campaign - Never got back",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920404598
     }
   },
   "order": {
@@ -70,7 +80,8 @@
       "5zwhb2lh",
       "pvp5qqng",
       "59kn0ucx",
-      "w8wg8lt1"
+      "w8wg8lt1",
+      "vob9lx36"
     ],
     "demo-next": [],
     "email-first-sent": [],
