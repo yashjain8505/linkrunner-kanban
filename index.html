@@ -425,7 +425,10 @@ async function loadData() {
     return;
   }
 
-  if (!res.ok) throw new Error(`Load failed: ${res.status}`);
+  if (!res.ok) {
+    const body = await res.text().catch(() => '');
+    throw new Error(`API ${res.status}: ${body.slice(0, 100)}`);
+  }
 
   const json = await res.json();
   currentSha = json.sha;
@@ -848,7 +851,7 @@ async function init() {
     console.error('Init error:', e);
     state = createEmptyState();
     render();
-    setSyncStatus('error', 'Load failed');
+    setSyncStatus('error', e.message || 'Load failed');
   } finally {
     const overlay = document.getElementById('loadingOverlay');
     overlay.classList.add('hidden');
