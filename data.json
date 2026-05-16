@@ -449,6 +449,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923722663
+    },
+    "aqbhlx5y": {
+      "id": "aqbhlx5y",
+      "name": "Zuno Insurance",
+      "contact": "",
+      "notes": "",
+      "stage": "email-second-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923736412
     }
   },
   "order": {
@@ -492,6 +502,7 @@
     ],
     "follow-up-1": [],
     "email-second-sent": [
+      "aqbhlx5y",
       "j74u2llv"
     ],
     "follow-up-2-done": [],
