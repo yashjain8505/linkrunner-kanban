@@ -459,6 +459,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923736412
+    },
+    "r86mapmi": {
+      "id": "r86mapmi",
+      "name": "Regal Jewellers",
+      "contact": "",
+      "notes": "On Basic plan of Appsflyer - not a priority",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923760763
     }
   },
   "order": {
@@ -475,6 +485,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "r86mapmi",
       "b8i1k3ud",
       "pdcwgw12",
       "k3455fqr",
