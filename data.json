@@ -309,6 +309,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922176228
+    },
+    "gufmt1s8": {
+      "id": "gufmt1s8",
+      "name": "Rumik AI",
+      "contact": "CTO",
+      "notes": "In-house solution is very good, no they won't need Linkrunner as their solution is good enough",
+      "stage": "demo-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922212828
     }
   },
   "order": {
@@ -339,6 +349,7 @@
       "m40phmwr"
     ],
     "demo-next": [
+      "gufmt1s8",
       "ho5wxkdf"
     ],
     "email-first-sent": [
