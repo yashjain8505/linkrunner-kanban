@@ -119,6 +119,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920768144
+    },
+    "k0b1maan": {
+      "id": "k0b1maan",
+      "name": "NIRA Finance",
+      "contact": "Mahesh J",
+      "notes": "Contract ends in August, reachout in July",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920842361
     }
   },
   "order": {
@@ -127,6 +137,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "k0b1maan",
       "zugpsqkx",
       "tqk99o89",
       "fr65wkiv",
