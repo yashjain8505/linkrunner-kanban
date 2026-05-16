@@ -99,6 +99,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920710811
+    },
+    "tqk99o89": {
+      "id": "tqk99o89",
+      "name": "Stockedge ( E-Learning )",
+      "contact": "Tanzeng ( Lahari's Junior )",
+      "notes": "They're interested, follow up done\nLooking for their E- learning app",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920749444
     }
   },
   "order": {
@@ -107,6 +117,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "tqk99o89",
       "fr65wkiv",
       "bxywn2zj",
       "5zwhb2lh",
