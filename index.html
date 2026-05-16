@@ -635,7 +635,14 @@ function render() {
           </div>
         `;
         const cardsEl = sectionEl.querySelector('.cards');
-        const ids = state.order[sec.id] || [];
+        const ids = (state.order[sec.id] || []).slice().sort((a, b) => {
+          const da = state.cards[a]?.touchDate || '';
+          const db = state.cards[b]?.touchDate || '';
+          if (!da && !db) return 0;
+          if (!da) return 1;
+          if (!db) return -1;
+          return da.localeCompare(db);
+        });
         ids.forEach(cardId => {
           const card = state.cards[cardId];
           if (!card) return;
@@ -719,7 +726,8 @@ function renderCard(card) {
 
   const touchRow = el.querySelector('.touch-row');
   if (card.touchDate) {
-    touchRow.innerHTML = `<span class="touch-date">Last touch: ${new Date(card.touchDate + 'T00:00:00').toLocaleDateString()}</span>`;
+    const dateLabel = isSnoozedStage(card.stage) ? 'Reach out' : 'Last touch';
+    touchRow.innerHTML = `<span class="touch-date">${dateLabel}: ${formatDateOrdinal(card.touchDate)}</span>`;
     touchRow.style.marginTop = '4px';
   } else {
     touchRow.style.display = 'none';
@@ -846,6 +854,20 @@ function deleteCard(id) {
   render();
 }
 
+// ─── Helpers ──────────────────────────────────────────────────────────────
+function isSnoozedStage(stage) {
+  return stage === 'snoozed-date' || stage === 'snoozed-cycle';
+}
+
+function formatDateOrdinal(dateStr) {
+  if (!dateStr) return '';
+  const d = new Date(dateStr + 'T00:00:00');
+  const day = d.getDate();
+  const month = d.toLocaleString('en-US', { month: 'long' });
+  const suffix = [,'st','nd','rd'][day % 10 > 3 ? 0 : (day % 100 - day % 10 !== 10) * (day % 10)] || 'th';
+  return `${day}${suffix} ${month}`;
+}
+
 // ─── Card modal ────────────────────────────────────────────────────────────
 function openCardModal(cardId, defaultStage) {
   editingId = cardId;
@@ -885,9 +907,17 @@ function openCardModal(cardId, defaultStage) {
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
   }
+  updateDateLabel(stageSel.value);
   modal.classList.add('open');
   setTimeout(() => document.getElementById('f-name').focus(), 30);
 }
+
+function updateDateLabel(stage) {
+  const label = document.querySelector('#f-touchdate').parentElement.querySelector('label');
+  label.textContent = isSnoozedStage(stage) ? 'Reach out on' : 'Last touchpoint';
+}
+
+document.getElementById('f-stage').addEventListener('change', e => updateDateLabel(e.target.value));
 
 function closeCardModal() {
   document.getElementById('cardModal').classList.remove('open');
