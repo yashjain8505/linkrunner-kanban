@@ -399,6 +399,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923658029
+    },
+    "k1mnj1sy": {
+      "id": "k1mnj1sy",
+      "name": "1% Club",
+      "contact": "",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923662512
     }
   },
   "order": {
@@ -446,6 +456,7 @@
     "price-negotiations": [],
     "integration-started": [],
     "paying-customer": [
+      "k1mnj1sy",
       "wuenmqqy",
       "czl1xufg"
     ],
