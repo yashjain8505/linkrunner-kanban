@@ -229,10 +229,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921803877
+    },
+    "z131e5jt": {
+      "id": "z131e5jt",
+      "name": "Swipeloan",
+      "contact": "CEO",
+      "notes": "Still in touch with the CEO, recently onboarded Appsflyer",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778921826327
     }
   },
   "order": {
     "no-show": [
+      "z131e5jt",
       "8mliowlo",
       "bqtdyyj6",
       "k4ouwf33",
