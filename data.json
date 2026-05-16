@@ -629,6 +629,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925477623
+    },
+    "3l9o1g32": {
+      "id": "3l9o1g32",
+      "name": "Misfits",
+      "contact": "",
+      "notes": "\"Had a chat with the Co - Founder / CMO - Shashwat. They are fairly new to performance marketing. They have around 100k downloads ( all organic ), using branch to create deep links only. \n\nHe thought that Branch and MMP are two different things, need to handhold him for things like conversion postbacks etc.\"",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778925492523
     }
   },
   "order": {
@@ -671,6 +681,7 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
+      "3l9o1g32",
       "pstfria7",
       "vvk5pc8n",
       "av70z6q0",
