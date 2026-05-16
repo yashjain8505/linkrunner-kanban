@@ -659,6 +659,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925541790
+    },
+    "doteifrp": {
+      "id": "doteifrp",
+      "name": "Purplle",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778925548273
     }
   },
   "order": {
@@ -751,6 +761,7 @@
       "chmufx22"
     ],
     "demo-scheduled": [
+      "doteifrp",
       "0ums1cr6"
     ]
   },
