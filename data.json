@@ -19,13 +19,24 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778919931681
+    },
+    "pvp5qqng": {
+      "id": "pvp5qqng",
+      "name": "Brevistay",
+      "contact": "Aditya - CMO",
+      "notes": "Reachout in August, they use Appsflyer",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920008998
     }
   },
   "order": {
     "no-show": [],
     "demo-no-next": [
       "bxywn2zj",
-      "5zwhb2lh"
+      "5zwhb2lh",
+      "pvp5qqng"
     ],
     "demo-next": [],
     "email-first-sent": [],
