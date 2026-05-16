@@ -189,10 +189,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921036211
+    },
+    "8mliowlo": {
+      "id": "8mliowlo",
+      "name": "Zingbus",
+      "contact": "",
+      "notes": "",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778921041211
     }
   },
   "order": {
     "no-show": [
+      "8mliowlo",
       "bqtdyyj6",
       "k4ouwf33",
       "a2it8i56",
