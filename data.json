@@ -234,7 +234,9 @@
     "attention-needed": [
       "bkzuzvd2",
       "yrlt40z4"
-    ]
+    ],
+    "snoozed-date": [],
+    "snoozed-cycle": []
   },
   "columnOrder": [
     "no-show",
@@ -246,6 +248,7 @@
     "price-negotiations",
     "integration-started",
     "paying-customer",
-    "attention-needed"
+    "attention-needed",
+    "snoozed"
   ]
 }

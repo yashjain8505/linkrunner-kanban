@@ -281,6 +281,19 @@
   .modal-actions { display: flex; justify-content: flex-end; gap: 8px; margin-top: 16px; }
   .error-msg { color: var(--danger); font-size: 12px; margin-top: 6px; }
 
+  /* Snoozed column sections */
+  .section { display: flex; flex-direction: column; flex: 1; min-height: 0; }
+  .section-header {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    padding: 8px 10px 4px; letter-spacing: 0.02em;
+  }
+  .section-divider {
+    border: none; border-top: 1px dashed var(--border-strong);
+    margin: 4px 10px;
+  }
+  .section .cards { flex: 1; min-height: 40px; }
+  .section .add-card-wrap { padding: 0 10px 8px; }
+
   /* Column accent dots */
   .col-no-show .dot            { background: #A39E91; }
   .col-demo-no-next .dot       { background: #B08A7A; }
@@ -292,6 +305,7 @@
   .col-integration .dot        { background: #7E9879; }
   .col-paying .dot             { background: #5D8059; }
   .col-attention .dot          { background: #C47040; }
+  .col-snoozed .dot            { background: #8B7355; }
 
   .cards::-webkit-scrollbar { width: 8px; }
   .cards::-webkit-scrollbar-track { background: transparent; }
@@ -388,8 +402,20 @@ const COLUMNS = [
   { id: 'integration-started',title: 'Integration started',      cls: 'col-integration' },
   { id: 'paying-customer',    title: 'Paying customer',          cls: 'col-paying' },
   { id: 'attention-needed',   title: 'Attention needed',         cls: 'col-attention' },
+  { id: 'snoozed', title: 'Snoozed', cls: 'col-snoozed', sections: [
+    { id: 'snoozed-date', title: 'Date approaching' },
+    { id: 'snoozed-cycle', title: 'Long sale cycle' },
+  ]},
 ];
 const COLUMN_BY_ID = Object.fromEntries(COLUMNS.map(c => [c.id, c]));
+function getAllStageIds() {
+  const ids = [];
+  COLUMNS.forEach(c => {
+    if (c.sections) c.sections.forEach(s => ids.push(s.id));
+    else ids.push(c.id);
+  });
+  return ids;
+}
 
 // ─── Base64 helpers (Unicode-safe) ─────────────────────────────────────────
 function toBase64(str) {
@@ -424,13 +450,13 @@ let editingId = null;
 
 function createEmptyState() {
   const order = {};
-  COLUMNS.forEach(c => order[c.id] = []);
+  getAllStageIds().forEach(id => order[id] = []);
   return { cards: {}, order, columnOrder: COLUMNS.map(c => c.id) };
 }
 
 function ensureColumns(s) {
   if (!s.order) s.order = {};
-  COLUMNS.forEach(c => { if (!s.order[c.id]) s.order[c.id] = []; });
+  getAllStageIds().forEach(id => { if (!s.order[id]) s.order[id] = []; });
   if (!s.columnOrder || !Array.isArray(s.columnOrder)) {
     s.columnOrder = COLUMNS.map(c => c.id);
   } else {
@@ -574,37 +600,85 @@ function render() {
   state.columnOrder.forEach(colId => {
     const col = COLUMN_BY_ID[colId];
     if (!col) return;
-    const ids = state.order[col.id] || [];
     const colEl = document.createElement('div');
     colEl.className = `column ${col.cls}`;
     colEl.dataset.stage = col.id;
 
-    colEl.innerHTML = `
-      <div class="column-header" draggable="${isEditable()}" title="${isEditable() ? 'Drag to reorder' : ''}">
-        <div class="column-title"><span class="dot"></span>${col.title}</div>
-        <span class="count">${ids.length}</span>
-      </div>
-      <div class="cards" data-stage="${col.id}"></div>
-      <div class="add-card-wrap">
-        <button class="add-card" data-stage="${col.id}">+ Add</button>
-      </div>
-    `;
-    board.appendChild(colEl);
+    if (col.sections) {
+      const totalCount = col.sections.reduce((sum, s) => sum + (state.order[s.id] || []).length, 0);
+      colEl.innerHTML = `
+        <div class="column-header" draggable="${isEditable()}" title="${isEditable() ? 'Drag to reorder' : ''}">
+          <div class="column-title"><span class="dot"></span>${col.title}</div>
+          <span class="count">${totalCount}</span>
+        </div>
+      `;
+      const sectionsWrap = document.createElement('div');
+      sectionsWrap.style.cssText = 'display:flex;flex-direction:column;flex:1;overflow-y:auto;min-height:0;';
 
-    const cardsEl = colEl.querySelector('.cards');
-    ids.forEach(cardId => {
-      const card = state.cards[cardId];
-      if (!card) return;
-      cardsEl.appendChild(renderCard(card));
-    });
-
-    if (isEditable()) {
-      attachCardDropZone(cardsEl);
-      attachColumnDrag(colEl);
-      colEl.querySelector('.add-card').addEventListener('click', e => {
-        e.stopPropagation();
-        openCardModal(null, col.id);
+      col.sections.forEach((sec, i) => {
+        if (i > 0) {
+          const divider = document.createElement('hr');
+          divider.className = 'section-divider';
+          sectionsWrap.appendChild(divider);
+        }
+        const sectionEl = document.createElement('div');
+        sectionEl.className = 'section';
+        sectionEl.innerHTML = `
+          <div class="section-header">${sec.title}</div>
+          <div class="cards" data-stage="${sec.id}"></div>
+          <div class="add-card-wrap">
+            <button class="add-card" data-stage="${sec.id}">+ Add</button>
+          </div>
+        `;
+        const cardsEl = sectionEl.querySelector('.cards');
+        const ids = state.order[sec.id] || [];
+        ids.forEach(cardId => {
+          const card = state.cards[cardId];
+          if (!card) return;
+          cardsEl.appendChild(renderCard(card));
+        });
+        if (isEditable()) {
+          attachCardDropZone(cardsEl);
+          sectionEl.querySelector('.add-card').addEventListener('click', e => {
+            e.stopPropagation();
+            openCardModal(null, sec.id);
+          });
+        }
+        sectionsWrap.appendChild(sectionEl);
       });
+
+      colEl.appendChild(sectionsWrap);
+      board.appendChild(colEl);
+      if (isEditable()) attachColumnDrag(colEl);
+    } else {
+      const ids = state.order[col.id] || [];
+      colEl.innerHTML = `
+        <div class="column-header" draggable="${isEditable()}" title="${isEditable() ? 'Drag to reorder' : ''}">
+          <div class="column-title"><span class="dot"></span>${col.title}</div>
+          <span class="count">${ids.length}</span>
+        </div>
+        <div class="cards" data-stage="${col.id}"></div>
+        <div class="add-card-wrap">
+          <button class="add-card" data-stage="${col.id}">+ Add</button>
+        </div>
+      `;
+      board.appendChild(colEl);
+
+      const cardsEl = colEl.querySelector('.cards');
+      ids.forEach(cardId => {
+        const card = state.cards[cardId];
+        if (!card) return;
+        cardsEl.appendChild(renderCard(card));
+      });
+
+      if (isEditable()) {
+        attachCardDropZone(cardsEl);
+        attachColumnDrag(colEl);
+        colEl.querySelector('.add-card').addEventListener('click', e => {
+          e.stopPropagation();
+          openCardModal(null, col.id);
+        });
+      }
     }
   });
 }
@@ -773,9 +847,19 @@ function openCardModal(cardId, defaultStage) {
   editingId = cardId;
   const modal = document.getElementById('cardModal');
   const stageSel = document.getElementById('f-stage');
-  stageSel.innerHTML = state.columnOrder
-    .map(id => COLUMN_BY_ID[id]).filter(Boolean)
-    .map(c => `<option value="${c.id}">${c.title}</option>`).join('');
+  let stageOpts = '';
+  state.columnOrder.forEach(id => {
+    const col = COLUMN_BY_ID[id];
+    if (!col) return;
+    if (col.sections) {
+      col.sections.forEach(s => {
+        stageOpts += `<option value="${s.id}">${col.title} — ${s.title}</option>`;
+      });
+    } else {
+      stageOpts += `<option value="${col.id}">${col.title}</option>`;
+    }
+  });
+  stageSel.innerHTML = stageOpts;
 
   if (cardId) {
     const c = state.cards[cardId];
