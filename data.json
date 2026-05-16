@@ -539,6 +539,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923842313
+    },
+    "szcuv1bn": {
+      "id": "szcuv1bn",
+      "name": "Furlenco",
+      "contact": "",
+      "notes": "",
+      "stage": "attention-needed",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923848496
     }
   },
   "order": {
@@ -602,6 +612,7 @@
       "czl1xufg"
     ],
     "attention-needed": [
+      "szcuv1bn",
       "ac12ghnb",
       "a57swvwj",
       "fw4loszp",
