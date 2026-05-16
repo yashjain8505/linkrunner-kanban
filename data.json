@@ -279,6 +279,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922080178
+    },
+    "blcof8hu": {
+      "id": "blcof8hu",
+      "name": "Pratilipi",
+      "contact": "Navneeth",
+      "notes": "He liked the product, contract ending in September",
+      "stage": "snoozed-date",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922125478
     }
   },
   "order": {
@@ -323,6 +333,7 @@
       "yrlt40z4"
     ],
     "snoozed-date": [
+      "blcof8hu",
       "2p2bekng",
       "q672hpid",
       "w8wg8lt1"
