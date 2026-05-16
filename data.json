@@ -219,6 +219,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921784427
+    },
+    "fw4loszp": {
+      "id": "fw4loszp",
+      "name": "Namma Yatri",
+      "contact": "Aswin and Janice's Friend",
+      "notes": "",
+      "stage": "attention-needed",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778921803877
     }
   },
   "order": {
@@ -251,6 +261,7 @@
     "integration-started": [],
     "paying-customer": [],
     "attention-needed": [
+      "fw4loszp",
       "bkzuzvd2",
       "yrlt40z4"
     ],
