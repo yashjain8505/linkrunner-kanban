@@ -269,6 +269,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922047478
+    },
+    "78q13wkn": {
+      "id": "78q13wkn",
+      "name": "Royal Brothers",
+      "contact": "Meghna",
+      "notes": "",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922080178
     }
   },
   "order": {
@@ -299,7 +309,9 @@
     "demo-next": [
       "ho5wxkdf"
     ],
-    "email-first-sent": [],
+    "email-first-sent": [
+      "78q13wkn"
+    ],
     "email-second-sent": [],
     "comms-setup": [],
     "price-negotiations": [],
