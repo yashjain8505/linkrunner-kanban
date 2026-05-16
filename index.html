@@ -34,47 +34,6 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* Password gate */
-  .pw-overlay {
-    position: fixed; inset: 0;
-    background: var(--bg);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 200;
-    flex-direction: column;
-    gap: 16px;
-  }
-  .pw-overlay.hidden { display: none; }
-  .pw-box {
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 28px 32px;
-    box-shadow: 0 8px 24px rgba(31,31,30,0.1);
-    text-align: center;
-    width: 340px; max-width: 90vw;
-  }
-  .pw-box h2 {
-    font-family: ui-serif, "Iowan Old Style", Charter, Georgia, serif;
-    font-size: 18px; font-weight: 500; margin: 0 0 6px;
-  }
-  .pw-box p { color: var(--muted); font-size: 13px; margin: 0 0 18px; }
-  .pw-box input {
-    width: 100%; padding: 9px 12px; border: 1px solid var(--border);
-    border-radius: 6px; font-size: 14px; font-family: inherit;
-    background: var(--surface);
-  }
-  .pw-box input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px var(--accent-soft); }
-  .pw-box button {
-    margin-top: 12px; width: 100%; padding: 9px;
-    background: var(--accent); color: white; border: none;
-    border-radius: 6px; font-size: 13px; font-weight: 600;
-    cursor: pointer; font-family: inherit;
-  }
-  .pw-box button:hover { background: var(--accent-deep); }
-  .pw-error { color: var(--danger); font-size: 12px; margin-top: 8px; display: none; }
-
   /* Loading overlay */
   .loading-overlay {
     position: fixed; inset: 0;
@@ -358,17 +317,7 @@
 </head>
 <body>
 
-<div class="pw-overlay" id="pwOverlay">
-  <div class="pw-box">
-    <h2>Linkrunner — Customer Status</h2>
-    <p>Enter password to access the board</p>
-    <input type="password" id="pwInput" placeholder="Password" autocomplete="off" />
-    <button id="pwBtn">Unlock</button>
-    <div class="pw-error" id="pwError">Incorrect password</div>
-  </div>
-</div>
-
-<div class="loading-overlay hidden" id="loadingOverlay">
+<div class="loading-overlay" id="loadingOverlay">
   <div class="loading-text"><span class="spinner"></span>Loading board...</div>
 </div>
 
@@ -1016,48 +965,6 @@ document.addEventListener('keydown', e => {
   }
 });
 
-// ─── Password gate ─────────────────────────────────────────────────────────
-const PW_HASH = 'f7b1ae106168433ef2c8c54530722868c5c093dccf20456806beb933a4224d94';
-const PW_SESSION_KEY = 'lr-kanban-auth';
-
-async function hashPassword(pw) {
-  const data = new TextEncoder().encode(pw);
-  const buf = await crypto.subtle.digest('SHA-256', data);
-  return Array.from(new Uint8Array(buf)).map(b => b.toString(16).padStart(2, '0')).join('');
-}
-
-async function checkPassword(pw) {
-  const h = await hashPassword(pw);
-  return h === PW_HASH;
-}
-
-function isAuthenticated() {
-  return sessionStorage.getItem(PW_SESSION_KEY) === '1';
-}
-
-document.getElementById('pwBtn').addEventListener('click', tryUnlock);
-document.getElementById('pwInput').addEventListener('keydown', e => { if (e.key === 'Enter') tryUnlock(); });
-
-async function tryUnlock() {
-  const pw = document.getElementById('pwInput').value;
-  if (await checkPassword(pw)) {
-    sessionStorage.setItem(PW_SESSION_KEY, '1');
-    document.getElementById('pwOverlay').classList.add('hidden');
-    document.getElementById('loadingOverlay').classList.remove('hidden');
-    init();
-  } else {
-    document.getElementById('pwError').style.display = 'block';
-    document.getElementById('pwInput').value = '';
-    document.getElementById('pwInput').focus();
-  }
-}
-
-if (isAuthenticated()) {
-  document.getElementById('pwOverlay').classList.add('hidden');
-  document.getElementById('loadingOverlay').classList.remove('hidden');
-  init();
-}
-
 // ─── Init ──────────────────────────────────────────────────────────────────
 async function init() {
   try {
@@ -1077,6 +984,7 @@ async function init() {
   }
 }
 
+init();
 </script>
 </body>
 </html>
