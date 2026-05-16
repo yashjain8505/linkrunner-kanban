@@ -832,7 +832,7 @@ function saveCardModal() {
   } else {
     const id = uid();
     state.cards[id] = { id, name, contact, notes, stage, channel, touchDate, updated: Date.now() };
-    state.order[stage].push(id);
+    state.order[stage].unshift(id);
   }
   scheduleSave();
   closeCardModal();
