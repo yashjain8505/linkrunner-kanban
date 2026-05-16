@@ -409,6 +409,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923662512
+    },
+    "j74u2llv": {
+      "id": "j74u2llv",
+      "name": "TradeSmartOnline",
+      "contact": "",
+      "notes": "",
+      "stage": "follow-up-2-done",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923670312
     }
   },
   "order": {
@@ -451,7 +461,9 @@
     ],
     "follow-up-1": [],
     "email-second-sent": [],
-    "follow-up-2-done": [],
+    "follow-up-2-done": [
+      "j74u2llv"
+    ],
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [],
