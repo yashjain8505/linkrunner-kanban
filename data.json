@@ -79,6 +79,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920418447
+    },
+    "fr65wkiv": {
+      "id": "fr65wkiv",
+      "name": "Scapia",
+      "contact": "",
+      "notes": "Recently signed a contract- can try to reachout August",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920698344
     }
   },
   "order": {
@@ -86,6 +96,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "fr65wkiv",
       "bxywn2zj",
       "5zwhb2lh",
       "pvp5qqng",
