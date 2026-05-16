@@ -479,10 +479,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923766196
+    },
+    "1sstb062": {
+      "id": "1sstb062",
+      "name": "Desi Farms",
+      "contact": "",
+      "notes": "She'll reschedule for sure",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778923790163
     }
   },
   "order": {
     "no-show": [
+      "1sstb062",
       "temuo6y6",
       "vsh95rf2",
       "ouc9x28k",
