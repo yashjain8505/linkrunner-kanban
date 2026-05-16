@@ -319,6 +319,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922212828
+    },
+    "av70z6q0": {
+      "id": "av70z6q0",
+      "name": "Neet Prep",
+      "contact": "Founder",
+      "notes": "Not very convinced for the need of using an MMP. \nThe junior doesn't know shit",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922270161
     }
   },
   "order": {
@@ -353,6 +363,7 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
+      "av70z6q0",
       "78q13wkn"
     ],
     "email-second-sent": [],
