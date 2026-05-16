@@ -289,6 +289,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922125478
+    },
+    "b8i1k3ud": {
+      "id": "b8i1k3ud",
+      "name": "Chefkart",
+      "contact": "Founders",
+      "notes": "Had a good chat, low Volume. Happy with their current setup",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922169045
     }
   },
   "order": {
@@ -302,6 +312,7 @@
       "e0187631"
     ],
     "demo-no-next": [
+      "b8i1k3ud",
       "pdcwgw12",
       "k3455fqr",
       "gcz7ymaj",
