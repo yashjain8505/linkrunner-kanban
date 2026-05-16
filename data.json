@@ -29,6 +29,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920008998
+    },
+    "59kn0ucx": {
+      "id": "59kn0ucx",
+      "name": "Fino Pay",
+      "contact": "Ritika",
+      "notes": "Liked the product, Contract ending in September",
+      "stage": "demo-no-next",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920054498
     }
   },
   "order": {
@@ -36,7 +46,8 @@
     "demo-no-next": [
       "bxywn2zj",
       "5zwhb2lh",
-      "pvp5qqng"
+      "pvp5qqng",
+      "59kn0ucx"
     ],
     "demo-next": [],
     "email-first-sent": [],
