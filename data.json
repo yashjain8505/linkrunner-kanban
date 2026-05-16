@@ -139,6 +139,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920856628
+    },
+    "bkzuzvd2": {
+      "id": "bkzuzvd2",
+      "name": "IndiaBonds",
+      "contact": "Himanshi and Sir Ram",
+      "notes": "Price negotiations",
+      "stage": "attention-needed",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778920897211
     }
   },
   "order": {
@@ -167,7 +177,9 @@
     "price-negotiations": [],
     "integration-started": [],
     "paying-customer": [],
-    "attention-needed": []
+    "attention-needed": [
+      "bkzuzvd2"
+    ]
   },
   "columnOrder": [
     "no-show",
