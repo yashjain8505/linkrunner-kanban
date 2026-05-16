@@ -679,10 +679,21 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925557657
+    },
+    "j12sp53n": {
+      "id": "j12sp53n",
+      "name": "Yesmadam",
+      "contact": "",
+      "notes": "",
+      "stage": "no-show",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778925565340
     }
   },
   "order": {
     "no-show": [
+      "j12sp53n",
       "o2nade60",
       "temuo6y6",
       "vsh95rf2",
