@@ -1,29 +1,7 @@
 {
-  "cards": {
-    "xxzmgpkg": {
-      "id": "xxzmgpkg",
-      "name": "acme",
-      "contact": "",
-      "notes": "",
-      "stage": "no-show",
-      "channel": "none",
-      "updated": 1778918414908
-    },
-    "rbhd1ra6": {
-      "id": "rbhd1ra6",
-      "name": "perfora",
-      "contact": "",
-      "notes": "",
-      "stage": "no-show",
-      "channel": "none",
-      "updated": 1778918431409
-    }
-  },
+  "cards": {},
   "order": {
-    "no-show": [
-      "xxzmgpkg",
-      "rbhd1ra6"
-    ],
+    "no-show": [],
     "demo-done": [],
     "email-first-sent": [],
     "email-second-sent": [],
