@@ -186,18 +186,49 @@
   .icon-btn { background: transparent; border: none; color: var(--muted); cursor: pointer; font-size: 12px; padding: 2px 5px; border-radius: 4px; font-family: inherit; }
   .icon-btn:hover { color: var(--text); background: var(--surface-2); }
 
-  /* Channel chip */
-  .channel-chip {
-    display: inline-flex; align-items: center; gap: 5px;
-    font-size: 10.5px; padding: 2px 7px; border-radius: 5px;
-    background: var(--surface-2); color: var(--text-2);
-    border: 1px solid var(--border); font-weight: 500;
+  /* Card sections */
+  .card-divider {
+    border-top: 1px solid var(--border);
+    margin: 7px -11px 7px -11px;
   }
-  .channel-chip::before { content: ''; width: 5px; height: 5px; border-radius: 50%; display: inline-block; }
+  .card-field {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 11px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+  .card-field .label { font-weight: 500; flex-shrink: 0; }
+  .card-field .value { color: var(--text-2); font-weight: 500; }
+  .card-details {
+    font-size: 11.5px;
+    color: var(--text-2);
+    margin-top: 4px;
+    white-space: pre-wrap;
+    word-break: break-word;
+    line-height: 1.4;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+  }
+  .touch-date { color: var(--accent-deep); font-weight: 600; font-size: 11px; }
+
+  /* Channel badge */
+  .channel-badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    font-size: 10.5px; padding: 3px 8px; border-radius: 5px;
+    font-weight: 600; letter-spacing: 0.02em;
+  }
+  .channel-badge::before { content: ''; width: 6px; height: 6px; border-radius: 50%; display: inline-block; }
+  .ch-whatsapp { background: #E3EDE2; color: #3D5E3A; }
   .ch-whatsapp::before { background: #5D8059; }
-  .ch-slack::before    { background: #876FAB; }
-  .ch-email::before    { background: #7A98B8; }
-  .ch-none { background: transparent; color: var(--muted); border-style: dashed; }
+  .ch-slack { background: #EDE8F2; color: #5A4570; }
+  .ch-slack::before { background: #876FAB; }
+  .ch-email { background: #E5EBF0; color: #4A5E70; }
+  .ch-email::before { background: #7A98B8; }
+  .ch-none { background: transparent; color: var(--muted); border: 1px dashed var(--border-strong); }
   .ch-none::before { background: var(--border-strong); }
 
   .add-card-wrap { padding: 0 10px 10px; }
@@ -323,8 +354,16 @@
       </select>
     </div>
     <div class="field">
+      <label>Last touchpoint</label>
+      <input id="f-touchdate" type="date" />
+    </div>
+    <div class="field">
+      <label>Details</label>
+      <textarea id="f-details" placeholder="App name, vertical, deal size, key context..."></textarea>
+    </div>
+    <div class="field">
       <label>Notes</label>
-      <textarea id="f-notes" placeholder="Anything useful — last touch, signals, links..."></textarea>
+      <textarea id="f-notes" placeholder="Quick notes — last conversation, next steps..."></textarea>
     </div>
     <div class="modal-actions">
       <button class="btn danger" id="deleteBtn" style="display:none">Delete</button>
@@ -593,26 +632,44 @@ function renderCard(card) {
         <button class="icon-btn" data-act="del"  title="Delete">&#10005;</button>
       </div>
     </div>
-    <div class="channel-row" style="margin-top:6px"></div>
     <div class="meta"></div>
+    <div class="touch-row"></div>
+    <div class="card-divider"></div>
+    <div class="channel-section"></div>
+    <div class="details-row"></div>
     <div class="notes"></div>
   `;
 
   el.querySelector('.name').textContent = card.name || '(unnamed)';
 
-  const channelRow = el.querySelector('.channel-row');
-  const channel = card.channel || 'none';
-  const channelLabels = { whatsapp: 'WhatsApp', slack: 'Slack', email: 'Email' };
-  if (channel === 'none') {
-    channelRow.innerHTML = `<span class="channel-chip ch-none">No channel</span>`;
-  } else {
-    channelRow.innerHTML = `<span class="channel-chip ch-${channel}">${channelLabels[channel]}</span>`;
-  }
-
   const metaParts = [];
   if (card.contact) metaParts.push(card.contact);
   if (dateStr) metaParts.push(dateStr);
   el.querySelector('.meta').textContent = metaParts.join(' • ');
+
+  const touchRow = el.querySelector('.touch-row');
+  if (card.touchDate) {
+    touchRow.innerHTML = `<div class="card-field"><span class="label">Last touch:</span> <span class="touch-date">${new Date(card.touchDate + 'T00:00:00').toLocaleDateString()}</span></div>`;
+  } else {
+    touchRow.style.display = 'none';
+  }
+
+  const channelSection = el.querySelector('.channel-section');
+  const channel = card.channel || 'none';
+  const channelLabels = { whatsapp: 'WhatsApp', slack: 'Slack', email: 'Email' };
+  if (channel === 'none') {
+    channelSection.innerHTML = `<div class="card-field"><span class="label">Channel:</span> <span class="channel-badge ch-none">Not set up</span></div>`;
+  } else {
+    channelSection.innerHTML = `<div class="card-field"><span class="label">Channel:</span> <span class="channel-badge ch-${channel}">${channelLabels[channel]}</span></div>`;
+  }
+
+  const detailsRow = el.querySelector('.details-row');
+  if (card.details) {
+    detailsRow.innerHTML = `<div class="card-details"></div>`;
+    detailsRow.querySelector('.card-details').textContent = card.details;
+  } else {
+    detailsRow.style.display = 'none';
+  }
 
   const notesEl = el.querySelector('.notes');
   if (card.notes) notesEl.textContent = card.notes;
@@ -751,6 +808,8 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = c.contact || '';
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
+    document.getElementById('f-touchdate').value = c.touchDate || '';
+    document.getElementById('f-details').value = c.details || '';
     stageSel.value = c.stage;
     document.getElementById('deleteBtn').style.display = '';
   } else {
@@ -759,6 +818,8 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = '';
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
+    document.getElementById('f-touchdate').value = '';
+    document.getElementById('f-details').value = '';
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
   }
@@ -778,6 +839,8 @@ function saveCardModal() {
   const notes = document.getElementById('f-notes').value.trim();
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
+  const touchDate = document.getElementById('f-touchdate').value;
+  const details = document.getElementById('f-details').value.trim();
 
   if (editingId) {
     const card = state.cards[editingId];
@@ -786,6 +849,8 @@ function saveCardModal() {
     card.contact = contact;
     card.notes = notes;
     card.channel = channel;
+    card.touchDate = touchDate;
+    card.details = details;
     card.updated = Date.now();
     if (oldStage !== stage) {
       state.order[oldStage] = state.order[oldStage].filter(id => id !== editingId);
@@ -794,7 +859,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, updated: Date.now() };
+    state.cards[id] = { id, name, contact, notes, stage, channel, touchDate, details, updated: Date.now() };
     state.order[stage].push(id);
   }
   scheduleSave();
