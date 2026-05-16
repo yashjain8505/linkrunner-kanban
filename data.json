@@ -599,6 +599,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778924058463
+    },
+    "0ums1cr6": {
+      "id": "0ums1cr6",
+      "name": "Vama",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778924237032
     }
   },
   "order": {
@@ -685,7 +695,9 @@
       "c522yy4q",
       "chmufx22"
     ],
-    "demo-scheduled": []
+    "demo-scheduled": [
+      "0ums1cr6"
+    ]
   },
   "columnOrder": [
     "no-show",
