@@ -155,10 +155,10 @@
       "name": "FRND",
       "contact": "Sampath",
       "notes": "Sampath liked the product, they have a year long contract with Appsflyer. Reachout in January 2027",
-      "stage": "demo-no-next",
+      "stage": "snoozed-cycle",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778920942195
+      "updated": 1778925626006
     },
     "yrlt40z4": {
       "id": "yrlt40z4",
@@ -763,7 +763,6 @@
       "r86mapmi",
       "b8i1k3ud",
       "k3455fqr",
-      "gcz7ymaj",
       "zugpsqkx",
       "tqk99o89",
       "fr65wkiv",
@@ -831,7 +830,8 @@
       "gz295rcq",
       "c522yy4q",
       "chmufx22",
-      "59kn0ucx"
+      "59kn0ucx",
+      "gcz7ymaj"
     ],
     "demo-scheduled": [
       "nqdo6xbj",
