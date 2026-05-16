@@ -329,6 +329,16 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922270161
+    },
+    "czl1xufg": {
+      "id": "czl1xufg",
+      "name": "Bounce",
+      "contact": "Prudhvi",
+      "notes": "",
+      "stage": "paying-customer",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1778922669888
     }
   },
   "order": {
@@ -372,7 +382,9 @@
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [],
-    "paying-customer": [],
+    "paying-customer": [
+      "czl1xufg"
+    ],
     "attention-needed": [
       "fw4loszp",
       "bkzuzvd2",
