@@ -35,10 +35,10 @@
       "name": "Fino Pay",
       "contact": "Ritika",
       "notes": "Liked the product, Contract ending in September",
-      "stage": "demo-no-next",
+      "stage": "snoozed-cycle",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778920054498
+      "updated": 1778925604773
     },
     "w8wg8lt1": {
       "id": "w8wg8lt1",
@@ -772,7 +772,6 @@
       "bxywn2zj",
       "5zwhb2lh",
       "pvp5qqng",
-      "59kn0ucx",
       "vob9lx36",
       "m40phmwr"
     ],
@@ -831,7 +830,8 @@
     "snoozed-cycle": [
       "gz295rcq",
       "c522yy4q",
-      "chmufx22"
+      "chmufx22",
+      "59kn0ucx"
     ],
     "demo-scheduled": [
       "nqdo6xbj",
