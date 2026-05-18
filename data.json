@@ -415,10 +415,10 @@
       "name": "TradeSmartOnline",
       "contact": "",
       "notes": "Cordova Integration",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923734084
+      "updated": 1779090409331
     },
     "33y7lvb2": {
       "id": "33y7lvb2",
@@ -787,11 +787,11 @@
       "3l9o1g32",
       "78q13wkn",
       "csp5s88v",
-      "j74u2llv",
       "ea8fs65h"
     ],
     "follow-up-2-done": [
-      "aqbhlx5y"
+      "aqbhlx5y",
+      "j74u2llv"
     ],
     "comms-setup": [],
     "price-negotiations": [],
