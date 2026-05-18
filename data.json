@@ -455,10 +455,10 @@
       "name": "Zuno Insurance",
       "contact": "",
       "notes": "",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923736412
+      "updated": 1779090382900
     },
     "r86mapmi": {
       "id": "r86mapmi",
@@ -787,11 +787,12 @@
       "3l9o1g32",
       "78q13wkn",
       "csp5s88v",
-      "aqbhlx5y",
       "j74u2llv",
       "ea8fs65h"
     ],
-    "follow-up-2-done": [],
+    "follow-up-2-done": [
+      "aqbhlx5y"
+    ],
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
