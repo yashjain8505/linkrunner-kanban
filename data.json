@@ -575,10 +575,10 @@
       "name": "Bhanzu",
       "contact": "",
       "notes": "Ask if their director of product is back",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779090042379
+      "updated": 1779090044466
     },
     "n5qjsfkv": {
       "id": "n5qjsfkv",
@@ -779,12 +779,12 @@
     "email-first-sent": [
       "5z3o34x4",
       "pstfria7",
-      "vvk5pc8n",
       "av70z6q0",
       "78q13wkn"
     ],
     "email-second-sent": [
       "9mbxstiy",
+      "vvk5pc8n",
       "3l9o1g32",
       "csp5s88v",
       "aqbhlx5y",
