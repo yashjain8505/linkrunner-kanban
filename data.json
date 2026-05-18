@@ -705,10 +705,10 @@
       "name": "Mathongo",
       "contact": "",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925575123
+      "updated": 1779108172818
     },
     "dz8tn98d": {
       "id": "dz8tn98d",
@@ -779,7 +779,8 @@
     ],
     "email-first-sent": [
       "5z3o34x4",
-      "pstfria7"
+      "pstfria7",
+      "v5ehnmlp"
     ],
     "email-second-sent": [
       "9mbxstiy",
@@ -837,7 +838,6 @@
     "demo-scheduled": [
       "nqdo6xbj",
       "dz8tn98d",
-      "v5ehnmlp",
       "ajnjqch1",
       "doteifrp",
       "0ums1cr6"
