@@ -739,6 +739,18 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925591640
+    },
+    "1q99m0hd": {
+      "id": "1q99m0hd",
+      "name": "Acme",
+      "contact": "Kanban Probe",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-19",
+      "updated": 1779121468306,
+      "calBookingId": "kanban-probe-1779121467006",
+      "calEmail": "probe.test@acme.example"
     }
   },
   "order": {
@@ -840,7 +852,8 @@
       "dz8tn98d",
       "ajnjqch1",
       "doteifrp",
-      "0ums1cr6"
+      "0ums1cr6",
+      "1q99m0hd"
     ]
   },
   "columnOrder": [
