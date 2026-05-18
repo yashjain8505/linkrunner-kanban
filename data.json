@@ -675,10 +675,10 @@
       "name": "Sovrenn",
       "contact": "",
       "notes": "High Intent",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925557657
+      "updated": 1779089475918
     },
     "j12sp53n": {
       "id": "j12sp53n",
@@ -777,7 +777,6 @@
       "ho5wxkdf"
     ],
     "email-first-sent": [
-      "ea8fs65h",
       "5z3o34x4",
       "3l9o1g32",
       "pstfria7",
@@ -789,7 +788,8 @@
       "9mbxstiy",
       "csp5s88v",
       "aqbhlx5y",
-      "j74u2llv"
+      "j74u2llv",
+      "ea8fs65h"
     ],
     "follow-up-2-done": [],
     "comms-setup": [],
@@ -850,7 +850,6 @@
     "email-first-sent",
     "email-second-sent",
     "follow-up-2-done",
-    "comms-setup",
     "price-negotiations",
     "integration-started",
     "paying-customer",
