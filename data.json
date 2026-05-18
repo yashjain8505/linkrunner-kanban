@@ -275,10 +275,10 @@
       "name": "Royal Brothers",
       "contact": "Meghna",
       "notes": "",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1778922080178
+      "touchDate": "2026-05-18",
+      "updated": 1779090228102
     },
     "blcof8hu": {
       "id": "blcof8hu",
@@ -779,13 +779,13 @@
     "email-first-sent": [
       "5z3o34x4",
       "pstfria7",
-      "av70z6q0",
-      "78q13wkn"
+      "av70z6q0"
     ],
     "email-second-sent": [
       "9mbxstiy",
       "vvk5pc8n",
       "3l9o1g32",
+      "78q13wkn",
       "csp5s88v",
       "aqbhlx5y",
       "j74u2llv",
