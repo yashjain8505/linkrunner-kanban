@@ -695,10 +695,10 @@
       "name": "Decimlindia",
       "contact": "",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "no-show",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925570573
+      "updated": 1779170859072
     },
     "v5ehnmlp": {
       "id": "v5ehnmlp",
@@ -743,6 +743,7 @@
   },
   "order": {
     "no-show": [
+      "ajnjqch1",
       "wgfbn9li",
       "j12sp53n",
       "o2nade60",
@@ -838,7 +839,6 @@
     "demo-scheduled": [
       "nqdo6xbj",
       "dz8tn98d",
-      "ajnjqch1",
       "doteifrp",
       "0ums1cr6"
     ]
