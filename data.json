@@ -739,6 +739,18 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925591640
+    },
+    "47er1lbe": {
+      "id": "47er1lbe",
+      "name": "Ariai",
+      "contact": "Kevin",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-20",
+      "updated": 1779172679785,
+      "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
+      "calEmail": "kevin@ariai.in"
     }
   },
   "order": {
@@ -840,7 +852,8 @@
       "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
-      "0ums1cr6"
+      "0ums1cr6",
+      "47er1lbe"
     ]
   },
   "columnOrder": [
