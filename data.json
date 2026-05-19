@@ -761,6 +761,18 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1779175857984
+    },
+    "6hkztyr6": {
+      "id": "6hkztyr6",
+      "name": "Blynkk",
+      "contact": "Rakesh",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-21",
+      "updated": 1779192369866,
+      "calBookingId": "k5bWPF6kPfarteBZPUrvkU",
+      "calEmail": "rakesh@blynkk.in"
     }
   },
   "order": {
@@ -864,7 +876,8 @@
       "dz8tn98d",
       "doteifrp",
       "0ums1cr6",
-      "47er1lbe"
+      "47er1lbe",
+      "6hkztyr6"
     ]
   },
   "columnOrder": [
