@@ -751,6 +751,16 @@
       "updated": 1779175753817,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
       "calEmail": "kevin@ariai.in"
+    },
+    "rgdd3lli": {
+      "id": "rgdd3lli",
+      "name": "Credfix",
+      "contact": "",
+      "notes": "Collectedge",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1779175857984
     }
   },
   "order": {
@@ -849,6 +859,7 @@
       "gcz7ymaj"
     ],
     "demo-scheduled": [
+      "rgdd3lli",
       "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
