@@ -831,6 +831,18 @@
       "updated": 1779288012454,
       "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
       "calEmail": "andru@prosperitaso.com"
+    },
+    "hldvvkyi": {
+      "id": "hldvvkyi",
+      "name": "? Reactiveapps",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-21",
+      "updated": 1779288014512,
+      "calBookingId": "fillout-391pj46hiqigohhev95u03bbuc@google.com",
+      "calEmail": "bogdn@reactiveapps.ca"
     }
   },
   "order": {
@@ -940,7 +952,8 @@
       "tp4rhmtb",
       "6dt3jz7j",
       "xwscrsz2",
-      "lmyry6va"
+      "lmyry6va",
+      "hldvvkyi"
     ]
   },
   "columnOrder": [
