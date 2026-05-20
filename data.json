@@ -795,6 +795,18 @@
       "updated": 1779281093529,
       "calBookingId": "bEyzSkigiEGHZwotAJsXMT",
       "calEmail": "mayank.kulkarni@powerup.money"
+    },
+    "6dt3jz7j": {
+      "id": "6dt3jz7j",
+      "name": "Cash247",
+      "contact": "Aditya",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-22",
+      "updated": 1779282591265,
+      "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
+      "calEmail": "aditya.nair@cash247.in"
     }
   },
   "order": {
@@ -901,7 +913,8 @@
       "doteifrp",
       "0ums1cr6",
       "6hkztyr6",
-      "tp4rhmtb"
+      "tp4rhmtb",
+      "6dt3jz7j"
     ]
   },
   "columnOrder": [
