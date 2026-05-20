@@ -745,10 +745,10 @@
       "name": "Ariai",
       "contact": "Kevin",
       "notes": "ari.club",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-20",
-      "updated": 1779175753817,
+      "updated": 1779263350188,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
       "calEmail": "kevin@ariai.in"
     },
@@ -824,6 +824,7 @@
     ],
     "email-first-sent": [
       "5z3o34x4",
+      "47er1lbe",
       "pstfria7",
       "v5ehnmlp"
     ],
@@ -887,7 +888,6 @@
       "dz8tn98d",
       "doteifrp",
       "0ums1cr6",
-      "47er1lbe",
       "6hkztyr6"
     ]
   },
