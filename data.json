@@ -783,6 +783,18 @@
       "channel": "none",
       "touchDate": "2026-05-20",
       "updated": 1779260440745
+    },
+    "tp4rhmtb": {
+      "id": "tp4rhmtb",
+      "name": "Powerup",
+      "contact": "Mayank",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-06-04",
+      "updated": 1779281093529,
+      "calBookingId": "bEyzSkigiEGHZwotAJsXMT",
+      "calEmail": "mayank.kulkarni@powerup.money"
     }
   },
   "order": {
@@ -888,7 +900,8 @@
       "dz8tn98d",
       "doteifrp",
       "0ums1cr6",
-      "6hkztyr6"
+      "6hkztyr6",
+      "tp4rhmtb"
     ]
   },
   "columnOrder": [
