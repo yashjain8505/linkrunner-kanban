@@ -208,6 +208,7 @@
   }
   .card-field .label { font-weight: 500; flex-shrink: 0; }
   .card-field .value { color: var(--text-2); font-weight: 500; }
+  .demo-date { color: #4A90B8; font-weight: 600; font-size: 11px; }
   .touch-date { color: var(--accent-deep); font-weight: 600; font-size: 11px; }
 
   /* Channel badge */
@@ -361,6 +362,10 @@
         <option value="slack">Slack</option>
         <option value="email">Email</option>
       </select>
+    </div>
+    <div class="field">
+      <label>Demo booked date</label>
+      <input id="f-demodate" type="date" />
     </div>
     <div class="field">
       <label>Last touchpoint</label>
@@ -709,6 +714,7 @@ function renderCard(card) {
       </div>
     </div>
     <div class="contact"></div>
+    <div class="demo-row"></div>
     <div class="touch-row"></div>
     <div class="notes"></div>
   `;
@@ -720,6 +726,14 @@ function renderCard(card) {
     contactEl.textContent = card.contact;
   } else {
     contactEl.style.display = 'none';
+  }
+
+  const demoRow = el.querySelector('.demo-row');
+  if (card.demoDate) {
+    demoRow.innerHTML = `<span class="demo-date">Demo: ${formatDateOrdinal(card.demoDate)}</span>`;
+    demoRow.style.marginTop = '4px';
+  } else {
+    demoRow.style.display = 'none';
   }
 
   const touchRow = el.querySelector('.touch-row');
@@ -892,6 +906,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = c.contact || '';
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
+    document.getElementById('f-demodate').value = c.demoDate || '';
     document.getElementById('f-touchdate').value = c.touchDate || '';
     stageSel.value = c.stage;
     document.getElementById('deleteBtn').style.display = '';
@@ -901,6 +916,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = '';
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
+    document.getElementById('f-demodate').value = '';
     document.getElementById('f-touchdate').value = '';
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
@@ -929,6 +945,7 @@ function saveCardModal() {
   const notes = document.getElementById('f-notes').value.trim();
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
+  const demoDate = document.getElementById('f-demodate').value;
   const touchDate = document.getElementById('f-touchdate').value;
 
   if (editingId) {
@@ -938,6 +955,7 @@ function saveCardModal() {
     card.contact = contact;
     card.notes = notes;
     card.channel = channel;
+    card.demoDate = demoDate;
     card.touchDate = touchDate;
     card.updated = Date.now();
     if (oldStage !== stage) {
@@ -947,7 +965,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, touchDate, updated: Date.now() };
+    state.cards[id] = { id, name, contact, notes, stage, channel, demoDate, touchDate, updated: Date.now() };
     state.order[stage].unshift(id);
   }
   scheduleSave();
