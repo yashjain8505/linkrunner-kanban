@@ -819,6 +819,18 @@
       "updated": 1779284553820,
       "calBookingId": "vXr2JVBSNQj2MYu4A8Wtuo",
       "calEmail": "sakshi@zfunds.in"
+    },
+    "lmyry6va": {
+      "id": "lmyry6va",
+      "name": "? Prosperitaso",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-20",
+      "updated": 1779288012454,
+      "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
+      "calEmail": "andru@prosperitaso.com"
     }
   },
   "order": {
@@ -927,7 +939,8 @@
       "6hkztyr6",
       "tp4rhmtb",
       "6dt3jz7j",
-      "xwscrsz2"
+      "xwscrsz2",
+      "lmyry6va"
     ]
   },
   "columnOrder": [
