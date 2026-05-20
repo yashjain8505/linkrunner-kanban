@@ -757,10 +757,10 @@
       "name": "Credfix",
       "contact": "",
       "notes": "Collectedge",
-      "stage": "demo-scheduled",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779175857984
+      "updated": 1779260344709
     },
     "6hkztyr6": {
       "id": "6hkztyr6",
@@ -827,6 +827,7 @@
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
+      "rgdd3lli",
       "j74u2llv"
     ],
     "comms-setup": [],
@@ -871,7 +872,6 @@
       "gcz7ymaj"
     ],
     "demo-scheduled": [
-      "rgdd3lli",
       "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
