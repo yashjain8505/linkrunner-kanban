@@ -770,9 +770,10 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-05-21",
-      "updated": 1779192369866,
+      "updated": 1779288877841,
       "calBookingId": "k5bWPF6kPfarteBZPUrvkU",
-      "calEmail": "rakesh@blynkk.in"
+      "calEmail": "rakesh@blynkk.in",
+      "demoDate": "2026-05-21"
     },
     "c4zpuhr8": {
       "id": "c4zpuhr8",
