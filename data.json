@@ -773,6 +773,18 @@
       "updated": 1779192369866,
       "calBookingId": "k5bWPF6kPfarteBZPUrvkU",
       "calEmail": "rakesh@blynkk.in"
+    },
+    "7b2j0f1j": {
+      "id": "7b2j0f1j",
+      "name": "Haptik",
+      "contact": "Dharmil Shanishwara",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-20",
+      "updated": 1779258380483,
+      "calBookingId": "oQoecfvRUKrpBmSMfte9TW",
+      "calEmail": "dharmil.shanishwara@haptik.co"
     }
   },
   "order": {
@@ -877,7 +889,8 @@
       "doteifrp",
       "0ums1cr6",
       "47er1lbe",
-      "6hkztyr6"
+      "6hkztyr6",
+      "7b2j0f1j"
     ]
   },
   "columnOrder": [
