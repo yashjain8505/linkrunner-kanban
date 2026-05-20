@@ -757,10 +757,10 @@
       "name": "Credfix",
       "contact": "",
       "notes": "Collectedge",
-      "stage": "follow-up-2-done",
+      "stage": "integration-started",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779260344709
+      "updated": 1779260348139
     },
     "6hkztyr6": {
       "id": "6hkztyr6",
@@ -827,13 +827,13 @@
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
-      "rgdd3lli",
       "j74u2llv"
     ],
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
-      "9k1vcmcu"
+      "9k1vcmcu",
+      "rgdd3lli"
     ],
     "paying-customer": [
       "n5qjsfkv",
