@@ -386,13 +386,39 @@
     overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   }
   .cal-card:hover { border-color: var(--accent); }
+  /* Card tint by stage */
+  .cal-card.st-no-show           { background: #FBF0F0; border-color: #E8BFBF; }
+  .cal-card.st-demo-next         { background: #FBF0F0; border-color: #E0C0C0; }
+  .cal-card.st-demo-no-next      { background: #FDF5F0; border-color: #E8D5C8; }
+  .cal-card.st-email-first-sent  { background: #FFFDF0; border-color: #EDE5B8; }
+  .cal-card.st-email-second-sent { background: #FFFDF0; border-color: #EDE5B8; }
+  .cal-card.st-follow-up-2-done  { background: #FFFDF0; border-color: #EDE5B8; }
+  .cal-card.st-paying-customer   { background: #F0F8EF; border-color: #C0DBBE; }
+  .cal-card.st-integration-started{ background: #F2F8F0; border-color: #C8DEC5; }
+  .cal-card.st-attention-needed  { background: #FFF6EE; border-color: #EACFB5; }
+  .cal-card.st-demo-scheduled    { background: #F0F5FB; border-color: #BFCFE8; }
+  .cal-card.st-snoozed-date      { background: #F8F4ED; border-color: #DED5C5; }
+  .cal-card.st-snoozed-cycle     { background: #F8F4ED; border-color: #DED5C5; }
   .cal-card .cal-name { font-weight: 600; font-size: 11.5px; }
   .cal-card .cal-contact { color: var(--muted); font-size: 10px; }
   .cal-card .cal-stage {
     display: inline-block; font-size: 9px; padding: 1px 5px;
-    border-radius: 3px; margin-top: 2px;
-    background: var(--accent-soft); color: var(--accent-deep); font-weight: 600;
+    border-radius: 3px; margin-top: 2px; font-weight: 600;
   }
+  /* Stage colors for calendar cards */
+  .cal-stage.st-no-show           { background: #F2D4D4; color: #7A2020; }
+  .cal-stage.st-demo-no-next      { background: #F4DDD2; color: #A85D43; }
+  .cal-stage.st-demo-next         { background: #EDCECE; color: #8B2D2D; }
+  .cal-stage.st-email-first-sent  { background: #FFF5D6; color: #8A7430; }
+  .cal-stage.st-email-second-sent { background: #FFF5D6; color: #8A7430; }
+  .cal-stage.st-follow-up-2-done  { background: #FFF5D6; color: #8A7430; }
+  .cal-stage.st-price-negotiations{ background: #F4DDD2; color: var(--accent-deep); }
+  .cal-stage.st-integration-started{ background: #DDEADD; color: #3D6B3D; }
+  .cal-stage.st-paying-customer   { background: #D2E8D0; color: #2D5E2D; }
+  .cal-stage.st-attention-needed  { background: #FAE0CC; color: #8B4A1A; }
+  .cal-stage.st-snoozed-date      { background: #E8DFD0; color: #6B5A3A; }
+  .cal-stage.st-snoozed-cycle     { background: #E8DFD0; color: #6B5A3A; }
+  .cal-stage.st-demo-scheduled    { background: #D6E8F5; color: #2D5A80; }
 
 </style>
 </head>
@@ -1140,10 +1166,11 @@ function renderCalendar() {
     html += `<div class="cal-day${isToday ? ' today' : ''}">`;
     html += `<div class="cal-day-num">${d}</div>`;
     demos.forEach(card => {
-      html += `<div class="cal-card" data-id="${card.id}">`;
+      const stCls = 'st-' + card.stage;
+      html += `<div class="cal-card ${stCls}" data-id="${card.id}">`;
       html += `<div class="cal-name">${card.name}</div>`;
       if (card.contact) html += `<div class="cal-contact">${card.contact}</div>`;
-      html += `<div class="cal-stage">${getStageLabel(card.stage)}</div>`;
+      html += `<div class="cal-stage ${stCls}">${getStageLabel(card.stage)}</div>`;
       html += `</div>`;
     });
     html += `</div>`;
