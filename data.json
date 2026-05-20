@@ -779,10 +779,10 @@
       "name": "Katyayani Organic",
       "contact": "",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-20",
-      "updated": 1779260440745
+      "updated": 1779286235561
     },
     "tp4rhmtb": {
       "id": "tp4rhmtb",
@@ -862,7 +862,8 @@
       "5z3o34x4",
       "47er1lbe",
       "pstfria7",
-      "v5ehnmlp"
+      "v5ehnmlp",
+      "c4zpuhr8"
     ],
     "email-second-sent": [
       "9mbxstiy",
@@ -919,7 +920,6 @@
       "gcz7ymaj"
     ],
     "demo-scheduled": [
-      "c4zpuhr8",
       "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
