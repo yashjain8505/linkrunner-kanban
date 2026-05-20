@@ -773,6 +773,16 @@
       "updated": 1779192369866,
       "calBookingId": "k5bWPF6kPfarteBZPUrvkU",
       "calEmail": "rakesh@blynkk.in"
+    },
+    "c4zpuhr8": {
+      "id": "c4zpuhr8",
+      "name": "Katyayani Organic",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "",
+      "updated": 1779260433978
     }
   },
   "order": {
@@ -872,6 +882,7 @@
       "gcz7ymaj"
     ],
     "demo-scheduled": [
+      "c4zpuhr8",
       "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
