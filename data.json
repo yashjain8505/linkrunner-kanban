@@ -807,6 +807,18 @@
       "updated": 1779282591265,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in"
+    },
+    "xwscrsz2": {
+      "id": "xwscrsz2",
+      "name": "Zfunds",
+      "contact": "Sakshi",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-06-02",
+      "updated": 1779284553820,
+      "calBookingId": "vXr2JVBSNQj2MYu4A8Wtuo",
+      "calEmail": "sakshi@zfunds.in"
     }
   },
   "order": {
@@ -914,7 +926,8 @@
       "0ums1cr6",
       "6hkztyr6",
       "tp4rhmtb",
-      "6dt3jz7j"
+      "6dt3jz7j",
+      "xwscrsz2"
     ]
   },
   "columnOrder": [
