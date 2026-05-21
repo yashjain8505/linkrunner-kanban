@@ -945,6 +945,18 @@
       "updated": 1779357250095,
       "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
       "calEmail": "anindyahp1994@gmail.com"
+    },
+    "hhq7mas8": {
+      "id": "hhq7mas8",
+      "name": "Hoora",
+      "contact": "Chetan",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-22",
+      "updated": 1779364811659,
+      "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
+      "calEmail": "marketing@hoora.in"
     }
   },
   "order": {
@@ -1056,7 +1068,8 @@
       "xwscrsz2",
       "lmyry6va",
       "hldvvkyi",
-      "w23yl5x0"
+      "w23yl5x0",
+      "hhq7mas8"
     ]
   },
   "columnOrder": [
