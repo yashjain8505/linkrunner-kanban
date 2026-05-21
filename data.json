@@ -826,7 +826,7 @@
       "notes": "ari.club",
       "stage": "email-first-sent",
       "channel": "none",
-      "touchDate": "2026-05-20",
+      "touchDate": "",
       "updated": 1779341944697,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
       "calEmail": "kevin@ariai.in",
@@ -851,7 +851,7 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-22",
+      "touchDate": "",
       "updated": 1779288877841,
       "calBookingId": "k5bWPF6kPfarteBZPUrvkU",
       "calEmail": "rakesh@blynkk.in",
@@ -875,7 +875,7 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-06-04",
+      "touchDate": "",
       "updated": 1779341868247,
       "calBookingId": "bEyzSkigiEGHZwotAJsXMT",
       "calEmail": "mayank.kulkarni@powerup.money",
@@ -888,7 +888,7 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-22",
+      "touchDate": "",
       "updated": 1779341860431,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
@@ -901,7 +901,7 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-06-02",
+      "touchDate": "",
       "updated": 1779341881430,
       "calBookingId": "vXr2JVBSNQj2MYu4A8Wtuo",
       "calEmail": "sakshi@zfunds.in",
@@ -914,11 +914,12 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-20",
+      "touchDate": "",
       "updated": 1779288012454,
       "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
       "calEmail": "andru@prosperitaso.com",
-      "inbound": true
+      "inbound": true,
+      "demoDate": "2026-05-20"
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
@@ -927,7 +928,7 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-21",
+      "touchDate": "",
       "updated": 1779341971846,
       "calBookingId": "fillout-391pj46hiqigohhev95u03bbuc@google.com",
       "calEmail": "bogdn@reactiveapps.ca",
@@ -941,10 +942,11 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-22",
+      "touchDate": "",
       "updated": 1779357250095,
       "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
-      "calEmail": "anindyahp1994@gmail.com"
+      "calEmail": "anindyahp1994@gmail.com",
+      "demoDate": "2026-05-22"
     },
     "hhq7mas8": {
       "id": "hhq7mas8",
@@ -953,10 +955,11 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-22",
+      "touchDate": "",
       "updated": 1779364811659,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
-      "calEmail": "marketing@hoora.in"
+      "calEmail": "marketing@hoora.in",
+      "demoDate": "2026-05-22"
     },
     "hmuplodt": {
       "id": "hmuplodt",
@@ -965,10 +968,11 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-25",
+      "touchDate": "",
       "updated": 1779366761287,
       "calBookingId": "fUgMe4Dk5Xe4nYm353AEb5",
-      "calEmail": "muskan.garg@fuelbuddy.in"
+      "calEmail": "muskan.garg@fuelbuddy.in",
+      "demoDate": "2026-05-25"
     },
     "70itspid": {
       "id": "70itspid",
@@ -977,10 +981,11 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "2026-05-22",
+      "touchDate": "",
       "updated": 1779368591737,
       "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
-      "calEmail": "shashwat.r@kiddopia.com"
+      "calEmail": "shashwat.r@kiddopia.com",
+      "demoDate": "2026-05-22"
     }
   },
   "order": {
