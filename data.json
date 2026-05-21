@@ -142,8 +142,10 @@
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-07-10",
-      "updated": 1778926121726,
-      "demoDate": "2026-03-30"
+      "updated": 1779373026434,
+      "demoDate": "2026-03-30",
+      "inbound": false,
+      "acv": "5k-10k"
     },
     "k4ouwf33": {
       "id": "k4ouwf33",
