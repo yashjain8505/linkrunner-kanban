@@ -969,6 +969,18 @@
       "updated": 1779366761287,
       "calBookingId": "fUgMe4Dk5Xe4nYm353AEb5",
       "calEmail": "muskan.garg@fuelbuddy.in"
+    },
+    "70itspid": {
+      "id": "70itspid",
+      "name": "Kiddopia",
+      "contact": "Shashwat",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-22",
+      "updated": 1779368591737,
+      "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
+      "calEmail": "shashwat.r@kiddopia.com"
     }
   },
   "order": {
@@ -1082,7 +1094,8 @@
       "hldvvkyi",
       "w23yl5x0",
       "hhq7mas8",
-      "hmuplodt"
+      "hmuplodt",
+      "70itspid"
     ]
   },
   "columnOrder": [
