@@ -867,9 +867,10 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1779282591265,
+      "updated": 1779341860431,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
-      "calEmail": "aditya.nair@cash247.in"
+      "calEmail": "aditya.nair@cash247.in",
+      "demoDate": "2026-05-22"
     },
     "xwscrsz2": {
       "id": "xwscrsz2",
@@ -885,7 +886,7 @@
     },
     "lmyry6va": {
       "id": "lmyry6va",
-      "name": "\ud83d\udce5 Prosperitaso",
+      "name": "📥 Prosperitaso",
       "contact": "",
       "notes": "",
       "stage": "demo-scheduled",
@@ -897,7 +898,7 @@
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
-      "name": "\ud83d\udce5 Reactiveapps",
+      "name": "📥 Reactiveapps",
       "contact": "",
       "notes": "",
       "stage": "demo-scheduled",
