@@ -881,9 +881,10 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-06-02",
-      "updated": 1779284553820,
+      "updated": 1779341881430,
       "calBookingId": "vXr2JVBSNQj2MYu4A8Wtuo",
-      "calEmail": "sakshi@zfunds.in"
+      "calEmail": "sakshi@zfunds.in",
+      "demoDate": "2026-06-02"
     },
     "lmyry6va": {
       "id": "lmyry6va",
