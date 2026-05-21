@@ -248,37 +248,60 @@
     padding: 2px 7px; border-radius: 4px; margin-top: 5px;
   }
 
-  /* Pipeline reveal animation */
-  .pipeline-active .card { opacity: 0.15; filter: grayscale(0.7) blur(1px); transition: opacity 0.5s, filter 0.5s; }
-  .pipeline-active .card.acv-highlight {
-    opacity: 1; filter: none;
-    box-shadow: 0 0 0 2px #4A90B8, 0 4px 20px rgba(74,144,184,0.3);
-    z-index: 5; position: relative;
-    transition: opacity 0.3s, box-shadow 0.3s;
-  }
-  .pipeline-active .column-header,
-  .pipeline-active .add-card-wrap { opacity: 0.15; transition: opacity 0.5s; }
-
-  /* Flying card clones */
-  .acv-clone {
-    position: fixed; z-index: 110; pointer-events: none;
-    border-radius: 8px; overflow: hidden;
-    box-shadow: 0 0 0 2px #4A90B8, 0 8px 30px rgba(74,144,184,0.4);
-    transition: none;
-  }
-
-  /* SVG wave overlay */
-  .wave-overlay {
-    position: fixed; inset: 0; z-index: 105;
+  /* Pipeline overlay */
+  .pipeline-overlay {
+    position: fixed; inset: 0; z-index: 200;
+    background: rgba(31,31,30,0.55);
+    display: flex; align-items: center; justify-content: center;
+    flex-direction: column;
+    opacity: 0; transition: opacity 0.4s;
     pointer-events: none;
   }
+  .pipeline-overlay.visible { opacity: 1; pointer-events: auto; }
+
+  /* Gathered card grid */
+  .pipeline-grid {
+    display: flex; flex-wrap: wrap; gap: 10px;
+    justify-content: center; align-items: flex-start;
+    max-width: 80vw; padding: 20px;
+    position: relative;
+  }
+  .pipeline-card {
+    background: var(--surface); border: 1px solid #4A90B8;
+    border-radius: 8px; padding: 8px 12px; width: 180px;
+    box-shadow: 0 0 0 1px rgba(74,144,184,0.2), 0 4px 16px rgba(74,144,184,0.15);
+    opacity: 0; transform: scale(0.6) translateY(30px);
+    transition: opacity 0.4s, transform 0.5s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .pipeline-card.landed { opacity: 1; transform: scale(1) translateY(0); }
+  .pipeline-card .pc-name { font-weight: 600; font-size: 12px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pipeline-card .pc-acv { font-size: 11px; font-weight: 700; color: #2D5A80; margin-top: 3px; }
+  .pipeline-card .pc-stage { font-size: 9px; color: var(--muted); margin-top: 2px; }
+
+  /* SVG wave overlay */
+  .wave-svg {
+    position: fixed; inset: 0; z-index: 210;
+    pointer-events: none; width: 100vw; height: 100vh;
+  }
   .wave-path {
-    fill: none; stroke: url(#waveGrad); stroke-width: 3;
-    stroke-linecap: round;
-    filter: drop-shadow(0 0 4px rgba(74,144,184,0.5));
+    fill: none; stroke-width: 2.5; stroke-linecap: round;
+    filter: drop-shadow(0 0 3px rgba(74,144,184,0.5));
   }
 
-  .pipeline-num-reveal {
+  /* Pipeline result */
+  .pipeline-result {
+    margin-top: 20px; text-align: center;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.4s, transform 0.4s;
+  }
+  .pipeline-result.visible { opacity: 1; transform: translateY(0); }
+  .pipeline-result .pr-label { font-size: 12px; color: rgba(255,255,255,0.6); font-weight: 500; letter-spacing: 0.04em; }
+  .pipeline-result .pr-value {
+    font-family: ui-serif, "Iowan Old Style", Charter, Georgia, serif;
+    font-size: 28px; font-weight: 600; color: #fff;
+    margin-top: 4px;
+  }
+  .pipeline-result .pr-value.pop {
     animation: num-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
   @keyframes num-pop {
@@ -287,20 +310,16 @@
     100% { transform: scale(1); opacity: 1; }
   }
 
-  /* Pipeline countdown ring */
-  .pipeline-timer {
-    position: absolute; right: -4px; top: -4px;
-    width: 14px; height: 14px;
+  /* Timer bar */
+  .pipeline-timer-bar {
+    position: absolute; bottom: 0; left: 0; right: 0; height: 3px;
+    background: rgba(255,255,255,0.1); border-radius: 0 0 10px 10px; overflow: hidden;
   }
-  .pipeline-timer circle {
-    fill: none; stroke: #4A90B8; stroke-width: 2;
-    stroke-dasharray: 38; stroke-dashoffset: 0;
-    transform: rotate(-90deg); transform-origin: center;
-    animation: timer-drain 10s linear forwards;
+  .pipeline-timer-fill {
+    height: 100%; width: 100%; background: #4A90B8;
+    animation: timer-shrink 10s linear forwards;
   }
-  @keyframes timer-drain {
-    to { stroke-dashoffset: 38; }
-  }
+  @keyframes timer-shrink { to { width: 0%; } }
 
   /* Channel badge */
   .channel-badge {
@@ -871,6 +890,7 @@ function setSyncStatus(status, detail) {
 let pipelineRevealed = false;
 let pipelineAnimating = false;
 let pipelineTimer = null;
+let pipelineOverlayEl = null;
 
 function renderLeadCounts() {
   const el = document.getElementById('leadCounts');
@@ -892,13 +912,12 @@ function renderLeadCounts() {
     }
   });
 
-  const acvNumHtml = pipelineRevealed
-    ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>
-       <svg class="pipeline-timer" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/></svg>`
+  const acvLabel = pipelineRevealed
+    ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>`
     : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
 
   el.innerHTML = `
-    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn" style="position:relative;"><span class="lc-dot"></span>Pipeline ${acvNumHtml}</div>
+    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span>Pipeline ${acvLabel}</div>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
@@ -906,159 +925,176 @@ function renderLeadCounts() {
   document.getElementById('pipelineBtn').addEventListener('click', triggerPipeline);
 }
 
-function triggerPipeline() {
-  if (pipelineAnimating) return;
-  if (pipelineRevealed) return; // must wait for auto-dismiss
-  pipelineAnimating = true;
-
-  const board = document.getElementById('board');
-  board.classList.add('pipeline-active');
-
-  // Find and highlight ACV cards, capture their rects
-  const acvCards = [];
-  board.querySelectorAll('.card').forEach(cardEl => {
-    const cardData = state.cards[cardEl.dataset.id];
-    if (cardData && cardData.acv && cardData.stage !== 'no-show' && cardData.stage !== 'demo-next') {
-      cardEl.classList.add('acv-highlight');
-      acvCards.push(cardEl);
-    }
-  });
-
-  if (acvCards.length === 0) {
-    finishPipelineAnim();
-    return;
-  }
-
-  // Phase 1 (0–500ms): Highlight cards
-  // Phase 2 (500ms): Create SVG waves + card clones that fly to pipeline
-  setTimeout(() => {
-    const btn = document.getElementById('pipelineBtn');
-    const targetRect = btn.getBoundingClientRect();
-    const tx = targetRect.left + targetRect.width / 2;
-    const ty = targetRect.top + targetRect.height / 2;
-
-    // Create SVG wave overlay
-    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
-    svg.setAttribute('class', 'wave-overlay');
-    svg.style.width = '100vw';
-    svg.style.height = '100vh';
-    svg.innerHTML = `
-      <defs>
-        <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#4A90B8" stop-opacity="0"/>
-          <stop offset="40%" stop-color="#4A90B8" stop-opacity="0.8"/>
-          <stop offset="100%" stop-color="#4A90B8" stop-opacity="0"/>
-        </linearGradient>
-      </defs>
-    `;
-    document.body.appendChild(svg);
-
-    let completed = 0;
-    const total = acvCards.length;
-
-    acvCards.forEach((cardEl, i) => {
-      const rect = cardEl.getBoundingClientRect();
-      const sx = rect.left + rect.width / 2;
-      const sy = rect.top + rect.height / 2;
-
-      // Stagger animations
-      setTimeout(() => {
-        // Create wave path
-        const cpx = sx + (tx - sx) * 0.5 + (Math.random() - 0.5) * 80;
-        const cpy = Math.min(sy, ty) - 30 - Math.random() * 50;
-        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
-        const d = `M${sx},${sy} Q${cpx},${cpy} ${tx},${ty}`;
-        path.setAttribute('d', d);
-        path.setAttribute('class', 'wave-path');
-        const pathLen = path.getTotalLength ? path.getTotalLength() : 400;
-        path.style.strokeDasharray = `${pathLen * 0.3} ${pathLen}`;
-        path.style.strokeDashoffset = `${pathLen}`;
-        svg.appendChild(path);
-
-        // Animate the wave dash flowing along the path
-        const waveDur = 800;
-        const waveStart = performance.now();
-        function animWave(ts) {
-          const t = Math.min((ts - waveStart) / waveDur, 1);
-          const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-          path.style.strokeDashoffset = `${pathLen - ease * pathLen * 1.3}`;
-          path.style.opacity = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
-          if (t < 1) requestAnimationFrame(animWave);
-          else path.remove();
-        }
-        requestAnimationFrame(animWave);
-
-        // Create flying card clone
-        const clone = cardEl.cloneNode(true);
-        clone.className = 'acv-clone';
-        clone.style.left = rect.left + 'px';
-        clone.style.top = rect.top + 'px';
-        clone.style.width = rect.width + 'px';
-        clone.style.height = rect.height + 'px';
-        document.body.appendChild(clone);
-
-        // Hide original card during flight
-        cardEl.style.opacity = '0';
-
-        // Animate clone along the same bezier curve
-        const flyDur = 900 + Math.random() * 200;
-        const flyStart = performance.now();
-        function animFly(ts) {
-          const t = Math.min((ts - flyStart) / flyDur, 1);
-          // Ease out cubic
-          const ease = 1 - Math.pow(1 - t, 3);
-
-          const x = (1 - ease) * (1 - ease) * sx + 2 * (1 - ease) * ease * cpx + ease * ease * tx;
-          const y = (1 - ease) * (1 - ease) * sy + 2 * (1 - ease) * ease * cpy + ease * ease * ty;
-
-          // Shrink as it approaches target
-          const scale = 1 - ease * 0.7;
-          const opacity = t > 0.8 ? 1 - (t - 0.8) / 0.2 : 1;
-          clone.style.left = (x - rect.width * scale / 2) + 'px';
-          clone.style.top = (y - rect.height * scale / 2) + 'px';
-          clone.style.transform = `scale(${scale})`;
-          clone.style.opacity = opacity;
-
-          if (t < 1) {
-            requestAnimationFrame(animFly);
-          } else {
-            clone.remove();
-            completed++;
-            if (completed >= total) {
-              svg.remove();
-              finishPipelineAnim();
-            }
-          }
-        }
-        requestAnimationFrame(animFly);
-      }, i * 100);
-    });
-  }, 500);
+function getAcvCards() {
+  const excludeStages = ['no-show', 'demo-next'];
+  return Object.values(state.cards).filter(c => c.acv && ACV_RANGES[c.acv] && !excludeStages.includes(c.stage));
 }
 
-function finishPipelineAnim() {
-  pipelineRevealed = true;
-  pipelineAnimating = false;
-  renderLeadCounts();
+function triggerPipeline() {
+  if (pipelineAnimating || pipelineRevealed) return;
+  pipelineAnimating = true;
 
-  // Pop animation on the number
-  const val = document.getElementById('pipelineVal');
-  if (val) val.classList.add('pipeline-num-reveal');
+  const acvCardData = getAcvCards();
+  if (acvCardData.length === 0) { pipelineAnimating = false; return; }
 
-  // Clean up board state
-  const board = document.getElementById('board');
-  board.classList.remove('pipeline-active');
-  board.querySelectorAll('.card').forEach(c => {
-    c.classList.remove('acv-highlight');
-    c.style.opacity = '';
+  // Compute pipeline totals
+  let acvLow = 0, acvHigh = 0;
+  acvCardData.forEach(c => { acvLow += ACV_RANGES[c.acv].low; acvHigh += ACV_RANGES[c.acv].high; });
+  const acvStr = `${formatCurrency(acvLow)} – ${formatCurrency(acvHigh)}`;
+
+  // Create overlay
+  const overlay = document.createElement('div');
+  overlay.className = 'pipeline-overlay';
+  overlay.innerHTML = `
+    <div class="pipeline-grid" id="pipelineGrid"></div>
+    <div class="pipeline-result" id="pipelineResult">
+      <div class="pr-label">ESTIMATED PIPELINE</div>
+      <div class="pr-value" id="prValue">${acvStr}</div>
+    </div>
+    <div class="pipeline-timer-bar"><div class="pipeline-timer-fill"></div></div>
+  `;
+  document.body.appendChild(overlay);
+  pipelineOverlayEl = overlay;
+
+  // Build card tiles inside grid
+  const grid = overlay.querySelector('#pipelineGrid');
+  acvCardData.forEach(c => {
+    const tile = document.createElement('div');
+    tile.className = 'pipeline-card';
+    tile.dataset.id = c.id;
+    tile.innerHTML = `
+      <div class="pc-name">${c.name}</div>
+      <div class="pc-acv">${formatAcv(c.acv)}</div>
+      <div class="pc-stage">${getStageLabel(c.stage)}</div>
+    `;
+    grid.appendChild(tile);
   });
 
-  // Auto-dismiss after 10 seconds
+  // Fade in overlay
+  requestAnimationFrame(() => {
+    overlay.classList.add('visible');
+
+    // Phase 1: Stagger card tiles landing
+    const tiles = grid.querySelectorAll('.pipeline-card');
+    tiles.forEach((tile, i) => {
+      setTimeout(() => tile.classList.add('landed'), 80 + i * 60);
+    });
+
+    // Phase 2: After all cards land, fire waves to the pipeline result
+    const landTime = 80 + tiles.length * 60 + 400;
+    setTimeout(() => {
+      fireWaves(overlay, grid, () => {
+        // Phase 3: Reveal the total
+        const result = overlay.querySelector('#pipelineResult');
+        result.classList.add('visible');
+        const val = overlay.querySelector('#prValue');
+        val.classList.add('pop');
+
+        pipelineRevealed = true;
+        pipelineAnimating = false;
+        renderLeadCounts();
+
+        // Auto-dismiss after 10s
+        clearTimeout(pipelineTimer);
+        pipelineTimer = setTimeout(dismissPipeline, 10000);
+      });
+    }, landTime);
+  });
+
+  // Click overlay background to dismiss early
+  overlay.addEventListener('click', e => {
+    if (e.target === overlay) dismissPipeline();
+  });
+}
+
+function fireWaves(overlay, grid, onDone) {
+  const result = overlay.querySelector('#pipelineResult');
+  const targetRect = result.getBoundingClientRect();
+  const tx = targetRect.left + targetRect.width / 2;
+  const ty = targetRect.top;
+
+  const tiles = [...grid.querySelectorAll('.pipeline-card')];
+
+  // Create SVG for wave paths
+  const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+  svg.setAttribute('class', 'wave-svg');
+  document.body.appendChild(svg);
+
+  // Add gradient defs
+  const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
+  defs.innerHTML = `
+    <linearGradient id="wg" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#4A90B8" stop-opacity="0.1"/>
+      <stop offset="50%" stop-color="#4A90B8" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#4A90B8" stop-opacity="0.1"/>
+    </linearGradient>
+  `;
+  svg.appendChild(defs);
+
+  let completed = 0;
+
+  tiles.forEach((tile, i) => {
+    setTimeout(() => {
+      const rect = tile.getBoundingClientRect();
+      const sx = rect.left + rect.width / 2;
+      const sy = rect.top;
+
+      // Compute a smooth curve upward to the target
+      const midX = (sx + tx) / 2 + (Math.random() - 0.5) * 40;
+      const midY = Math.min(sy, ty) - 20 - Math.random() * 30;
+
+      const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+      const d = `M${sx},${sy} Q${midX},${midY} ${tx},${ty}`;
+      path.setAttribute('d', d);
+      path.setAttribute('class', 'wave-path');
+      path.setAttribute('stroke', 'url(#wg)');
+      svg.appendChild(path);
+
+      const len = path.getTotalLength();
+      const waveLen = len * 0.35;
+      path.style.strokeDasharray = `${waveLen} ${len}`;
+      path.style.strokeDashoffset = `${len + waveLen}`;
+
+      // Animate: wave flows from card to target
+      const dur = 700;
+      const startT = performance.now();
+      function anim(ts) {
+        const t = Math.min((ts - startT) / dur, 1);
+        const ease = 1 - Math.pow(1 - t, 2);
+        path.style.strokeDashoffset = `${(len + waveLen) - ease * (len + waveLen * 2)}`;
+        // Fade out near end
+        path.style.opacity = t > 0.75 ? 1 - (t - 0.75) / 0.25 : Math.min(1, t * 4);
+        if (t < 1) {
+          requestAnimationFrame(anim);
+        } else {
+          path.remove();
+          completed++;
+          if (completed >= tiles.length) {
+            svg.remove();
+            if (onDone) onDone();
+          }
+        }
+      }
+      requestAnimationFrame(anim);
+
+      // Pulse the tile when wave departs
+      tile.style.boxShadow = '0 0 0 2px #4A90B8, 0 0 20px rgba(74,144,184,0.5)';
+      setTimeout(() => { tile.style.boxShadow = ''; }, 400);
+    }, i * 70);
+  });
+}
+
+function dismissPipeline() {
   clearTimeout(pipelineTimer);
-  pipelineTimer = setTimeout(() => {
-    pipelineRevealed = false;
-    renderLeadCounts();
-  }, 10000);
+  if (pipelineOverlayEl) {
+    pipelineOverlayEl.classList.remove('visible');
+    setTimeout(() => {
+      if (pipelineOverlayEl) { pipelineOverlayEl.remove(); pipelineOverlayEl = null; }
+    }, 400);
+  }
+  pipelineRevealed = false;
+  pipelineAnimating = false;
+  renderLeadCounts();
 }
 
 function render() {
