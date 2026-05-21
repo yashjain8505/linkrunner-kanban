@@ -775,8 +775,10 @@
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779089808930,
-      "demoDate": "2026-05-15"
+      "updated": 1779373100418,
+      "demoDate": "2026-05-15",
+      "inbound": false,
+      "acv": "5k-10k"
     },
     "j12sp53n": {
       "id": "j12sp53n",
