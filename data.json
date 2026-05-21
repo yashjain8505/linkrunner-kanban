@@ -400,8 +400,10 @@
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-07-20",
-      "updated": 1778926069526,
-      "demoDate": "2026-04-17"
+      "updated": 1779373031784,
+      "demoDate": "2026-04-17",
+      "inbound": false,
+      "acv": "5k-10k"
     },
     "ouc9x28k": {
       "id": "ouc9x28k",
