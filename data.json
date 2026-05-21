@@ -52,8 +52,10 @@
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-07-12",
-      "updated": 1778926087525,
-      "demoDate": "2026-04-06"
+      "updated": 1779373017484,
+      "demoDate": "2026-04-06",
+      "inbound": false,
+      "acv": "0-5k"
     },
     "e0187631": {
       "id": "e0187631",
