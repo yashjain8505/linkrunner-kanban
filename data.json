@@ -724,8 +724,10 @@
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779089783814,
-      "demoDate": "2026-05-07"
+      "updated": 1779373088801,
+      "demoDate": "2026-05-07",
+      "inbound": false,
+      "acv": "0-5k"
     },
     "iy385rul": {
       "id": "iy385rul",
