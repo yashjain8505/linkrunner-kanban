@@ -170,8 +170,10 @@
       "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778920972050,
-      "demoDate": "2026-03-31"
+      "updated": 1779373062451,
+      "demoDate": "2026-03-31",
+      "inbound": false,
+      "acv": "10k-20k"
     },
     "gcz7ymaj": {
       "id": "gcz7ymaj",
