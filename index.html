@@ -235,6 +235,7 @@
   .lead-count .lc-num { font-weight: 700; color: var(--text); }
   .lead-count.lc-inbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #2D7A5E; }
   .lead-count.lc-outbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+  .lead-count .lc-total { color: var(--muted); font-weight: 400; font-size: 11px; }
 
   /* Channel badge */
   .channel-badge {
@@ -744,11 +745,16 @@ function setSyncStatus(status, detail) {
 function renderLeadCounts() {
   const el = document.getElementById('leadCounts');
   const cards = Object.values(state.cards);
-  const inbound = cards.filter(c => c.inbound).length;
-  const outbound = cards.length - inbound;
+  const noShows = cards.filter(c => c.stage === 'no-show').length;
+  const inboundAll = cards.filter(c => c.inbound).length;
+  const inboundNoShow = cards.filter(c => c.inbound && c.stage === 'no-show').length;
+  const outboundAll = cards.length - inboundAll;
+  const outboundNoShow = noShows - inboundNoShow;
+  const inboundNet = inboundAll - inboundNoShow;
+  const outboundNet = outboundAll - outboundNoShow;
   el.innerHTML = `
-    <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inbound}</span> Inbound</div>
-    <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outbound}</span> Outbound</div>
+    <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
+    <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
 }
 
