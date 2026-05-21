@@ -840,8 +840,9 @@
       "stage": "integration-started",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779260348139,
-      "inbound": true
+      "updated": 1779343041464,
+      "inbound": true,
+      "demoDate": "2026-05-19"
     },
     "6hkztyr6": {
       "id": "6hkztyr6",
