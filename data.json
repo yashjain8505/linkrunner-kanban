@@ -804,7 +804,9 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925585424
+      "updated": 1779342931781,
+      "inbound": false,
+      "demoDate": "2026-05-26"
     },
     "wgfbn9li": {
       "id": "wgfbn9li",
