@@ -933,6 +933,18 @@
       "calEmail": "bogdn@reactiveapps.ca",
       "demoDate": "2026-05-21",
       "inbound": true
+    },
+    "w23yl5x0": {
+      "id": "w23yl5x0",
+      "name": "📥 anindyahp1994@gmail.com",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-22",
+      "updated": 1779357250095,
+      "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
+      "calEmail": "anindyahp1994@gmail.com"
     }
   },
   "order": {
@@ -1043,7 +1055,8 @@
       "6dt3jz7j",
       "xwscrsz2",
       "lmyry6va",
-      "hldvvkyi"
+      "hldvvkyi",
+      "w23yl5x0"
     ]
   },
   "columnOrder": [
