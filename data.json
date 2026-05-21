@@ -810,9 +810,10 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-20",
-      "updated": 1779263350188,
+      "updated": 1779341927347,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
-      "calEmail": "kevin@ariai.in"
+      "calEmail": "kevin@ariai.in",
+      "demoDate": "2026-05-20"
     },
     "rgdd3lli": {
       "id": "rgdd3lli",
