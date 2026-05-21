@@ -236,6 +236,14 @@
   .lead-count.lc-inbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #2D7A5E; }
   .lead-count.lc-outbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
   .lead-count .lc-total { color: var(--muted); font-weight: 400; font-size: 11px; }
+  .lead-count.lc-acv .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #4A90B8; }
+
+  /* ACV on cards */
+  .acv-badge {
+    display: inline-block; font-size: 10.5px; font-weight: 700;
+    color: #2D5A80; background: #E8F0F8; border: 1px solid #C0D5E8;
+    padding: 2px 7px; border-radius: 4px; margin-top: 5px;
+  }
 
   /* Channel badge */
   .channel-badge {
@@ -556,6 +564,18 @@
       <label for="f-inbound" style="margin:0;cursor:pointer;">Inbound lead</label>
     </div>
     <div class="field">
+      <label>Estimated ACV</label>
+      <select id="f-acv">
+        <option value="">Not set</option>
+        <option value="0-5k">&lt; $5k</option>
+        <option value="5k-10k">$5k – $10k</option>
+        <option value="10k-20k">$10k – $20k</option>
+        <option value="20k-50k">$20k – $50k</option>
+        <option value="50k-100k">$50k – $100k</option>
+        <option value="100k+">$100k+</option>
+      </select>
+    </div>
+    <div class="field">
       <label>Demo booked date</label>
       <input id="f-demodate" type="date" />
     </div>
@@ -801,7 +821,20 @@ function renderLeadCounts() {
   const outboundNoShow = noShows - inboundNoShow;
   const inboundNet = inboundAll - inboundNoShow;
   const outboundNet = outboundAll - outboundNoShow;
+
+  // Pipeline ACV total (exclude no-shows and not-interested)
+  const excludeStages = ['no-show', 'demo-next'];
+  let acvLow = 0, acvHigh = 0;
+  cards.forEach(c => {
+    if (c.acv && ACV_RANGES[c.acv] && !excludeStages.includes(c.stage)) {
+      acvLow += ACV_RANGES[c.acv].low;
+      acvHigh += ACV_RANGES[c.acv].high;
+    }
+  });
+  const acvStr = acvLow > 0 ? `${formatCurrency(acvLow)} – ${formatCurrency(acvHigh)}` : '—';
+
   el.innerHTML = `
+    <div class="lead-count lc-acv"><span class="lc-dot"></span>Pipeline <span class="lc-num">${acvStr}</span></div>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
@@ -923,6 +956,7 @@ function renderCard(card) {
       </div>
     </div>
     <div class="contact"></div>
+    <div class="acv-row"></div>
     <div class="demo-row"></div>
     <div class="touch-row"></div>
     <div class="notes"></div>
@@ -942,6 +976,13 @@ function renderCard(card) {
     contactEl.textContent = card.contact;
   } else {
     contactEl.style.display = 'none';
+  }
+
+  const acvRow = el.querySelector('.acv-row');
+  if (card.acv) {
+    acvRow.innerHTML = `<span class="acv-badge">${formatAcv(card.acv)}</span>`;
+  } else {
+    acvRow.style.display = 'none';
   }
 
   const demoRow = el.querySelector('.demo-row');
@@ -1096,6 +1137,26 @@ function formatDateOrdinal(dateStr) {
   return `${day}${suffix} ${month}`;
 }
 
+// ─── ACV helpers ──────────────────────────────────────────────────────────
+const ACV_RANGES = {
+  '0-5k':     { label: '< $5k',         low: 0,      high: 5000 },
+  '5k-10k':   { label: '$5k – $10k',    low: 5000,   high: 10000 },
+  '10k-20k':  { label: '$10k – $20k',   low: 10000,  high: 20000 },
+  '20k-50k':  { label: '$20k – $50k',   low: 20000,  high: 50000 },
+  '50k-100k': { label: '$50k – $100k',  low: 50000,  high: 100000 },
+  '100k+':    { label: '$100k+',        low: 100000, high: 150000 },
+};
+
+function formatAcv(key) {
+  return ACV_RANGES[key]?.label || key;
+}
+
+function formatCurrency(n) {
+  if (n >= 1000000) return '$' + (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M';
+  if (n >= 1000) return '$' + (n / 1000).toFixed(0) + 'k';
+  return '$' + n;
+}
+
 // ─── Card modal ────────────────────────────────────────────────────────────
 function openCardModal(cardId, defaultStage) {
   editingId = cardId;
@@ -1123,6 +1184,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
     document.getElementById('f-inbound').checked = !!c.inbound;
+    document.getElementById('f-acv').value = c.acv || '';
     document.getElementById('f-demodate').value = c.demoDate || '';
     document.getElementById('f-touchdate').value = c.touchDate || '';
     stageSel.value = c.stage;
@@ -1134,6 +1196,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
     document.getElementById('f-inbound').checked = false;
+    document.getElementById('f-acv').value = '';
     document.getElementById('f-demodate').value = '';
     document.getElementById('f-touchdate').value = '';
     stageSel.value = defaultStage || state.columnOrder[0];
@@ -1164,6 +1227,7 @@ function saveCardModal() {
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
   const inbound = document.getElementById('f-inbound').checked;
+  const acv = document.getElementById('f-acv').value;
   const demoDate = document.getElementById('f-demodate').value;
   const touchDate = document.getElementById('f-touchdate').value;
 
@@ -1175,6 +1239,7 @@ function saveCardModal() {
     card.notes = notes;
     card.channel = channel;
     card.inbound = inbound;
+    card.acv = acv;
     card.demoDate = demoDate;
     card.touchDate = touchDate;
     card.updated = Date.now();
@@ -1185,7 +1250,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, inbound, demoDate, touchDate, updated: Date.now() };
+    state.cards[id] = { id, name, contact, notes, stage, channel, inbound, acv, demoDate, touchDate, updated: Date.now() };
     state.order[stage].unshift(id);
   }
   scheduleSave();
