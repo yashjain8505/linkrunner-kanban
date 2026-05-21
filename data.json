@@ -284,7 +284,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921996878,
-      "demoDate": "2026-04-07"
+      "demoDate": "2026-04-07",
+      "inbound": true
     },
     "pdcwgw12": {
       "id": "pdcwgw12",
@@ -436,7 +437,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923658029,
-      "demoDate": "2026-04-21"
+      "demoDate": "2026-04-21",
+      "inbound": true
     },
     "k1mnj1sy": {
       "id": "k1mnj1sy",
@@ -447,7 +449,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923662512,
-      "demoDate": "2026-04-17"
+      "demoDate": "2026-04-17",
+      "inbound": true
     },
     "j74u2llv": {
       "id": "j74u2llv",
@@ -458,7 +461,8 @@
       "channel": "none",
       "touchDate": "2026-05-18",
       "updated": 1779090414060,
-      "demoDate": "2026-04-16"
+      "demoDate": "2026-04-16",
+      "inbound": true
     },
     "33y7lvb2": {
       "id": "33y7lvb2",
@@ -469,7 +473,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923690479,
-      "demoDate": "2026-04-08"
+      "demoDate": "2026-04-08",
+      "inbound": true
     },
     "vam3d726": {
       "id": "vam3d726",
@@ -501,7 +506,8 @@
       "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779090387760
+      "updated": 1779090387760,
+      "inbound": true
     },
     "r86mapmi": {
       "id": "r86mapmi",
@@ -555,7 +561,8 @@
       "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923820495
+      "updated": 1778923820495,
+      "inbound": true
     },
     "91wwb4nn": {
       "id": "91wwb4nn",
@@ -565,7 +572,8 @@
       "stage": "paying-customer",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923825680
+      "updated": 1778923825680,
+      "inbound": true
     },
     "9k1vcmcu": {
       "id": "9k1vcmcu",
@@ -576,7 +584,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923832330,
-      "demoDate": "2026-05-11"
+      "demoDate": "2026-05-11",
+      "inbound": true
     },
     "ac12ghnb": {
       "id": "ac12ghnb",
@@ -587,7 +596,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923842313,
-      "demoDate": "2026-04-27"
+      "demoDate": "2026-04-27",
+      "inbound": true
     },
     "szcuv1bn": {
       "id": "szcuv1bn",
@@ -629,7 +639,8 @@
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779090044466
+      "updated": 1779090044466,
+      "inbound": true
     },
     "n5qjsfkv": {
       "id": "n5qjsfkv",
@@ -823,7 +834,8 @@
       "stage": "integration-started",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779260348139
+      "updated": 1779260348139,
+      "inbound": true
     },
     "6hkztyr6": {
       "id": "6hkztyr6",

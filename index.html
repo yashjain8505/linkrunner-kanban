@@ -211,6 +211,31 @@
   .demo-date { color: #4A90B8; font-weight: 600; font-size: 11px; }
   .touch-date { color: var(--accent-deep); font-weight: 600; font-size: 11px; }
 
+  /* Inbound badge */
+  .inbound-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 9.5px; font-weight: 700; letter-spacing: 0.03em;
+    color: #2D7A5E; background: #E0F2E9; border: 1px solid #B8DFC9;
+    padding: 1px 6px; border-radius: 4px; margin-left: 6px;
+    vertical-align: middle; line-height: 1.4;
+  }
+  .inbound-badge::before { content: '↙'; font-size: 10px; }
+
+  /* Lead counts in header */
+  .lead-counts {
+    display: flex; gap: 10px; align-items: center;
+    font-size: 12px; color: var(--muted);
+  }
+  .lead-count {
+    display: flex; align-items: center; gap: 5px;
+    padding: 4px 10px; border-radius: 6px;
+    background: var(--surface); border: 1px solid var(--border);
+    font-weight: 500;
+  }
+  .lead-count .lc-num { font-weight: 700; color: var(--text); }
+  .lead-count.lc-inbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #2D7A5E; }
+  .lead-count.lc-outbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
+
   /* Channel badge */
   .channel-badge {
     display: inline-flex; align-items: center; gap: 5px;
@@ -433,6 +458,7 @@
     <span class="mark"></span>Linkrunner <span class="sub">— Customer Status</span>
   </h1>
   <div class="toolbar">
+    <div class="lead-counts" id="leadCounts"></div>
     <div class="view-toggle">
       <button class="active" id="viewBoard">Board</button>
       <button id="viewCalendar">Calendar</button>
@@ -474,6 +500,10 @@
         <option value="slack">Slack</option>
         <option value="email">Email</option>
       </select>
+    </div>
+    <div class="field" style="display:flex;align-items:center;gap:8px;">
+      <input id="f-inbound" type="checkbox" style="width:auto;margin:0;" />
+      <label for="f-inbound" style="margin:0;cursor:pointer;">Inbound lead</label>
     </div>
     <div class="field">
       <label>Demo booked date</label>
@@ -711,10 +741,22 @@ function setSyncStatus(status, detail) {
 }
 
 // ─── Render ────────────────────────────────────────────────────────────────
+function renderLeadCounts() {
+  const el = document.getElementById('leadCounts');
+  const cards = Object.values(state.cards);
+  const inbound = cards.filter(c => c.inbound).length;
+  const outbound = cards.length - inbound;
+  el.innerHTML = `
+    <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inbound}</span> Inbound</div>
+    <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outbound}</span> Outbound</div>
+  `;
+}
+
 function render() {
   const board = document.getElementById('board');
   board.innerHTML = '';
   board.className = isEditable() ? 'board' : 'board readonly';
+  renderLeadCounts();
 
   state.columnOrder.forEach(colId => {
     const col = COLUMN_BY_ID[colId];
@@ -831,7 +873,14 @@ function renderCard(card) {
     <div class="notes"></div>
   `;
 
-  el.querySelector('.name').textContent = card.name || '(unnamed)';
+  const nameEl = el.querySelector('.name');
+  nameEl.textContent = card.name || '(unnamed)';
+  if (card.inbound) {
+    const badge = document.createElement('span');
+    badge.className = 'inbound-badge';
+    badge.textContent = 'Inbound';
+    nameEl.appendChild(badge);
+  }
 
   const contactEl = el.querySelector('.contact');
   if (card.contact) {
@@ -1018,6 +1067,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = c.contact || '';
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
+    document.getElementById('f-inbound').checked = !!c.inbound;
     document.getElementById('f-demodate').value = c.demoDate || '';
     document.getElementById('f-touchdate').value = c.touchDate || '';
     stageSel.value = c.stage;
@@ -1028,6 +1078,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-contact').value = '';
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
+    document.getElementById('f-inbound').checked = false;
     document.getElementById('f-demodate').value = '';
     document.getElementById('f-touchdate').value = '';
     stageSel.value = defaultStage || state.columnOrder[0];
@@ -1057,6 +1108,7 @@ function saveCardModal() {
   const notes = document.getElementById('f-notes').value.trim();
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
+  const inbound = document.getElementById('f-inbound').checked;
   const demoDate = document.getElementById('f-demodate').value;
   const touchDate = document.getElementById('f-touchdate').value;
 
@@ -1067,6 +1119,7 @@ function saveCardModal() {
     card.contact = contact;
     card.notes = notes;
     card.channel = channel;
+    card.inbound = inbound;
     card.demoDate = demoDate;
     card.touchDate = touchDate;
     card.updated = Date.now();
@@ -1077,7 +1130,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, demoDate, touchDate, updated: Date.now() };
+    state.cards[id] = { id, name, contact, notes, stage, channel, inbound, demoDate, touchDate, updated: Date.now() };
     state.order[stage].unshift(id);
   }
   scheduleSave();
