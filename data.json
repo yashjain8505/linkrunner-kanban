@@ -737,7 +737,9 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925548273
+      "updated": 1779342915998,
+      "inbound": false,
+      "demoDate": "2026-05-28"
     },
     "ea8fs65h": {
       "id": "ea8fs65h",
