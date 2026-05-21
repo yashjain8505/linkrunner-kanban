@@ -672,7 +672,9 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778924237032
+      "updated": 1779342920131,
+      "inbound": false,
+      "demoDate": "2026-05-28"
     },
     "9mbxstiy": {
       "id": "9mbxstiy",
