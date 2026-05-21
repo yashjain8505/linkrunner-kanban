@@ -957,6 +957,18 @@
       "updated": 1779364811659,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
       "calEmail": "marketing@hoora.in"
+    },
+    "hmuplodt": {
+      "id": "hmuplodt",
+      "name": "Fuelbuddy",
+      "contact": "Muskan Garg",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "touchDate": "2026-05-25",
+      "updated": 1779366761287,
+      "calBookingId": "fUgMe4Dk5Xe4nYm353AEb5",
+      "calEmail": "muskan.garg@fuelbuddy.in"
     }
   },
   "order": {
@@ -1069,7 +1081,8 @@
       "lmyry6va",
       "hldvvkyi",
       "w23yl5x0",
-      "hhq7mas8"
+      "hhq7mas8",
+      "hmuplodt"
     ]
   },
   "columnOrder": [
