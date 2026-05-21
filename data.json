@@ -883,8 +883,10 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-20",
-      "updated": 1779341932463,
-      "demoDate": "2026-05-20"
+      "updated": 1779373077617,
+      "demoDate": "2026-05-20",
+      "inbound": false,
+      "acv": "10k-20k"
     },
     "tp4rhmtb": {
       "id": "tp4rhmtb",
