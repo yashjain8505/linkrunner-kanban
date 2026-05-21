@@ -943,10 +943,11 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779357250095,
+      "updated": 1779369870968,
       "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
       "calEmail": "anindyahp1994@gmail.com",
-      "demoDate": "2026-05-22"
+      "demoDate": "2026-05-22",
+      "inbound": true
     },
     "hhq7mas8": {
       "id": "hhq7mas8",
