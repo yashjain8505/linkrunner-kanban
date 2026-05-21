@@ -569,6 +569,144 @@
   .pw-box .pw-btn:hover { background: var(--accent-deep); }
   .pw-box .pw-err { color: var(--danger); font-size: 12px; margin-top: 8px; min-height: 18px; }
 
+  /* ─── Dog Mascot ──────────────────────────────────────────── */
+  .dog-btn {
+    position: fixed; bottom: 24px; right: 24px; z-index: 300;
+    width: 64px; height: 64px; border: none; background: none;
+    cursor: pointer; padding: 0; outline: none;
+    filter: drop-shadow(0 3px 8px rgba(31,31,30,0.18));
+    transition: transform 0.2s;
+  }
+  .dog-btn:hover { transform: scale(1.1); }
+  .dog-btn.chat-open { transform: scale(0.9); }
+
+  /* Dog SVG animations */
+  .dog-svg { width: 64px; height: 64px; }
+  .dog-body { fill: #CC785C; }
+  .dog-belly { fill: #E8A888; }
+  .dog-nose { fill: #5C3322; }
+  .dog-eye { fill: #2A1810; }
+  .dog-tongue { fill: #E85C5C; }
+  .dog-ear { fill: #A85D43; }
+  .dog-tail { fill: #CC785C; transform-origin: 48px 28px; }
+  .dog-collar { fill: #4A90B8; }
+
+  /* Idle: gentle breathing */
+  @keyframes dog-breathe { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
+  .dog-svg.idle .dog-group { animation: dog-breathe 2s ease-in-out infinite; }
+
+  /* Wag tail */
+  @keyframes dog-wag { 0%,100% { transform: rotate(-15deg); } 50% { transform: rotate(25deg); } }
+  .dog-svg.wag .dog-tail { animation: dog-wag 0.3s ease-in-out infinite; }
+
+  /* Jump */
+  @keyframes dog-jump { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-12px); } 60% { transform: translateY(-8px); } }
+  .dog-svg.jump .dog-group { animation: dog-jump 0.6s ease-in-out; }
+
+  /* Head tilt */
+  @keyframes dog-tilt { 0%,100% { transform: rotate(0); } 30%,70% { transform: rotate(-12deg); } }
+  .dog-svg.tilt .dog-head { animation: dog-tilt 1.2s ease-in-out; transform-origin: 32px 22px; }
+
+  /* Spin */
+  @keyframes dog-spin { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(0.9); } 100% { transform: rotate(360deg) scale(1); } }
+  .dog-svg.spin .dog-group { animation: dog-spin 0.7s ease-in-out; }
+
+  /* Play bow */
+  @keyframes dog-bow { 0%,100% { transform: rotate(0) translateY(0); } 30%,70% { transform: rotate(8deg) translateY(-3px); } }
+  .dog-svg.bow .dog-group { animation: dog-bow 1s ease-in-out; }
+
+  /* Pant tongue */
+  @keyframes dog-pant { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(1.3); } }
+  .dog-svg.pant .dog-tongue { animation: dog-pant 0.4s ease-in-out infinite; transform-origin: 32px 38px; }
+
+  /* Notification badge */
+  .dog-badge {
+    position: absolute; top: -2px; right: -2px;
+    width: 16px; height: 16px; border-radius: 50%;
+    background: var(--accent); color: white;
+    font-size: 9px; font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    border: 2px solid white;
+    animation: badge-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  @keyframes badge-pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+
+  /* ─── Chat Panel ──────────────────────────────────────────── */
+  .chat-panel {
+    position: fixed; bottom: 96px; right: 24px; z-index: 300;
+    width: 360px; max-height: 480px;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 14px; box-shadow: 0 12px 40px rgba(31,31,30,0.18);
+    display: flex; flex-direction: column;
+    opacity: 0; transform: translateY(20px) scale(0.95);
+    pointer-events: none;
+    transition: opacity 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  }
+  .chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
+
+  .chat-header {
+    display: flex; align-items: center; gap: 8px;
+    padding: 12px 16px; border-bottom: 1px solid var(--border);
+    background: var(--surface-2); border-radius: 14px 14px 0 0;
+  }
+  .chat-header .ch-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .chat-header .ch-title { font-size: 13px; font-weight: 600; flex: 1; }
+  .chat-header .ch-close {
+    background: none; border: none; cursor: pointer; color: var(--muted);
+    font-size: 16px; padding: 2px 6px; border-radius: 4px;
+  }
+  .chat-header .ch-close:hover { background: var(--bg); }
+
+  .chat-messages {
+    flex: 1; overflow-y: auto; padding: 12px 16px;
+    display: flex; flex-direction: column; gap: 10px;
+    min-height: 200px; max-height: 340px;
+  }
+  .chat-msg {
+    max-width: 85%; padding: 8px 12px;
+    border-radius: 12px; font-size: 12.5px; line-height: 1.5;
+    word-break: break-word;
+  }
+  .chat-msg.bot {
+    background: var(--surface-2); border: 1px solid var(--border);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+  }
+  .chat-msg.user {
+    background: var(--accent); color: white;
+    align-self: flex-end; border-bottom-right-radius: 4px;
+  }
+  .chat-msg.typing {
+    background: var(--surface-2); border: 1px solid var(--border);
+    align-self: flex-start; border-bottom-left-radius: 4px;
+    color: var(--muted); font-style: italic;
+  }
+  .chat-msg.typing::after {
+    content: ''; display: inline-block;
+    animation: typing-dots 1.2s infinite;
+  }
+  @keyframes typing-dots {
+    0%,20% { content: '.'; } 40% { content: '..'; } 60%,100% { content: '...'; }
+  }
+
+  .chat-input-wrap {
+    display: flex; gap: 8px; padding: 10px 12px;
+    border-top: 1px solid var(--border);
+  }
+  .chat-input {
+    flex: 1; border: 1px solid var(--border); border-radius: 8px;
+    padding: 8px 10px; font-size: 12.5px; font-family: inherit;
+    background: var(--surface); color: var(--text); resize: none;
+  }
+  .chat-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
+  .chat-send {
+    background: var(--accent); border: none; color: white;
+    border-radius: 8px; padding: 8px 12px; cursor: pointer;
+    font-size: 13px; font-weight: 600; font-family: inherit;
+    transition: background 0.12s;
+  }
+  .chat-send:hover { background: var(--accent-deep); }
+  .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
+
 </style>
 </head>
 <body>
@@ -609,6 +747,61 @@
 
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
+
+<!-- Dog mascot + Chat -->
+<button class="dog-btn" id="dogBtn" title="Ask me about the dashboard">
+  <svg class="dog-svg idle" id="dogSvg" viewBox="0 0 64 64" fill="none">
+    <g class="dog-group">
+      <!-- Tail -->
+      <ellipse class="dog-tail" cx="50" cy="26" rx="8" ry="3" transform="rotate(-20 50 26)"/>
+      <!-- Back legs -->
+      <rect class="dog-body" x="38" y="38" width="8" height="14" rx="4"/>
+      <rect class="dog-body" x="18" y="38" width="8" height="14" rx="4"/>
+      <!-- Body -->
+      <ellipse class="dog-body" cx="32" cy="34" rx="18" ry="12"/>
+      <!-- Belly -->
+      <ellipse class="dog-belly" cx="32" cy="38" rx="12" ry="7"/>
+      <!-- Collar -->
+      <rect class="dog-collar" x="22" y="24" width="20" height="4" rx="2"/>
+      <!-- Head -->
+      <g class="dog-head">
+        <!-- Head shape -->
+        <circle class="dog-body" cx="32" cy="18" r="14"/>
+        <!-- Ears -->
+        <ellipse class="dog-ear" cx="20" cy="8" rx="6" ry="8" transform="rotate(-15 20 8)"/>
+        <ellipse class="dog-ear" cx="44" cy="8" rx="6" ry="8" transform="rotate(15 44 8)"/>
+        <!-- Face -->
+        <ellipse class="dog-belly" cx="32" cy="22" rx="9" ry="7"/>
+        <!-- Eyes -->
+        <circle class="dog-eye" cx="27" cy="16" r="2.5"/>
+        <circle class="dog-eye" cx="37" cy="16" r="2.5"/>
+        <circle fill="white" cx="28" cy="15" r="1"/>
+        <circle fill="white" cx="38" cy="15" r="1"/>
+        <!-- Nose -->
+        <ellipse class="dog-nose" cx="32" cy="21" rx="3" ry="2"/>
+        <!-- Mouth -->
+        <path d="M29 24 Q32 27 35 24" stroke="#5C3322" stroke-width="1" fill="none"/>
+        <!-- Tongue -->
+        <ellipse class="dog-tongue" cx="32" cy="27" rx="2.5" ry="3"/>
+      </g>
+    </g>
+  </svg>
+</button>
+
+<div class="chat-panel" id="chatPanel">
+  <div class="chat-header">
+    <span class="ch-dot"></span>
+    <span class="ch-title">Dashboard Assistant</span>
+    <button class="ch-close" id="chatClose">&times;</button>
+  </div>
+  <div class="chat-messages" id="chatMessages">
+    <div class="chat-msg bot">Hey! 🐶 Ask me anything about your pipeline — follow-ups, stats, which companies need attention, and more!</div>
+  </div>
+  <div class="chat-input-wrap">
+    <input class="chat-input" id="chatInput" placeholder="Ask about your dashboard..." />
+    <button class="chat-send" id="chatSend">Send</button>
+  </div>
+</div>
 
 <!-- Card modal -->
 <div class="modal-backdrop" id="cardModal">
@@ -1707,6 +1900,160 @@ async function init() {
   }
 }
 
+// ─── Dog Mascot & Chatbot ─────────────────────────────────────────────────
+const GEMINI_KEY = 'AIzaSyDxm3gLn2kaNhXd3g7ecBHTFlPQkgvyabc';
+const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+
+let chatOpen = false;
+let chatBusy = false;
+
+// Dog animation stunts
+const DOG_STUNTS = ['idle', 'wag', 'jump', 'tilt', 'spin', 'bow', 'pant'];
+let dogStuntTimer = null;
+
+function startDogStunts() {
+  cycleDogStunt();
+}
+
+function cycleDogStunt() {
+  const svg = document.getElementById('dogSvg');
+  if (!svg) return;
+  const stunt = DOG_STUNTS[Math.floor(Math.random() * DOG_STUNTS.length)];
+  svg.className.baseVal = 'dog-svg ' + stunt;
+  // Switch to a new stunt every 2-4 seconds
+  const next = 2000 + Math.random() * 2000;
+  dogStuntTimer = setTimeout(cycleDogStunt, next);
+}
+
+function toggleChat() {
+  chatOpen = !chatOpen;
+  document.getElementById('chatPanel').classList.toggle('open', chatOpen);
+  document.getElementById('dogBtn').classList.toggle('chat-open', chatOpen);
+  if (chatOpen) {
+    setTimeout(() => document.getElementById('chatInput').focus(), 300);
+  }
+}
+
+document.getElementById('dogBtn').addEventListener('click', toggleChat);
+document.getElementById('chatClose').addEventListener('click', toggleChat);
+
+// Build context from board state
+function buildBoardContext() {
+  const cards = Object.values(state.cards);
+  const today = new Date().toISOString().slice(0, 10);
+
+  // Group by stage
+  const byStage = {};
+  cards.forEach(c => {
+    const label = getStageLabel(c.stage);
+    if (!byStage[label]) byStage[label] = [];
+    byStage[label].push(c);
+  });
+
+  let ctx = `Today is ${today}.\n\nLinkrunner Customer Pipeline Dashboard:\n`;
+  ctx += `Total companies: ${cards.length}\n`;
+
+  const inbound = cards.filter(c => c.inbound).length;
+  ctx += `Inbound: ${inbound}, Outbound: ${cards.length - inbound}\n\n`;
+
+  for (const [stage, list] of Object.entries(byStage)) {
+    ctx += `--- ${stage} (${list.length}) ---\n`;
+    list.forEach(c => {
+      let line = `  • ${c.name}`;
+      if (c.contact) line += ` (contact: ${c.contact})`;
+      if (c.inbound) line += ' [INBOUND]';
+      if (c.acv) line += ` [ACV: ${formatAcv(c.acv)}]`;
+      if (c.demoDate) line += ` [Demo: ${c.demoDate}]`;
+      if (c.touchDate) line += ` [Last touch: ${c.touchDate}]`;
+      if (c.notes) line += ` — ${c.notes}`;
+      ctx += line + '\n';
+    });
+    ctx += '\n';
+  }
+
+  return ctx;
+}
+
+async function sendChatMessage() {
+  if (chatBusy) return;
+  const input = document.getElementById('chatInput');
+  const question = input.value.trim();
+  if (!question) return;
+
+  input.value = '';
+  chatBusy = true;
+  document.getElementById('chatSend').disabled = true;
+
+  // Add user message
+  addChatMsg(question, 'user');
+
+  // Add typing indicator
+  const typingEl = addChatMsg('Thinking', 'typing');
+
+  // Trigger excited dog animation
+  const svg = document.getElementById('dogSvg');
+  svg.className.baseVal = 'dog-svg wag';
+
+  try {
+    const context = buildBoardContext();
+    const systemPrompt = `You are a helpful, friendly dashboard assistant for Linkrunner's customer pipeline kanban board. You answer questions about the board data concisely. Use the board data below to answer. Be specific with company names, dates, and numbers. Keep answers short (2-4 sentences max). Use simple formatting — no markdown headers, just plain text with bullet points if needed.
+
+BOARD DATA:
+${context}`;
+
+    const res = await fetch(GEMINI_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        system_instruction: { parts: [{ text: systemPrompt }] },
+        contents: [{ parts: [{ text: question }] }],
+        generationConfig: { maxOutputTokens: 300, temperature: 0.7 },
+      }),
+    });
+
+    if (!res.ok) throw new Error(`API error: ${res.status}`);
+    const data = await res.json();
+    const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn\'t process that. Try again!';
+
+    typingEl.remove();
+    addChatMsg(reply, 'bot');
+
+    // Happy dog
+    svg.className.baseVal = 'dog-svg jump';
+    setTimeout(() => { svg.className.baseVal = 'dog-svg wag'; }, 600);
+  } catch (e) {
+    console.error('Chat error:', e);
+    typingEl.remove();
+    addChatMsg('Oops! Something went wrong. Try again in a moment.', 'bot');
+    svg.className.baseVal = 'dog-svg tilt';
+  } finally {
+    chatBusy = false;
+    document.getElementById('chatSend').disabled = false;
+  }
+}
+
+function addChatMsg(text, type) {
+  const container = document.getElementById('chatMessages');
+  const el = document.createElement('div');
+  el.className = `chat-msg ${type}`;
+  el.textContent = text;
+  container.appendChild(el);
+  container.scrollTop = container.scrollHeight;
+  return el;
+}
+
+document.getElementById('chatSend').addEventListener('click', sendChatMessage);
+document.getElementById('chatInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
+});
+
+// Start dog animations after init
+const origInit = init;
+async function initWithDog() {
+  await origInit.call(this);
+  startDogStunts();
+}
+
 // ─── Password gate ────────────────────────────────────────────────────────
 const PW_HASH = 'c5fe56b6c82cba17c6b76023b46f70886ce77809bc1543de840282ae51e18027';
 
@@ -1724,7 +2071,7 @@ async function checkPassword() {
     gate.classList.add('hidden');
     setTimeout(() => gate.remove(), 300);
     document.getElementById('loadingOverlay').style.display = '';
-    init();
+    initWithDog();
   } else {
     document.getElementById('pwErr').textContent = 'Incorrect password';
     document.getElementById('pwInput').select();
@@ -1734,7 +2081,7 @@ async function checkPassword() {
 if (sessionStorage.getItem('lr-auth') === '1') {
   document.getElementById('pwGate').remove();
   document.getElementById('loadingOverlay').style.display = '';
-  init();
+  initWithDog();
 } else {
   document.getElementById('pwBtn').addEventListener('click', checkPassword);
   document.getElementById('pwInput').addEventListener('keydown', e => {
