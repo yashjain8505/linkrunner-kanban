@@ -908,9 +908,10 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-05-21",
-      "updated": 1779288014512,
+      "updated": 1779341971846,
       "calBookingId": "fillout-391pj46hiqigohhev95u03bbuc@google.com",
-      "calEmail": "bogdn@reactiveapps.ca"
+      "calEmail": "bogdn@reactiveapps.ca",
+      "demoDate": "2026-05-21"
     }
   },
   "order": {
