@@ -855,9 +855,10 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-06-04",
-      "updated": 1779281093529,
+      "updated": 1779341868247,
       "calBookingId": "bEyzSkigiEGHZwotAJsXMT",
-      "calEmail": "mayank.kulkarni@powerup.money"
+      "calEmail": "mayank.kulkarni@powerup.money",
+      "demoDate": "2026-06-04"
     },
     "6dt3jz7j": {
       "id": "6dt3jz7j",
