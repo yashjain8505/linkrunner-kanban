@@ -633,8 +633,10 @@
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779089793980,
-      "demoDate": "2026-05-11"
+      "updated": 1779373096618,
+      "demoDate": "2026-05-11",
+      "inbound": false,
+      "acv": "20k-50k"
     },
     "s3jqncwo": {
       "id": "s3jqncwo",
