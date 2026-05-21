@@ -249,39 +249,57 @@
   }
 
   /* Pipeline reveal animation */
-  .pipeline-active .card { opacity: 0.2; filter: grayscale(0.6); transition: opacity 0.4s, filter 0.4s, transform 0.4s, box-shadow 0.4s; }
+  .pipeline-active .card { opacity: 0.15; filter: grayscale(0.7) blur(1px); transition: opacity 0.5s, filter 0.5s; }
   .pipeline-active .card.acv-highlight {
     opacity: 1; filter: none;
-    transform: scale(1.03);
-    box-shadow: 0 0 0 2px #4A90B8, 0 4px 16px rgba(74,144,184,0.25);
+    box-shadow: 0 0 0 2px #4A90B8, 0 4px 20px rgba(74,144,184,0.3);
     z-index: 5; position: relative;
+    transition: opacity 0.3s, box-shadow 0.3s;
   }
   .pipeline-active .column-header,
-  .pipeline-active .add-card-wrap { opacity: 0.3; transition: opacity 0.4s; }
+  .pipeline-active .add-card-wrap { opacity: 0.15; transition: opacity 0.5s; }
 
-  .acv-particle {
-    position: fixed; width: 8px; height: 8px;
-    background: #4A90B8; border-radius: 50%;
-    pointer-events: none; z-index: 100;
-    box-shadow: 0 0 6px rgba(74,144,184,0.6), 0 0 12px rgba(74,144,184,0.3);
-    animation: particle-pulse 0.3s ease-in-out infinite alternate;
+  /* Flying card clones */
+  .acv-clone {
+    position: fixed; z-index: 110; pointer-events: none;
+    border-radius: 8px; overflow: hidden;
+    box-shadow: 0 0 0 2px #4A90B8, 0 8px 30px rgba(74,144,184,0.4);
+    transition: none;
   }
-  @keyframes particle-pulse {
-    from { transform: scale(1); opacity: 0.9; }
-    to   { transform: scale(1.4); opacity: 1; }
+
+  /* SVG wave overlay */
+  .wave-overlay {
+    position: fixed; inset: 0; z-index: 105;
+    pointer-events: none;
   }
-  .acv-particle.trailing {
-    width: 5px; height: 5px; opacity: 0.5;
-    box-shadow: 0 0 4px rgba(74,144,184,0.4);
+  .wave-path {
+    fill: none; stroke: url(#waveGrad); stroke-width: 3;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 4px rgba(74,144,184,0.5));
   }
 
   .pipeline-num-reveal {
-    animation: num-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+    animation: num-pop 0.6s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
   }
   @keyframes num-pop {
     0%   { transform: scale(0.5); opacity: 0; }
-    60%  { transform: scale(1.15); }
+    50%  { transform: scale(1.2); }
     100% { transform: scale(1); opacity: 1; }
+  }
+
+  /* Pipeline countdown ring */
+  .pipeline-timer {
+    position: absolute; right: -4px; top: -4px;
+    width: 14px; height: 14px;
+  }
+  .pipeline-timer circle {
+    fill: none; stroke: #4A90B8; stroke-width: 2;
+    stroke-dasharray: 38; stroke-dashoffset: 0;
+    transform: rotate(-90deg); transform-origin: center;
+    animation: timer-drain 10s linear forwards;
+  }
+  @keyframes timer-drain {
+    to { stroke-dashoffset: 38; }
   }
 
   /* Channel badge */
@@ -852,6 +870,7 @@ function setSyncStatus(status, detail) {
 // ─── Render ────────────────────────────────────────────────────────────────
 let pipelineRevealed = false;
 let pipelineAnimating = false;
+let pipelineTimer = null;
 
 function renderLeadCounts() {
   const el = document.getElementById('leadCounts');
@@ -864,7 +883,6 @@ function renderLeadCounts() {
   const inboundNet = inboundAll - inboundNoShow;
   const outboundNet = outboundAll - outboundNoShow;
 
-  // Pipeline ACV total (exclude no-shows and not-interested)
   const excludeStages = ['no-show', 'demo-next'];
   let acvLow = 0, acvHigh = 0;
   cards.forEach(c => {
@@ -875,35 +893,28 @@ function renderLeadCounts() {
   });
 
   const acvNumHtml = pipelineRevealed
-    ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>`
+    ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>
+       <svg class="pipeline-timer" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6"/></svg>`
     : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
 
   el.innerHTML = `
-    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span>Pipeline ${acvNumHtml}</div>
+    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn" style="position:relative;"><span class="lc-dot"></span>Pipeline ${acvNumHtml}</div>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
 
-  document.getElementById('pipelineBtn').addEventListener('click', togglePipeline);
+  document.getElementById('pipelineBtn').addEventListener('click', triggerPipeline);
 }
 
-function togglePipeline() {
+function triggerPipeline() {
   if (pipelineAnimating) return;
-  const board = document.getElementById('board');
-
-  if (pipelineRevealed) {
-    // Deactivate
-    pipelineRevealed = false;
-    board.classList.remove('pipeline-active');
-    board.querySelectorAll('.card').forEach(c => c.classList.remove('acv-highlight'));
-    renderLeadCounts();
-    return;
-  }
-
-  // Activate: dim board, highlight ACV cards, animate particles
+  if (pipelineRevealed) return; // must wait for auto-dismiss
   pipelineAnimating = true;
+
+  const board = document.getElementById('board');
   board.classList.add('pipeline-active');
 
+  // Find and highlight ACV cards, capture their rects
   const acvCards = [];
   board.querySelectorAll('.card').forEach(cardEl => {
     const cardData = state.cards[cardEl.dataset.id];
@@ -913,87 +924,116 @@ function togglePipeline() {
     }
   });
 
-  // Start particle animation after cards highlight
+  if (acvCards.length === 0) {
+    finishPipelineAnim();
+    return;
+  }
+
+  // Phase 1 (0–500ms): Highlight cards
+  // Phase 2 (500ms): Create SVG waves + card clones that fly to pipeline
   setTimeout(() => {
     const btn = document.getElementById('pipelineBtn');
-    const target = btn.getBoundingClientRect();
-    const targetX = target.left + target.width / 2;
-    const targetY = target.top + target.height / 2;
+    const targetRect = btn.getBoundingClientRect();
+    const tx = targetRect.left + targetRect.width / 2;
+    const ty = targetRect.top + targetRect.height / 2;
+
+    // Create SVG wave overlay
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+    svg.setAttribute('class', 'wave-overlay');
+    svg.style.width = '100vw';
+    svg.style.height = '100vh';
+    svg.innerHTML = `
+      <defs>
+        <linearGradient id="waveGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" stop-color="#4A90B8" stop-opacity="0"/>
+          <stop offset="40%" stop-color="#4A90B8" stop-opacity="0.8"/>
+          <stop offset="100%" stop-color="#4A90B8" stop-opacity="0"/>
+        </linearGradient>
+      </defs>
+    `;
+    document.body.appendChild(svg);
 
     let completed = 0;
-    const total = acvCards.length || 1;
-
-    if (acvCards.length === 0) {
-      finishPipelineAnim();
-      return;
-    }
+    const total = acvCards.length;
 
     acvCards.forEach((cardEl, i) => {
       const rect = cardEl.getBoundingClientRect();
-      const startX = rect.left + rect.width / 2;
-      const startY = rect.top + rect.height / 2;
+      const sx = rect.left + rect.width / 2;
+      const sy = rect.top + rect.height / 2;
 
-      // Stagger each particle
+      // Stagger animations
       setTimeout(() => {
-        launchParticle(startX, startY, targetX, targetY, () => {
-          completed++;
-          if (completed >= total) finishPipelineAnim();
-        });
-      }, i * 80);
+        // Create wave path
+        const cpx = sx + (tx - sx) * 0.5 + (Math.random() - 0.5) * 80;
+        const cpy = Math.min(sy, ty) - 30 - Math.random() * 50;
+        const path = document.createElementNS('http://www.w3.org/2000/svg', 'path');
+        const d = `M${sx},${sy} Q${cpx},${cpy} ${tx},${ty}`;
+        path.setAttribute('d', d);
+        path.setAttribute('class', 'wave-path');
+        const pathLen = path.getTotalLength ? path.getTotalLength() : 400;
+        path.style.strokeDasharray = `${pathLen * 0.3} ${pathLen}`;
+        path.style.strokeDashoffset = `${pathLen}`;
+        svg.appendChild(path);
+
+        // Animate the wave dash flowing along the path
+        const waveDur = 800;
+        const waveStart = performance.now();
+        function animWave(ts) {
+          const t = Math.min((ts - waveStart) / waveDur, 1);
+          const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+          path.style.strokeDashoffset = `${pathLen - ease * pathLen * 1.3}`;
+          path.style.opacity = t > 0.7 ? 1 - (t - 0.7) / 0.3 : 1;
+          if (t < 1) requestAnimationFrame(animWave);
+          else path.remove();
+        }
+        requestAnimationFrame(animWave);
+
+        // Create flying card clone
+        const clone = cardEl.cloneNode(true);
+        clone.className = 'acv-clone';
+        clone.style.left = rect.left + 'px';
+        clone.style.top = rect.top + 'px';
+        clone.style.width = rect.width + 'px';
+        clone.style.height = rect.height + 'px';
+        document.body.appendChild(clone);
+
+        // Hide original card during flight
+        cardEl.style.opacity = '0';
+
+        // Animate clone along the same bezier curve
+        const flyDur = 900 + Math.random() * 200;
+        const flyStart = performance.now();
+        function animFly(ts) {
+          const t = Math.min((ts - flyStart) / flyDur, 1);
+          // Ease out cubic
+          const ease = 1 - Math.pow(1 - t, 3);
+
+          const x = (1 - ease) * (1 - ease) * sx + 2 * (1 - ease) * ease * cpx + ease * ease * tx;
+          const y = (1 - ease) * (1 - ease) * sy + 2 * (1 - ease) * ease * cpy + ease * ease * ty;
+
+          // Shrink as it approaches target
+          const scale = 1 - ease * 0.7;
+          const opacity = t > 0.8 ? 1 - (t - 0.8) / 0.2 : 1;
+          clone.style.left = (x - rect.width * scale / 2) + 'px';
+          clone.style.top = (y - rect.height * scale / 2) + 'px';
+          clone.style.transform = `scale(${scale})`;
+          clone.style.opacity = opacity;
+
+          if (t < 1) {
+            requestAnimationFrame(animFly);
+          } else {
+            clone.remove();
+            completed++;
+            if (completed >= total) {
+              svg.remove();
+              finishPipelineAnim();
+            }
+          }
+        }
+        requestAnimationFrame(animFly);
+      }, i * 100);
     });
   }, 500);
-}
-
-function launchParticle(sx, sy, tx, ty, onDone) {
-  const particle = document.createElement('div');
-  particle.className = 'acv-particle';
-  particle.style.left = sx + 'px';
-  particle.style.top = sy + 'px';
-  document.body.appendChild(particle);
-
-  // Also launch a trailing particle
-  const trail = document.createElement('div');
-  trail.className = 'acv-particle trailing';
-  trail.style.left = sx + 'px';
-  trail.style.top = sy + 'px';
-  document.body.appendChild(trail);
-
-  const duration = 600 + Math.random() * 200;
-  const dx = tx - sx;
-  const dy = ty - sy;
-  // Curve control point (arc upward)
-  const cpx = sx + dx * 0.5 + (Math.random() - 0.5) * 100;
-  const cpy = Math.min(sy, ty) - 40 - Math.random() * 60;
-
-  let start = null;
-  function animate(ts) {
-    if (!start) start = ts;
-    const t = Math.min((ts - start) / duration, 1);
-    const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
-
-    // Quadratic bezier
-    const x = (1 - ease) * (1 - ease) * sx + 2 * (1 - ease) * ease * cpx + ease * ease * tx;
-    const y = (1 - ease) * (1 - ease) * sy + 2 * (1 - ease) * ease * cpy + ease * ease * ty;
-    particle.style.left = x + 'px';
-    particle.style.top = y + 'px';
-
-    // Trail follows behind
-    const tTrail = Math.max(0, t - 0.15);
-    const eTrail = tTrail < 0.5 ? 2 * tTrail * tTrail : -1 + (4 - 2 * tTrail) * tTrail;
-    const xT = (1 - eTrail) * (1 - eTrail) * sx + 2 * (1 - eTrail) * eTrail * cpx + eTrail * eTrail * tx;
-    const yT = (1 - eTrail) * (1 - eTrail) * sy + 2 * (1 - eTrail) * eTrail * cpy + eTrail * eTrail * ty;
-    trail.style.left = xT + 'px';
-    trail.style.top = yT + 'px';
-
-    if (t < 1) {
-      requestAnimationFrame(animate);
-    } else {
-      particle.remove();
-      setTimeout(() => { trail.remove(); }, 100);
-      if (onDone) onDone();
-    }
-  }
-  requestAnimationFrame(animate);
 }
 
 function finishPipelineAnim() {
@@ -1005,12 +1045,20 @@ function finishPipelineAnim() {
   const val = document.getElementById('pipelineVal');
   if (val) val.classList.add('pipeline-num-reveal');
 
-  // Remove board dim after a beat
-  setTimeout(() => {
-    const board = document.getElementById('board');
-    board.classList.remove('pipeline-active');
-    board.querySelectorAll('.card').forEach(c => c.classList.remove('acv-highlight'));
-  }, 1500);
+  // Clean up board state
+  const board = document.getElementById('board');
+  board.classList.remove('pipeline-active');
+  board.querySelectorAll('.card').forEach(c => {
+    c.classList.remove('acv-highlight');
+    c.style.opacity = '';
+  });
+
+  // Auto-dismiss after 10 seconds
+  clearTimeout(pipelineTimer);
+  pipelineTimer = setTimeout(() => {
+    pipelineRevealed = false;
+    renderLeadCounts();
+  }, 10000);
 }
 
 function render() {
