@@ -236,10 +236,20 @@
   .lead-count.lc-inbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #2D7A5E; }
   .lead-count.lc-outbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
   .lead-count .lc-total { color: var(--muted); font-weight: 400; font-size: 11px; }
-  .lead-count.lc-acv .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #4A90B8; }
-  .lead-count.lc-acv { cursor: pointer; transition: background 0.15s, border-color 0.15s, box-shadow 0.15s; }
-  .lead-count.lc-acv:hover { border-color: #4A90B8; background: #F0F6FB; }
-  .lead-count.lc-acv.active { border-color: #4A90B8; background: #E8F0F8; box-shadow: 0 0 0 2px rgba(74,144,184,0.15); }
+  .lead-count.lc-acv {
+    cursor: pointer;
+    background: linear-gradient(135deg, #E8783A 0%, #CC785C 50%, #D4894A 100%);
+    border: none; color: white;
+    padding: 8px 20px; border-radius: 10px; font-size: 14px;
+    box-shadow: 0 2px 10px rgba(204,120,92,0.3);
+    transition: transform 0.15s, box-shadow 0.15s;
+    order: -1;
+  }
+  .lead-count.lc-acv:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(204,120,92,0.4); }
+  .lead-count.lc-acv.active { box-shadow: 0 4px 20px rgba(204,120,92,0.5); }
+  .lead-count.lc-acv .lc-dot { display: none; }
+  .lead-count.lc-acv .lc-num { font-weight: 800; color: white; font-size: 14px; }
+  .lead-count.lc-acv .lc-label { font-weight: 600; font-size: 13px; letter-spacing: 0.02em; }
 
   /* ACV on cards */
   .acv-badge {
@@ -569,79 +579,107 @@
   .pw-box .pw-btn:hover { background: var(--accent-deep); }
   .pw-box .pw-err { color: var(--danger); font-size: 12px; margin-top: 8px; min-height: 18px; }
 
-  /* ─── Fortnite Character Mascot ────────────────────────────── */
+  /* ─── Head-Toss Character Mascot ───────────────────────────── */
   .mascot-btn {
     position: fixed; bottom: 24px; right: 24px; z-index: 300;
-    width: 72px; height: 90px; border: none; background: none;
+    width: 80px; height: 100px; border: none; background: none;
     cursor: pointer; padding: 0; outline: none;
-    filter: drop-shadow(0 4px 10px rgba(31,31,30,0.22));
+    filter: drop-shadow(0 4px 12px rgba(31,31,30,0.22));
     transition: transform 0.2s;
   }
   .mascot-btn:hover { transform: scale(1.08); }
   .mascot-btn.chat-open { transform: scale(0.92); }
+  .mascot-svg { width: 80px; height: 100px; overflow: visible; }
 
-  .mascot-svg { width: 72px; height: 90px; overflow: visible; }
+  /* Character parts */
+  .m-skin { fill: #F0C090; }
+  .m-shirt { fill: #5B8DEF; }
+  .m-pants { fill: #2D3A5E; }
+  .m-shoe { fill: #333; }
+  .m-hair { fill: #3C2415; }
+  .m-eye { fill: #1A1A1A; }
 
-  /* Character colors - Claude palette */
-  .ch-skin { fill: #E8A888; }
-  .ch-shirt { fill: #CC785C; }
-  .ch-pants { fill: #A85D43; }
-  .ch-shoe { fill: #5C3322; }
-  .ch-hair { fill: #3C2415; }
-  .ch-eye { fill: #2A1810; }
-  .ch-mouth { fill: #D4594E; }
-  .ch-belt { fill: #4A90B8; }
+  /* ── Head toss animation (2.5s cycle) ── */
+  /* Head: in hands(0%) → toss up(20%) → land on neck(35%) → sits happy(60%) → wobble(70%) → fall off(85%) → caught(100%) */
+  @keyframes head-toss {
+    0%   { transform: translate(0px, 42px) rotate(5deg); }
+    10%  { transform: translate(0px, 42px) rotate(-5deg); }
+    20%  { transform: translate(0px, -10px) rotate(15deg); }
+    30%  { transform: translate(0px, -20px) rotate(-10deg); }
+    38%  { transform: translate(0px, 0px) rotate(0deg); }
+    55%  { transform: translate(0px, 0px) rotate(0deg); }
+    62%  { transform: translate(0px, 0px) rotate(8deg); }
+    68%  { transform: translate(0px, 0px) rotate(-6deg); }
+    75%  { transform: translate(2px, 5px) rotate(15deg); }
+    82%  { transform: translate(3px, 20px) rotate(30deg); }
+    88%  { transform: translate(2px, 38px) rotate(20deg); }
+    94%  { transform: translate(0px, 42px) rotate(10deg); }
+    100% { transform: translate(0px, 42px) rotate(5deg); }
+  }
 
-  /* Dance: Floss */
-  @keyframes floss-body { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
-  @keyframes floss-larm { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(40deg); } 75% { transform: rotate(-40deg); } }
-  @keyframes floss-rarm { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(-40deg); } 75% { transform: rotate(40deg); } }
-  @keyframes floss-hips { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
-  .mascot-svg.floss .fn-torso { animation: floss-body 0.5s ease-in-out infinite; }
-  .mascot-svg.floss .fn-larm { animation: floss-larm 0.5s ease-in-out infinite; transform-origin: 26px 34px; }
-  .mascot-svg.floss .fn-rarm { animation: floss-rarm 0.5s ease-in-out infinite; transform-origin: 46px 34px; }
-  .mascot-svg.floss .fn-hips { animation: floss-hips 0.5s ease-in-out infinite; transform-origin: 36px 50px; }
+  /* Arms: holding(0%) → toss up(20%) → sides celebrating(38%) → reach to catch(82%) → holding(100%) */
+  @keyframes larm-toss {
+    0%   { transform: rotate(40deg); }
+    15%  { transform: rotate(-30deg); }
+    25%  { transform: rotate(10deg); }
+    38%  { transform: rotate(-15deg); }
+    55%  { transform: rotate(-20deg); }
+    62%  { transform: rotate(-10deg); }
+    75%  { transform: rotate(10deg); }
+    88%  { transform: rotate(35deg); }
+    100% { transform: rotate(40deg); }
+  }
+  @keyframes rarm-toss {
+    0%   { transform: rotate(-40deg); }
+    15%  { transform: rotate(30deg); }
+    25%  { transform: rotate(-10deg); }
+    38%  { transform: rotate(15deg); }
+    55%  { transform: rotate(20deg); }
+    62%  { transform: rotate(10deg); }
+    75%  { transform: rotate(-10deg); }
+    88%  { transform: rotate(-35deg); }
+    100% { transform: rotate(-40deg); }
+  }
 
-  /* Dance: Default / Boogie */
-  @keyframes boogie-body { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
-  @keyframes boogie-lleg { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-15deg); } }
-  @keyframes boogie-rleg { 0%,100% { transform: rotate(0); } 50% { transform: rotate(15deg); } }
-  @keyframes boogie-arms { 0%,100% { transform: rotate(-20deg); } 50% { transform: rotate(30deg); } }
-  .mascot-svg.boogie .fn-all { animation: boogie-body 0.4s ease-in-out infinite; }
-  .mascot-svg.boogie .fn-lleg { animation: boogie-lleg 0.4s ease-in-out infinite; transform-origin: 30px 56px; }
-  .mascot-svg.boogie .fn-rleg { animation: boogie-rleg 0.4s ease-in-out infinite; transform-origin: 42px 56px; }
-  .mascot-svg.boogie .fn-larm { animation: boogie-arms 0.4s ease-in-out infinite; transform-origin: 26px 34px; }
-  .mascot-svg.boogie .fn-rarm { animation: boogie-arms 0.4s ease-in-out infinite reverse; transform-origin: 46px 34px; }
+  /* Body bounces with joy when head is on */
+  @keyframes body-bounce {
+    0%   { transform: translateY(0); }
+    38%  { transform: translateY(0); }
+    42%  { transform: translateY(-3px); }
+    46%  { transform: translateY(0); }
+    50%  { transform: translateY(-4px); }
+    54%  { transform: translateY(0); }
+    58%  { transform: translateY(-2px); }
+    62%  { transform: translateY(0); }
+    100% { transform: translateY(0); }
+  }
 
-  /* Dance: Orange Justice */
-  @keyframes oj-body { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
-  @keyframes oj-larm { 0%,100% { transform: rotate(-60deg); } 50% { transform: rotate(20deg); } }
-  @keyframes oj-rarm { 0%,100% { transform: rotate(20deg); } 50% { transform: rotate(-60deg); } }
-  @keyframes oj-legs { 0%,100% { transform: translateX(-2px); } 50% { transform: translateX(2px); } }
-  .mascot-svg.orange-justice .fn-torso { animation: oj-body 0.35s ease-in-out infinite; transform-origin: 36px 40px; }
-  .mascot-svg.orange-justice .fn-larm { animation: oj-larm 0.35s ease-in-out infinite; transform-origin: 26px 34px; }
-  .mascot-svg.orange-justice .fn-rarm { animation: oj-rarm 0.35s ease-in-out infinite; transform-origin: 46px 34px; }
-  .mascot-svg.orange-justice .fn-legs { animation: oj-legs 0.35s ease-in-out infinite; }
+  /* Legs do a happy dance when head lands */
+  @keyframes lleg-dance {
+    0%   { transform: rotate(0); }
+    38%  { transform: rotate(0); }
+    44%  { transform: rotate(-12deg); }
+    50%  { transform: rotate(0); }
+    56%  { transform: rotate(-10deg); }
+    62%  { transform: rotate(0); }
+    100% { transform: rotate(0); }
+  }
+  @keyframes rleg-dance {
+    0%   { transform: rotate(0); }
+    38%  { transform: rotate(0); }
+    44%  { transform: rotate(12deg); }
+    50%  { transform: rotate(0); }
+    56%  { transform: rotate(10deg); }
+    62%  { transform: rotate(0); }
+    100% { transform: rotate(0); }
+  }
 
-  /* Dance: Electro Shuffle */
-  @keyframes es-body { 0%,100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-4px) rotate(-5deg); } 75% { transform: translateY(-4px) rotate(5deg); } }
-  @keyframes es-lleg { 0%,50% { transform: rotate(0) translateX(0); } 25% { transform: rotate(-25deg) translateX(-4px); } 75% { transform: rotate(15deg) translateX(2px); } }
-  @keyframes es-rleg { 0%,50% { transform: rotate(0) translateX(0); } 25% { transform: rotate(15deg) translateX(2px); } 75% { transform: rotate(-25deg) translateX(-4px); } }
-  .mascot-svg.electro .fn-all { animation: es-body 0.5s ease-in-out infinite; }
-  .mascot-svg.electro .fn-lleg { animation: es-lleg 0.5s ease-in-out infinite; transform-origin: 30px 56px; }
-  .mascot-svg.electro .fn-rleg { animation: es-rleg 0.5s ease-in-out infinite; transform-origin: 42px 56px; }
-  .mascot-svg.electro .fn-larm { animation: floss-larm 0.5s ease-in-out infinite; transform-origin: 26px 34px; }
-  .mascot-svg.electro .fn-rarm { animation: floss-rarm 0.5s ease-in-out infinite; transform-origin: 46px 34px; }
-
-  /* Dance: Take the L */
-  @keyframes ttl-body { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
-  @keyframes ttl-rarm-up { 0%,100% { transform: rotate(-90deg); } 50% { transform: rotate(-70deg); } }
-  @keyframes ttl-larm-L { 0%,100% { transform: rotate(90deg); } 50% { transform: rotate(70deg); } }
-  @keyframes ttl-lleg-k { 0%,100% { transform: rotate(0); } 50% { transform: rotate(20deg); } }
-  .mascot-svg.take-l .fn-all { animation: ttl-body 0.3s ease-in-out infinite; }
-  .mascot-svg.take-l .fn-rarm { animation: ttl-rarm-up 0.3s ease-in-out infinite; transform-origin: 46px 34px; }
-  .mascot-svg.take-l .fn-larm { animation: ttl-larm-L 0.3s ease-in-out infinite; transform-origin: 26px 34px; }
-  .mascot-svg.take-l .fn-lleg { animation: ttl-lleg-k 0.3s ease-in-out infinite; transform-origin: 30px 56px; }
+  .mascot-svg .m-head   { animation: head-toss 2.8s ease-in-out infinite; transform-origin: 40px 14px; }
+  .mascot-svg .m-body   { animation: body-bounce 2.8s ease-in-out infinite; }
+  .mascot-svg .m-larm   { animation: larm-toss 2.8s ease-in-out infinite; transform-origin: 28px 38px; }
+  .mascot-svg .m-rarm   { animation: rarm-toss 2.8s ease-in-out infinite; transform-origin: 52px 38px; }
+  .mascot-svg .m-lleg   { animation: lleg-dance 2.8s ease-in-out infinite; transform-origin: 34px 62px; }
+  .mascot-svg .m-rleg   { animation: rleg-dance 2.8s ease-in-out infinite; transform-origin: 46px 62px; }
 
   /* ─── Chat Panel ──────────────────────────────────────────── */
   .chat-panel {
@@ -760,57 +798,53 @@
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
 
-<!-- Fortnite character mascot + Chat -->
+<!-- Head-toss character mascot + Chat -->
 <button class="mascot-btn" id="dogBtn" title="Ask me about the dashboard">
-  <svg class="mascot-svg floss" id="dogSvg" viewBox="0 0 72 90" fill="none">
-    <g class="fn-all">
-      <g class="fn-legs">
-        <!-- Left leg -->
-        <g class="fn-lleg">
-          <rect class="ch-pants" x="27" y="54" width="9" height="16" rx="4"/>
-          <rect class="ch-shoe" x="26" y="68" width="11" height="5" rx="2.5"/>
-        </g>
-        <!-- Right leg -->
-        <g class="fn-rleg">
-          <rect class="ch-pants" x="38" y="54" width="9" height="16" rx="4"/>
-          <rect class="ch-shoe" x="37" y="68" width="11" height="5" rx="2.5"/>
-        </g>
+  <svg class="mascot-svg" id="dogSvg" viewBox="0 0 80 100" fill="none">
+    <g class="m-body">
+      <!-- Legs -->
+      <g class="m-lleg">
+        <rect class="m-pants" x="30" y="62" width="10" height="18" rx="5"/>
+        <ellipse class="m-shoe" cx="35" cy="80" rx="7" ry="3.5"/>
       </g>
-      <g class="fn-hips">
-        <!-- Belt -->
-        <rect class="ch-belt" x="25" y="51" width="22" height="5" rx="2.5"/>
+      <g class="m-rleg">
+        <rect class="m-pants" x="42" y="62" width="10" height="18" rx="5"/>
+        <ellipse class="m-shoe" cx="47" cy="80" rx="7" ry="3.5"/>
       </g>
-      <g class="fn-torso">
-        <!-- Body/shirt -->
-        <rect class="ch-shirt" x="24" y="32" width="24" height="21" rx="5"/>
-        <!-- Collar detail -->
-        <path d="M30 32 L36 36 L42 32" stroke="#A85D43" stroke-width="1.5" fill="none"/>
-        <!-- Left arm -->
-        <g class="fn-larm">
-          <rect class="ch-skin" x="16" y="33" width="9" height="4" rx="2"/>
-          <rect class="ch-skin" x="14" y="33" width="5" height="4" rx="2"/>
-        </g>
-        <!-- Right arm -->
-        <g class="fn-rarm">
-          <rect class="ch-skin" x="47" y="33" width="9" height="4" rx="2"/>
-          <rect class="ch-skin" x="53" y="33" width="5" height="4" rx="2"/>
-        </g>
-        <!-- Neck -->
-        <rect class="ch-skin" x="33" y="27" width="6" height="7" rx="3"/>
-        <!-- Head -->
-        <g class="fn-head">
-          <circle class="ch-skin" cx="36" cy="18" r="13"/>
-          <!-- Hair -->
-          <path class="ch-hair" d="M23 18 Q23 6 36 5 Q49 6 49 18 Q49 12 36 11 Q23 12 23 18Z"/>
-          <!-- Eyes -->
-          <ellipse class="ch-eye" cx="31" cy="18" rx="2" ry="2.5"/>
-          <ellipse class="ch-eye" cx="41" cy="18" rx="2" ry="2.5"/>
-          <circle fill="white" cx="32" cy="17" r="0.8"/>
-          <circle fill="white" cx="42" cy="17" r="0.8"/>
-          <!-- Smile -->
-          <path d="M31 23 Q36 27 41 23" stroke="#D4594E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
-        </g>
+      <!-- Torso -->
+      <rect class="m-shirt" x="26" y="36" width="28" height="28" rx="6"/>
+      <!-- Shirt detail -->
+      <path d="M34 36 L40 42 L46 36" stroke="#4070CC" stroke-width="1.2" fill="none"/>
+      <circle fill="#E8C840" cx="40" cy="50" r="2.5"/>
+      <!-- Neck stump -->
+      <rect class="m-skin" x="36" y="30" width="8" height="8" rx="4"/>
+      <!-- Arms -->
+      <g class="m-larm">
+        <rect class="m-skin" x="16" y="36" width="12" height="5" rx="2.5"/>
+        <circle class="m-skin" cx="16" cy="38.5" r="3.5"/>
       </g>
+      <g class="m-rarm">
+        <rect class="m-skin" x="52" y="36" width="12" height="5" rx="2.5"/>
+        <circle class="m-skin" cx="64" cy="38.5" r="3.5"/>
+      </g>
+    </g>
+    <!-- Head (animated separately) -->
+    <g class="m-head">
+      <circle class="m-skin" cx="40" cy="14" r="14"/>
+      <!-- Hair -->
+      <path class="m-hair" d="M26 14 Q26 1 40 0 Q54 1 54 14 Q53 7 40 6 Q27 7 26 14Z"/>
+      <!-- Eyes - big happy eyes -->
+      <ellipse fill="white" cx="34" cy="13" rx="4" ry="4.5"/>
+      <ellipse fill="white" cx="46" cy="13" rx="4" ry="4.5"/>
+      <ellipse class="m-eye" cx="35" cy="13" rx="2.2" ry="2.8"/>
+      <ellipse class="m-eye" cx="47" cy="13" rx="2.2" ry="2.8"/>
+      <circle fill="white" cx="36" cy="12" r="1"/>
+      <circle fill="white" cx="48" cy="12" r="1"/>
+      <!-- Big happy smile -->
+      <path d="M33 19 Q40 25 47 19" stroke="#D4594E" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <!-- Rosy cheeks -->
+      <ellipse fill="#F0A0A0" opacity="0.4" cx="30" cy="18" rx="3" ry="2"/>
+      <ellipse fill="#F0A0A0" opacity="0.4" cx="50" cy="18" rx="3" ry="2"/>
     </g>
   </svg>
 </button>
@@ -1137,7 +1171,7 @@ function renderLeadCounts() {
     : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
 
   el.innerHTML = `
-    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span>Pipeline ${acvLabel}</div>
+    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span><span class="lc-label">Pipeline</span>&nbsp;${acvLabel}</div>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
@@ -1934,30 +1968,14 @@ const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemi
 let chatOpen = false;
 let chatBusy = false;
 
-// Fortnite dance moves
-const DANCES = ['floss', 'boogie', 'orange-justice', 'electro', 'take-l'];
-let danceTimer = null;
-
 function startDogStunts() {
-  cycleDance();
-}
-
-function cycleDance() {
-  const svg = document.getElementById('dogSvg');
-  if (!svg) return;
-  const dance = DANCES[Math.floor(Math.random() * DANCES.length)];
-  svg.className.baseVal = 'mascot-svg ' + dance;
-  // Switch dance every 3-6 seconds
-  const next = 3000 + Math.random() * 3000;
-  danceTimer = setTimeout(cycleDance, next);
+  // Head-toss animation runs via CSS continuously — nothing to cycle
 }
 
 function toggleChat() {
   chatOpen = !chatOpen;
   document.getElementById('chatPanel').classList.toggle('open', chatOpen);
   document.getElementById('dogBtn').classList.toggle('chat-open', chatOpen);
-  // Excited dance when opening chat
-  if (chatOpen) document.getElementById('dogSvg').className.baseVal = 'mascot-svg floss';
   if (chatOpen) {
     setTimeout(() => document.getElementById('chatInput').focus(), 300);
   }
@@ -2019,9 +2037,7 @@ async function sendChatMessage() {
   // Add typing indicator
   const typingEl = addChatMsg('Thinking', 'typing');
 
-  // Trigger excited dance
   const svg = document.getElementById('dogSvg');
-  svg.className.baseVal = 'mascot-svg boogie';
 
   try {
     const context = buildBoardContext();
@@ -2062,9 +2078,8 @@ ${context}`;
     typingEl.remove();
     addChatMsg(reply, 'bot');
 
-    // Victory dance
-    svg.className.baseVal = 'mascot-svg take-l';
-    setTimeout(() => { svg.className.baseVal = 'mascot-svg floss'; }, 800);
+    typingEl.remove();
+    addChatMsg(reply, 'bot');
   } catch (e) {
     console.error('Chat error:', e);
     typingEl.remove();
@@ -2072,7 +2087,6 @@ ${context}`;
       ? 'API quota exhausted for now. Please wait a minute and try again!'
       : 'Oops! Something went wrong. Try again in a moment.';
     addChatMsg(msg, 'bot');
-    svg.className.baseVal = 'mascot-svg orange-justice';
   } finally {
     chatBusy = false;
     document.getElementById('chatSend').disabled = false;
