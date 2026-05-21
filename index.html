@@ -237,12 +237,51 @@
   .lead-count.lc-outbound .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--accent); }
   .lead-count .lc-total { color: var(--muted); font-weight: 400; font-size: 11px; }
   .lead-count.lc-acv .lc-dot { width: 7px; height: 7px; border-radius: 50%; background: #4A90B8; }
+  .lead-count.lc-acv { cursor: pointer; transition: background 0.15s, border-color 0.15s, box-shadow 0.15s; }
+  .lead-count.lc-acv:hover { border-color: #4A90B8; background: #F0F6FB; }
+  .lead-count.lc-acv.active { border-color: #4A90B8; background: #E8F0F8; box-shadow: 0 0 0 2px rgba(74,144,184,0.15); }
 
   /* ACV on cards */
   .acv-badge {
     display: inline-block; font-size: 10.5px; font-weight: 700;
     color: #2D5A80; background: #E8F0F8; border: 1px solid #C0D5E8;
     padding: 2px 7px; border-radius: 4px; margin-top: 5px;
+  }
+
+  /* Pipeline reveal animation */
+  .pipeline-active .card { opacity: 0.2; filter: grayscale(0.6); transition: opacity 0.4s, filter 0.4s, transform 0.4s, box-shadow 0.4s; }
+  .pipeline-active .card.acv-highlight {
+    opacity: 1; filter: none;
+    transform: scale(1.03);
+    box-shadow: 0 0 0 2px #4A90B8, 0 4px 16px rgba(74,144,184,0.25);
+    z-index: 5; position: relative;
+  }
+  .pipeline-active .column-header,
+  .pipeline-active .add-card-wrap { opacity: 0.3; transition: opacity 0.4s; }
+
+  .acv-particle {
+    position: fixed; width: 8px; height: 8px;
+    background: #4A90B8; border-radius: 50%;
+    pointer-events: none; z-index: 100;
+    box-shadow: 0 0 6px rgba(74,144,184,0.6), 0 0 12px rgba(74,144,184,0.3);
+    animation: particle-pulse 0.3s ease-in-out infinite alternate;
+  }
+  @keyframes particle-pulse {
+    from { transform: scale(1); opacity: 0.9; }
+    to   { transform: scale(1.4); opacity: 1; }
+  }
+  .acv-particle.trailing {
+    width: 5px; height: 5px; opacity: 0.5;
+    box-shadow: 0 0 4px rgba(74,144,184,0.4);
+  }
+
+  .pipeline-num-reveal {
+    animation: num-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  }
+  @keyframes num-pop {
+    0%   { transform: scale(0.5); opacity: 0; }
+    60%  { transform: scale(1.15); }
+    100% { transform: scale(1); opacity: 1; }
   }
 
   /* Channel badge */
@@ -811,6 +850,9 @@ function setSyncStatus(status, detail) {
 }
 
 // ─── Render ────────────────────────────────────────────────────────────────
+let pipelineRevealed = false;
+let pipelineAnimating = false;
+
 function renderLeadCounts() {
   const el = document.getElementById('leadCounts');
   const cards = Object.values(state.cards);
@@ -831,13 +873,144 @@ function renderLeadCounts() {
       acvHigh += ACV_RANGES[c.acv].high;
     }
   });
-  const acvStr = acvLow > 0 ? `${formatCurrency(acvLow)} – ${formatCurrency(acvHigh)}` : '—';
+
+  const acvNumHtml = pipelineRevealed
+    ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>`
+    : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
 
   el.innerHTML = `
-    <div class="lead-count lc-acv"><span class="lc-dot"></span>Pipeline <span class="lc-num">${acvStr}</span></div>
+    <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span>Pipeline ${acvNumHtml}</div>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
+
+  document.getElementById('pipelineBtn').addEventListener('click', togglePipeline);
+}
+
+function togglePipeline() {
+  if (pipelineAnimating) return;
+  const board = document.getElementById('board');
+
+  if (pipelineRevealed) {
+    // Deactivate
+    pipelineRevealed = false;
+    board.classList.remove('pipeline-active');
+    board.querySelectorAll('.card').forEach(c => c.classList.remove('acv-highlight'));
+    renderLeadCounts();
+    return;
+  }
+
+  // Activate: dim board, highlight ACV cards, animate particles
+  pipelineAnimating = true;
+  board.classList.add('pipeline-active');
+
+  const acvCards = [];
+  board.querySelectorAll('.card').forEach(cardEl => {
+    const cardData = state.cards[cardEl.dataset.id];
+    if (cardData && cardData.acv && cardData.stage !== 'no-show' && cardData.stage !== 'demo-next') {
+      cardEl.classList.add('acv-highlight');
+      acvCards.push(cardEl);
+    }
+  });
+
+  // Start particle animation after cards highlight
+  setTimeout(() => {
+    const btn = document.getElementById('pipelineBtn');
+    const target = btn.getBoundingClientRect();
+    const targetX = target.left + target.width / 2;
+    const targetY = target.top + target.height / 2;
+
+    let completed = 0;
+    const total = acvCards.length || 1;
+
+    if (acvCards.length === 0) {
+      finishPipelineAnim();
+      return;
+    }
+
+    acvCards.forEach((cardEl, i) => {
+      const rect = cardEl.getBoundingClientRect();
+      const startX = rect.left + rect.width / 2;
+      const startY = rect.top + rect.height / 2;
+
+      // Stagger each particle
+      setTimeout(() => {
+        launchParticle(startX, startY, targetX, targetY, () => {
+          completed++;
+          if (completed >= total) finishPipelineAnim();
+        });
+      }, i * 80);
+    });
+  }, 500);
+}
+
+function launchParticle(sx, sy, tx, ty, onDone) {
+  const particle = document.createElement('div');
+  particle.className = 'acv-particle';
+  particle.style.left = sx + 'px';
+  particle.style.top = sy + 'px';
+  document.body.appendChild(particle);
+
+  // Also launch a trailing particle
+  const trail = document.createElement('div');
+  trail.className = 'acv-particle trailing';
+  trail.style.left = sx + 'px';
+  trail.style.top = sy + 'px';
+  document.body.appendChild(trail);
+
+  const duration = 600 + Math.random() * 200;
+  const dx = tx - sx;
+  const dy = ty - sy;
+  // Curve control point (arc upward)
+  const cpx = sx + dx * 0.5 + (Math.random() - 0.5) * 100;
+  const cpy = Math.min(sy, ty) - 40 - Math.random() * 60;
+
+  let start = null;
+  function animate(ts) {
+    if (!start) start = ts;
+    const t = Math.min((ts - start) / duration, 1);
+    const ease = t < 0.5 ? 2 * t * t : -1 + (4 - 2 * t) * t;
+
+    // Quadratic bezier
+    const x = (1 - ease) * (1 - ease) * sx + 2 * (1 - ease) * ease * cpx + ease * ease * tx;
+    const y = (1 - ease) * (1 - ease) * sy + 2 * (1 - ease) * ease * cpy + ease * ease * ty;
+    particle.style.left = x + 'px';
+    particle.style.top = y + 'px';
+
+    // Trail follows behind
+    const tTrail = Math.max(0, t - 0.15);
+    const eTrail = tTrail < 0.5 ? 2 * tTrail * tTrail : -1 + (4 - 2 * tTrail) * tTrail;
+    const xT = (1 - eTrail) * (1 - eTrail) * sx + 2 * (1 - eTrail) * eTrail * cpx + eTrail * eTrail * tx;
+    const yT = (1 - eTrail) * (1 - eTrail) * sy + 2 * (1 - eTrail) * eTrail * cpy + eTrail * eTrail * ty;
+    trail.style.left = xT + 'px';
+    trail.style.top = yT + 'px';
+
+    if (t < 1) {
+      requestAnimationFrame(animate);
+    } else {
+      particle.remove();
+      setTimeout(() => { trail.remove(); }, 100);
+      if (onDone) onDone();
+    }
+  }
+  requestAnimationFrame(animate);
+}
+
+function finishPipelineAnim() {
+  pipelineRevealed = true;
+  pipelineAnimating = false;
+  renderLeadCounts();
+
+  // Pop animation on the number
+  const val = document.getElementById('pipelineVal');
+  if (val) val.classList.add('pipeline-num-reveal');
+
+  // Remove board dim after a beat
+  setTimeout(() => {
+    const board = document.getElementById('board');
+    board.classList.remove('pipeline-active');
+    board.querySelectorAll('.card').forEach(c => c.classList.remove('acv-highlight'));
+  }, 1500);
 }
 
 function render() {
