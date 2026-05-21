@@ -902,7 +902,7 @@
     },
     "lmyry6va": {
       "id": "lmyry6va",
-      "name": "📥 Prosperitaso",
+      "name": "Prosperitaso",
       "contact": "",
       "notes": "",
       "stage": "demo-scheduled",
@@ -910,11 +910,12 @@
       "touchDate": "2026-05-20",
       "updated": 1779288012454,
       "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
-      "calEmail": "andru@prosperitaso.com"
+      "calEmail": "andru@prosperitaso.com",
+      "inbound": true
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
-      "name": "📥 Reactiveapps",
+      "name": "Reactiveapps",
       "contact": "",
       "notes": "",
       "stage": "demo-scheduled",
@@ -923,7 +924,8 @@
       "updated": 1779341971846,
       "calBookingId": "fillout-391pj46hiqigohhev95u03bbuc@google.com",
       "calEmail": "bogdn@reactiveapps.ca",
-      "demoDate": "2026-05-21"
+      "demoDate": "2026-05-21",
+      "inbound": true
     }
   },
   "order": {
