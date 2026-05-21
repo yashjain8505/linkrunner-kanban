@@ -700,8 +700,10 @@
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779113225246,
-      "demoDate": "2026-05-12"
+      "updated": 1779373083834,
+      "demoDate": "2026-05-12",
+      "inbound": false,
+      "acv": "5k-10k"
     },
     "pstfria7": {
       "id": "pstfria7",
