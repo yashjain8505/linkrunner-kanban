@@ -43,8 +43,10 @@
       "stage": "snoozed-cycle",
       "channel": "none",
       "touchDate": "2026-08-10",
-      "updated": 1778926013225,
-      "demoDate": "2026-03-25"
+      "updated": 1779373049834,
+      "demoDate": "2026-03-25",
+      "inbound": false,
+      "acv": "10k-20k"
     },
     "w8wg8lt1": {
       "id": "w8wg8lt1",
