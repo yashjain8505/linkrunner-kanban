@@ -239,8 +239,10 @@
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-06-15",
-      "updated": 1778925974575,
-      "demoDate": "2026-04-08"
+      "updated": 1779372530999,
+      "demoDate": "2026-04-08",
+      "inbound": false,
+      "acv": "10k-20k"
     },
     "fw4loszp": {
       "id": "fw4loszp",
