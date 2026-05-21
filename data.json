@@ -230,8 +230,10 @@
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-07-01",
-      "updated": 1778926078176,
-      "demoDate": "2026-04-08"
+      "updated": 1779373021117,
+      "demoDate": "2026-04-08",
+      "inbound": false,
+      "acv": "0-5k"
     },
     "2p2bekng": {
       "id": "2p2bekng",
