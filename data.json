@@ -728,8 +728,10 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779090238878,
-      "demoDate": "2026-05-15"
+      "updated": 1779372286947,
+      "demoDate": "2026-05-15",
+      "inbound": false,
+      "acv": "5k-10k"
     },
     "doteifrp": {
       "id": "doteifrp",
