@@ -569,67 +569,79 @@
   .pw-box .pw-btn:hover { background: var(--accent-deep); }
   .pw-box .pw-err { color: var(--danger); font-size: 12px; margin-top: 8px; min-height: 18px; }
 
-  /* ─── Dog Mascot ──────────────────────────────────────────── */
-  .dog-btn {
+  /* ─── Fortnite Character Mascot ────────────────────────────── */
+  .mascot-btn {
     position: fixed; bottom: 24px; right: 24px; z-index: 300;
-    width: 64px; height: 64px; border: none; background: none;
+    width: 72px; height: 90px; border: none; background: none;
     cursor: pointer; padding: 0; outline: none;
-    filter: drop-shadow(0 3px 8px rgba(31,31,30,0.18));
+    filter: drop-shadow(0 4px 10px rgba(31,31,30,0.22));
     transition: transform 0.2s;
   }
-  .dog-btn:hover { transform: scale(1.1); }
-  .dog-btn.chat-open { transform: scale(0.9); }
+  .mascot-btn:hover { transform: scale(1.08); }
+  .mascot-btn.chat-open { transform: scale(0.92); }
 
-  /* Dog SVG animations */
-  .dog-svg { width: 64px; height: 64px; }
-  .dog-body { fill: #CC785C; }
-  .dog-belly { fill: #E8A888; }
-  .dog-nose { fill: #5C3322; }
-  .dog-eye { fill: #2A1810; }
-  .dog-tongue { fill: #E85C5C; }
-  .dog-ear { fill: #A85D43; }
-  .dog-tail { fill: #CC785C; transform-origin: 48px 28px; }
-  .dog-collar { fill: #4A90B8; }
+  .mascot-svg { width: 72px; height: 90px; overflow: visible; }
 
-  /* Idle: gentle breathing */
-  @keyframes dog-breathe { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-1px); } }
-  .dog-svg.idle .dog-group { animation: dog-breathe 2s ease-in-out infinite; }
+  /* Character colors - Claude palette */
+  .ch-skin { fill: #E8A888; }
+  .ch-shirt { fill: #CC785C; }
+  .ch-pants { fill: #A85D43; }
+  .ch-shoe { fill: #5C3322; }
+  .ch-hair { fill: #3C2415; }
+  .ch-eye { fill: #2A1810; }
+  .ch-mouth { fill: #D4594E; }
+  .ch-belt { fill: #4A90B8; }
 
-  /* Wag tail */
-  @keyframes dog-wag { 0%,100% { transform: rotate(-15deg); } 50% { transform: rotate(25deg); } }
-  .dog-svg.wag .dog-tail { animation: dog-wag 0.3s ease-in-out infinite; }
+  /* Dance: Floss */
+  @keyframes floss-body { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-3px); } 75% { transform: translateX(3px); } }
+  @keyframes floss-larm { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(40deg); } 75% { transform: rotate(-40deg); } }
+  @keyframes floss-rarm { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(-40deg); } 75% { transform: rotate(40deg); } }
+  @keyframes floss-hips { 0%,100% { transform: rotate(0deg); } 25% { transform: rotate(-6deg); } 75% { transform: rotate(6deg); } }
+  .mascot-svg.floss .fn-torso { animation: floss-body 0.5s ease-in-out infinite; }
+  .mascot-svg.floss .fn-larm { animation: floss-larm 0.5s ease-in-out infinite; transform-origin: 26px 34px; }
+  .mascot-svg.floss .fn-rarm { animation: floss-rarm 0.5s ease-in-out infinite; transform-origin: 46px 34px; }
+  .mascot-svg.floss .fn-hips { animation: floss-hips 0.5s ease-in-out infinite; transform-origin: 36px 50px; }
 
-  /* Jump */
-  @keyframes dog-jump { 0%,100% { transform: translateY(0); } 30% { transform: translateY(-12px); } 60% { transform: translateY(-8px); } }
-  .dog-svg.jump .dog-group { animation: dog-jump 0.6s ease-in-out; }
+  /* Dance: Default / Boogie */
+  @keyframes boogie-body { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-6px); } }
+  @keyframes boogie-lleg { 0%,100% { transform: rotate(0); } 50% { transform: rotate(-15deg); } }
+  @keyframes boogie-rleg { 0%,100% { transform: rotate(0); } 50% { transform: rotate(15deg); } }
+  @keyframes boogie-arms { 0%,100% { transform: rotate(-20deg); } 50% { transform: rotate(30deg); } }
+  .mascot-svg.boogie .fn-all { animation: boogie-body 0.4s ease-in-out infinite; }
+  .mascot-svg.boogie .fn-lleg { animation: boogie-lleg 0.4s ease-in-out infinite; transform-origin: 30px 56px; }
+  .mascot-svg.boogie .fn-rleg { animation: boogie-rleg 0.4s ease-in-out infinite; transform-origin: 42px 56px; }
+  .mascot-svg.boogie .fn-larm { animation: boogie-arms 0.4s ease-in-out infinite; transform-origin: 26px 34px; }
+  .mascot-svg.boogie .fn-rarm { animation: boogie-arms 0.4s ease-in-out infinite reverse; transform-origin: 46px 34px; }
 
-  /* Head tilt */
-  @keyframes dog-tilt { 0%,100% { transform: rotate(0); } 30%,70% { transform: rotate(-12deg); } }
-  .dog-svg.tilt .dog-head { animation: dog-tilt 1.2s ease-in-out; transform-origin: 32px 22px; }
+  /* Dance: Orange Justice */
+  @keyframes oj-body { 0%,100% { transform: rotate(-4deg); } 50% { transform: rotate(4deg); } }
+  @keyframes oj-larm { 0%,100% { transform: rotate(-60deg); } 50% { transform: rotate(20deg); } }
+  @keyframes oj-rarm { 0%,100% { transform: rotate(20deg); } 50% { transform: rotate(-60deg); } }
+  @keyframes oj-legs { 0%,100% { transform: translateX(-2px); } 50% { transform: translateX(2px); } }
+  .mascot-svg.orange-justice .fn-torso { animation: oj-body 0.35s ease-in-out infinite; transform-origin: 36px 40px; }
+  .mascot-svg.orange-justice .fn-larm { animation: oj-larm 0.35s ease-in-out infinite; transform-origin: 26px 34px; }
+  .mascot-svg.orange-justice .fn-rarm { animation: oj-rarm 0.35s ease-in-out infinite; transform-origin: 46px 34px; }
+  .mascot-svg.orange-justice .fn-legs { animation: oj-legs 0.35s ease-in-out infinite; }
 
-  /* Spin */
-  @keyframes dog-spin { 0% { transform: rotate(0) scale(1); } 50% { transform: rotate(180deg) scale(0.9); } 100% { transform: rotate(360deg) scale(1); } }
-  .dog-svg.spin .dog-group { animation: dog-spin 0.7s ease-in-out; }
+  /* Dance: Electro Shuffle */
+  @keyframes es-body { 0%,100% { transform: translateY(0) rotate(0); } 25% { transform: translateY(-4px) rotate(-5deg); } 75% { transform: translateY(-4px) rotate(5deg); } }
+  @keyframes es-lleg { 0%,50% { transform: rotate(0) translateX(0); } 25% { transform: rotate(-25deg) translateX(-4px); } 75% { transform: rotate(15deg) translateX(2px); } }
+  @keyframes es-rleg { 0%,50% { transform: rotate(0) translateX(0); } 25% { transform: rotate(15deg) translateX(2px); } 75% { transform: rotate(-25deg) translateX(-4px); } }
+  .mascot-svg.electro .fn-all { animation: es-body 0.5s ease-in-out infinite; }
+  .mascot-svg.electro .fn-lleg { animation: es-lleg 0.5s ease-in-out infinite; transform-origin: 30px 56px; }
+  .mascot-svg.electro .fn-rleg { animation: es-rleg 0.5s ease-in-out infinite; transform-origin: 42px 56px; }
+  .mascot-svg.electro .fn-larm { animation: floss-larm 0.5s ease-in-out infinite; transform-origin: 26px 34px; }
+  .mascot-svg.electro .fn-rarm { animation: floss-rarm 0.5s ease-in-out infinite; transform-origin: 46px 34px; }
 
-  /* Play bow */
-  @keyframes dog-bow { 0%,100% { transform: rotate(0) translateY(0); } 30%,70% { transform: rotate(8deg) translateY(-3px); } }
-  .dog-svg.bow .dog-group { animation: dog-bow 1s ease-in-out; }
-
-  /* Pant tongue */
-  @keyframes dog-pant { 0%,100% { transform: scaleY(1); } 50% { transform: scaleY(1.3); } }
-  .dog-svg.pant .dog-tongue { animation: dog-pant 0.4s ease-in-out infinite; transform-origin: 32px 38px; }
-
-  /* Notification badge */
-  .dog-badge {
-    position: absolute; top: -2px; right: -2px;
-    width: 16px; height: 16px; border-radius: 50%;
-    background: var(--accent); color: white;
-    font-size: 9px; font-weight: 700;
-    display: flex; align-items: center; justify-content: center;
-    border: 2px solid white;
-    animation: badge-pop 0.3s cubic-bezier(0.34,1.56,0.64,1);
-  }
-  @keyframes badge-pop { 0% { transform: scale(0); } 100% { transform: scale(1); } }
+  /* Dance: Take the L */
+  @keyframes ttl-body { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  @keyframes ttl-rarm-up { 0%,100% { transform: rotate(-90deg); } 50% { transform: rotate(-70deg); } }
+  @keyframes ttl-larm-L { 0%,100% { transform: rotate(90deg); } 50% { transform: rotate(70deg); } }
+  @keyframes ttl-lleg-k { 0%,100% { transform: rotate(0); } 50% { transform: rotate(20deg); } }
+  .mascot-svg.take-l .fn-all { animation: ttl-body 0.3s ease-in-out infinite; }
+  .mascot-svg.take-l .fn-rarm { animation: ttl-rarm-up 0.3s ease-in-out infinite; transform-origin: 46px 34px; }
+  .mascot-svg.take-l .fn-larm { animation: ttl-larm-L 0.3s ease-in-out infinite; transform-origin: 26px 34px; }
+  .mascot-svg.take-l .fn-lleg { animation: ttl-lleg-k 0.3s ease-in-out infinite; transform-origin: 30px 56px; }
 
   /* ─── Chat Panel ──────────────────────────────────────────── */
   .chat-panel {
@@ -748,41 +760,56 @@
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
 
-<!-- Dog mascot + Chat -->
-<button class="dog-btn" id="dogBtn" title="Ask me about the dashboard">
-  <svg class="dog-svg idle" id="dogSvg" viewBox="0 0 64 64" fill="none">
-    <g class="dog-group">
-      <!-- Tail -->
-      <ellipse class="dog-tail" cx="50" cy="26" rx="8" ry="3" transform="rotate(-20 50 26)"/>
-      <!-- Back legs -->
-      <rect class="dog-body" x="38" y="38" width="8" height="14" rx="4"/>
-      <rect class="dog-body" x="18" y="38" width="8" height="14" rx="4"/>
-      <!-- Body -->
-      <ellipse class="dog-body" cx="32" cy="34" rx="18" ry="12"/>
-      <!-- Belly -->
-      <ellipse class="dog-belly" cx="32" cy="38" rx="12" ry="7"/>
-      <!-- Collar -->
-      <rect class="dog-collar" x="22" y="24" width="20" height="4" rx="2"/>
-      <!-- Head -->
-      <g class="dog-head">
-        <!-- Head shape -->
-        <circle class="dog-body" cx="32" cy="18" r="14"/>
-        <!-- Ears -->
-        <ellipse class="dog-ear" cx="20" cy="8" rx="6" ry="8" transform="rotate(-15 20 8)"/>
-        <ellipse class="dog-ear" cx="44" cy="8" rx="6" ry="8" transform="rotate(15 44 8)"/>
-        <!-- Face -->
-        <ellipse class="dog-belly" cx="32" cy="22" rx="9" ry="7"/>
-        <!-- Eyes -->
-        <circle class="dog-eye" cx="27" cy="16" r="2.5"/>
-        <circle class="dog-eye" cx="37" cy="16" r="2.5"/>
-        <circle fill="white" cx="28" cy="15" r="1"/>
-        <circle fill="white" cx="38" cy="15" r="1"/>
-        <!-- Nose -->
-        <ellipse class="dog-nose" cx="32" cy="21" rx="3" ry="2"/>
-        <!-- Mouth -->
-        <path d="M29 24 Q32 27 35 24" stroke="#5C3322" stroke-width="1" fill="none"/>
-        <!-- Tongue -->
-        <ellipse class="dog-tongue" cx="32" cy="27" rx="2.5" ry="3"/>
+<!-- Fortnite character mascot + Chat -->
+<button class="mascot-btn" id="dogBtn" title="Ask me about the dashboard">
+  <svg class="mascot-svg floss" id="dogSvg" viewBox="0 0 72 90" fill="none">
+    <g class="fn-all">
+      <g class="fn-legs">
+        <!-- Left leg -->
+        <g class="fn-lleg">
+          <rect class="ch-pants" x="27" y="54" width="9" height="16" rx="4"/>
+          <rect class="ch-shoe" x="26" y="68" width="11" height="5" rx="2.5"/>
+        </g>
+        <!-- Right leg -->
+        <g class="fn-rleg">
+          <rect class="ch-pants" x="38" y="54" width="9" height="16" rx="4"/>
+          <rect class="ch-shoe" x="37" y="68" width="11" height="5" rx="2.5"/>
+        </g>
+      </g>
+      <g class="fn-hips">
+        <!-- Belt -->
+        <rect class="ch-belt" x="25" y="51" width="22" height="5" rx="2.5"/>
+      </g>
+      <g class="fn-torso">
+        <!-- Body/shirt -->
+        <rect class="ch-shirt" x="24" y="32" width="24" height="21" rx="5"/>
+        <!-- Collar detail -->
+        <path d="M30 32 L36 36 L42 32" stroke="#A85D43" stroke-width="1.5" fill="none"/>
+        <!-- Left arm -->
+        <g class="fn-larm">
+          <rect class="ch-skin" x="16" y="33" width="9" height="4" rx="2"/>
+          <rect class="ch-skin" x="14" y="33" width="5" height="4" rx="2"/>
+        </g>
+        <!-- Right arm -->
+        <g class="fn-rarm">
+          <rect class="ch-skin" x="47" y="33" width="9" height="4" rx="2"/>
+          <rect class="ch-skin" x="53" y="33" width="5" height="4" rx="2"/>
+        </g>
+        <!-- Neck -->
+        <rect class="ch-skin" x="33" y="27" width="6" height="7" rx="3"/>
+        <!-- Head -->
+        <g class="fn-head">
+          <circle class="ch-skin" cx="36" cy="18" r="13"/>
+          <!-- Hair -->
+          <path class="ch-hair" d="M23 18 Q23 6 36 5 Q49 6 49 18 Q49 12 36 11 Q23 12 23 18Z"/>
+          <!-- Eyes -->
+          <ellipse class="ch-eye" cx="31" cy="18" rx="2" ry="2.5"/>
+          <ellipse class="ch-eye" cx="41" cy="18" rx="2" ry="2.5"/>
+          <circle fill="white" cx="32" cy="17" r="0.8"/>
+          <circle fill="white" cx="42" cy="17" r="0.8"/>
+          <!-- Smile -->
+          <path d="M31 23 Q36 27 41 23" stroke="#D4594E" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </g>
       </g>
     </g>
   </svg>
@@ -795,7 +822,7 @@
     <button class="ch-close" id="chatClose">&times;</button>
   </div>
   <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">Hey! 🐶 Ask me anything about your pipeline — follow-ups, stats, which companies need attention, and more!</div>
+    <div class="chat-msg bot">Hi Team! 👋 Ask me anything about your pipeline — follow-ups, stats, which companies need attention, and more!</div>
   </div>
   <div class="chat-input-wrap">
     <input class="chat-input" id="chatInput" placeholder="Ask about your dashboard..." />
@@ -1907,28 +1934,30 @@ const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemi
 let chatOpen = false;
 let chatBusy = false;
 
-// Dog animation stunts
-const DOG_STUNTS = ['idle', 'wag', 'jump', 'tilt', 'spin', 'bow', 'pant'];
-let dogStuntTimer = null;
+// Fortnite dance moves
+const DANCES = ['floss', 'boogie', 'orange-justice', 'electro', 'take-l'];
+let danceTimer = null;
 
 function startDogStunts() {
-  cycleDogStunt();
+  cycleDance();
 }
 
-function cycleDogStunt() {
+function cycleDance() {
   const svg = document.getElementById('dogSvg');
   if (!svg) return;
-  const stunt = DOG_STUNTS[Math.floor(Math.random() * DOG_STUNTS.length)];
-  svg.className.baseVal = 'dog-svg ' + stunt;
-  // Switch to a new stunt every 2-4 seconds
-  const next = 2000 + Math.random() * 2000;
-  dogStuntTimer = setTimeout(cycleDogStunt, next);
+  const dance = DANCES[Math.floor(Math.random() * DANCES.length)];
+  svg.className.baseVal = 'mascot-svg ' + dance;
+  // Switch dance every 3-6 seconds
+  const next = 3000 + Math.random() * 3000;
+  danceTimer = setTimeout(cycleDance, next);
 }
 
 function toggleChat() {
   chatOpen = !chatOpen;
   document.getElementById('chatPanel').classList.toggle('open', chatOpen);
   document.getElementById('dogBtn').classList.toggle('chat-open', chatOpen);
+  // Excited dance when opening chat
+  if (chatOpen) document.getElementById('dogSvg').className.baseVal = 'mascot-svg floss';
   if (chatOpen) {
     setTimeout(() => document.getElementById('chatInput').focus(), 300);
   }
@@ -1990,9 +2019,9 @@ async function sendChatMessage() {
   // Add typing indicator
   const typingEl = addChatMsg('Thinking', 'typing');
 
-  // Trigger excited dog animation
+  // Trigger excited dance
   const svg = document.getElementById('dogSvg');
-  svg.className.baseVal = 'dog-svg wag';
+  svg.className.baseVal = 'mascot-svg boogie';
 
   try {
     const context = buildBoardContext();
@@ -2033,9 +2062,9 @@ ${context}`;
     typingEl.remove();
     addChatMsg(reply, 'bot');
 
-    // Happy dog
-    svg.className.baseVal = 'dog-svg jump';
-    setTimeout(() => { svg.className.baseVal = 'dog-svg wag'; }, 600);
+    // Victory dance
+    svg.className.baseVal = 'mascot-svg take-l';
+    setTimeout(() => { svg.className.baseVal = 'mascot-svg floss'; }, 800);
   } catch (e) {
     console.error('Chat error:', e);
     typingEl.remove();
@@ -2043,7 +2072,7 @@ ${context}`;
       ? 'API quota exhausted for now. Please wait a minute and try again!'
       : 'Oops! Something went wrong. Try again in a moment.';
     addChatMsg(msg, 'bot');
-    svg.className.baseVal = 'dog-svg tilt';
+    svg.className.baseVal = 'mascot-svg orange-justice';
   } finally {
     chatBusy = false;
     document.getElementById('chatSend').disabled = false;
