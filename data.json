@@ -921,10 +921,12 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779341860431,
+      "updated": 1779444748627,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
-      "demoDate": "2026-05-22"
+      "demoDate": "2026-05-25",
+      "inbound": false,
+      "acv": ""
     },
     "xwscrsz2": {
       "id": "xwscrsz2",
