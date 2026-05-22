@@ -15,7 +15,8 @@
           "name": "Sudhanshu Bhatia",
           "role": ""
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "5zwhb2lh": {
       "id": "5zwhb2lh",
@@ -36,7 +37,8 @@
           "phone": "+91 81475 55356",
           "linkedin": "http://www.linkedin.com/in/chethan-sanjay-21aa801aa"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "pvp5qqng": {
       "id": "pvp5qqng",
@@ -59,6 +61,12 @@
           "phone": "+91 99585 33420",
           "linkedin": "http://www.linkedin.com/in/aditya-naithani-7a474363"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-20",
+          "channel": "meeting"
+        }
       ]
     },
     "59kn0ucx": {
@@ -77,6 +85,12 @@
         {
           "name": "Ritika",
           "role": ""
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-08-10",
+          "channel": "meeting"
         }
       ]
     },
@@ -97,6 +111,12 @@
           "name": "fahad",
           "role": ""
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-12",
+          "channel": "meeting"
+        }
       ]
     },
     "e0187631": {
@@ -116,7 +136,8 @@
           "email": "mohit.mandal@univest.in",
           "linkedin": "https://www.linkedin.com/in/mohit-mandal-254074189/"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "vob9lx36": {
       "id": "vob9lx36",
@@ -135,7 +156,8 @@
           "email": "mirza@popclub.co",
           "linkedin": "https://www.linkedin.com/in/mirza-abdullah-beig-/"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "m40phmwr": {
       "id": "m40phmwr",
@@ -154,7 +176,8 @@
           "email": "rohit.kothawade@fplabs.tech",
           "linkedin": "https://www.linkedin.com/in/rohit-r-kothawade/"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "fr65wkiv": {
       "id": "fr65wkiv",
@@ -166,7 +189,13 @@
       "touchDate": "2026-07-30",
       "updated": 1778926133808,
       "demoDate": "2026-03-26",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-07-30",
+          "channel": "meeting"
+        }
+      ]
     },
     "a2it8i56": {
       "id": "a2it8i56",
@@ -186,7 +215,8 @@
           "linkedin": "https://www.linkedin.com/in/vedprakashchoudhary2601/",
           "phone": "+91 82396 78200"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "tqk99o89": {
       "id": "tqk99o89",
@@ -203,7 +233,8 @@
           "name": "Tanzeng",
           "role": ""
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "zugpsqkx": {
       "id": "zugpsqkx",
@@ -215,7 +246,8 @@
       "touchDate": "",
       "updated": 1778920768144,
       "demoDate": "2026-03-26",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "k0b1maan": {
       "id": "k0b1maan",
@@ -236,6 +268,12 @@
           "email": "mahesh.j@nirafinance.com",
           "linkedin": "https://www.linkedin.com/in/mahesh-reddy-50a85a25a/"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-10",
+          "channel": "meeting"
+        }
       ]
     },
     "k4ouwf33": {
@@ -248,7 +286,8 @@
       "touchDate": "",
       "updated": 1778920856628,
       "demoDate": "2026-03-30",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "bkzuzvd2": {
       "id": "bkzuzvd2",
@@ -279,7 +318,8 @@
           "linkedin": "http://www.linkedin.com/in/srirams92",
           "role": "decision-maker"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "gcz7ymaj": {
       "id": "gcz7ymaj",
@@ -299,6 +339,12 @@
           "email": "sampath.boda@frnd.app",
           "phone": "+91 74310 77968",
           "linkedin": "http://www.linkedin.com/in/sampath-boda-2a547b199"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2027-01-10",
+          "channel": "meeting"
         }
       ]
     },
@@ -321,7 +367,8 @@
           "phone": "91 99877 79389",
           "linkedin": "http://www.linkedin.com/in/reema-dembla-636518a7"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "k3455fqr": {
       "id": "k3455fqr",
@@ -341,7 +388,8 @@
           "phone": "91 62614 12464",
           "linkedin": "http://www.linkedin.com/in/shubhanshu-mishra-74336a1a4"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "bqtdyyj6": {
       "id": "bqtdyyj6",
@@ -353,7 +401,8 @@
       "touchDate": "",
       "updated": 1778921036211,
       "demoDate": "2026-04-20",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "8mliowlo": {
       "id": "8mliowlo",
@@ -365,7 +414,8 @@
       "touchDate": "",
       "updated": 1778921041211,
       "demoDate": "2026-04-08",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "q672hpid": {
       "id": "q672hpid",
@@ -386,6 +436,12 @@
           "sheetRow": 5,
           "email": "ranjith@iamalive.app",
           "phone": "8310306933"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-01",
+          "channel": "meeting"
         }
       ]
     },
@@ -418,6 +474,12 @@
           "linkedin": "http://www.linkedin.com/in/tamalchatterjee",
           "role": "decision-maker"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-06-15",
+          "channel": "meeting"
+        }
       ]
     },
     "fw4loszp": {
@@ -449,7 +511,8 @@
         }
       ],
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "touchpoints": []
     },
     "z131e5jt": {
       "id": "z131e5jt",
@@ -466,7 +529,8 @@
           "name": "CEO",
           "role": ""
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "xg1j2doj": {
       "id": "xg1j2doj",
@@ -478,7 +542,8 @@
       "touchDate": "",
       "updated": 1778921831427,
       "demoDate": "2026-03-31",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "ho5wxkdf": {
       "id": "ho5wxkdf",
@@ -491,7 +556,8 @@
       "updated": 1778921996878,
       "demoDate": "2026-04-07",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "pdcwgw12": {
       "id": "pdcwgw12",
@@ -507,6 +573,12 @@
         {
           "name": "Sagar Kapadia",
           "role": ""
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-30",
+          "channel": "meeting"
         }
       ]
     },
@@ -526,6 +598,12 @@
           "role": "",
           "email": "meghana.banumaiah@royalbrothers.com",
           "linkedin": "http://www.linkedin.com/in/meghana-marketing-manager"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
         }
       ]
     },
@@ -547,24 +625,37 @@
           "phone": "91 79898 01605",
           "linkedin": "http://www.linkedin.com/in/naveengunduofficial"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-08-24",
+          "channel": "meeting"
+        }
       ]
     },
     "b8i1k3ud": {
       "id": "b8i1k3ud",
       "name": "Chefkart",
-      "contact": "Founders",
+      "contact": "Ajay Nayak",
       "notes": "Had a good chat, low Volume. Happy with their current setup",
       "stage": "demo-no-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778922169045,
+      "updated": 1779483125766,
       "demoDate": "2026-04-13",
       "contacts": [
         {
-          "name": "Founders",
-          "role": ""
+          "name": "Ajay Nayak",
+          "sheetRow": 40,
+          "email": "ajay@cookandchef.in",
+          "phone": "",
+          "linkedin": "",
+          "role": "decision-maker"
         }
-      ]
+      ],
+      "touchpoints": [],
+      "inbound": false,
+      "acv": ""
     },
     "g3xkms91": {
       "id": "g3xkms91",
@@ -575,7 +666,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922176228,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "gufmt1s8": {
       "id": "gufmt1s8",
@@ -592,7 +684,8 @@
           "name": "CTO",
           "role": ""
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "av70z6q0": {
       "id": "av70z6q0",
@@ -608,7 +701,8 @@
           "name": "Founder",
           "role": ""
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "czl1xufg": {
       "id": "czl1xufg",
@@ -629,7 +723,8 @@
           "phone": "+91 88007 94011",
           "linkedin": "http://www.linkedin.com/in/prudhvi-raju-r"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "pt0qyu7q": {
       "id": "pt0qyu7q",
@@ -658,7 +753,8 @@
         }
       ],
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "touchpoints": []
     },
     "cm1lafe7": {
       "id": "cm1lafe7",
@@ -680,6 +776,12 @@
           "phone": "+91 96240 21371",
           "linkedin": "http://www.linkedin.com/in/shail-patel-327b4a1b2"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-07-20",
+          "channel": "meeting"
+        }
       ]
     },
     "ouc9x28k": {
@@ -692,7 +794,8 @@
       "touchDate": "",
       "updated": 1778923607779,
       "demoDate": "2026-04-23",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "chmufx22": {
       "id": "chmufx22",
@@ -704,7 +807,8 @@
       "touchDate": "",
       "updated": 1778926045482,
       "demoDate": "2026-04-22",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "vsh95rf2": {
       "id": "vsh95rf2",
@@ -716,7 +820,8 @@
       "touchDate": "",
       "updated": 1778923652212,
       "demoDate": "2026-05-11",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "wuenmqqy": {
       "id": "wuenmqqy",
@@ -729,7 +834,8 @@
       "updated": 1778923658029,
       "demoDate": "2026-04-21",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "k1mnj1sy": {
       "id": "k1mnj1sy",
@@ -742,7 +848,8 @@
       "updated": 1778923662512,
       "demoDate": "2026-04-17",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "j74u2llv": {
       "id": "j74u2llv",
@@ -755,7 +862,13 @@
       "updated": 1779090414060,
       "demoDate": "2026-04-16",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "33y7lvb2": {
       "id": "33y7lvb2",
@@ -768,7 +881,8 @@
       "updated": 1778923690479,
       "demoDate": "2026-04-08",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "vam3d726": {
       "id": "vam3d726",
@@ -782,7 +896,8 @@
       "demoDate": "2026-04-14",
       "inbound": true,
       "acv": "",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "c522yy4q": {
       "id": "c522yy4q",
@@ -794,7 +909,8 @@
       "touchDate": "",
       "updated": 1778926043096,
       "demoDate": "2026-04-14",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "aqbhlx5y": {
       "id": "aqbhlx5y",
@@ -806,7 +922,13 @@
       "touchDate": "2026-05-18",
       "updated": 1779090387760,
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "r86mapmi": {
       "id": "r86mapmi",
@@ -829,7 +951,8 @@
         }
       ],
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "touchpoints": []
     },
     "temuo6y6": {
       "id": "temuo6y6",
@@ -841,7 +964,8 @@
       "touchDate": "",
       "updated": 1778923766196,
       "demoDate": "2026-04-20",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "1sstb062": {
       "id": "1sstb062",
@@ -853,7 +977,8 @@
       "touchDate": "",
       "updated": 1778923855430,
       "demoDate": "2026-04-24",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "gz295rcq": {
       "id": "gz295rcq",
@@ -865,7 +990,13 @@
       "touchDate": "2027-01-16",
       "updated": 1778926025342,
       "demoDate": "2026-05-07",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2027-01-16",
+          "channel": "meeting"
+        }
+      ]
     },
     "a57swvwj": {
       "id": "a57swvwj",
@@ -877,7 +1008,8 @@
       "touchDate": "",
       "updated": 1778923820495,
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "91wwb4nn": {
       "id": "91wwb4nn",
@@ -889,7 +1021,8 @@
       "touchDate": "",
       "updated": 1778923825680,
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "9k1vcmcu": {
       "id": "9k1vcmcu",
@@ -902,7 +1035,8 @@
       "updated": 1779450108266,
       "demoDate": "2026-05-11",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "ac12ghnb": {
       "id": "ac12ghnb",
@@ -916,7 +1050,8 @@
       "demoDate": "2026-04-27",
       "inbound": true,
       "acv": "",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "szcuv1bn": {
       "id": "szcuv1bn",
@@ -927,7 +1062,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923848496,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "csp5s88v": {
       "id": "csp5s88v",
@@ -941,7 +1077,13 @@
       "demoDate": "2026-05-11",
       "inbound": false,
       "acv": "20k-50k",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-15",
+          "channel": "meeting"
+        }
+      ]
     },
     "s3jqncwo": {
       "id": "s3jqncwo",
@@ -953,7 +1095,8 @@
       "touchDate": "",
       "updated": 1778923912930,
       "demoDate": "2026-05-06",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "vvk5pc8n": {
       "id": "vvk5pc8n",
@@ -965,7 +1108,13 @@
       "touchDate": "2026-05-18",
       "updated": 1779090044466,
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "n5qjsfkv": {
       "id": "n5qjsfkv",
@@ -977,7 +1126,8 @@
       "touchDate": "",
       "updated": 1778924049381,
       "demoDate": "2026-05-06",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "o2nade60": {
       "id": "o2nade60",
@@ -989,7 +1139,8 @@
       "touchDate": "",
       "updated": 1778924058463,
       "demoDate": "2026-05-12",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "0ums1cr6": {
       "id": "0ums1cr6",
@@ -1002,7 +1153,8 @@
       "updated": 1779342920131,
       "inbound": false,
       "demoDate": "2026-05-28",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "9mbxstiy": {
       "id": "9mbxstiy",
@@ -1033,6 +1185,12 @@
           "phone": "+91 98712 77522",
           "linkedin": "http://www.linkedin.com/in/anshul-gupta-4a675654"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-15",
+          "channel": "meeting"
+        }
       ]
     },
     "pstfria7": {
@@ -1045,7 +1203,8 @@
       "touchDate": "",
       "updated": 1778925477623,
       "demoDate": "2026-05-08",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "3l9o1g32": {
       "id": "3l9o1g32",
@@ -1059,7 +1218,13 @@
       "demoDate": "2026-05-07",
       "inbound": false,
       "acv": "0-5k",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "iy385rul": {
       "id": "iy385rul",
@@ -1071,7 +1236,8 @@
       "touchDate": "",
       "updated": 1778925531689,
       "demoDate": "2026-05-11",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "5z3o34x4": {
       "id": "5z3o34x4",
@@ -1093,6 +1259,12 @@
           "phone": "+91 97886 83324",
           "linkedin": "http://www.linkedin.com/in/arokia-manoj-kumar"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-15",
+          "channel": "meeting"
+        }
       ]
     },
     "doteifrp": {
@@ -1106,7 +1278,8 @@
       "updated": 1779342915998,
       "inbound": false,
       "demoDate": "2026-05-28",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "ea8fs65h": {
       "id": "ea8fs65h",
@@ -1120,7 +1293,13 @@
       "demoDate": "2026-05-15",
       "inbound": false,
       "acv": "5k-10k",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "j12sp53n": {
       "id": "j12sp53n",
@@ -1132,7 +1311,8 @@
       "touchDate": "",
       "updated": 1778925565340,
       "demoDate": "2026-05-15",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "ajnjqch1": {
       "id": "ajnjqch1",
@@ -1143,7 +1323,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1779170859072,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "v5ehnmlp": {
       "id": "v5ehnmlp",
@@ -1155,7 +1336,13 @@
       "touchDate": "2026-05-18",
       "updated": 1779113038474,
       "demoDate": "2026-05-18",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
+        }
+      ]
     },
     "dz8tn98d": {
       "id": "dz8tn98d",
@@ -1175,7 +1362,8 @@
           "phone": "+91 98913 87624",
           "linkedin": "http://www.linkedin.com/in/sachinsinghmarketer"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "nqdo6xbj": {
       "id": "nqdo6xbj",
@@ -1188,7 +1376,8 @@
       "updated": 1779342931781,
       "inbound": false,
       "demoDate": "2026-05-26",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "wgfbn9li": {
       "id": "wgfbn9li",
@@ -1202,7 +1391,8 @@
       "demoDate": "2026-05-11",
       "inbound": true,
       "acv": "",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "47er1lbe": {
       "id": "47er1lbe",
@@ -1227,6 +1417,12 @@
           "phone": "+91 88888 79237",
           "linkedin": "http://www.linkedin.com/in/kevin-joseph-67a47521b"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-19",
+          "channel": "meeting"
+        }
       ]
     },
     "rgdd3lli": {
@@ -1241,7 +1437,8 @@
       "inbound": true,
       "demoDate": "2026-05-19",
       "acv": "",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "6hkztyr6": {
       "id": "6hkztyr6",
@@ -1266,7 +1463,8 @@
           "phone": "+91 90046 70003",
           "linkedin": "http://www.linkedin.com/in/aditya-nair-42a26b18b"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "c4zpuhr8": {
       "id": "c4zpuhr8",
@@ -1296,6 +1494,12 @@
           "phone": "+91 90041 29010",
           "linkedin": "http://www.linkedin.com/in/robin-singh-meena"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-20",
+          "channel": "meeting"
+        }
       ]
     },
     "tp4rhmtb": {
@@ -1319,7 +1523,8 @@
           "phone": "+91 99298 55583",
           "linkedin": "http://www.linkedin.com/in/mayank-kulkarni98"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "6dt3jz7j": {
       "id": "6dt3jz7j",
@@ -1344,7 +1549,8 @@
           "phone": "+91 94079 33286",
           "linkedin": "http://www.linkedin.com/in/apoorva-anand-a19409380"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "xwscrsz2": {
       "id": "xwscrsz2",
@@ -1367,7 +1573,8 @@
           "phone": "+91 96507 88035",
           "linkedin": "http://www.linkedin.com/in/sakshi-baliyan-386612145"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "lmyry6va": {
       "id": "lmyry6va",
@@ -1383,7 +1590,13 @@
       "inbound": true,
       "demoDate": "2026-05-20",
       "acv": "",
-      "contacts": []
+      "contacts": [],
+      "touchpoints": [
+        {
+          "date": "2026-05-21",
+          "channel": "meeting"
+        }
+      ]
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
@@ -1398,7 +1611,8 @@
       "calEmail": "bogdn@reactiveapps.ca",
       "demoDate": "2026-05-21",
       "inbound": true,
-      "contacts": []
+      "contacts": [],
+      "touchpoints": []
     },
     "w23yl5x0": {
       "id": "w23yl5x0",
@@ -1419,6 +1633,12 @@
           "name": "Anindya Pal",
           "role": "",
           "email": "anindyahp1994@gmail.com"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-22",
+          "channel": "meeting"
         }
       ]
     },
@@ -1441,6 +1661,12 @@
           "name": "Chetan",
           "role": "",
           "email": "marketing@hoora.in"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-22",
+          "channel": "meeting"
         }
       ]
     },
@@ -1465,7 +1691,8 @@
           "phone": "+91 85128 44001",
           "linkedin": "http://www.linkedin.com/in/muskan-garg-759280164"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "70itspid": {
       "id": "70itspid",
@@ -1490,6 +1717,12 @@
           "phone": "+91 99538 28905",
           "linkedin": "http://www.linkedin.com/in/shashwat-rai-22357a72"
         }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-22",
+          "channel": "meeting"
+        }
       ]
     },
     "xzvfucgg": {
@@ -1513,7 +1746,8 @@
           "phone": "+91 98783 38971",
           "linkedin": "http://www.linkedin.com/in/dheerajprarthi"
         }
-      ]
+      ],
+      "touchpoints": []
     },
     "8l4hlwf4": {
       "id": "8l4hlwf4",
@@ -1531,6 +1765,12 @@
         {
           "name": "Dharmil Shanishwara",
           "role": "champion"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-18",
+          "channel": "meeting"
         }
       ]
     }
