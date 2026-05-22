@@ -1108,13 +1108,22 @@
     "dz8tn98d": {
       "id": "dz8tn98d",
       "name": "Credflow",
-      "contact": "",
+      "contact": "Sachin Singh",
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925581723,
-      "contacts": []
+      "updated": 1716422400000,
+      "contacts": [
+        {
+          "name": "Sachin Singh",
+          "role": "",
+          "sheetRow": 43,
+          "email": "sachin.m@credflow.in",
+          "phone": "+91 98913 87624",
+          "linkedin": "http://www.linkedin.com/in/sachinsinghmarketer"
+        }
+      ]
     },
     "nqdo6xbj": {
       "id": "nqdo6xbj",
@@ -1342,18 +1351,24 @@
     "w23yl5x0": {
       "id": "w23yl5x0",
       "name": "anindyahp1994@gmail.com",
-      "contact": "",
+      "contact": "Anindya Pal",
       "notes": "Wavelength compt.",
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1779450198481,
+      "updated": 1716422400000,
       "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
       "calEmail": "anindyahp1994@gmail.com",
       "demoDate": "2026-05-22",
       "inbound": true,
       "acv": "",
-      "contacts": []
+      "contacts": [
+        {
+          "name": "Anindya Pal",
+          "role": "",
+          "email": "anindyahp1994@gmail.com"
+        }
+      ]
     },
     "hhq7mas8": {
       "id": "hhq7mas8",
@@ -1363,7 +1378,7 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1779450190084,
+      "updated": 1716422400000,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
       "calEmail": "marketing@hoora.in",
       "demoDate": "2026-05-22",
@@ -1372,7 +1387,8 @@
       "contacts": [
         {
           "name": "Chetan",
-          "role": ""
+          "role": "",
+          "email": "marketing@hoora.in"
         }
       ]
     },
