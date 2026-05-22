@@ -399,6 +399,59 @@
   .card-field .value { color: var(--text-2); font-weight: 500; }
   .demo-date { color: #6366F1; font-weight: 600; font-size: 11px; }
   .touch-date { color: #7C3AED; font-weight: 600; font-size: 11px; }
+  .touch-date .tp-icon { display: inline-flex; vertical-align: -2px; margin-right: 2px; }
+  .touch-date .tp-icon svg { width: 12px; height: 12px; }
+
+  /* Touchpoint log in modal */
+  .tp-log { display: flex; flex-direction: column; gap: 5px; }
+  .tp-entry {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 8px; border-radius: 8px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    font-size: 12.5px;
+  }
+  .tp-entry .tp-ch-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0;
+  }
+  .tp-entry .tp-ch-icon svg { width: 14px; height: 14px; }
+  .tp-ch-email  { background: #DBEAFE; color: #2563EB; }
+  .tp-ch-phone  { background: #D1FAE5; color: #059669; }
+  .tp-ch-whatsapp { background: #DCFCE7; color: #16A34A; }
+  .tp-ch-linkedin { background: #E0E7FF; color: #4F46E5; }
+  .tp-ch-meeting { background: #FEF3C7; color: #D97706; }
+  .tp-entry .tp-date { font-weight: 600; color: var(--text); flex: 1; }
+  .tp-entry .tp-label { font-size: 11px; color: var(--muted); }
+  .tp-remove {
+    background: none; border: none; cursor: pointer; color: var(--muted);
+    font-size: 13px; padding: 0 2px; line-height: 1; opacity: 0.5;
+  }
+  .tp-remove:hover { opacity: 1; color: var(--danger); }
+  .tp-add-row { display: flex; align-items: center; gap: 6px; margin-top: 4px; }
+  .tp-add-btn {
+    font-size: 12px; color: var(--muted); cursor: pointer; background: none;
+    border: 1px dashed var(--border); border-radius: 6px; padding: 5px 10px;
+  }
+  .tp-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(79,70,229,0.04); }
+  .tp-add-form { display: none; flex: 1; gap: 6px; align-items: center; }
+  .tp-add-form.visible { display: flex; }
+  .tp-add-form select {
+    font-size: 12px; padding: 5px 8px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface);
+  }
+  .tp-add-form input[type="date"] {
+    font-size: 12px; padding: 5px 8px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface); flex: 1;
+  }
+  .tp-add-form .tp-confirm {
+    font-size: 12px; padding: 5px 10px; border-radius: 6px; border: none;
+    background: var(--accent); color: white; cursor: pointer; font-weight: 600;
+  }
+  .tp-add-form .tp-confirm:hover { background: var(--accent-deep); }
+  .tp-add-form .tp-cancel {
+    font-size: 12px; color: var(--muted); cursor: pointer; background: none; border: none;
+  }
+  .tp-add-form .tp-cancel:hover { color: var(--text); }
 
   /* Inbound badge */
   .inbound-badge {
@@ -677,6 +730,7 @@
     border: 1px solid rgba(224,228,239,0.5);
     border-radius: 18px;
     width: 460px; max-width: 92vw;
+    max-height: 90vh; overflow-y: auto;
     padding: 24px;
     box-shadow: 0 24px 48px rgba(15,23,42,0.14);
   }
@@ -1067,8 +1121,23 @@
       <input id="f-demodate" type="date" />
     </div>
     <div class="field">
-      <label>Last touchpoint</label>
-      <input id="f-touchdate" type="date" />
+      <label id="tp-log-label">Touchpoints</label>
+      <div class="tp-log" id="tp-log"></div>
+      <div class="tp-add-row">
+        <button class="tp-add-btn" id="tpAddBtn" type="button">+ Add touchpoint</button>
+        <div class="tp-add-form" id="tpAddForm">
+          <select id="tpNewChannel">
+            <option value="email">Email</option>
+            <option value="phone">Phone</option>
+            <option value="whatsapp">WhatsApp</option>
+            <option value="linkedin">LinkedIn</option>
+            <option value="meeting">Meeting</option>
+          </select>
+          <input id="tpNewDate" type="date" />
+          <button class="tp-confirm" id="tpConfirmBtn" type="button">Add</button>
+          <button class="tp-cancel" id="tpCancelBtn" type="button">Cancel</button>
+        </div>
+      </div>
     </div>
     <div class="field">
       <label>Notes</label>
@@ -1741,9 +1810,15 @@ function renderCard(card) {
   }
 
   const touchRow = el.querySelector('.touch-row');
-  if (card.touchDate) {
+  const latestTp = getLatestTouchpoint(card.touchpoints || []);
+  if (latestTp || card.touchDate) {
     const dateLabel = isSnoozedStage(card.stage) ? 'Reach out' : 'Last touch';
-    touchRow.innerHTML = `<span class="touch-date">${dateLabel}: ${formatDateOrdinal(card.touchDate)}</span>`;
+    if (latestTp) {
+      const ch = TP_CHANNELS[latestTp.channel] || TP_CHANNELS.email;
+      touchRow.innerHTML = `<span class="touch-date"><span class="tp-icon">${ch.icon}</span>${dateLabel}: ${formatDateOrdinal(latestTp.date)}</span>`;
+    } else {
+      touchRow.innerHTML = `<span class="touch-date">${dateLabel}: ${formatDateOrdinal(card.touchDate)}</span>`;
+    }
     touchRow.style.marginTop = '4px';
   } else {
     touchRow.style.display = 'none';
@@ -1908,6 +1983,16 @@ function formatCurrency(n) {
 const ICON_EMAIL = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 4l8 6 8-6"/></svg>`;
 const ICON_LINKEDIN = `<svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.5 3A1.5 1.5 0 003 4.5 1.5 1.5 0 004.5 6 1.5 1.5 0 006 4.5 1.5 1.5 0 004.5 3zM3 8h3v9H3V8zm5.5 0H11v1.2h.04C11.4 8.5 12.5 8 13.8 8c2.7 0 3.2 1.8 3.2 4v5h-3v-4.4c0-1.1 0-2.4-1.5-2.4S11 11.4 11 12.5V17H8.5V8z"/></svg>`;
 const ICON_PHONE = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 2.5h3l1.4 3.5-1.7 1.2a11 11 0 005 5l1.2-1.7 3.5 1.4v3c0 .8-.7 1.5-1.5 1.4A14.5 14.5 0 013.6 4c-.1-.8.6-1.5 1.4-1.5z"/></svg>`;
+const ICON_WHATSAPP = `<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 00-6.9 12l-1 3.7 3.8-1A8 8 0 1010 2zm4.2 11.3c-.2.5-1 1-1.6 1.1-.4.1-1 .2-3-1-2.4-1.3-4-3.8-4.1-4 0-.1-.9-1.2-.9-2.3s.5-1.6.8-1.8c.2-.2.4-.3.6-.3h.5c.2 0 .3 0 .5.4s.6 1.5.7 1.6c0 .1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.5c-.1.2 0 .3.1.5.5.8 1.1 1.5 1.8 2 .6.5 1.2.7 1.4.8.2.1.3 0 .5-.2l.6-.8c.2-.2.3-.2.5-.1l1.5.7c.2.1.4.2.4.3.1.1.1.6-.1 1.1z"/></svg>`;
+const ICON_MEETING = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="13" cy="7" r="3"/><path d="M2 16c0-2.2 1.8-4 4-4h1.5M12.5 12H14c2.2 0 4 1.8 4 4"/><path d="M10 12v5"/></svg>`;
+
+const TP_CHANNELS = {
+  email:    { label: 'Email',    icon: ICON_EMAIL,    cls: 'tp-ch-email' },
+  phone:    { label: 'Phone',    icon: ICON_PHONE,    cls: 'tp-ch-phone' },
+  whatsapp: { label: 'WhatsApp', icon: ICON_WHATSAPP, cls: 'tp-ch-whatsapp' },
+  linkedin: { label: 'LinkedIn', icon: ICON_LINKEDIN, cls: 'tp-ch-linkedin' },
+  meeting:  { label: 'Meeting',  icon: ICON_MEETING,  cls: 'tp-ch-meeting' },
+};
 
 function showContactTooltip(btn, text) {
   // Remove any existing tooltips
@@ -2021,6 +2106,91 @@ function readModalContacts() {
 }
 
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// ─── Touchpoint log ──────────────────────────────────────────────────────────
+function renderTouchpointLog(touchpoints) {
+  const log = document.getElementById('tp-log');
+  log.innerHTML = '';
+  const sorted = (touchpoints || []).slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''));
+  sorted.forEach((tp, i) => {
+    const ch = TP_CHANNELS[tp.channel] || TP_CHANNELS.email;
+    const entry = document.createElement('div');
+    entry.className = 'tp-entry';
+    entry.dataset.tp = JSON.stringify(tp);
+
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'tp-ch-icon ' + ch.cls;
+    iconDiv.innerHTML = ch.icon;
+    entry.appendChild(iconDiv);
+
+    const dateSpan = document.createElement('span');
+    dateSpan.className = 'tp-date';
+    dateSpan.textContent = tp.date ? formatDateOrdinal(tp.date) : 'No date';
+    entry.appendChild(dateSpan);
+
+    const labelSpan = document.createElement('span');
+    labelSpan.className = 'tp-label';
+    labelSpan.textContent = ch.label;
+    entry.appendChild(labelSpan);
+
+    const rem = document.createElement('button');
+    rem.type = 'button';
+    rem.className = 'tp-remove';
+    rem.innerHTML = '✕';
+    rem.title = 'Remove touchpoint';
+    rem.addEventListener('click', () => entry.remove());
+    entry.appendChild(rem);
+
+    log.appendChild(entry);
+  });
+}
+
+function readTouchpoints() {
+  const entries = document.querySelectorAll('#tp-log .tp-entry');
+  const tps = [];
+  entries.forEach(entry => {
+    try {
+      const tp = JSON.parse(entry.dataset.tp || '{}');
+      if (tp.date) tps.push(tp);
+    } catch(e) {}
+  });
+  return tps;
+}
+
+function getLatestTouchpoint(touchpoints) {
+  if (!touchpoints || !touchpoints.length) return null;
+  return touchpoints.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
+}
+
+// Touchpoint add-button handlers
+document.getElementById('tpAddBtn').addEventListener('click', () => {
+  document.getElementById('tpAddBtn').style.display = 'none';
+  const form = document.getElementById('tpAddForm');
+  form.classList.add('visible');
+  const dateInput = document.getElementById('tpNewDate');
+  dateInput.value = new Date().toISOString().split('T')[0]; // Default to today
+  dateInput.focus();
+});
+
+document.getElementById('tpCancelBtn').addEventListener('click', () => {
+  document.getElementById('tpAddForm').classList.remove('visible');
+  document.getElementById('tpAddBtn').style.display = '';
+});
+
+document.getElementById('tpConfirmBtn').addEventListener('click', () => {
+  const channel = document.getElementById('tpNewChannel').value;
+  const date = document.getElementById('tpNewDate').value;
+  if (!date) { document.getElementById('tpNewDate').focus(); return; }
+
+  // Read existing, add new, re-render
+  const existing = readTouchpoints();
+  existing.push({ date, channel });
+  renderTouchpointLog(existing);
+
+  // Reset form
+  document.getElementById('tpAddForm').classList.remove('visible');
+  document.getElementById('tpAddBtn').style.display = '';
+});
 
 // Add-contact button handlers
 let acSelectedData = null;
@@ -2189,7 +2359,8 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-inbound').checked = !!c.inbound;
     document.getElementById('f-acv').value = c.acv || '';
     document.getElementById('f-demodate').value = c.demoDate || '';
-    document.getElementById('f-touchdate').value = c.touchDate || '';
+    renderTouchpointLog(c.touchpoints || []);
+    updateTpLabel(c.stage);
     stageSel.value = c.stage;
     document.getElementById('deleteBtn').style.display = '';
   } else {
@@ -2201,21 +2372,24 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-inbound').checked = false;
     document.getElementById('f-acv').value = '';
     document.getElementById('f-demodate').value = '';
-    document.getElementById('f-touchdate').value = '';
+    renderTouchpointLog([]);
+    updateTpLabel(defaultStage || state.columnOrder[0]);
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
   }
-  updateDateLabel(stageSel.value);
+  // Reset add-touchpoint form
+  document.getElementById('tpAddForm').classList.remove('visible');
+  document.getElementById('tpAddBtn').style.display = '';
   modal.classList.add('open');
   setTimeout(() => document.getElementById('f-name').focus(), 30);
 }
 
-function updateDateLabel(stage) {
-  const label = document.querySelector('#f-touchdate').parentElement.querySelector('label');
-  label.textContent = isSnoozedStage(stage) ? 'Reach out on' : 'Last touchpoint';
+function updateTpLabel(stage) {
+  const label = document.getElementById('tp-log-label');
+  if (label) label.textContent = isSnoozedStage(stage) ? 'Reach-out schedule' : 'Touchpoints';
 }
 
-document.getElementById('f-stage').addEventListener('change', e => updateDateLabel(e.target.value));
+document.getElementById('f-stage').addEventListener('change', e => updateTpLabel(e.target.value));
 
 function closeCardModal() {
   document.getElementById('cardModal').classList.remove('open');
@@ -2233,7 +2407,9 @@ function saveCardModal() {
   const inbound = document.getElementById('f-inbound').checked;
   const acv = document.getElementById('f-acv').value;
   const demoDate = document.getElementById('f-demodate').value;
-  const touchDate = document.getElementById('f-touchdate').value;
+  const touchpoints = readTouchpoints();
+  const latest = getLatestTouchpoint(touchpoints);
+  const touchDate = latest ? latest.date : '';
 
   if (editingId) {
     const card = state.cards[editingId];
@@ -2247,6 +2423,7 @@ function saveCardModal() {
     card.acv = acv;
     card.demoDate = demoDate;
     card.touchDate = touchDate;
+    card.touchpoints = touchpoints;
     card.updated = Date.now();
     if (oldStage !== stage) {
       state.order[oldStage] = state.order[oldStage].filter(id => id !== editingId);
@@ -2255,7 +2432,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, contacts, notes, stage, channel, inbound, acv, demoDate, touchDate, updated: Date.now() };
+    state.cards[id] = { id, name, contact, contacts, notes, stage, channel, inbound, acv, demoDate, touchDate, touchpoints, updated: Date.now() };
     state.order[stage].unshift(id);
   }
   scheduleSave();
@@ -2462,10 +2639,23 @@ function migrateContacts() {
   });
 }
 
+function migrateTouchpoints() {
+  // Convert old touchDate to touchpoints array if missing
+  Object.values(state.cards).forEach(card => {
+    if (card.touchpoints && card.touchpoints.length) return; // already has touchpoints
+    if (card.touchDate) {
+      card.touchpoints = [{ date: card.touchDate, channel: 'meeting' }];
+    } else {
+      card.touchpoints = [];
+    }
+  });
+}
+
 async function init() {
   try {
     await loadData();
     migrateContacts();
+    migrateTouchpoints();
     render();
     setSyncStatus('synced');
     startPolling();
@@ -2681,7 +2871,7 @@ function showFollowUpPanel() {
           <div class="fu-card">
             <div class="fu-card-info">
               <div class="fu-card-name">${c.name}</div>
-              <div class="fu-card-meta">${c.contact ? c.contact + ' · ' : ''}Last touch: ${c.touchDate}</div>
+              <div class="fu-card-meta">${c.contact ? c.contact + ' · ' : ''}Last touch: ${formatDateOrdinal(c.touchDate)}</div>
             </div>
             <div class="fu-card-days ${urgency}">${daysLabel}</div>
           </div>`;
