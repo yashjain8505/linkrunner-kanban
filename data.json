@@ -1084,6 +1084,13 @@
           "date": "2026-05-15",
           "channel": "meeting"
         }
+      ],
+      "granolaLinks": [
+        {
+          "id": "1cf842ef-b8cf-49e3-bc8d-be01ca025075",
+          "title": "Linkrunner <> Sudheer || Intro call",
+          "date": "2026-05-11"
+        }
       ]
     },
     "s3jqncwo": {
@@ -1141,7 +1148,14 @@
       "updated": 1778924058463,
       "demoDate": "2026-05-12",
       "contacts": [],
-      "touchpoints": []
+      "touchpoints": [],
+      "granolaLinks": [
+        {
+          "id": "9c93e165-0e89-4309-bf23-526ec54f5824",
+          "title": "Linkrunner <> Suhail || Intro call",
+          "date": "2026-05-12"
+        }
+      ]
     },
     "0ums1cr6": {
       "id": "0ums1cr6",
@@ -1192,6 +1206,13 @@
           "date": "2026-05-15",
           "channel": "meeting"
         }
+      ],
+      "granolaLinks": [
+        {
+          "id": "1eb62849-370e-4644-8ae0-2c0cf9c7925c",
+          "title": "Linkrunner <> Anshul Gupta || Intro call",
+          "date": "2026-05-12"
+        }
       ]
     },
     "pstfria7": {
@@ -1205,7 +1226,14 @@
       "updated": 1778925477623,
       "demoDate": "2026-05-08",
       "contacts": [],
-      "touchpoints": []
+      "touchpoints": [],
+      "granolaLinks": [
+        {
+          "id": "31e1282f-fb03-492f-9158-add9bfa169e3",
+          "title": "Linkrunner <> Saket || Intro call",
+          "date": "2026-05-08"
+        }
+      ]
     },
     "3l9o1g32": {
       "id": "3l9o1g32",
@@ -1238,7 +1266,14 @@
       "updated": 1778925531689,
       "demoDate": "2026-05-11",
       "contacts": [],
-      "touchpoints": []
+      "touchpoints": [],
+      "granolaLinks": [
+        {
+          "id": "ba66bf48-513e-4e30-a9a7-e9d82b680db1",
+          "title": "Linkrunner <> Shrusti || Intro call",
+          "date": "2026-05-11"
+        }
+      ]
     },
     "5z3o34x4": {
       "id": "5z3o34x4",
@@ -1265,6 +1300,13 @@
         {
           "date": "2026-05-15",
           "channel": "meeting"
+        }
+      ],
+      "granolaLinks": [
+        {
+          "id": "13cbd6cc-6c4a-4042-a8ef-e2c04c536e0e",
+          "title": "Linkrunner <> Manoj || Intro call",
+          "date": "2026-05-15"
         }
       ]
     },
@@ -1299,6 +1341,13 @@
         {
           "date": "2026-05-18",
           "channel": "meeting"
+        }
+      ],
+      "granolaLinks": [
+        {
+          "id": "f0f97b05-c3d0-4e98-b2b1-73321571b19a",
+          "title": "Linkrunner <> Sovrenn || Intro call",
+          "date": "2026-05-15"
         }
       ]
     },
@@ -1342,6 +1391,13 @@
         {
           "date": "2026-05-18",
           "channel": "meeting"
+        }
+      ],
+      "granolaLinks": [
+        {
+          "id": "c937e950-9836-4e6a-bdc2-d05d458d044c",
+          "title": "Linkrunner <> Shashank Shetty || Intro call",
+          "date": "2026-05-18"
         }
       ]
     },
@@ -1393,7 +1449,14 @@
       "inbound": true,
       "acv": "",
       "contacts": [],
-      "touchpoints": []
+      "touchpoints": [],
+      "granolaLinks": [
+        {
+          "id": "cf949220-0cbc-4b5c-a6b5-5fdcf27c27a6",
+          "title": "Lakshith Dinesh and satya pavan",
+          "date": "2026-05-11"
+        }
+      ]
     },
     "47er1lbe": {
       "id": "47er1lbe",
@@ -1423,6 +1486,13 @@
         {
           "date": "2026-05-19",
           "channel": "meeting"
+        }
+      ],
+      "granolaLinks": [
+        {
+          "id": "872cb9c7-ea23-4197-8bea-6c1a2e7c4bef",
+          "title": "Linkrunner <> Kevin || Intro call",
+          "date": "2026-05-20"
         }
       ]
     },
@@ -1641,6 +1711,13 @@
           "date": "2026-05-22",
           "channel": "meeting"
         }
+      ],
+      "granolaLinks": [
+        {
+          "id": "1b3e9944-e11f-4bdc-84fc-205ef35e6706",
+          "title": "Lakshith Dinesh and Anindya Pal",
+          "date": "2026-05-22"
+        }
       ]
     },
     "hhq7mas8": {
@@ -1724,6 +1801,13 @@
           "date": "2026-05-22",
           "channel": "meeting"
         }
+      ],
+      "granolaLinks": [
+        {
+          "id": "1915f72e-1562-4721-806c-e0f8b6539e61",
+          "title": "Linkrunner <> Shashwat || Intro call",
+          "date": "2026-05-22"
+        }
       ]
     },
     "xzvfucgg": {
@@ -1772,6 +1856,13 @@
         {
           "date": "2026-05-18",
           "channel": "meeting"
+        }
+      ],
+      "granolaLinks": [
+        {
+          "id": "e3a5cad9-6a78-493c-b697-18e01c4e23ac",
+          "title": "Lakshith Dinesh and Dharmil Shanishwara",
+          "date": "2026-05-18"
         }
       ]
     }

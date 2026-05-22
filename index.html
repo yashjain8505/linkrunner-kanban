@@ -453,6 +453,32 @@
   }
   .tp-add-form .tp-cancel:hover { color: var(--text); }
 
+  /* Granola meeting links */
+  .granola-links { display: flex; flex-direction: column; gap: 5px; }
+  .granola-link {
+    display: flex; align-items: center; gap: 8px;
+    padding: 6px 10px; border-radius: 8px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    text-decoration: none; color: var(--text);
+    font-size: 12.5px; transition: border-color 0.15s, background 0.15s;
+  }
+  .granola-link:hover { border-color: #F59E0B; background: #FFFBEB; }
+  .granola-icon {
+    display: flex; align-items: center; justify-content: center;
+    width: 26px; height: 26px; border-radius: 6px; flex-shrink: 0;
+    background: #FEF3C7; color: #D97706;
+  }
+  .granola-icon svg { width: 14px; height: 14px; }
+  .granola-title { font-weight: 600; flex: 1; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .granola-date { font-size: 11px; color: var(--muted); flex-shrink: 0; }
+  .granola-arrow { font-size: 10px; opacity: 0.4; flex-shrink: 0; }
+  .granola-badge {
+    display: inline-flex; align-items: center; gap: 3px;
+    font-size: 10px; font-weight: 600; color: #D97706;
+    margin-left: 4px; vertical-align: middle;
+  }
+  .granola-badge svg { width: 12px; height: 12px; }
+
   /* Inbound badge */
   .inbound-badge {
     display: inline-flex; align-items: center; gap: 3px;
@@ -1138,6 +1164,10 @@
           <button class="tp-cancel" id="tpCancelBtn" type="button">Cancel</button>
         </div>
       </div>
+    </div>
+    <div class="field" id="granola-field" style="display:none">
+      <label>Meeting notes</label>
+      <div class="granola-links" id="granola-links"></div>
     </div>
     <div class="field">
       <label>Notes</label>
@@ -1986,6 +2016,8 @@ const ICON_PHONE = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" s
 const ICON_WHATSAPP = `<svg viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 00-6.9 12l-1 3.7 3.8-1A8 8 0 1010 2zm4.2 11.3c-.2.5-1 1-1.6 1.1-.4.1-1 .2-3-1-2.4-1.3-4-3.8-4.1-4 0-.1-.9-1.2-.9-2.3s.5-1.6.8-1.8c.2-.2.4-.3.6-.3h.5c.2 0 .3 0 .5.4s.6 1.5.7 1.6c0 .1.1.3 0 .4-.1.2-.2.3-.3.4l-.4.5c-.1.2 0 .3.1.5.5.8 1.1 1.5 1.8 2 .6.5 1.2.7 1.4.8.2.1.3 0 .5-.2l.6-.8c.2-.2.3-.2.5-.1l1.5.7c.2.1.4.2.4.3.1.1.1.6-.1 1.1z"/></svg>`;
 const ICON_MEETING = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="7" cy="7" r="3"/><circle cx="13" cy="7" r="3"/><path d="M2 16c0-2.2 1.8-4 4-4h1.5M12.5 12H14c2.2 0 4 1.8 4 4"/><path d="M10 12v5"/></svg>`;
 
+const ICON_GRANOLA = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="2" width="14" height="16" rx="2"/><path d="M7 6h6M7 10h6M7 14h3"/></svg>`;
+
 const TP_CHANNELS = {
   email:    { label: 'Email',    icon: ICON_EMAIL,    cls: 'tp-ch-email' },
   phone:    { label: 'Phone',    icon: ICON_PHONE,    cls: 'tp-ch-phone' },
@@ -2160,6 +2192,48 @@ function readTouchpoints() {
 function getLatestTouchpoint(touchpoints) {
   if (!touchpoints || !touchpoints.length) return null;
   return touchpoints.slice().sort((a, b) => (b.date || '').localeCompare(a.date || ''))[0];
+}
+
+// ─── Granola links ──────────────────────────────────────────────────────────
+function renderGranolaLinks(granolaLinks) {
+  const wrap = document.getElementById('granola-links');
+  const field = document.getElementById('granola-field');
+  wrap.innerHTML = '';
+  if (!granolaLinks || !granolaLinks.length) {
+    field.style.display = 'none';
+    return;
+  }
+  field.style.display = '';
+  granolaLinks.forEach(g => {
+    const a = document.createElement('a');
+    a.className = 'granola-link';
+    a.href = `https://app.granola.so/notes/${g.id}`;
+    a.target = '_blank';
+    a.rel = 'noopener';
+    a.addEventListener('click', e => e.stopPropagation());
+
+    const iconDiv = document.createElement('div');
+    iconDiv.className = 'granola-icon';
+    iconDiv.innerHTML = ICON_GRANOLA;
+    a.appendChild(iconDiv);
+
+    const title = document.createElement('span');
+    title.className = 'granola-title';
+    title.textContent = g.title || 'Meeting notes';
+    a.appendChild(title);
+
+    const dateSpan = document.createElement('span');
+    dateSpan.className = 'granola-date';
+    dateSpan.textContent = g.date ? formatDateOrdinal(g.date) : '';
+    a.appendChild(dateSpan);
+
+    const arrow = document.createElement('span');
+    arrow.className = 'granola-arrow';
+    arrow.textContent = '↗';
+    a.appendChild(arrow);
+
+    wrap.appendChild(a);
+  });
 }
 
 // Touchpoint add-button handlers
@@ -2360,6 +2434,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-acv').value = c.acv || '';
     document.getElementById('f-demodate').value = c.demoDate || '';
     renderTouchpointLog(c.touchpoints || []);
+    renderGranolaLinks(c.granolaLinks || []);
     updateTpLabel(c.stage);
     stageSel.value = c.stage;
     document.getElementById('deleteBtn').style.display = '';
@@ -2373,6 +2448,7 @@ function openCardModal(cardId, defaultStage) {
     document.getElementById('f-acv').value = '';
     document.getElementById('f-demodate').value = '';
     renderTouchpointLog([]);
+    renderGranolaLinks([]);
     updateTpLabel(defaultStage || state.columnOrder[0]);
     stageSel.value = defaultStage || state.columnOrder[0];
     document.getElementById('deleteBtn').style.display = 'none';
