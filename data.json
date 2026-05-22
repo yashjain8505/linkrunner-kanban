@@ -984,10 +984,10 @@
       "name": "Hoora",
       "contact": "Chetan",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779364811659,
+      "updated": 1779434490916,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
       "calEmail": "marketing@hoora.in",
       "demoDate": "2026-05-22"
@@ -1074,6 +1074,7 @@
     ],
     "email-first-sent": [
       "5z3o34x4",
+      "hhq7mas8",
       "70itspid",
       "47er1lbe",
       "pstfria7",
@@ -1145,7 +1146,6 @@
       "xwscrsz2",
       "lmyry6va",
       "w23yl5x0",
-      "hhq7mas8",
       "hmuplodt",
       "xzvfucgg"
     ]
