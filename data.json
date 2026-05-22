@@ -842,8 +842,10 @@
       "stage": "no-show",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925591640,
-      "demoDate": "2026-05-11"
+      "updated": 1779450098430,
+      "demoDate": "2026-05-11",
+      "inbound": true,
+      "acv": ""
     },
     "47er1lbe": {
       "id": "47er1lbe",
