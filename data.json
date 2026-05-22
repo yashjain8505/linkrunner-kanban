@@ -946,10 +946,10 @@
       "name": "Prosperitaso",
       "contact": "",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779288012454,
+      "updated": 1779449970463,
       "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
       "calEmail": "andru@prosperitaso.com",
       "inbound": true,
@@ -1081,6 +1081,7 @@
     "email-first-sent": [
       "5z3o34x4",
       "hhq7mas8",
+      "lmyry6va",
       "70itspid",
       "47er1lbe",
       "pstfria7",
@@ -1150,7 +1151,6 @@
       "tp4rhmtb",
       "6dt3jz7j",
       "xwscrsz2",
-      "lmyry6va",
       "w23yl5x0",
       "hmuplodt",
       "xzvfucgg"
