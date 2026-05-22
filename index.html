@@ -1287,7 +1287,6 @@ function triggerPipeline() {
       </div>
       <div class="pg-current">${currentARR > 0 ? formatARR(currentARR) + ' ARR' : 'No ARR set — type "revenue" in search'}</div>
     </div>
-    <div class="pipeline-timer-bar"><div class="pipeline-timer-fill"></div></div>
   `;
   document.body.appendChild(overlay);
   pipelineOverlayEl = overlay;
@@ -1342,9 +1341,7 @@ function triggerPipeline() {
         pipelineAnimating = false;
         renderLeadCounts();
 
-        // Auto-dismiss after 14s (longer to read goal bar)
-        clearTimeout(pipelineTimer);
-        pipelineTimer = setTimeout(dismissPipeline, 14000);
+        // No auto-dismiss — user clicks overlay to close
       });
     }, landTime);
   });
@@ -2165,7 +2162,7 @@ document.addEventListener('click', e => {
 
 // ─── Revenue Modal ──────────────────────────────────────────────────────
 const ARR_GOAL = 300000;
-const ARR_DEADLINE = new Date(2025, 7, 31); // Aug 31, 2025
+const ARR_DEADLINE = new Date(2026, 7, 31); // Aug 31, 2026
 
 function openRevenueModal() {
   const modal = document.getElementById('revenueModal');
