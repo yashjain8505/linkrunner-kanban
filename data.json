@@ -986,11 +986,13 @@
       "notes": "",
       "stage": "email-first-sent",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1779434490916,
+      "touchDate": "2026-05-22",
+      "updated": 1779434500479,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
       "calEmail": "marketing@hoora.in",
-      "demoDate": "2026-05-22"
+      "demoDate": "2026-05-22",
+      "inbound": false,
+      "acv": ""
     },
     "hmuplodt": {
       "id": "hmuplodt",
