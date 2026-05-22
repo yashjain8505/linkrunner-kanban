@@ -494,14 +494,16 @@
     },
     "vam3d726": {
       "id": "vam3d726",
-      "name": "Marzi Life",
+      "name": "Marzi (Primus Life)",
       "contact": "",
       "notes": "",
       "stage": "paying-customer",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923703246,
-      "demoDate": "2026-04-14"
+      "updated": 1779450421120,
+      "demoDate": "2026-04-14",
+      "inbound": false,
+      "acv": ""
     },
     "c522yy4q": {
       "id": "c522yy4q",
