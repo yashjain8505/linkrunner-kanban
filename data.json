@@ -1013,10 +1013,12 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779434481933,
+      "updated": 1779434487130,
       "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
       "calEmail": "shashwat.r@kiddopia.com",
-      "demoDate": "2026-05-22"
+      "demoDate": "2026-05-22",
+      "inbound": false,
+      "acv": "20k-50k"
     },
     "xzvfucgg": {
       "id": "xzvfucgg",
