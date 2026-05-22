@@ -722,34 +722,52 @@
   }
   .cal-day.expanded .cal-more { display: none; }
   .cal-card {
-    background: rgba(255,255,255,0.7); border: 1px solid rgba(212,223,233,0.5);
-    border-radius: 5px; padding: 2px 6px; margin-bottom: 2px;
-    font-size: 10.5px; cursor: pointer; transition: all 0.12s;
+    border-radius: 4px; padding: 1px 5px; margin-bottom: 1px;
+    font-size: 10px; cursor: pointer; transition: all 0.12s;
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
-    line-height: 1.4;
+    line-height: 1.5; border-left: 3px solid var(--accent);
+    background: transparent; border-top: none; border-right: none; border-bottom: none;
   }
-  .cal-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.9); }
+  .cal-card:hover { background: rgba(79,70,229,0.06); }
   .cal-card .cal-contact { display: none; }
   .cal-card .cal-stage { display: none; }
+  .cal-day.expanded .cal-card {
+    padding: 4px 7px; margin-bottom: 3px;
+    background: rgba(255,255,255,0.7); border: 1px solid rgba(212,223,233,0.5);
+    border-radius: 6px;
+  }
   .cal-day.expanded .cal-card .cal-contact { display: block; }
   .cal-day.expanded .cal-card .cal-stage { display: inline-block; }
-  .cal-day.expanded .cal-card { padding: 4px 7px; margin-bottom: 3px; }
   .cal-card.cal-hidden { display: none; }
   .cal-day.expanded .cal-card.cal-hidden { display: block; }
-  /* Card tint by stage */
-  .cal-card.st-no-show           { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
-  .cal-card.st-demo-next         { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
-  .cal-card.st-demo-no-next      { background: rgba(254,243,199,0.5); border-color: rgba(253,224,71,0.35); }
-  .cal-card.st-email-first-sent  { background: rgba(237,233,254,0.5); border-color: rgba(196,181,253,0.4); }
-  .cal-card.st-email-second-sent { background: rgba(237,233,254,0.5); border-color: rgba(196,181,253,0.4); }
-  .cal-card.st-follow-up-2-done  { background: rgba(237,233,254,0.45); border-color: rgba(167,139,250,0.35); }
-  .cal-card.st-paying-customer   { background: rgba(220,252,231,0.5); border-color: rgba(134,239,172,0.4); }
-  .cal-card.st-integration-started{ background: rgba(204,251,241,0.5); border-color: rgba(94,234,212,0.4); }
-  .cal-card.st-attention-needed  { background: rgba(255,237,213,0.5); border-color: rgba(253,186,116,0.4); }
-  .cal-card.st-demo-scheduled    { background: rgba(224,231,255,0.5); border-color: rgba(165,180,252,0.4); }
-  .cal-card.st-snoozed-date      { background: rgba(245,245,244,0.5); border-color: rgba(214,211,209,0.4); }
-  .cal-card.st-snoozed-cycle     { background: rgba(245,245,244,0.5); border-color: rgba(214,211,209,0.4); }
-  .cal-card .cal-name { font-weight: 600; font-size: 10.5px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  /* Collapsed card left-border colors by stage */
+  .cal-card.st-no-show            { border-left-color: #EF4444; }
+  .cal-card.st-demo-next          { border-left-color: #EF4444; }
+  .cal-card.st-demo-no-next       { border-left-color: #F59E0B; }
+  .cal-card.st-email-first-sent   { border-left-color: #8B5CF6; }
+  .cal-card.st-email-second-sent  { border-left-color: #8B5CF6; }
+  .cal-card.st-follow-up-2-done   { border-left-color: #7C3AED; }
+  .cal-card.st-paying-customer    { border-left-color: #16A34A; }
+  .cal-card.st-integration-started{ border-left-color: #14B8A6; }
+  .cal-card.st-attention-needed   { border-left-color: #F97316; }
+  .cal-card.st-demo-scheduled     { border-left-color: #6366F1; }
+  .cal-card.st-snoozed-date       { border-left-color: #A8A29E; }
+  .cal-card.st-snoozed-cycle      { border-left-color: #A8A29E; }
+  .cal-card.st-price-negotiations { border-left-color: #EA580C; }
+  /* Expanded card tint by stage */
+  .cal-day.expanded .cal-card.st-no-show           { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
+  .cal-day.expanded .cal-card.st-demo-next         { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
+  .cal-day.expanded .cal-card.st-demo-no-next      { background: rgba(254,243,199,0.5); border-color: rgba(253,224,71,0.35); }
+  .cal-day.expanded .cal-card.st-email-first-sent  { background: rgba(237,233,254,0.5); border-color: rgba(196,181,253,0.4); }
+  .cal-day.expanded .cal-card.st-email-second-sent { background: rgba(237,233,254,0.5); border-color: rgba(196,181,253,0.4); }
+  .cal-day.expanded .cal-card.st-follow-up-2-done  { background: rgba(237,233,254,0.45); border-color: rgba(167,139,250,0.35); }
+  .cal-day.expanded .cal-card.st-paying-customer   { background: rgba(220,252,231,0.5); border-color: rgba(134,239,172,0.4); }
+  .cal-day.expanded .cal-card.st-integration-started{ background: rgba(204,251,241,0.5); border-color: rgba(94,234,212,0.4); }
+  .cal-day.expanded .cal-card.st-attention-needed  { background: rgba(255,237,213,0.5); border-color: rgba(253,186,116,0.4); }
+  .cal-day.expanded .cal-card.st-demo-scheduled    { background: rgba(224,231,255,0.5); border-color: rgba(165,180,252,0.4); }
+  .cal-day.expanded .cal-card.st-snoozed-date      { background: rgba(245,245,244,0.5); border-color: rgba(214,211,209,0.4); }
+  .cal-day.expanded .cal-card.st-snoozed-cycle     { background: rgba(245,245,244,0.5); border-color: rgba(214,211,209,0.4); }
+  .cal-card .cal-name { font-weight: 600; font-size: 10px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
   .cal-card .cal-contact { color: var(--muted); font-size: 10px; }
   .cal-card .cal-stage {
     display: inline-block; font-size: 9px; padding: 1px 5px;
@@ -1986,7 +2004,7 @@ function renderCalendar() {
     const demos = demosByDate[dateStr] || [];
     html += `<div class="cal-day${isToday ? ' today' : ''}" data-date="${dateStr}">`;
     html += `<div class="cal-day-num">${d}</div>`;
-    const MAX_VISIBLE = 3;
+    const MAX_VISIBLE = 4;
     demos.forEach((card, idx) => {
       const stCls = 'st-' + card.stage;
       const hiddenCls = idx >= MAX_VISIBLE ? ' cal-hidden' : '';
