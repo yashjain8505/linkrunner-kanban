@@ -579,183 +579,73 @@
   .pw-box .pw-btn:hover { background: var(--accent-deep); }
   .pw-box .pw-err { color: var(--danger); font-size: 12px; margin-top: 8px; min-height: 18px; }
 
-  /* ─── Head-Toss Character Mascot ───────────────────────────── */
-  .mascot-btn {
-    position: fixed; bottom: 24px; right: 24px; z-index: 300;
-    width: 80px; height: 100px; border: none; background: none;
-    cursor: pointer; padding: 0; outline: none;
-    filter: drop-shadow(0 4px 12px rgba(31,31,30,0.22));
-    transition: transform 0.2s;
+  /* ─── Follow-Up Panel ──────────────────────────────────────── */
+  .followup-btn {
+    cursor: pointer;
+    background: linear-gradient(135deg, #3B82F6 0%, #2563EB 100%);
+    border: none; color: white;
+    padding: 6px 14px; border-radius: 8px; font-size: 12px;
+    box-shadow: 0 2px 8px rgba(37,99,235,0.25);
+    transition: transform 0.15s, box-shadow 0.15s;
+    display: flex; align-items: center; gap: 6px;
+    font-weight: 600; font-family: inherit;
   }
-  .mascot-btn:hover { transform: scale(1.08); }
-  .mascot-btn.chat-open { transform: scale(0.92); }
-  .mascot-svg { width: 80px; height: 100px; overflow: visible; }
-
-  /* Character parts */
-  .m-skin { fill: #F0C090; }
-  .m-shirt { fill: #5B8DEF; }
-  .m-pants { fill: #2D3A5E; }
-  .m-shoe { fill: #333; }
-  .m-hair { fill: #3C2415; }
-  .m-eye { fill: #1A1A1A; }
-
-  /* ── Head toss animation (2.5s cycle) ── */
-  /* Head: in hands(0%) → toss up(20%) → land on neck(35%) → sits happy(60%) → wobble(70%) → fall off(85%) → caught(100%) */
-  @keyframes head-toss {
-    0%   { transform: translate(0px, 42px) rotate(5deg); }
-    10%  { transform: translate(0px, 42px) rotate(-5deg); }
-    20%  { transform: translate(0px, -10px) rotate(15deg); }
-    30%  { transform: translate(0px, -20px) rotate(-10deg); }
-    38%  { transform: translate(0px, 0px) rotate(0deg); }
-    55%  { transform: translate(0px, 0px) rotate(0deg); }
-    62%  { transform: translate(0px, 0px) rotate(8deg); }
-    68%  { transform: translate(0px, 0px) rotate(-6deg); }
-    75%  { transform: translate(2px, 5px) rotate(15deg); }
-    82%  { transform: translate(3px, 20px) rotate(30deg); }
-    88%  { transform: translate(2px, 38px) rotate(20deg); }
-    94%  { transform: translate(0px, 42px) rotate(10deg); }
-    100% { transform: translate(0px, 42px) rotate(5deg); }
+  .followup-btn:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(37,99,235,0.35); }
+  .followup-btn .fu-count {
+    background: rgba(255,255,255,0.25); border-radius: 10px;
+    padding: 1px 7px; font-size: 11px; font-weight: 700;
   }
 
-  /* Arms: holding(0%) → toss up(20%) → sides celebrating(38%) → reach to catch(82%) → holding(100%) */
-  @keyframes larm-toss {
-    0%   { transform: rotate(40deg); }
-    15%  { transform: rotate(-30deg); }
-    25%  { transform: rotate(10deg); }
-    38%  { transform: rotate(-15deg); }
-    55%  { transform: rotate(-20deg); }
-    62%  { transform: rotate(-10deg); }
-    75%  { transform: rotate(10deg); }
-    88%  { transform: rotate(35deg); }
-    100% { transform: rotate(40deg); }
+  .fu-overlay {
+    position: fixed; inset: 0; z-index: 500;
+    background: rgba(31,31,30,0.5); backdrop-filter: blur(4px);
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; transition: opacity 0.25s;
   }
-  @keyframes rarm-toss {
-    0%   { transform: rotate(-40deg); }
-    15%  { transform: rotate(30deg); }
-    25%  { transform: rotate(-10deg); }
-    38%  { transform: rotate(15deg); }
-    55%  { transform: rotate(20deg); }
-    62%  { transform: rotate(10deg); }
-    75%  { transform: rotate(-10deg); }
-    88%  { transform: rotate(-35deg); }
-    100% { transform: rotate(-40deg); }
+  .fu-overlay.visible { opacity: 1; }
+  .fu-panel {
+    background: var(--surface); border-radius: 16px;
+    box-shadow: 0 20px 60px rgba(31,31,30,0.25);
+    width: 520px; max-height: 80vh; display: flex; flex-direction: column;
+    transform: translateY(20px) scale(0.96);
+    transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1);
   }
-
-  /* Body bounces with joy when head is on */
-  @keyframes body-bounce {
-    0%   { transform: translateY(0); }
-    38%  { transform: translateY(0); }
-    42%  { transform: translateY(-3px); }
-    46%  { transform: translateY(0); }
-    50%  { transform: translateY(-4px); }
-    54%  { transform: translateY(0); }
-    58%  { transform: translateY(-2px); }
-    62%  { transform: translateY(0); }
-    100% { transform: translateY(0); }
+  .fu-overlay.visible .fu-panel { transform: translateY(0) scale(1); }
+  .fu-panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 16px 20px; border-bottom: 1px solid var(--border);
   }
-
-  /* Legs do a happy dance when head lands */
-  @keyframes lleg-dance {
-    0%   { transform: rotate(0); }
-    38%  { transform: rotate(0); }
-    44%  { transform: rotate(-12deg); }
-    50%  { transform: rotate(0); }
-    56%  { transform: rotate(-10deg); }
-    62%  { transform: rotate(0); }
-    100% { transform: rotate(0); }
+  .fu-panel-header h3 { margin: 0; font-size: 15px; font-weight: 700; }
+  .fu-panel-close {
+    background: none; border: none; cursor: pointer; font-size: 18px;
+    color: var(--muted); padding: 4px 8px; border-radius: 6px;
   }
-  @keyframes rleg-dance {
-    0%   { transform: rotate(0); }
-    38%  { transform: rotate(0); }
-    44%  { transform: rotate(12deg); }
-    50%  { transform: rotate(0); }
-    56%  { transform: rotate(10deg); }
-    62%  { transform: rotate(0); }
-    100% { transform: rotate(0); }
+  .fu-panel-close:hover { background: var(--bg); }
+  .fu-panel-body { padding: 16px 20px; overflow-y: auto; }
+  .fu-empty { text-align: center; color: var(--muted); padding: 24px 0; font-size: 13px; }
+  .fu-card {
+    display: flex; align-items: center; gap: 12px;
+    padding: 10px 12px; border-radius: 10px;
+    border: 1px solid var(--border); margin-bottom: 8px;
+    background: var(--surface-2);
+    transition: box-shadow 0.15s;
   }
-
-  .mascot-svg .m-head   { animation: head-toss 2.8s ease-in-out infinite; transform-origin: 40px 14px; }
-  .mascot-svg .m-body   { animation: body-bounce 2.8s ease-in-out infinite; }
-  .mascot-svg .m-larm   { animation: larm-toss 2.8s ease-in-out infinite; transform-origin: 28px 38px; }
-  .mascot-svg .m-rarm   { animation: rarm-toss 2.8s ease-in-out infinite; transform-origin: 52px 38px; }
-  .mascot-svg .m-lleg   { animation: lleg-dance 2.8s ease-in-out infinite; transform-origin: 34px 62px; }
-  .mascot-svg .m-rleg   { animation: rleg-dance 2.8s ease-in-out infinite; transform-origin: 46px 62px; }
-
-  /* ─── Chat Panel ──────────────────────────────────────────── */
-  .chat-panel {
-    position: fixed; bottom: 96px; right: 24px; z-index: 300;
-    width: 360px; max-height: 480px;
-    background: var(--surface); border: 1px solid var(--border);
-    border-radius: 14px; box-shadow: 0 12px 40px rgba(31,31,30,0.18);
-    display: flex; flex-direction: column;
-    opacity: 0; transform: translateY(20px) scale(0.95);
-    pointer-events: none;
-    transition: opacity 0.25s, transform 0.25s cubic-bezier(0.34,1.56,0.64,1);
+  .fu-card:hover { box-shadow: 0 2px 10px rgba(31,31,30,0.08); }
+  .fu-card-info { flex: 1; }
+  .fu-card-name { font-weight: 600; font-size: 13px; color: var(--text); }
+  .fu-card-meta { font-size: 11px; color: var(--muted); margin-top: 2px; }
+  .fu-card-days {
+    font-size: 11px; font-weight: 700; padding: 3px 8px;
+    border-radius: 6px; white-space: nowrap;
   }
-  .chat-panel.open { opacity: 1; transform: translateY(0) scale(1); pointer-events: auto; }
-
-  .chat-header {
-    display: flex; align-items: center; gap: 8px;
-    padding: 12px 16px; border-bottom: 1px solid var(--border);
-    background: var(--surface-2); border-radius: 14px 14px 0 0;
+  .fu-card-days.overdue { background: #FEE2E2; color: #B91C1C; }
+  .fu-card-days.due { background: #FEF3C7; color: #92400E; }
+  .fu-stage-group { margin-bottom: 14px; }
+  .fu-stage-label {
+    font-size: 11px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.05em;
+    margin-bottom: 6px; padding-left: 2px;
   }
-  .chat-header .ch-dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
-  .chat-header .ch-title { font-size: 13px; font-weight: 600; flex: 1; }
-  .chat-header .ch-close {
-    background: none; border: none; cursor: pointer; color: var(--muted);
-    font-size: 16px; padding: 2px 6px; border-radius: 4px;
-  }
-  .chat-header .ch-close:hover { background: var(--bg); }
-
-  .chat-messages {
-    flex: 1; overflow-y: auto; padding: 12px 16px;
-    display: flex; flex-direction: column; gap: 10px;
-    min-height: 200px; max-height: 340px;
-  }
-  .chat-msg {
-    max-width: 85%; padding: 8px 12px;
-    border-radius: 12px; font-size: 12.5px; line-height: 1.5;
-    word-break: break-word;
-  }
-  .chat-msg.bot {
-    background: var(--surface-2); border: 1px solid var(--border);
-    align-self: flex-start; border-bottom-left-radius: 4px;
-  }
-  .chat-msg.user {
-    background: var(--accent); color: white;
-    align-self: flex-end; border-bottom-right-radius: 4px;
-  }
-  .chat-msg.typing {
-    background: var(--surface-2); border: 1px solid var(--border);
-    align-self: flex-start; border-bottom-left-radius: 4px;
-    color: var(--muted); font-style: italic;
-  }
-  .chat-msg.typing::after {
-    content: ''; display: inline-block;
-    animation: typing-dots 1.2s infinite;
-  }
-  @keyframes typing-dots {
-    0%,20% { content: '.'; } 40% { content: '..'; } 60%,100% { content: '...'; }
-  }
-
-  .chat-input-wrap {
-    display: flex; gap: 8px; padding: 10px 12px;
-    border-top: 1px solid var(--border);
-  }
-  .chat-input {
-    flex: 1; border: 1px solid var(--border); border-radius: 8px;
-    padding: 8px 10px; font-size: 12.5px; font-family: inherit;
-    background: var(--surface); color: var(--text); resize: none;
-  }
-  .chat-input:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px var(--accent-soft); }
-  .chat-send {
-    background: var(--accent); border: none; color: white;
-    border-radius: 8px; padding: 8px 12px; cursor: pointer;
-    font-size: 13px; font-weight: 600; font-family: inherit;
-    transition: background 0.12s;
-  }
-  .chat-send:hover { background: var(--accent-deep); }
-  .chat-send:disabled { opacity: 0.5; cursor: not-allowed; }
 
 </style>
 </head>
@@ -797,72 +687,6 @@
 
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
-
-<!-- Head-toss character mascot + Chat -->
-<button class="mascot-btn" id="dogBtn" title="Ask me about the dashboard">
-  <svg class="mascot-svg" id="dogSvg" viewBox="0 0 80 100" fill="none">
-    <g class="m-body">
-      <!-- Legs -->
-      <g class="m-lleg">
-        <rect class="m-pants" x="30" y="62" width="10" height="18" rx="5"/>
-        <ellipse class="m-shoe" cx="35" cy="80" rx="7" ry="3.5"/>
-      </g>
-      <g class="m-rleg">
-        <rect class="m-pants" x="42" y="62" width="10" height="18" rx="5"/>
-        <ellipse class="m-shoe" cx="47" cy="80" rx="7" ry="3.5"/>
-      </g>
-      <!-- Torso -->
-      <rect class="m-shirt" x="26" y="36" width="28" height="28" rx="6"/>
-      <!-- Shirt detail -->
-      <path d="M34 36 L40 42 L46 36" stroke="#4070CC" stroke-width="1.2" fill="none"/>
-      <circle fill="#E8C840" cx="40" cy="50" r="2.5"/>
-      <!-- Neck stump -->
-      <rect class="m-skin" x="36" y="30" width="8" height="8" rx="4"/>
-      <!-- Arms -->
-      <g class="m-larm">
-        <rect class="m-skin" x="16" y="36" width="12" height="5" rx="2.5"/>
-        <circle class="m-skin" cx="16" cy="38.5" r="3.5"/>
-      </g>
-      <g class="m-rarm">
-        <rect class="m-skin" x="52" y="36" width="12" height="5" rx="2.5"/>
-        <circle class="m-skin" cx="64" cy="38.5" r="3.5"/>
-      </g>
-    </g>
-    <!-- Head (animated separately) -->
-    <g class="m-head">
-      <circle class="m-skin" cx="40" cy="14" r="14"/>
-      <!-- Hair -->
-      <path class="m-hair" d="M26 14 Q26 1 40 0 Q54 1 54 14 Q53 7 40 6 Q27 7 26 14Z"/>
-      <!-- Eyes - big happy eyes -->
-      <ellipse fill="white" cx="34" cy="13" rx="4" ry="4.5"/>
-      <ellipse fill="white" cx="46" cy="13" rx="4" ry="4.5"/>
-      <ellipse class="m-eye" cx="35" cy="13" rx="2.2" ry="2.8"/>
-      <ellipse class="m-eye" cx="47" cy="13" rx="2.2" ry="2.8"/>
-      <circle fill="white" cx="36" cy="12" r="1"/>
-      <circle fill="white" cx="48" cy="12" r="1"/>
-      <!-- Big happy smile -->
-      <path d="M33 19 Q40 25 47 19" stroke="#D4594E" stroke-width="2" fill="none" stroke-linecap="round"/>
-      <!-- Rosy cheeks -->
-      <ellipse fill="#F0A0A0" opacity="0.4" cx="30" cy="18" rx="3" ry="2"/>
-      <ellipse fill="#F0A0A0" opacity="0.4" cx="50" cy="18" rx="3" ry="2"/>
-    </g>
-  </svg>
-</button>
-
-<div class="chat-panel" id="chatPanel">
-  <div class="chat-header">
-    <span class="ch-dot"></span>
-    <span class="ch-title">Dashboard Assistant</span>
-    <button class="ch-close" id="chatClose">&times;</button>
-  </div>
-  <div class="chat-messages" id="chatMessages">
-    <div class="chat-msg bot">Hi Team! 👋 Ask me anything about your pipeline — follow-ups, stats, which companies need attention, and more!</div>
-  </div>
-  <div class="chat-input-wrap">
-    <input class="chat-input" id="chatInput" placeholder="Ask about your dashboard..." />
-    <button class="chat-send" id="chatSend">Send</button>
-  </div>
-</div>
 
 <!-- Card modal -->
 <div class="modal-backdrop" id="cardModal">
@@ -927,7 +751,6 @@
 </div>
 
 
-<script src="config.js"></script>
 <script>
 // ─── Config ────────────────────────────────────────────────────────────────
 const CONFIG = {
@@ -1171,13 +994,17 @@ function renderLeadCounts() {
     ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>`
     : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
 
+  const fuCount = typeof getFollowUpCompanies === 'function' ? getFollowUpCompanies().length : 0;
+
   el.innerHTML = `
     <div class="lead-count lc-acv${pipelineRevealed ? ' active' : ''}" id="pipelineBtn"><span class="lc-dot"></span><span class="lc-label">Pipeline</span>&nbsp;${acvLabel}</div>
+    <button class="followup-btn" id="followUpBtn">Follow-ups${fuCount > 0 ? ` <span class="fu-count">${fuCount}</span>` : ''}</button>
     <div class="lead-count lc-inbound"><span class="lc-dot"></span><span class="lc-num">${inboundNet}</span> Inbound <span class="lc-total">(${inboundAll})</span></div>
     <div class="lead-count lc-outbound"><span class="lc-dot"></span><span class="lc-num">${outboundNet}</span> Outbound <span class="lc-total">(${outboundAll})</span></div>
   `;
 
   document.getElementById('pipelineBtn').addEventListener('click', triggerPipeline);
+  document.getElementById('followUpBtn').addEventListener('click', showFollowUpPanel);
 }
 
 function getAcvCards() {
@@ -1962,155 +1789,81 @@ async function init() {
   }
 }
 
-// ─── Dog Mascot & Chatbot ─────────────────────────────────────────────────
-const GEMINI_KEY = window.GEMINI_API_KEY || '';
-const GEMINI_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.5-flash:generateContent?key=${GEMINI_KEY}`;
+// ─── Follow-Up Tracker ───────────────────────────────────────────────────
+const FOLLOWUP_STAGES = ['email-first-sent', 'email-second-sent', 'follow-up-2-done'];
+const FOLLOWUP_DAYS = 3; // follow up every 3-4 days
 
-let chatOpen = false;
-let chatBusy = false;
-
-function startDogStunts() {
-  // Head-toss animation runs via CSS continuously — nothing to cycle
-}
-
-function toggleChat() {
-  chatOpen = !chatOpen;
-  document.getElementById('chatPanel').classList.toggle('open', chatOpen);
-  document.getElementById('dogBtn').classList.toggle('chat-open', chatOpen);
-  if (chatOpen) {
-    setTimeout(() => document.getElementById('chatInput').focus(), 300);
-  }
-}
-
-document.getElementById('dogBtn').addEventListener('click', toggleChat);
-document.getElementById('chatClose').addEventListener('click', toggleChat);
-
-// Build context from board state
-function buildBoardContext() {
+function getFollowUpCompanies() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
   const cards = Object.values(state.cards);
-  const today = new Date().toISOString().slice(0, 10);
+
+  return cards
+    .filter(c => FOLLOWUP_STAGES.includes(c.stage) && c.touchDate)
+    .map(c => {
+      const touch = new Date(c.touchDate + 'T00:00:00');
+      const diff = Math.floor((today - touch) / (1000 * 60 * 60 * 24));
+      return { ...c, daysSinceTouch: diff };
+    })
+    .filter(c => c.daysSinceTouch >= FOLLOWUP_DAYS)
+    .sort((a, b) => b.daysSinceTouch - a.daysSinceTouch);
+}
+
+function showFollowUpPanel() {
+  const companies = getFollowUpCompanies();
 
   // Group by stage
-  const byStage = {};
-  cards.forEach(c => {
+  const grouped = {};
+  companies.forEach(c => {
     const label = getStageLabel(c.stage);
-    if (!byStage[label]) byStage[label] = [];
-    byStage[label].push(c);
+    if (!grouped[label]) grouped[label] = [];
+    grouped[label].push(c);
   });
 
-  let ctx = `Today is ${today}.\n\nLinkrunner Customer Pipeline Dashboard:\n`;
-  ctx += `Total companies: ${cards.length}\n`;
-
-  const inbound = cards.filter(c => c.inbound).length;
-  ctx += `Inbound: ${inbound}, Outbound: ${cards.length - inbound}\n\n`;
-
-  for (const [stage, list] of Object.entries(byStage)) {
-    ctx += `--- ${stage} (${list.length}) ---\n`;
-    list.forEach(c => {
-      let line = `  • ${c.name}`;
-      if (c.contact) line += ` (contact: ${c.contact})`;
-      if (c.inbound) line += ' [INBOUND]';
-      if (c.acv) line += ` [ACV: ${formatAcv(c.acv)}]`;
-      if (c.demoDate) line += ` [Demo: ${c.demoDate}]`;
-      if (c.touchDate) line += ` [Last touch: ${c.touchDate}]`;
-      if (c.notes) line += ` — ${c.notes}`;
-      ctx += line + '\n';
-    });
-    ctx += '\n';
-  }
-
-  return ctx;
-}
-
-async function sendChatMessage() {
-  if (chatBusy) return;
-  const input = document.getElementById('chatInput');
-  const question = input.value.trim();
-  if (!question) return;
-
-  input.value = '';
-  chatBusy = true;
-  document.getElementById('chatSend').disabled = true;
-
-  // Add user message
-  addChatMsg(question, 'user');
-
-  // Add typing indicator
-  const typingEl = addChatMsg('Thinking', 'typing');
-
-  const svg = document.getElementById('dogSvg');
-
-  try {
-    const context = buildBoardContext();
-    const systemPrompt = `You are a helpful, friendly dashboard assistant for Linkrunner's customer pipeline kanban board. Use the board data below to answer. Be specific — always list actual company names, dates, and numbers. When asked about follow-ups or companies, list every matching company name clearly. Use bullet points to list companies. No markdown headers. Always complete your lists — never cut off mid-answer.
-
-BOARD DATA:
-${context}`;
-
-    // Try with retry on 429
-    let reply = null;
-    for (let attempt = 0; attempt < 3; attempt++) {
-      const res = await fetch(GEMINI_URL, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          system_instruction: { parts: [{ text: systemPrompt }] },
-          contents: [{ parts: [{ text: question }] }],
-          generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
-        }),
+  let bodyHTML = '';
+  if (companies.length === 0) {
+    bodyHTML = '<div class="fu-empty">All caught up! No follow-ups due right now.</div>';
+  } else {
+    for (const [stage, list] of Object.entries(grouped)) {
+      bodyHTML += `<div class="fu-stage-group"><div class="fu-stage-label">${stage} (${list.length})</div>`;
+      list.forEach(c => {
+        const daysLabel = c.daysSinceTouch >= 7
+          ? `${c.daysSinceTouch}d ago`
+          : `${c.daysSinceTouch}d ago`;
+        const urgency = c.daysSinceTouch >= 7 ? 'overdue' : 'due';
+        bodyHTML += `
+          <div class="fu-card">
+            <div class="fu-card-info">
+              <div class="fu-card-name">${c.name}</div>
+              <div class="fu-card-meta">${c.contact ? c.contact + ' · ' : ''}Last touch: ${c.touchDate}</div>
+            </div>
+            <div class="fu-card-days ${urgency}">${daysLabel}</div>
+          </div>`;
       });
-
-      if (res.status === 429) {
-        // Rate limited — wait and retry
-        if (attempt < 2) {
-          typingEl.textContent = 'Rate limited, retrying...';
-          await new Promise(r => setTimeout(r, (attempt + 1) * 15000));
-          continue;
-        }
-        throw new Error('rate-limit');
-      }
-
-      if (!res.ok) throw new Error(`API error: ${res.status}`);
-      const data = await res.json();
-      reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn\'t process that. Try again!';
-      break;
+      bodyHTML += '</div>';
     }
-
-    typingEl.remove();
-    addChatMsg(reply, 'bot');
-  } catch (e) {
-    console.error('Chat error:', e);
-    typingEl.remove();
-    const msg = e.message === 'rate-limit'
-      ? 'API quota exhausted for now. Please wait a minute and try again!'
-      : 'Oops! Something went wrong. Try again in a moment.';
-    addChatMsg(msg, 'bot');
-  } finally {
-    chatBusy = false;
-    document.getElementById('chatSend').disabled = false;
   }
-}
 
-function addChatMsg(text, type) {
-  const container = document.getElementById('chatMessages');
-  const el = document.createElement('div');
-  el.className = `chat-msg ${type}`;
-  el.textContent = text;
-  container.appendChild(el);
-  container.scrollTop = container.scrollHeight;
-  return el;
-}
+  const overlay = document.createElement('div');
+  overlay.className = 'fu-overlay';
+  overlay.innerHTML = `
+    <div class="fu-panel">
+      <div class="fu-panel-header">
+        <h3>Follow-ups due (${companies.length})</h3>
+        <button class="fu-panel-close">&times;</button>
+      </div>
+      <div class="fu-panel-body">${bodyHTML}</div>
+    </div>`;
 
-document.getElementById('chatSend').addEventListener('click', sendChatMessage);
-document.getElementById('chatInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); sendChatMessage(); }
-});
+  document.body.appendChild(overlay);
+  requestAnimationFrame(() => overlay.classList.add('visible'));
 
-// Start dog animations after init
-const origInit = init;
-async function initWithDog() {
-  await origInit.call(this);
-  startDogStunts();
+  const close = () => {
+    overlay.classList.remove('visible');
+    setTimeout(() => overlay.remove(), 250);
+  };
+  overlay.querySelector('.fu-panel-close').addEventListener('click', close);
+  overlay.addEventListener('click', e => { if (e.target === overlay) close(); });
 }
 
 // ─── Password gate ────────────────────────────────────────────────────────
@@ -2130,7 +1883,7 @@ async function checkPassword() {
     gate.classList.add('hidden');
     setTimeout(() => gate.remove(), 300);
     document.getElementById('loadingOverlay').style.display = '';
-    initWithDog();
+    init();
   } else {
     document.getElementById('pwErr').textContent = 'Incorrect password';
     document.getElementById('pwInput').select();
@@ -2140,7 +1893,7 @@ async function checkPassword() {
 if (sessionStorage.getItem('lr-auth') === '1') {
   document.getElementById('pwGate').remove();
   document.getElementById('loadingOverlay').style.display = '';
-  initWithDog();
+  init();
 } else {
   document.getElementById('pwBtn').addEventListener('click', checkPassword);
   document.getElementById('pwInput').addEventListener('keydown', e => {
