@@ -2042,7 +2042,7 @@ async function sendChatMessage() {
 
   try {
     const context = buildBoardContext();
-    const systemPrompt = `You are a helpful, friendly dashboard assistant for Linkrunner's customer pipeline kanban board. You answer questions about the board data concisely. Use the board data below to answer. Be specific with company names, dates, and numbers. Keep answers short (2-4 sentences max). Use simple formatting — no markdown headers, just plain text with bullet points if needed.
+    const systemPrompt = `You are a helpful, friendly dashboard assistant for Linkrunner's customer pipeline kanban board. Use the board data below to answer. Be specific — always list actual company names, dates, and numbers. When asked about follow-ups or companies, list every matching company name clearly. Use bullet points to list companies. No markdown headers. Always complete your lists — never cut off mid-answer.
 
 BOARD DATA:
 ${context}`;
@@ -2056,7 +2056,7 @@ ${context}`;
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents: [{ parts: [{ text: question }] }],
-          generationConfig: { maxOutputTokens: 800, temperature: 0.7 },
+          generationConfig: { maxOutputTokens: 2048, temperature: 0.7 },
         }),
       });
 
