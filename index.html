@@ -421,9 +421,105 @@
   }
   .pipeline-timer-fill {
     height: 100%; width: 100%; background: #6366F1;
-    animation: timer-shrink 10s linear forwards;
+    animation: timer-shrink 14s linear forwards;
   }
   @keyframes timer-shrink { to { width: 0%; } }
+
+  /* ARR Goal bar inside pipeline */
+  .pipeline-goal {
+    margin-top: 28px; width: 340px; max-width: 80vw;
+    opacity: 0; transform: translateY(10px);
+    transition: opacity 0.5s, transform 0.5s;
+  }
+  .pipeline-goal.visible { opacity: 1; transform: translateY(0); }
+  .pipeline-goal .pg-header {
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 8px;
+  }
+  .pipeline-goal .pg-label {
+    font-size: 11px; color: rgba(255,255,255,0.5); font-weight: 500;
+    letter-spacing: 0.04em; text-transform: uppercase;
+  }
+  .pipeline-goal .pg-days {
+    font-size: 12px; color: rgba(255,255,255,0.75); font-weight: 600;
+  }
+  .pipeline-goal .pg-bar-track {
+    height: 10px; background: rgba(255,255,255,0.12);
+    border-radius: 8px; overflow: hidden; position: relative;
+  }
+  .pipeline-goal .pg-bar-fill {
+    height: 100%; border-radius: 8px;
+    background: linear-gradient(90deg, #6366F1, #818CF8, #A5B4FC);
+    transition: width 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 0 12px rgba(99,102,241,0.5);
+    width: 0%;
+  }
+  .pipeline-goal .pg-nums {
+    display: flex; justify-content: space-between; margin-top: 6px;
+    font-size: 11px; color: rgba(255,255,255,0.5);
+  }
+  .pipeline-goal .pg-current {
+    font-size: 15px; font-weight: 800; color: #A5B4FC;
+    text-align: center; margin-top: 8px;
+  }
+
+  /* Revenue modal */
+  .revenue-modal-backdrop {
+    position: fixed; inset: 0;
+    background: rgba(15,23,42,0.3); backdrop-filter: blur(4px);
+    display: none; align-items: center; justify-content: center;
+    z-index: 60;
+  }
+  .revenue-modal-backdrop.open { display: flex; }
+  .revenue-modal {
+    background: rgba(255,255,255,0.92);
+    backdrop-filter: blur(24px) saturate(1.4);
+    border: 1px solid rgba(224,228,239,0.5);
+    border-radius: 18px;
+    width: 360px; max-width: 90vw;
+    padding: 28px; text-align: center;
+    box-shadow: 0 24px 48px rgba(15,23,42,0.14);
+  }
+  .revenue-modal h3 {
+    margin: 0 0 6px; font-size: 18px; font-weight: 700;
+    letter-spacing: -0.02em; color: var(--text);
+  }
+  .revenue-modal .rm-sub {
+    font-size: 12.5px; color: var(--muted); margin-bottom: 18px;
+  }
+  .revenue-modal .rm-input-wrap {
+    position: relative; margin-bottom: 16px;
+  }
+  .revenue-modal .rm-prefix {
+    position: absolute; left: 14px; top: 50%; transform: translateY(-50%);
+    font-size: 18px; font-weight: 700; color: var(--muted);
+  }
+  .revenue-modal .rm-input {
+    width: 100%; padding: 14px 14px 14px 32px;
+    font-size: 22px; font-weight: 700; font-family: 'Inter', sans-serif;
+    border: 2px solid var(--border); border-radius: 12px;
+    background: var(--surface); color: var(--text);
+    text-align: left; outline: none;
+    transition: border-color 0.15s;
+  }
+  .revenue-modal .rm-input:focus { border-color: var(--accent); }
+  .revenue-modal .rm-input::placeholder { color: var(--border-strong); font-weight: 400; }
+  .revenue-modal .rm-actions {
+    display: flex; gap: 8px; justify-content: flex-end;
+  }
+  .revenue-modal .rm-actions button {
+    padding: 8px 18px; border-radius: 8px; font-size: 13px;
+    font-weight: 600; font-family: 'Inter', sans-serif; cursor: pointer;
+    border: 1px solid var(--border); background: var(--surface); color: var(--text);
+    transition: all 0.15s;
+  }
+  .revenue-modal .rm-actions .rm-save {
+    background: linear-gradient(135deg, #4F46E5, #6366F1);
+    color: white; border: none;
+  }
+  .revenue-modal .rm-actions .rm-save:hover {
+    box-shadow: 0 4px 12px rgba(79,70,229,0.35);
+  }
 
   /* Channel badge */
   .channel-badge {
@@ -876,6 +972,21 @@
 </div>
 
 
+<div class="revenue-modal-backdrop" id="revenueModal">
+  <div class="revenue-modal">
+    <h3>Current ARR</h3>
+    <div class="rm-sub">Enter Linkrunner's current annual recurring revenue</div>
+    <div class="rm-input-wrap">
+      <span class="rm-prefix">$</span>
+      <input type="text" class="rm-input" id="revenueInput" placeholder="e.g. 48000" inputmode="numeric" />
+    </div>
+    <div class="rm-actions">
+      <button id="revCancelBtn">Cancel</button>
+      <button class="rm-save" id="revSaveBtn">Save</button>
+    </div>
+  </div>
+</div>
+
 <script>
 // ─── Config ────────────────────────────────────────────────────────────────
 const CONFIG = {
@@ -1152,11 +1263,29 @@ function triggerPipeline() {
   // Create overlay
   const overlay = document.createElement('div');
   overlay.className = 'pipeline-overlay';
+  const currentARR = state.currentARR || 0;
+  const arrPct = Math.min(100, (currentARR / ARR_GOAL) * 100);
+  const daysLeft = getDaysToDeadline();
+
   overlay.innerHTML = `
     <div class="pipeline-grid" id="pipelineGrid"></div>
     <div class="pipeline-result" id="pipelineResult">
       <div class="pr-label">ESTIMATED PIPELINE</div>
       <div class="pr-value" id="prValue">${acvStr}</div>
+    </div>
+    <div class="pipeline-goal" id="pipelineGoal">
+      <div class="pg-header">
+        <span class="pg-label">ARR Goal — $300k</span>
+        <span class="pg-days">${daysLeft} day${daysLeft !== 1 ? 's' : ''} left to Aug 31</span>
+      </div>
+      <div class="pg-bar-track">
+        <div class="pg-bar-fill" id="pgBarFill"></div>
+      </div>
+      <div class="pg-nums">
+        <span>$0</span>
+        <span>$300k</span>
+      </div>
+      <div class="pg-current">${currentARR > 0 ? formatARR(currentARR) + ' ARR' : 'No ARR set — type "revenue" in search'}</div>
     </div>
     <div class="pipeline-timer-bar"><div class="pipeline-timer-fill"></div></div>
   `;
@@ -1197,13 +1326,25 @@ function triggerPipeline() {
         const val = overlay.querySelector('#prValue');
         val.classList.add('pop');
 
+        // Phase 4: Reveal ARR goal bar with animated fill
+        setTimeout(() => {
+          const goalEl = overlay.querySelector('#pipelineGoal');
+          if (goalEl) {
+            goalEl.classList.add('visible');
+            setTimeout(() => {
+              const fill = overlay.querySelector('#pgBarFill');
+              if (fill) fill.style.width = arrPct + '%';
+            }, 200);
+          }
+        }, 600);
+
         pipelineRevealed = true;
         pipelineAnimating = false;
         renderLeadCounts();
 
-        // Auto-dismiss after 10s
+        // Auto-dismiss after 14s (longer to read goal bar)
         clearTimeout(pipelineTimer);
-        pipelineTimer = setTimeout(dismissPipeline, 10000);
+        pipelineTimer = setTimeout(dismissPipeline, 14000);
       });
     }, landTime);
   });
@@ -1889,7 +2030,10 @@ document.getElementById('viewBoard').addEventListener('click', () => switchView(
 document.getElementById('viewCalendar').addEventListener('click', () => switchView('calendar'));
 
 document.addEventListener('keydown', e => {
-  if (e.key === 'Escape') { closeCardModal(); }
+  if (e.key === 'Escape') {
+    closeCardModal();
+    if (document.getElementById('revenueModal').classList.contains('open')) closeRevenueModal();
+  }
   if ((e.metaKey || e.ctrlKey) && e.key === 'Enter') {
     if (document.getElementById('cardModal').classList.contains('open')) saveCardModal();
   }
@@ -1922,6 +2066,15 @@ let searchActiveIdx = -1;
 function doSearch() {
   const q = searchInput.value.trim().toLowerCase();
   if (!q) { searchResults.classList.remove('open'); return; }
+
+  // Revenue shortcut
+  if (q === 'revenue') {
+    searchResults.classList.remove('open');
+    searchInput.value = '';
+    searchInput.blur();
+    openRevenueModal();
+    return;
+  }
 
   const cards = Object.values(state.cards);
   const matches = cards.filter(c =>
@@ -2009,6 +2162,55 @@ document.addEventListener('click', e => {
     searchResults.classList.remove('open');
   }
 });
+
+// ─── Revenue Modal ──────────────────────────────────────────────────────
+const ARR_GOAL = 300000;
+const ARR_DEADLINE = new Date(2025, 7, 31); // Aug 31, 2025
+
+function openRevenueModal() {
+  const modal = document.getElementById('revenueModal');
+  const input = document.getElementById('revenueInput');
+  const current = state.currentARR || 0;
+  input.value = current > 0 ? current.toString() : '';
+  modal.classList.add('open');
+  setTimeout(() => input.focus(), 100);
+}
+
+function closeRevenueModal() {
+  document.getElementById('revenueModal').classList.remove('open');
+}
+
+function saveRevenue() {
+  const raw = document.getElementById('revenueInput').value.replace(/[^0-9.]/g, '');
+  const val = parseFloat(raw) || 0;
+  state.currentARR = val;
+  closeRevenueModal();
+  debounceSave();
+}
+
+document.getElementById('revCancelBtn').addEventListener('click', closeRevenueModal);
+document.getElementById('revSaveBtn').addEventListener('click', saveRevenue);
+document.getElementById('revenueModal').addEventListener('click', e => {
+  if (e.target === e.currentTarget) closeRevenueModal();
+});
+document.getElementById('revenueInput').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); saveRevenue(); }
+  if (e.key === 'Escape') closeRevenueModal();
+});
+
+function getDaysToDeadline() {
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const deadline = new Date(ARR_DEADLINE);
+  deadline.setHours(0, 0, 0, 0);
+  const diff = deadline - today;
+  return Math.max(0, Math.ceil(diff / (1000 * 60 * 60 * 24)));
+}
+
+function formatARR(n) {
+  if (n >= 1000) return '$' + (n / 1000).toFixed(n % 1000 === 0 ? 0 : 1) + 'k';
+  return '$' + n.toLocaleString();
+}
 
 // ─── Follow-Up Tracker ───────────────────────────────────────────────────
 const FOLLOWUP_STAGES = ['email-first-sent', 'email-second-sent', 'follow-up-2-done'];
