@@ -1015,6 +1015,19 @@
       "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
       "calEmail": "shashwat.r@kiddopia.com",
       "demoDate": "2026-05-22"
+    },
+    "xzvfucgg": {
+      "id": "xzvfucgg",
+      "name": "Zypp",
+      "contact": "Dheeraj",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-25",
+      "touchDate": "",
+      "updated": 1779427080019,
+      "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
+      "calEmail": "dheeraj.prarthi@zypp.app"
     }
   },
   "order": {
@@ -1129,7 +1142,8 @@
       "w23yl5x0",
       "hhq7mas8",
       "hmuplodt",
-      "70itspid"
+      "70itspid",
+      "xzvfucgg"
     ]
   },
   "columnOrder": [
