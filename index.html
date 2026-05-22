@@ -291,11 +291,32 @@
   .contact-tag.no-link { cursor: default; background: var(--surface-2); border-color: var(--border); color: var(--text-2); }
   .contact-role-sel {
     background: var(--surface); border: 1px solid var(--border);
-    border-radius: 6px; padding: 4px 6px; font-size: 11px;
+    border-radius: 6px; padding: 4px 4px 4px 6px; font-size: 10.5px;
     font-family: inherit; color: var(--text-2); cursor: pointer;
-    min-width: 0; flex-shrink: 1;
+    width: 110px; flex-shrink: 0;
   }
   .contact-role-sel:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
+  .contact-icons { display: flex; align-items: center; gap: 3px; flex-shrink: 0; }
+  .contact-icon-btn {
+    background: none; border: 1px solid transparent; color: var(--muted);
+    cursor: pointer; padding: 3px; border-radius: 5px; line-height: 0;
+    transition: all 0.12s; position: relative;
+  }
+  .contact-icon-btn:hover { color: var(--accent); background: rgba(79,70,229,0.06); border-color: rgba(79,70,229,0.15); }
+  .contact-icon-btn svg { width: 14px; height: 14px; }
+  .contact-icon-btn.disabled { opacity: 0.25; cursor: default; pointer-events: none; }
+  .ci-tooltip {
+    position: absolute; bottom: calc(100% + 6px); left: 50%; transform: translateX(-50%);
+    background: var(--text); color: #fff; font-size: 11px; font-weight: 500;
+    padding: 5px 10px; border-radius: 6px; white-space: nowrap;
+    pointer-events: auto; z-index: 60; box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    animation: ciPop 0.15s ease;
+  }
+  .ci-tooltip::after {
+    content: ''; position: absolute; top: 100%; left: 50%; transform: translateX(-50%);
+    border: 5px solid transparent; border-top-color: var(--text);
+  }
+  @keyframes ciPop { from { opacity: 0; transform: translateX(-50%) translateY(3px); } to { opacity: 1; transform: translateX(-50%) translateY(0); } }
   .contact-remove {
     background: none; border: none; color: var(--muted);
     cursor: pointer; font-size: 13px; padding: 2px 5px;
@@ -1853,6 +1874,22 @@ function formatCurrency(n) {
 }
 
 // ─── Contact tags helpers ──────────────────────────────────────────────────
+const ICON_EMAIL = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="16" height="12" rx="2"/><path d="M2 4l8 6 8-6"/></svg>`;
+const ICON_LINKEDIN = `<svg viewBox="0 0 20 20" fill="currentColor"><path d="M4.5 3A1.5 1.5 0 003 4.5 1.5 1.5 0 004.5 6 1.5 1.5 0 006 4.5 1.5 1.5 0 004.5 3zM3 8h3v9H3V8zm5.5 0H11v1.2h.04C11.4 8.5 12.5 8 13.8 8c2.7 0 3.2 1.8 3.2 4v5h-3v-4.4c0-1.1 0-2.4-1.5-2.4S11 11.4 11 12.5V17H8.5V8z"/></svg>`;
+const ICON_PHONE = `<svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5.2 2.5h3l1.4 3.5-1.7 1.2a11 11 0 005 5l1.2-1.7 3.5 1.4v3c0 .8-.7 1.5-1.5 1.4A14.5 14.5 0 013.6 4c-.1-.8.6-1.5 1.4-1.5z"/></svg>`;
+
+function showContactTooltip(btn, text) {
+  // Remove any existing tooltips
+  document.querySelectorAll('.ci-tooltip').forEach(t => t.remove());
+  const tip = document.createElement('div');
+  tip.className = 'ci-tooltip';
+  tip.textContent = text;
+  btn.style.position = 'relative';
+  btn.appendChild(tip);
+  const dismiss = (e) => { if (!btn.contains(e.target)) { tip.remove(); document.removeEventListener('click', dismiss); } };
+  setTimeout(() => document.addEventListener('click', dismiss), 10);
+}
+
 function renderModalContacts(contacts) {
   const wrap = document.getElementById('f-contacts');
   wrap.innerHTML = '';
@@ -1860,6 +1897,7 @@ function renderModalContacts(contacts) {
     const row = document.createElement('div');
     row.className = 'contact-row';
     row.dataset.idx = i;
+    row.dataset.contact = JSON.stringify({ name: c.name, sheetRow: c.sheetRow || null, email: c.email || '', phone: c.phone || '', linkedin: c.linkedin || '' });
 
     // Tag
     if (c.sheetRow) {
@@ -1886,10 +1924,43 @@ function renderModalContacts(contacts) {
       <option value="">Role</option>
       <option value="champion">Champion</option>
       <option value="decision-maker">Decision Maker</option>
-      <option value="both">Champion &amp; Decision Maker</option>
+      <option value="both">Champion &amp; DM</option>
     `;
     sel.value = c.role || '';
     row.appendChild(sel);
+
+    // Contact icons
+    const icons = document.createElement('div');
+    icons.className = 'contact-icons';
+
+    // Email icon
+    const emailBtn = document.createElement('button');
+    emailBtn.type = 'button';
+    emailBtn.className = 'contact-icon-btn' + (c.email ? '' : ' disabled');
+    emailBtn.innerHTML = ICON_EMAIL;
+    emailBtn.title = c.email || 'No email';
+    if (c.email) emailBtn.addEventListener('click', e => { e.stopPropagation(); showContactTooltip(emailBtn, c.email); });
+    icons.appendChild(emailBtn);
+
+    // LinkedIn icon
+    const liBtn = document.createElement('button');
+    liBtn.type = 'button';
+    liBtn.className = 'contact-icon-btn' + (c.linkedin ? '' : ' disabled');
+    liBtn.innerHTML = ICON_LINKEDIN;
+    liBtn.title = c.linkedin ? 'Open LinkedIn' : 'No LinkedIn';
+    if (c.linkedin) liBtn.addEventListener('click', e => { e.stopPropagation(); window.open(c.linkedin, '_blank'); });
+    icons.appendChild(liBtn);
+
+    // Phone icon
+    const phoneBtn = document.createElement('button');
+    phoneBtn.type = 'button';
+    phoneBtn.className = 'contact-icon-btn' + (c.phone ? '' : ' disabled');
+    phoneBtn.innerHTML = ICON_PHONE;
+    phoneBtn.title = c.phone || 'No phone';
+    if (c.phone) phoneBtn.addEventListener('click', e => { e.stopPropagation(); showContactTooltip(phoneBtn, c.phone); });
+    icons.appendChild(phoneBtn);
+
+    row.appendChild(icons);
 
     // Remove button
     const rem = document.createElement('button');
@@ -1908,17 +1979,12 @@ function readModalContacts() {
   const rows = document.querySelectorAll('#f-contacts .contact-row');
   const contacts = [];
   rows.forEach(row => {
-    const nameEl = row.querySelector('.ct-name');
     const roleSel = row.querySelector('.contact-role-sel');
-    const tagEl = row.querySelector('.contact-tag');
-    if (!nameEl) return;
-    const entry = { name: nameEl.textContent, role: roleSel ? roleSel.value : '' };
-    // Preserve sheetRow from link
-    if (tagEl && tagEl.href && tagEl.href.includes('range=A')) {
-      const m = tagEl.href.match(/range=A(\d+)/);
-      if (m) entry.sheetRow = parseInt(m[1]);
-    }
-    contacts.push(entry);
+    try {
+      const d = JSON.parse(row.dataset.contact || '{}');
+      d.role = roleSel ? roleSel.value : (d.role || '');
+      if (d.name) contacts.push(d);
+    } catch(e) {}
   });
   return contacts;
 }
@@ -1942,7 +2008,7 @@ document.getElementById('confirmAddContact').addEventListener('click', () => {
   if (!name) return;
   // Add a new contact row
   const contacts = readModalContacts();
-  contacts.push({ name, role: '' });
+  contacts.push({ name, role: '', email: '', phone: '', linkedin: '' });
   renderModalContacts(contacts);
   document.getElementById('newContactName').value = '';
   document.getElementById('addContactInput').classList.remove('visible');
