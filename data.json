@@ -852,11 +852,13 @@
       "notes": "ari.club",
       "stage": "email-first-sent",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1779341944697,
+      "touchDate": "2026-05-19",
+      "updated": 1779434513762,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
       "calEmail": "kevin@ariai.in",
-      "demoDate": "2026-05-19"
+      "demoDate": "2026-05-19",
+      "inbound": false,
+      "acv": ""
     },
     "rgdd3lli": {
       "id": "rgdd3lli",
