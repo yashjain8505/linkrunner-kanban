@@ -284,18 +284,19 @@
     padding: 5px 11px; border-radius: 20px;
     text-decoration: none; cursor: pointer;
     transition: all 0.15s; white-space: nowrap;
-    max-width: 170px; overflow: hidden; text-overflow: ellipsis;
+    min-width: 60px; max-width: 130px; overflow: hidden; text-overflow: ellipsis;
+    flex-shrink: 1;
   }
   .contact-tag:hover { background: #E0E7FF; border-color: #A5B4FC; }
   .contact-tag .ct-arrow { font-size: 10px; opacity: 0.5; flex-shrink: 0; }
   .contact-tag.no-link { cursor: default; background: var(--surface-2); border-color: var(--border); color: var(--text-2); }
-  .contact-role-sel {
+  .field .contact-role-sel {
     background: var(--surface); border: 1px solid var(--border);
     border-radius: 6px; padding: 4px 4px 4px 6px; font-size: 10.5px;
     font-family: inherit; color: var(--text-2); cursor: pointer;
-    width: 110px; flex-shrink: 0;
+    width: 105px; min-width: 105px; max-width: 105px; flex: 0 0 105px;
   }
-  .contact-role-sel:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
+  .field .contact-role-sel:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
   .contact-icons { display: flex; align-items: center; gap: 3px; flex-shrink: 0; }
   .contact-icon-btn {
     background: none; border: 1px solid transparent; color: var(--muted);
