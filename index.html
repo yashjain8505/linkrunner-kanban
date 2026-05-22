@@ -273,6 +273,60 @@
   .card.dragging { opacity: 0.4; }
   .card .name { font-weight: 600; font-size: 13px; line-height: 1.35; word-break: break-word; }
   .card .contact { color: var(--muted); font-size: 12px; margin-top: 3px; word-break: break-word; }
+
+  /* Contact tags in modal */
+  .contacts-wrap { display: flex; flex-direction: column; gap: 6px; }
+  .contact-row { display: flex; align-items: center; gap: 8px; }
+  .contact-tag {
+    display: inline-flex; align-items: center; gap: 5px;
+    background: #EEF2FF; border: 1px solid #C7D2FE;
+    color: #4338CA; font-size: 12px; font-weight: 600;
+    padding: 5px 11px; border-radius: 20px;
+    text-decoration: none; cursor: pointer;
+    transition: all 0.15s; white-space: nowrap;
+    max-width: 170px; overflow: hidden; text-overflow: ellipsis;
+  }
+  .contact-tag:hover { background: #E0E7FF; border-color: #A5B4FC; }
+  .contact-tag .ct-arrow { font-size: 10px; opacity: 0.5; flex-shrink: 0; }
+  .contact-tag.no-link { cursor: default; background: var(--surface-2); border-color: var(--border); color: var(--text-2); }
+  .contact-role-sel {
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 4px 6px; font-size: 11px;
+    font-family: inherit; color: var(--text-2); cursor: pointer;
+    min-width: 0; flex-shrink: 1;
+  }
+  .contact-role-sel:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 2px rgba(79,70,229,0.1); }
+  .contact-remove {
+    background: none; border: none; color: var(--muted);
+    cursor: pointer; font-size: 13px; padding: 2px 5px;
+    border-radius: 4px; line-height: 1; flex-shrink: 0;
+  }
+  .contact-remove:hover { color: var(--danger); background: rgba(220,38,38,0.08); }
+  .add-contact-row { display: flex; align-items: center; gap: 6px; margin-top: 6px; }
+  .add-contact-btn {
+    background: none; border: 1px dashed var(--border); color: var(--muted);
+    font-size: 12px; font-family: inherit; padding: 5px 12px;
+    border-radius: 20px; cursor: pointer; transition: all 0.15s;
+  }
+  .add-contact-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(79,70,229,0.04); }
+  .add-contact-input { display: none; flex: 1; gap: 6px; align-items: center; }
+  .add-contact-input.visible { display: flex; }
+  .add-contact-input input {
+    flex: 1; background: var(--surface); border: 1px solid var(--border);
+    border-radius: 6px; padding: 6px 10px; font-size: 12px; font-family: inherit; color: var(--text);
+  }
+  .add-contact-input input:focus { outline: none; border-color: var(--accent); }
+  .add-contact-input button {
+    background: var(--accent); color: white; border: none;
+    border-radius: 6px; padding: 6px 12px; font-size: 12px;
+    cursor: pointer; font-family: inherit; font-weight: 600; white-space: nowrap;
+  }
+  .add-contact-input button:hover { background: var(--accent-deep); }
+  .add-contact-cancel {
+    background: transparent !important; color: var(--muted) !important;
+    border: 1px solid var(--border) !important;
+  }
+  .add-contact-cancel:hover { color: var(--text) !important; }
   .card .notes {
     color: var(--text-2); font-size: 11.5px; margin-top: 6px;
     line-height: 1.4; word-break: break-word;
@@ -930,8 +984,16 @@
       <input id="f-name" type="text" placeholder="e.g. Acme Mobility" />
     </div>
     <div class="field">
-      <label>Contact</label>
-      <input id="f-contact" type="text" placeholder="Name / email / role" />
+      <label>Contacts</label>
+      <div class="contacts-wrap" id="f-contacts"></div>
+      <div class="add-contact-row">
+        <button class="add-contact-btn" id="addContactBtn" type="button">+ Add contact</button>
+        <div class="add-contact-input" id="addContactInput">
+          <input type="text" id="newContactName" placeholder="Contact name" />
+          <button type="button" id="confirmAddContact">Add</button>
+          <button type="button" class="add-contact-cancel" id="cancelAddContact">Cancel</button>
+        </div>
+      </div>
     </div>
     <div class="field">
       <label>Stage</label>
@@ -1009,6 +1071,12 @@ const CONFIG = {
 };
 
 const API_BASE = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/contents/${CONFIG.file}`;
+
+// ─── Contact sheet ────────────────────────────────────────────────────────
+const CONTACT_SHEET_ID = '1gTLpq4bpPLWaE6Mql-ul28N-RWQi4J-zQ2VHw1mu2X0';
+function contactSheetURL(row) {
+  return `https://docs.google.com/spreadsheets/d/${CONTACT_SHEET_ID}/edit#gid=0&range=A${row}`;
+}
 
 // ─── Columns ───────────────────────────────────────────────────────────────
 const COLUMNS = [
@@ -1596,7 +1664,10 @@ function renderCard(card) {
   }
 
   const contactEl = el.querySelector('.contact');
-  if (card.contact) {
+  const contactNames = (card.contacts || []).map(c => c.name).filter(Boolean);
+  if (contactNames.length) {
+    contactEl.textContent = contactNames.join(', ');
+  } else if (card.contact) {
     contactEl.textContent = card.contact;
   } else {
     contactEl.style.display = 'none';
@@ -1781,6 +1852,107 @@ function formatCurrency(n) {
   return '$' + n;
 }
 
+// ─── Contact tags helpers ──────────────────────────────────────────────────
+function renderModalContacts(contacts) {
+  const wrap = document.getElementById('f-contacts');
+  wrap.innerHTML = '';
+  (contacts || []).forEach((c, i) => {
+    const row = document.createElement('div');
+    row.className = 'contact-row';
+    row.dataset.idx = i;
+
+    // Tag
+    if (c.sheetRow) {
+      const a = document.createElement('a');
+      a.className = 'contact-tag';
+      a.href = contactSheetURL(c.sheetRow);
+      a.target = '_blank';
+      a.rel = 'noopener';
+      a.innerHTML = `<span class="ct-name">${esc(c.name)}</span><span class="ct-arrow">↗</span>`;
+      a.title = 'Open in contact sheet';
+      a.addEventListener('click', e => e.stopPropagation());
+      row.appendChild(a);
+    } else {
+      const tag = document.createElement('span');
+      tag.className = 'contact-tag no-link';
+      tag.innerHTML = `<span class="ct-name">${esc(c.name)}</span>`;
+      row.appendChild(tag);
+    }
+
+    // Role dropdown
+    const sel = document.createElement('select');
+    sel.className = 'contact-role-sel';
+    sel.innerHTML = `
+      <option value="">Role</option>
+      <option value="champion">Champion</option>
+      <option value="decision-maker">Decision Maker</option>
+      <option value="both">Champion &amp; Decision Maker</option>
+    `;
+    sel.value = c.role || '';
+    row.appendChild(sel);
+
+    // Remove button
+    const rem = document.createElement('button');
+    rem.type = 'button';
+    rem.className = 'contact-remove';
+    rem.innerHTML = '✕';
+    rem.title = 'Remove contact';
+    rem.addEventListener('click', () => row.remove());
+    row.appendChild(rem);
+
+    wrap.appendChild(row);
+  });
+}
+
+function readModalContacts() {
+  const rows = document.querySelectorAll('#f-contacts .contact-row');
+  const contacts = [];
+  rows.forEach(row => {
+    const nameEl = row.querySelector('.ct-name');
+    const roleSel = row.querySelector('.contact-role-sel');
+    const tagEl = row.querySelector('.contact-tag');
+    if (!nameEl) return;
+    const entry = { name: nameEl.textContent, role: roleSel ? roleSel.value : '' };
+    // Preserve sheetRow from link
+    if (tagEl && tagEl.href && tagEl.href.includes('range=A')) {
+      const m = tagEl.href.match(/range=A(\d+)/);
+      if (m) entry.sheetRow = parseInt(m[1]);
+    }
+    contacts.push(entry);
+  });
+  return contacts;
+}
+
+function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
+
+// Add-contact button handlers
+document.getElementById('addContactBtn').addEventListener('click', () => {
+  document.getElementById('addContactBtn').style.display = 'none';
+  const inp = document.getElementById('addContactInput');
+  inp.classList.add('visible');
+  document.getElementById('newContactName').focus();
+});
+document.getElementById('cancelAddContact').addEventListener('click', () => {
+  document.getElementById('addContactInput').classList.remove('visible');
+  document.getElementById('addContactBtn').style.display = '';
+  document.getElementById('newContactName').value = '';
+});
+document.getElementById('confirmAddContact').addEventListener('click', () => {
+  const name = document.getElementById('newContactName').value.trim();
+  if (!name) return;
+  // Add a new contact row
+  const contacts = readModalContacts();
+  contacts.push({ name, role: '' });
+  renderModalContacts(contacts);
+  document.getElementById('newContactName').value = '';
+  document.getElementById('addContactInput').classList.remove('visible');
+  document.getElementById('addContactBtn').style.display = '';
+});
+document.getElementById('newContactName').addEventListener('keydown', e => {
+  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('confirmAddContact').click(); }
+  if (e.key === 'Escape') { document.getElementById('cancelAddContact').click(); }
+});
+
 // ─── Card modal ────────────────────────────────────────────────────────────
 function openCardModal(cardId, defaultStage) {
   editingId = cardId;
@@ -1800,11 +1972,16 @@ function openCardModal(cardId, defaultStage) {
   });
   stageSel.innerHTML = stageOpts;
 
+  // Reset add-contact UI
+  document.getElementById('addContactBtn').style.display = '';
+  document.getElementById('addContactInput').classList.remove('visible');
+  document.getElementById('newContactName').value = '';
+
   if (cardId) {
     const c = state.cards[cardId];
     document.getElementById('modalTitle').textContent = 'Edit company';
     document.getElementById('f-name').value = c.name || '';
-    document.getElementById('f-contact').value = c.contact || '';
+    renderModalContacts(c.contacts || []);
     document.getElementById('f-notes').value = c.notes || '';
     document.getElementById('f-channel').value = c.channel || 'none';
     document.getElementById('f-inbound').checked = !!c.inbound;
@@ -1816,7 +1993,7 @@ function openCardModal(cardId, defaultStage) {
   } else {
     document.getElementById('modalTitle').textContent = 'Add company';
     document.getElementById('f-name').value = '';
-    document.getElementById('f-contact').value = '';
+    renderModalContacts([]);
     document.getElementById('f-notes').value = '';
     document.getElementById('f-channel').value = 'none';
     document.getElementById('f-inbound').checked = false;
@@ -1846,7 +2023,8 @@ function closeCardModal() {
 function saveCardModal() {
   const name = document.getElementById('f-name').value.trim();
   if (!name) { document.getElementById('f-name').focus(); return; }
-  const contact = document.getElementById('f-contact').value.trim();
+  const contacts = readModalContacts();
+  const contact = contacts.map(c => c.name).join(', ');
   const notes = document.getElementById('f-notes').value.trim();
   const stage = document.getElementById('f-stage').value;
   const channel = document.getElementById('f-channel').value;
@@ -1860,6 +2038,7 @@ function saveCardModal() {
     const oldStage = card.stage;
     card.name = name;
     card.contact = contact;
+    card.contacts = contacts;
     card.notes = notes;
     card.channel = channel;
     card.inbound = inbound;
@@ -1874,7 +2053,7 @@ function saveCardModal() {
     }
   } else {
     const id = uid();
-    state.cards[id] = { id, name, contact, notes, stage, channel, inbound, acv, demoDate, touchDate, updated: Date.now() };
+    state.cards[id] = { id, name, contact, contacts, notes, stage, channel, inbound, acv, demoDate, touchDate, updated: Date.now() };
     state.order[stage].unshift(id);
   }
   scheduleSave();
@@ -2059,9 +2238,32 @@ document.addEventListener('keydown', e => {
 });
 
 // ─── Init ──────────────────────────────────────────────────────────────────
+function migrateContacts() {
+  // Convert old contact strings to contacts array if missing
+  Object.values(state.cards).forEach(card => {
+    if (card.contacts) return; // already migrated
+    if (!card.contact) { card.contacts = []; return; }
+    // Parse "Name1 and Name2" or "Name1, Name2" patterns
+    const parts = card.contact.split(/\s*,\s*|\s+and\s+/);
+    card.contacts = parts.map(p => {
+      let role = '';
+      const roleM = p.match(/\(([^)]+)\)/);
+      if (roleM) {
+        const rt = roleM[1].toLowerCase();
+        if (rt.includes('champion') && rt.includes('decision')) role = 'both';
+        else if (rt.includes('champion')) role = 'champion';
+        else if (rt.includes('decision')) role = 'decision-maker';
+        p = p.replace(/\s*\([^)]+\)\s*/, '').trim();
+      }
+      return { name: p.trim(), role };
+    }).filter(c => c.name);
+  });
+}
+
 async function init() {
   try {
     await loadData();
+    migrateContacts();
     render();
     setSyncStatus('synced');
     startPolling();

@@ -9,7 +9,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778919760815,
-      "demoDate": "2026-03-25"
+      "demoDate": "2026-03-25",
+      "contacts": [
+        {
+          "name": "Sudhanshu Bhatia",
+          "role": ""
+        }
+      ]
     },
     "5zwhb2lh": {
       "id": "5zwhb2lh",
@@ -20,7 +26,14 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778919931681,
-      "demoDate": "2026-03-26"
+      "demoDate": "2026-03-26",
+      "contacts": [
+        {
+          "name": "Chethan Sanjay",
+          "role": "",
+          "sheetRow": 139
+        }
+      ]
     },
     "pvp5qqng": {
       "id": "pvp5qqng",
@@ -33,7 +46,14 @@
       "updated": 1779373038900,
       "demoDate": "2026-03-31",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": [
+        {
+          "name": "Aditya",
+          "role": "decision-maker",
+          "sheetRow": 31
+        }
+      ]
     },
     "59kn0ucx": {
       "id": "59kn0ucx",
@@ -46,7 +66,13 @@
       "updated": 1779373049834,
       "demoDate": "2026-03-25",
       "inbound": false,
-      "acv": "10k-20k"
+      "acv": "10k-20k",
+      "contacts": [
+        {
+          "name": "Ritika",
+          "role": ""
+        }
+      ]
     },
     "w8wg8lt1": {
       "id": "w8wg8lt1",
@@ -59,7 +85,13 @@
       "updated": 1779373017484,
       "demoDate": "2026-04-06",
       "inbound": false,
-      "acv": "0-5k"
+      "acv": "0-5k",
+      "contacts": [
+        {
+          "name": "fahad",
+          "role": ""
+        }
+      ]
     },
     "e0187631": {
       "id": "e0187631",
@@ -70,7 +102,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920302665,
-      "demoDate": "2026-03-23"
+      "demoDate": "2026-03-23",
+      "contacts": [
+        {
+          "name": "Mohit",
+          "role": ""
+        }
+      ]
     },
     "vob9lx36": {
       "id": "vob9lx36",
@@ -81,7 +119,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920404598,
-      "demoDate": "2026-03-25"
+      "demoDate": "2026-03-25",
+      "contacts": [
+        {
+          "name": "Mirza",
+          "role": ""
+        }
+      ]
     },
     "m40phmwr": {
       "id": "m40phmwr",
@@ -92,7 +136,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920418447,
-      "demoDate": "2026-03-25"
+      "demoDate": "2026-03-25",
+      "contacts": [
+        {
+          "name": "Rohti",
+          "role": ""
+        }
+      ]
     },
     "fr65wkiv": {
       "id": "fr65wkiv",
@@ -103,7 +153,8 @@
       "channel": "none",
       "touchDate": "2026-07-30",
       "updated": 1778926133808,
-      "demoDate": "2026-03-26"
+      "demoDate": "2026-03-26",
+      "contacts": []
     },
     "a2it8i56": {
       "id": "a2it8i56",
@@ -114,7 +165,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920710811,
-      "demoDate": "2026-03-30"
+      "demoDate": "2026-03-30",
+      "contacts": [
+        {
+          "name": "Ved Prakash",
+          "role": ""
+        }
+      ]
     },
     "tqk99o89": {
       "id": "tqk99o89",
@@ -125,7 +182,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778926143942,
-      "demoDate": "2026-04-01"
+      "demoDate": "2026-04-01",
+      "contacts": [
+        {
+          "name": "Tanzeng",
+          "role": ""
+        }
+      ]
     },
     "zugpsqkx": {
       "id": "zugpsqkx",
@@ -136,7 +199,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920768144,
-      "demoDate": "2026-03-26"
+      "demoDate": "2026-03-26",
+      "contacts": []
     },
     "k0b1maan": {
       "id": "k0b1maan",
@@ -149,7 +213,13 @@
       "updated": 1779373026434,
       "demoDate": "2026-03-30",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": [
+        {
+          "name": "Mahesh J",
+          "role": ""
+        }
+      ]
     },
     "k4ouwf33": {
       "id": "k4ouwf33",
@@ -160,7 +230,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920856628,
-      "demoDate": "2026-03-30"
+      "demoDate": "2026-03-30",
+      "contacts": []
     },
     "bkzuzvd2": {
       "id": "bkzuzvd2",
@@ -173,7 +244,18 @@
       "updated": 1779373062451,
       "demoDate": "2026-03-31",
       "inbound": false,
-      "acv": "10k-20k"
+      "acv": "10k-20k",
+      "contacts": [
+        {
+          "name": "Himanshi",
+          "role": ""
+        },
+        {
+          "name": "Sir Ram",
+          "role": "",
+          "sheetRow": 80
+        }
+      ]
     },
     "gcz7ymaj": {
       "id": "gcz7ymaj",
@@ -184,7 +266,14 @@
       "channel": "none",
       "touchDate": "2027-01-10",
       "updated": 1778925995375,
-      "demoDate": "2026-04-07"
+      "demoDate": "2026-04-07",
+      "contacts": [
+        {
+          "name": "Sampath",
+          "role": "",
+          "sheetRow": 56
+        }
+      ]
     },
     "yrlt40z4": {
       "id": "yrlt40z4",
@@ -195,7 +284,14 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778920969778,
-      "demoDate": "2026-04-07"
+      "demoDate": "2026-04-07",
+      "contacts": [
+        {
+          "name": "Reema",
+          "role": "",
+          "sheetRow": 96
+        }
+      ]
     },
     "k3455fqr": {
       "id": "k3455fqr",
@@ -206,7 +302,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921023161,
-      "demoDate": "2026-04-08"
+      "demoDate": "2026-04-08",
+      "contacts": [
+        {
+          "name": "Shubham",
+          "role": ""
+        }
+      ]
     },
     "bqtdyyj6": {
       "id": "bqtdyyj6",
@@ -217,7 +319,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921036211,
-      "demoDate": "2026-04-20"
+      "demoDate": "2026-04-20",
+      "contacts": []
     },
     "8mliowlo": {
       "id": "8mliowlo",
@@ -228,7 +331,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921041211,
-      "demoDate": "2026-04-08"
+      "demoDate": "2026-04-08",
+      "contacts": []
     },
     "q672hpid": {
       "id": "q672hpid",
@@ -241,7 +345,14 @@
       "updated": 1779373021117,
       "demoDate": "2026-04-08",
       "inbound": false,
-      "acv": "0-5k"
+      "acv": "0-5k",
+      "contacts": [
+        {
+          "name": "Ranjith",
+          "role": "",
+          "sheetRow": 5
+        }
+      ]
     },
     "2p2bekng": {
       "id": "2p2bekng",
@@ -254,7 +365,14 @@
       "updated": 1779372530999,
       "demoDate": "2026-04-08",
       "inbound": false,
-      "acv": "10k-20k"
+      "acv": "10k-20k",
+      "contacts": [
+        {
+          "name": "Manisha Kar",
+          "role": "",
+          "sheetRow": 186
+        }
+      ]
     },
     "fw4loszp": {
       "id": "fw4loszp",
@@ -265,7 +383,18 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921803877,
-      "demoDate": "2026-04-09"
+      "demoDate": "2026-04-09",
+      "contacts": [
+        {
+          "name": "Aswin",
+          "role": "",
+          "sheetRow": 132
+        },
+        {
+          "name": "Janice's Friend",
+          "role": ""
+        }
+      ]
     },
     "z131e5jt": {
       "id": "z131e5jt",
@@ -276,7 +405,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921826327,
-      "demoDate": "2026-04-01"
+      "demoDate": "2026-04-01",
+      "contacts": [
+        {
+          "name": "CEO",
+          "role": ""
+        }
+      ]
     },
     "xg1j2doj": {
       "id": "xg1j2doj",
@@ -287,7 +422,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778921831427,
-      "demoDate": "2026-03-31"
+      "demoDate": "2026-03-31",
+      "contacts": []
     },
     "ho5wxkdf": {
       "id": "ho5wxkdf",
@@ -299,7 +435,8 @@
       "touchDate": "",
       "updated": 1778921996878,
       "demoDate": "2026-04-07",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "pdcwgw12": {
       "id": "pdcwgw12",
@@ -310,7 +447,13 @@
       "channel": "none",
       "touchDate": "2026-07-30",
       "updated": 1778926097009,
-      "demoDate": "2026-04-10"
+      "demoDate": "2026-04-10",
+      "contacts": [
+        {
+          "name": "Sagar Kapadia",
+          "role": ""
+        }
+      ]
     },
     "78q13wkn": {
       "id": "78q13wkn",
@@ -321,7 +464,13 @@
       "channel": "none",
       "touchDate": "2026-05-18",
       "updated": 1779090228102,
-      "demoDate": "2026-04-09"
+      "demoDate": "2026-04-09",
+      "contacts": [
+        {
+          "name": "Meghna",
+          "role": ""
+        }
+      ]
     },
     "blcof8hu": {
       "id": "blcof8hu",
@@ -332,7 +481,13 @@
       "channel": "none",
       "touchDate": "2026-08-24",
       "updated": 1778926109509,
-      "demoDate": "2026-04-16"
+      "demoDate": "2026-04-16",
+      "contacts": [
+        {
+          "name": "Navneeth",
+          "role": ""
+        }
+      ]
     },
     "b8i1k3ud": {
       "id": "b8i1k3ud",
@@ -343,7 +498,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922169045,
-      "demoDate": "2026-04-13"
+      "demoDate": "2026-04-13",
+      "contacts": [
+        {
+          "name": "Founders",
+          "role": ""
+        }
+      ]
     },
     "g3xkms91": {
       "id": "g3xkms91",
@@ -353,7 +514,8 @@
       "stage": "no-show",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778922176228
+      "updated": 1778922176228,
+      "contacts": []
     },
     "gufmt1s8": {
       "id": "gufmt1s8",
@@ -364,7 +526,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922212828,
-      "demoDate": "2026-04-16"
+      "demoDate": "2026-04-16",
+      "contacts": [
+        {
+          "name": "CTO",
+          "role": ""
+        }
+      ]
     },
     "av70z6q0": {
       "id": "av70z6q0",
@@ -374,7 +542,13 @@
       "stage": "demo-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779090231733
+      "updated": 1779090231733,
+      "contacts": [
+        {
+          "name": "Founder",
+          "role": ""
+        }
+      ]
     },
     "czl1xufg": {
       "id": "czl1xufg",
@@ -385,7 +559,14 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922669888,
-      "demoDate": "2026-05-05"
+      "demoDate": "2026-05-05",
+      "contacts": [
+        {
+          "name": "Prudhvi",
+          "role": "",
+          "sheetRow": 27
+        }
+      ]
     },
     "pt0qyu7q": {
       "id": "pt0qyu7q",
@@ -396,7 +577,13 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778922692404,
-      "demoDate": "2026-04-17"
+      "demoDate": "2026-04-17",
+      "contacts": [
+        {
+          "name": "Harshal",
+          "role": ""
+        }
+      ]
     },
     "cm1lafe7": {
       "id": "cm1lafe7",
@@ -409,7 +596,13 @@
       "updated": 1779373031784,
       "demoDate": "2026-04-17",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": [
+        {
+          "name": "Shail Patel",
+          "role": ""
+        }
+      ]
     },
     "ouc9x28k": {
       "id": "ouc9x28k",
@@ -420,7 +613,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923607779,
-      "demoDate": "2026-04-23"
+      "demoDate": "2026-04-23",
+      "contacts": []
     },
     "chmufx22": {
       "id": "chmufx22",
@@ -431,7 +625,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778926045482,
-      "demoDate": "2026-04-22"
+      "demoDate": "2026-04-22",
+      "contacts": []
     },
     "vsh95rf2": {
       "id": "vsh95rf2",
@@ -442,7 +637,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923652212,
-      "demoDate": "2026-05-11"
+      "demoDate": "2026-05-11",
+      "contacts": []
     },
     "wuenmqqy": {
       "id": "wuenmqqy",
@@ -454,7 +650,8 @@
       "touchDate": "",
       "updated": 1778923658029,
       "demoDate": "2026-04-21",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "k1mnj1sy": {
       "id": "k1mnj1sy",
@@ -466,7 +663,8 @@
       "touchDate": "",
       "updated": 1778923662512,
       "demoDate": "2026-04-17",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "j74u2llv": {
       "id": "j74u2llv",
@@ -478,7 +676,8 @@
       "touchDate": "2026-05-18",
       "updated": 1779090414060,
       "demoDate": "2026-04-16",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "33y7lvb2": {
       "id": "33y7lvb2",
@@ -490,7 +689,8 @@
       "touchDate": "",
       "updated": 1778923690479,
       "demoDate": "2026-04-08",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "vam3d726": {
       "id": "vam3d726",
@@ -503,7 +703,8 @@
       "updated": 1779450468787,
       "demoDate": "2026-04-14",
       "inbound": true,
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "c522yy4q": {
       "id": "c522yy4q",
@@ -514,7 +715,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778926043096,
-      "demoDate": "2026-04-14"
+      "demoDate": "2026-04-14",
+      "contacts": []
     },
     "aqbhlx5y": {
       "id": "aqbhlx5y",
@@ -525,7 +727,8 @@
       "channel": "none",
       "touchDate": "2026-05-18",
       "updated": 1779090387760,
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "r86mapmi": {
       "id": "r86mapmi",
@@ -536,7 +739,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923760763,
-      "demoDate": "2026-04-21"
+      "demoDate": "2026-04-21",
+      "contacts": []
     },
     "temuo6y6": {
       "id": "temuo6y6",
@@ -547,7 +751,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923766196,
-      "demoDate": "2026-04-20"
+      "demoDate": "2026-04-20",
+      "contacts": []
     },
     "1sstb062": {
       "id": "1sstb062",
@@ -558,7 +763,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923855430,
-      "demoDate": "2026-04-24"
+      "demoDate": "2026-04-24",
+      "contacts": []
     },
     "gz295rcq": {
       "id": "gz295rcq",
@@ -569,7 +775,8 @@
       "channel": "none",
       "touchDate": "2027-01-16",
       "updated": 1778926025342,
-      "demoDate": "2026-05-07"
+      "demoDate": "2026-05-07",
+      "contacts": []
     },
     "a57swvwj": {
       "id": "a57swvwj",
@@ -580,7 +787,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923820495,
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "91wwb4nn": {
       "id": "91wwb4nn",
@@ -591,7 +799,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923825680,
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "9k1vcmcu": {
       "id": "9k1vcmcu",
@@ -603,7 +812,8 @@
       "touchDate": "",
       "updated": 1779450108266,
       "demoDate": "2026-05-11",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "ac12ghnb": {
       "id": "ac12ghnb",
@@ -616,7 +826,8 @@
       "updated": 1779450390053,
       "demoDate": "2026-04-27",
       "inbound": true,
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "szcuv1bn": {
       "id": "szcuv1bn",
@@ -626,7 +837,8 @@
       "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923848496
+      "updated": 1778923848496,
+      "contacts": []
     },
     "csp5s88v": {
       "id": "csp5s88v",
@@ -639,7 +851,8 @@
       "updated": 1779373096618,
       "demoDate": "2026-05-11",
       "inbound": false,
-      "acv": "20k-50k"
+      "acv": "20k-50k",
+      "contacts": []
     },
     "s3jqncwo": {
       "id": "s3jqncwo",
@@ -650,7 +863,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778923912930,
-      "demoDate": "2026-05-06"
+      "demoDate": "2026-05-06",
+      "contacts": []
     },
     "vvk5pc8n": {
       "id": "vvk5pc8n",
@@ -661,7 +875,8 @@
       "channel": "none",
       "touchDate": "2026-05-18",
       "updated": 1779090044466,
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "n5qjsfkv": {
       "id": "n5qjsfkv",
@@ -672,7 +887,8 @@
       "channel": "slack",
       "touchDate": "",
       "updated": 1778924049381,
-      "demoDate": "2026-05-06"
+      "demoDate": "2026-05-06",
+      "contacts": []
     },
     "o2nade60": {
       "id": "o2nade60",
@@ -683,7 +899,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778924058463,
-      "demoDate": "2026-05-12"
+      "demoDate": "2026-05-12",
+      "contacts": []
     },
     "0ums1cr6": {
       "id": "0ums1cr6",
@@ -695,7 +912,8 @@
       "touchDate": "",
       "updated": 1779342920131,
       "inbound": false,
-      "demoDate": "2026-05-28"
+      "demoDate": "2026-05-28",
+      "contacts": []
     },
     "9mbxstiy": {
       "id": "9mbxstiy",
@@ -708,7 +926,19 @@
       "updated": 1779373083834,
       "demoDate": "2026-05-12",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": [
+        {
+          "name": "Himanshi",
+          "role": "",
+          "sheetRow": 208
+        },
+        {
+          "name": "Anshul",
+          "role": "",
+          "sheetRow": 206
+        }
+      ]
     },
     "pstfria7": {
       "id": "pstfria7",
@@ -719,7 +949,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925477623,
-      "demoDate": "2026-05-08"
+      "demoDate": "2026-05-08",
+      "contacts": []
     },
     "3l9o1g32": {
       "id": "3l9o1g32",
@@ -732,7 +963,8 @@
       "updated": 1779373088801,
       "demoDate": "2026-05-07",
       "inbound": false,
-      "acv": "0-5k"
+      "acv": "0-5k",
+      "contacts": []
     },
     "iy385rul": {
       "id": "iy385rul",
@@ -743,7 +975,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925531689,
-      "demoDate": "2026-05-11"
+      "demoDate": "2026-05-11",
+      "contacts": []
     },
     "5z3o34x4": {
       "id": "5z3o34x4",
@@ -756,7 +989,8 @@
       "updated": 1779372286947,
       "demoDate": "2026-05-15",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": []
     },
     "doteifrp": {
       "id": "doteifrp",
@@ -768,7 +1002,8 @@
       "touchDate": "",
       "updated": 1779342915998,
       "inbound": false,
-      "demoDate": "2026-05-28"
+      "demoDate": "2026-05-28",
+      "contacts": []
     },
     "ea8fs65h": {
       "id": "ea8fs65h",
@@ -781,7 +1016,8 @@
       "updated": 1779373100418,
       "demoDate": "2026-05-15",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": []
     },
     "j12sp53n": {
       "id": "j12sp53n",
@@ -792,7 +1028,8 @@
       "channel": "none",
       "touchDate": "",
       "updated": 1778925565340,
-      "demoDate": "2026-05-15"
+      "demoDate": "2026-05-15",
+      "contacts": []
     },
     "ajnjqch1": {
       "id": "ajnjqch1",
@@ -802,7 +1039,8 @@
       "stage": "no-show",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779170859072
+      "updated": 1779170859072,
+      "contacts": []
     },
     "v5ehnmlp": {
       "id": "v5ehnmlp",
@@ -813,7 +1051,8 @@
       "channel": "none",
       "touchDate": "2026-05-18",
       "updated": 1779113038474,
-      "demoDate": "2026-05-18"
+      "demoDate": "2026-05-18",
+      "contacts": []
     },
     "dz8tn98d": {
       "id": "dz8tn98d",
@@ -823,7 +1062,8 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925581723
+      "updated": 1778925581723,
+      "contacts": []
     },
     "nqdo6xbj": {
       "id": "nqdo6xbj",
@@ -835,7 +1075,8 @@
       "touchDate": "",
       "updated": 1779342931781,
       "inbound": false,
-      "demoDate": "2026-05-26"
+      "demoDate": "2026-05-26",
+      "contacts": []
     },
     "wgfbn9li": {
       "id": "wgfbn9li",
@@ -848,7 +1089,8 @@
       "updated": 1779450098430,
       "demoDate": "2026-05-11",
       "inbound": true,
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "47er1lbe": {
       "id": "47er1lbe",
@@ -863,7 +1105,14 @@
       "calEmail": "kevin@ariai.in",
       "demoDate": "2026-05-19",
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "contacts": [
+        {
+          "name": "Kevin",
+          "role": "",
+          "sheetRow": 6
+        }
+      ]
     },
     "rgdd3lli": {
       "id": "rgdd3lli",
@@ -876,7 +1125,8 @@
       "updated": 1779450254785,
       "inbound": true,
       "demoDate": "2026-05-19",
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "6hkztyr6": {
       "id": "6hkztyr6",
@@ -891,7 +1141,14 @@
       "calEmail": "rakesh@blynkk.in",
       "demoDate": "2026-05-25",
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "contacts": [
+        {
+          "name": "Rakesh",
+          "role": "",
+          "sheetRow": 24
+        }
+      ]
     },
     "c4zpuhr8": {
       "id": "c4zpuhr8",
@@ -904,7 +1161,19 @@
       "updated": 1779451082823,
       "demoDate": "2026-05-20",
       "inbound": false,
-      "acv": "10k-20k"
+      "acv": "10k-20k",
+      "contacts": [
+        {
+          "name": "Robin Singh",
+          "role": "",
+          "sheetRow": 83
+        },
+        {
+          "name": "Sagar Kulkarni",
+          "role": "champion",
+          "sheetRow": 82
+        }
+      ]
     },
     "tp4rhmtb": {
       "id": "tp4rhmtb",
@@ -917,7 +1186,14 @@
       "updated": 1779341868247,
       "calBookingId": "bEyzSkigiEGHZwotAJsXMT",
       "calEmail": "mayank.kulkarni@powerup.money",
-      "demoDate": "2026-06-04"
+      "demoDate": "2026-06-04",
+      "contacts": [
+        {
+          "name": "Mayank",
+          "role": "",
+          "sheetRow": 144
+        }
+      ]
     },
     "6dt3jz7j": {
       "id": "6dt3jz7j",
@@ -932,7 +1208,14 @@
       "calEmail": "aditya.nair@cash247.in",
       "demoDate": "2026-05-25",
       "inbound": false,
-      "acv": ""
+      "acv": "",
+      "contacts": [
+        {
+          "name": "Aditya",
+          "role": "",
+          "sheetRow": 39
+        }
+      ]
     },
     "xwscrsz2": {
       "id": "xwscrsz2",
@@ -945,7 +1228,14 @@
       "updated": 1779341881430,
       "calBookingId": "vXr2JVBSNQj2MYu4A8Wtuo",
       "calEmail": "sakshi@zfunds.in",
-      "demoDate": "2026-06-02"
+      "demoDate": "2026-06-02",
+      "contacts": [
+        {
+          "name": "Sakshi",
+          "role": "",
+          "sheetRow": 217
+        }
+      ]
     },
     "lmyry6va": {
       "id": "lmyry6va",
@@ -960,7 +1250,8 @@
       "calEmail": "andru@prosperitaso.com",
       "inbound": true,
       "demoDate": "2026-05-20",
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
@@ -974,7 +1265,8 @@
       "calBookingId": "fillout-391pj46hiqigohhev95u03bbuc@google.com",
       "calEmail": "bogdn@reactiveapps.ca",
       "demoDate": "2026-05-21",
-      "inbound": true
+      "inbound": true,
+      "contacts": []
     },
     "w23yl5x0": {
       "id": "w23yl5x0",
@@ -989,7 +1281,8 @@
       "calEmail": "anindyahp1994@gmail.com",
       "demoDate": "2026-05-22",
       "inbound": true,
-      "acv": ""
+      "acv": "",
+      "contacts": []
     },
     "hhq7mas8": {
       "id": "hhq7mas8",
@@ -1004,7 +1297,13 @@
       "calEmail": "marketing@hoora.in",
       "demoDate": "2026-05-22",
       "inbound": false,
-      "acv": "5k-10k"
+      "acv": "5k-10k",
+      "contacts": [
+        {
+          "name": "Chetan",
+          "role": ""
+        }
+      ]
     },
     "hmuplodt": {
       "id": "hmuplodt",
@@ -1017,7 +1316,14 @@
       "updated": 1779366761287,
       "calBookingId": "fUgMe4Dk5Xe4nYm353AEb5",
       "calEmail": "muskan.garg@fuelbuddy.in",
-      "demoDate": "2026-05-25"
+      "demoDate": "2026-05-25",
+      "contacts": [
+        {
+          "name": "Muskan Garg",
+          "role": "",
+          "sheetRow": 62
+        }
+      ]
     },
     "70itspid": {
       "id": "70itspid",
@@ -1032,7 +1338,14 @@
       "calEmail": "shashwat.r@kiddopia.com",
       "demoDate": "2026-05-22",
       "inbound": false,
-      "acv": "20k-50k"
+      "acv": "20k-50k",
+      "contacts": [
+        {
+          "name": "Shashwat",
+          "role": "",
+          "sheetRow": 91
+        }
+      ]
     },
     "xzvfucgg": {
       "id": "xzvfucgg",
@@ -1045,7 +1358,14 @@
       "touchDate": "",
       "updated": 1779427080019,
       "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
-      "calEmail": "dheeraj.prarthi@zypp.app"
+      "calEmail": "dheeraj.prarthi@zypp.app",
+      "contacts": [
+        {
+          "name": "Dheeraj",
+          "role": "",
+          "sheetRow": 225
+        }
+      ]
     },
     "8l4hlwf4": {
       "id": "8l4hlwf4",
@@ -1058,7 +1378,13 @@
       "acv": "",
       "demoDate": "2026-05-20",
       "touchDate": "2026-05-18",
-      "updated": 1779451032507
+      "updated": 1779451032507,
+      "contacts": [
+        {
+          "name": "Dharmil Shanishwara",
+          "role": "champion"
+        }
+      ]
     }
   },
   "order": {
