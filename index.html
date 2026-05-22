@@ -1117,7 +1117,7 @@ function renderLeadCounts() {
 
   const acvLabel = pipelineRevealed
     ? `<span class="lc-num" id="pipelineVal">${acvLow > 0 ? formatCurrency(acvLow) + ' – ' + formatCurrency(acvHigh) : '—'}</span>`
-    : `<span class="lc-num" style="color:var(--muted);font-weight:400;">Click to reveal</span>`;
+    : `<span class="lc-num" style="color:rgba(255,255,255,0.65);font-weight:400;font-size:11px;">Click to reveal</span>`;
 
   const fuCount = typeof getFollowUpCompanies === 'function' ? getFollowUpCompanies().length : 0;
 
