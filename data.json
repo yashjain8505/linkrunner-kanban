@@ -395,27 +395,33 @@
     "fw4loszp": {
       "id": "fw4loszp",
       "name": "Namma Yatri",
-      "contact": "Aswin and Janice's Friend",
+      "contact": "Aswin, Janice's Friend",
       "notes": "",
       "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778921803877,
+      "updated": 1779480762539,
       "demoDate": "2026-04-09",
       "contacts": [
         {
           "name": "Aswin",
-          "role": "",
           "sheetRow": 132,
           "email": "aswin.sk@nammayatri.in",
           "phone": "91 70106 69103",
-          "linkedin": "http://www.linkedin.com/in/aswin5"
+          "linkedin": "http://www.linkedin.com/in/aswin5",
+          "role": "champion"
         },
         {
           "name": "Janice's Friend",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
           "role": ""
         }
-      ]
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "z131e5jt": {
       "id": "z131e5jt",
