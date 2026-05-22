@@ -981,16 +981,21 @@
     "5z3o34x4": {
       "id": "5z3o34x4",
       "name": "Flattrade",
-      "contact": "",
+      "contact": "Manoj",
       "notes": "High Intent",
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779372286947,
+      "updated": 1779472393428,
       "demoDate": "2026-05-15",
       "inbound": false,
       "acv": "5k-10k",
-      "contacts": []
+      "contacts": [
+        {
+          "name": "Manoj",
+          "role": "champion"
+        }
+      ]
     },
     "doteifrp": {
       "id": "doteifrp",
@@ -1512,7 +1517,6 @@
     "email-first-sent",
     "email-second-sent",
     "follow-up-2-done",
-    "price-negotiations",
     "integration-started",
     "paying-customer",
     "attention-needed",
