@@ -349,6 +349,27 @@
     border: 1px solid var(--border) !important;
   }
   .add-contact-cancel:hover { color: var(--text) !important; }
+
+  /* Contact autocomplete */
+  .contact-ac-wrap { position: relative; flex: 1; }
+  .contact-ac-list {
+    position: absolute; top: 100%; left: 0; right: 0; z-index: 65;
+    background: var(--surface); border: 1px solid var(--border);
+    border-radius: 8px; margin-top: 4px; max-height: 180px; overflow-y: auto;
+    box-shadow: 0 8px 24px rgba(15,23,42,0.12);
+    display: none;
+  }
+  .contact-ac-list.open { display: block; }
+  .contact-ac-item {
+    padding: 7px 10px; cursor: pointer; display: flex; flex-direction: column;
+    gap: 1px; transition: background 0.1s;
+  }
+  .contact-ac-item:first-child { border-radius: 8px 8px 0 0; }
+  .contact-ac-item:last-child { border-radius: 0 0 8px 8px; }
+  .contact-ac-item:hover, .contact-ac-item.active { background: var(--accent-soft); }
+  .contact-ac-item .ac-name { font-size: 12.5px; font-weight: 600; color: var(--text); }
+  .contact-ac-item .ac-detail { font-size: 10.5px; color: var(--muted); }
+  .contact-ac-empty { padding: 8px 10px; font-size: 11.5px; color: var(--muted); font-style: italic; }
   .card .notes {
     color: var(--text-2); font-size: 11.5px; margin-top: 6px;
     line-height: 1.4; word-break: break-word;
@@ -1011,7 +1032,10 @@
       <div class="add-contact-row">
         <button class="add-contact-btn" id="addContactBtn" type="button">+ Add contact</button>
         <div class="add-contact-input" id="addContactInput">
-          <input type="text" id="newContactName" placeholder="Contact name" />
+          <div class="contact-ac-wrap">
+            <input type="text" id="newContactName" placeholder="Type name to search..." autocomplete="off" />
+            <div class="contact-ac-list" id="contactAcList"></div>
+          </div>
           <button type="button" id="confirmAddContact">Add</button>
           <button type="button" class="add-contact-cancel" id="cancelAddContact">Cancel</button>
         </div>
@@ -1098,6 +1122,20 @@ const API_BASE = `https://api.github.com/repos/${CONFIG.owner}/${CONFIG.repo}/co
 const CONTACT_SHEET_ID = '1gTLpq4bpPLWaE6Mql-ul28N-RWQi4J-zQ2VHw1mu2X0';
 function contactSheetURL(row) {
   return `https://docs.google.com/spreadsheets/d/${CONTACT_SHEET_ID}/edit#gid=0&range=A${row}`;
+}
+
+// ─── Contact directory (from prospect sheet) ──────────────────────────────
+const CDIR={"Abhibus":[{"name":"Shivateja Gupta","row":2,"e":"shivateja.a@abhibus.com","p":"+91 73309 10772","l":"http://www.linkedin.com/in/shivahteja"}],"Alive":[{"name":"Vivek Kumar","row":4,"e":"vivek@iamalive.app","p":"91 97317 35544"},{"name":"Ranjith","row":5,"e":"ranjith@iamalive.app","p":"8310306933"}],"Ariai":[{"name":"Kevin Joseph","row":6,"e":"kevin@decimlindia.com","p":"+91 88888 79237","l":"http://www.linkedin.com/in/kevin-joseph-67a47521b"}],"AssetPlus":[{"name":"Sethu Raman","row":11,"e":"sethu.r@assetplus.in","l":"http://www.linkedin.com/in/sethu-raman-257aa4212"},{"name":"Sai Reddy","row":13,"e":"saivenkat.kv@assetplus.io","p":"+91 79898 02657","l":"http://www.linkedin.com/in/sai-venkat-reddy-4a6412182"},{"name":"Justin Joe","row":14,"e":"justin.j@assetplus.io","p":"+91 88701 52732","l":"http://www.linkedin.com/in/justin-joe-bb58aa176"},{"name":"Faiyas Khan","row":10,"l":"http://www.linkedin.com/in/faiyaskhan"},{"name":"Muzammil Khan","row":12,"l":"http://www.linkedin.com/in/muzammil-khan-0b5429141"}],"Banza":[{"name":"Aditya Vijaykumar","row":18,"e":"aditya@banza.xyz","p":"+91 96204 32509","l":"http://www.linkedin.com/in/aditya-vijaykumar-0095a461"},{"name":"Shaun Paul","row":19,"e":"shaun@banza.xyz","l":"http://www.linkedin.com/in/shaun-paul-92b003219"}],"Bhanzu":[{"name":"Ananya Sunar","row":20,"e":"ananya.sunar@bhanzu.com","p":"+91 90366 40869","l":"http://www.linkedin.com/in/ananya-sunar-b40995200"},{"name":"Sai G","row":21,"e":"sai.bharath@bhanzu.com","p":"+91 99009 93933","l":"http://www.linkedin.com/in/saibharath1"},{"name":"Pramod Yerra","row":22,"e":"pramod.reddy@bhanzu.com","p":"+91 94356 86035","l":"http://www.linkedin.com/in/pramod-reddy"},{"name":"Papiya Debroy","row":23,"e":"papiya.debroy@bhanzu.com","p":"+91 97740 46240","l":"http://www.linkedin.com/in/papiya-debroy"}],"Blynkk":[{"name":"Rakesh Tiwari","row":24,"e":"rakesh@scutu.com","p":"+91 90046 70003","l":"http://www.linkedin.com/in/aditya-nair-42a26b18b"},{"name":"Aakash Dave","row":25,"e":"aakash.dave@blynkk.in","p":"+91 89621 44108","l":"http://www.linkedin.com/in/aakash-dave-78903715b"}],"Borzodelivery":[{"name":"Khushbu Motwani","row":26,"e":"khushbu.motwani@borzodelivery.com","p":"+91 96199 92499","l":"http://www.linkedin.com/in/khushbu-motwani-8b390211b"}],"Bounce":[{"name":"Prudhvi Raju","row":27,"e":"prudhvi@bounceshare.com"},{"name":"Swarna","row":28,"e":"swarna@bounceshare.com"}],"Brevistay":[{"name":"Rohit Koli","row":29,"e":"rohit@brevistay.com","p":"+91 87009 10983","l":"http://www.linkedin.com/in/rohitt-koli"},{"name":"Prateek Singh","row":30,"e":"prateek@brevistay.com","p":"+91 98719 58885","l":"http://www.linkedin.com/in/prateeksss"},{"name":"Aditya Naithani","row":31,"e":"aditya@brevistay.com","p":"+91 99585 33420","l":"http://www.linkedin.com/in/aditya-naithani-7a474363"}],"Cambaytiger":[{"name":"Shrusti Naik","row":33,"e":"shrusti@cambaytiger.com","l":"http://www.linkedin.com/in/shrusti-naik-3274a8169"},{"name":"Vrutika Patel","row":34,"e":"vrutika@cambaytiger.com","p":"+91 98205 79115","l":"http://www.linkedin.com/in/vrutika-patel-9897b217"}],"Cars24":[{"name":"Mandeep Sharma","row":35,"e":"mandeep.sharma@cars24.com","p":"+91 99151 27448","l":"http://www.linkedin.com/in/mandeep98sharma"},{"name":"Ria Sengupta","row":36,"l":"http://www.linkedin.com/in/ria-sengupta-767b89105"},{"name":"Harshit Khanna","row":37,"e":"harshit.khanna@cars24.com","p":"+91 70535 16662","l":"http://www.linkedin.com/in/harshitkhanna22"}],"Cash247":[{"name":"Apoorva Anand","row":38,"e":"apoorva.anand@cash247.in","l":"http://www.linkedin.com/in/ashish-kamble-78471918"},{"name":"Aditya Nair","row":39,"e":"aditya.nair@cash247.in","p":"+91 94079 33286","l":"http://www.linkedin.com/in/apoorva-anand-a19409380"}],"Chefkart":[{"name":"Ajay Nayak","row":40,"e":"ajay@cookandchef.in"},{"name":"Aman Gupta","row":41,"e":"aman@thechefkart.com","p":"91 97737 41373","l":"http://www.linkedin.com/in/aman-gupta-bb906759"},{"name":"Vaibhav Gupta","row":42,"e":"vaibhav@thechefkart.com","p":"91 97737 41114","l":"http://www.linkedin.com/in/vaibhav-gupta-b516937a"}],"Credflow":[{"name":"Sachin Singh","row":43,"e":"ssachink.98@gmail.com","p":"+91 98913 87624","l":"http://www.linkedin.com/in/sachinsinghmarketer"},{"name":"Preeti Mandal","row":44,"e":"preeti.mandal@credflow.in","p":"+91 78272 98390","l":"http://www.linkedin.com/in/preeti-mandal-075369244"},{"name":"Dinesh Kumar","row":45,"l":"http://www.linkedin.com/in/dinesh-kumar-42b6aa5a"}],"Decimlindia":[{"name":"Karman Wahan","row":46,"e":"karman@decimlindia.com"},{"name":"Kevin Joseph","row":47,"e":"kevin@decimlindia.com"}],"Desi Farms":[{"name":"Pratiksha Pandey","row":48,"e":"pratiksha.pandey@desifarmsindia.com"},{"name":"Sunil Shahi","row":49,"e":"sunil.shahi@desifarmsindia.com"},{"name":"Vikram Sutar","row":50,"e":"sutar@desifarmsindia.in"}],"Epik":[{"name":"Epik Varun","row":51,"e":"varun@getepik.in","l":"http://www.linkedin.com/in/voidandcreativity"},{"name":"Harsh Tiwari","row":52,"e":"harsh.t@getepik.in","p":"+91 89579 01014","l":"http://www.linkedin.com/in/harsh-tiwari-8753a8218"},{"name":"Epik Gotama","row":53,"e":"gotama@getepik.in","p":"+91 99000 55509","l":"http://www.linkedin.com/in/gotama"}],"FRND":[{"name":"Sampath Boda","row":54,"e":"sampath.boda@frnd.app","p":"+91 74310 77968","l":"http://www.linkedin.com/in/sampath-boda-2a547b199"},{"name":"Pooja Kumari","row":55,"e":"pooja.kumari@frnd.app","p":"+91 95828 98528","l":"http://www.linkedin.com/in/pooja-kumari-b0383b167"}],"Flattrade":[{"name":"Manoj Kumar","row":61,"e":"manojkumar@flattrade.in","p":"+91 97886 83324","l":"http://www.linkedin.com/in/arokia-manoj-kumar"}],"Fuelbuddy":[{"name":"Muskan Garg","row":62,"e":"muskan.garg@fuelbuddy.in","p":"+91 85128 44001","l":"http://www.linkedin.com/in/muskan-garg-759280164"},{"name":"Nandkishore","row":63,"l":"http://www.linkedin.com/in/p11nandkishore"}],"Furlenco":[{"name":"Hiranmay Kar","row":64,"e":"hiranmay@furlenco.com","p":"+91 96200 44282","l":"http://www.linkedin.com/in/hiranmaykar"},{"name":"Anushobikha Satish","row":65,"e":"anushobikha.satish@furlenco.com","l":"http://www.linkedin.com/in/anushobikha-satish-a333ab174"},{"name":"Arijith Chowdhury","row":66,"e":"arijit.chowdhury@furlenco.com","p":"9967495133"}],"Hoora":[{"name":"Abhijit Warbhe","row":68,"e":"abhijit@hoora.me","p":"+91 73876 73925","l":"http://www.linkedin.com/in/yashwant-budhwani-90671017a"},{"name":"Yashwant Budhwani","row":69,"e":"yashwant@hoora.in","p":"+91 80877 99299","l":"http://www.linkedin.com/in/deepan-dhamothiran-401a931aa"}],"Hudle":[{"name":"Parth Soni","row":70,"l":"http://www.linkedin.com/in/parth-soni-b5797a332"},{"name":"Shaswat Bhatt","row":71,"e":"shaswat@hudle.in","p":"91 95604 08566","l":"http://www.linkedin.com/in/shaswat-bhatt-771909251"},{"name":"Suhail Narain","row":72,"e":"suhail@hudle.in","p":"91 99990 19812","l":"http://www.linkedin.com/in/suhail-narain-62152748"},{"name":"Sonam Taneja","row":73,"e":"sonam@hudle.in","p":"91 98187 31968","l":"http://www.linkedin.com/in/sonam-taneja-6a661b18"}],"IndiaBonds":[{"name":"Anand Shrikhande","row":74,"e":"anand@quickinsure.co.in"},{"name":"Vijay Honrao","row":75,"e":"vijay@quickinsure.co.in"},{"name":"Sheel Bhadra","row":76,"e":"sheel.bhadra@indialends.com","p":"+91 74000 52257","l":"http://www.linkedin.com/in/sheelb"},{"name":"Shantanu Vishnoi","row":77,"e":"shantanu.vishnoi@indialends.com","p":"+91 81307 95708","l":"http://www.linkedin.com/in/shantanu-vishnoi-a626a316b"},{"name":"Vinamra Mittal","row":78,"e":"vinamra.mittal@indialends.com","p":"+91 93240 50905","l":"http://www.linkedin.com/in/vinamramittal"},{"name":"Tejas Pundpal","row":79,"p":"179812148","l":"http://www.linkedin.com/in/tejas-pundpal-179812148"},{"name":"Sriram Subramanian","row":80,"e":"sriram.subramanian@indiabonds.com","p":"+91 90296 79643","l":"http://www.linkedin.com/in/srirams92"}],"Katyayani Organic":[{"name":"Sagar Kulkarni","row":82,"e":"sagarkulkarni@katyayaniorganics.com","p":"+91 90041 29010","l":"http://www.linkedin.com/in/robin-singh-meena"},{"name":"Robin Meena","row":83,"p":"+91 96173 33232","l":"http://www.linkedin.com/in/ismail-patel-b55a84225"},{"name":"Ismail Patel","row":84,"e":"ismailpatel@katyayaniorganics.com","p":"+91 99222 16105","l":"http://www.linkedin.com/in/vaibhaw-vishal-4530231b7"},{"name":"Vaibhaw Vishal","row":85,"e":"vaibhaw@katyayaniorganics.com","p":"+91 62992 07689","l":"http://www.linkedin.com/in/yuvraj-singh-9645b8267"},{"name":"Yuvraj Singh","row":86,"e":"yuvrajsingh@katyayaniorganics.com","p":"+91 82787 68402","l":"http://www.linkedin.com/in/nagu-naik-010509230"},{"name":"Nagu Naik","row":87,"e":"nagunaik@katyayaniorganics.com","p":"+91 91218 12554","l":"http://www.linkedin.com/in/siddhi-thakur-4b304b227"},{"name":"Siddhi Thakur","row":88,"e":"siddhithakur@katyayaniorganics.com","l":"http://www.linkedin.com/in/nirbhaygp"}],"Kiddopia":[{"name":"Swizzel Kundoli","row":89,"e":"swizzel@kiddopia.com","p":"+91 96194 72008","l":"http://www.linkedin.com/in/swizzelkundoli"},{"name":"Vishal Vernekar","row":90,"e":"vishal@kiddopia.com","p":"+91 75069 39878","l":"http://www.linkedin.com/in/vishal-vernekar-79535494"},{"name":"Shashwat Rai","row":91,"e":"shashwat.r@kiddopia.com","p":"+91 99538 28905","l":"http://www.linkedin.com/in/shashwat-rai-22357a72"}],"Kindlife":[{"name":"Shubhanshu Mishra","row":92,"l":"http://www.linkedin.com/in/shubhanshu-mishra-74336a1a4"},{"name":"Vineeth Gunda","row":93,"e":"vineeth.gunda@kindlife.in","p":"91 94409 39945","l":"http://www.linkedin.com/in/vineeth-gunda-49559a13b"},{"name":"Aakansha Singhal","row":94,"e":"aakansha.singhal@kindlife.in","p":"91 98722 77999","l":"http://www.linkedin.com/in/aakansha-singhal-09b000114"}],"KisanKonnect":[{"name":"Raashi Nadar","row":95,"e":"raashi.nadar@kisankonnect.in","p":"91 84249 31398","l":"http://www.linkedin.com/in/raashi-nadar-b667b8224"},{"name":"Reema Dembla","row":96,"e":"reema.dembla@kisankonnect.in","p":"91 99877 79389","l":"http://www.linkedin.com/in/reema-dembla-636518a7"},{"name":"Avinash Labade","row":97,"e":"avinash.labade@kisankonnect.in","p":"91 96570 00404","l":"http://www.linkedin.com/in/avinash-labade-80061617b"}],"Koinpark":[{"name":"Prathip S","row":104,"e":"prathip.s@koinpark.com","p":"+91 95007 56769","l":"http://www.linkedin.com/in/prathip-s-26921b23a"},{"name":"Selvakumar Cithambaram","row":105,"e":"selvakumar.c@koinpark.com","p":"+91 96773 28412","l":"http://www.linkedin.com/in/selvakumar-cithambaram-747239172"},{"name":"Bhavithra V","row":106,"e":"bhavithra.v@koinpark.com","p":"+91 81249 06466","l":"http://www.linkedin.com/in/bhavithra-v-5067b0147"},{"name":"Bert Beffort","row":101,"e":"bert.beffort@koinpark.com","l":"http://www.linkedin.com/in/bert-beffort-2a32a7326"},{"name":"Vinitharaj Bharathi","row":102,"p":"459367265","l":"http://www.linkedin.com/in/vinitharaj-bharathi-459367265"},{"name":"Prabhakaran Jeyaraman","row":103,"e":"prabhakaran.j@koinpark.com","p":"+91 72001 65837","l":"http://www.linkedin.com/in/prabhakaran-jeyaraman-199327121"}],"Kredit.Pe":[{"name":"Vivek Baskaran","row":107,"e":"vivek@kredit.pe","p":"+91 81062 15740","l":"http://www.linkedin.com/in/vivek-baskaran-68766b30"},{"name":"Sudheer N","row":108,"e":"sudheer@kredit.pe","p":"+91 88612 15151","l":"http://www.linkedin.com/in/sudheer-y-n-4322398"}],"Libas":[{"name":"Mohd Suhail","row":111,"e":"mohd.suhail@libas.in","p":"+91 97175 45308","l":"http://www.linkedin.com/in/mohdsuhail07"},{"name":"Nisha Khatri","row":112,"e":"nisha.khatri@libas.in","p":"+91 78383 30996","l":"http://www.linkedin.com/in/nisha-khatri-461671ab"}],"Lovelocal":[{"name":"Sanjeev Kumar","row":113,"e":"sanjeev@lovelocal.in","p":"+91 89617 02136","l":"http://www.linkedin.com/in/isanjeevkr"},{"name":"Gaurav Kulkarni","row":114,"e":"gaurav@lovelocal.in","l":"http://www.linkedin.com/in/gaurav-kulkarni-58a713105"},{"name":"Saket Ambekar","row":115,"e":"saket@lovelocal.in","p":"+91 98210 51440","l":"http://www.linkedin.com/in/saket-ambekar-27751214"}],"Mathongo":[{"name":"Aniruddha Rokade","row":116,"e":"aniruddha.rokade@mathongo.com"},{"name":"Anup Gupta","row":117,"e":"anup@mathongo.com"},{"name":"Dhimanjyoti Bayan","row":118,"e":"dhimanjyoti@mathongo.com"},{"name":"Shashank Shetty","row":119,"e":"shashank.shetty@mathongo.com"},{"name":"Shivam Dengla","row":120,"e":"shivam.dengla@mathongo.com"}],"Misfits":[{"name":"Shashwat Narhatiyar","row":121,"e":"shashwat@misfits.net.in","p":"+91 73887 86014","l":"http://www.linkedin.com/in/shashwat-narhatiyar-misfits"},{"name":"Divyansh Rathore","row":122,"l":"http://www.linkedin.com/in/divyansh-rathore-1a75211b2"},{"name":"Chaitanya Dhawan","row":123,"e":"chaitanya.dhawan@misfits.net.in","p":"+91 73887 12897","l":"http://www.linkedin.com/in/chaitanya-dhawan"}],"Multipl":[{"name":"Swati Iyer","row":127,"e":"swati@multipl.xyz","p":"+91 87670 30491","l":"http://www.linkedin.com/in/swatisiyer"},{"name":"Nishi Mallika","row":128,"e":"nishi@multipl.xyz","p":"+91 79876 94756","l":"http://www.linkedin.com/in/nishi-mallika-b2a84b167"},{"name":"Sushin Shetty","row":129,"e":"sushin@multipl.xyz","p":"+91 80875 87947","l":"http://www.linkedin.com/in/sushin-shetty-200b73114"},{"name":"Ekta Srivastava","row":130,"e":"ekta.srivastava@rupeeredee.com","p":"+91 88402 64165","l":"http://www.linkedin.com/in/ekta-srivastava-4a0274187"}],"Namma Yatri":[{"name":"Magizhan Selvan","row":131,"e":"mags@nammayatri.in","p":"91 96209 02139","l":"http://www.linkedin.com/in/magizhan"},{"name":"Aswin Kumar","row":132,"e":"aswin.sk@nammayatri.in","p":"91 70106 69103","l":"http://www.linkedin.com/in/aswin5"}],"Pagarbook":[{"name":"Rupesh Mishra","row":136,"e":"rupesh@pagarbook.com","p":"+91 80940 46639","l":"http://www.linkedin.com/in/rupesh-kumar-mishra-824714a8"},{"name":"Siva Prasad","row":137,"e":"siva@pagarbook.com","p":"+91 97397 77077","l":"http://www.linkedin.com/in/sivaprasadk"},{"name":"Adarsh Kumar","row":138,"e":"adarsh@pagarbook.com","p":"+91 91675 15296","l":"http://www.linkedin.com/in/adarsh-kumar-1b05445b"},{"name":"Chethan Sanjay","row":139,"e":"chethan.sanjay@pagarbook.com","p":"+91 81475 55356","l":"http://www.linkedin.com/in/chethan-sanjay-21aa801aa"}],"Powerup":[{"name":"Arush Kapoor","row":142,"e":"arush.kapoor@powerup.money","p":"+91 89397 94377","l":"http://www.linkedin.com/in/arush-kapoor-683510143"},{"name":"Vikas Kumar","row":143,"e":"vikas.kumar@powerup.money","p":"+91 96432 40987","l":"http://www.linkedin.com/in/vikas-kumar-0b446659"},{"name":"Mayank Kulkarni","row":144,"e":"mayank.kulkarni@powerup.money","p":"+91 99298 55583","l":"http://www.linkedin.com/in/mayank-kulkarni98"}],"Pratilipi":[{"name":"Ashwini Swain","row":145,"e":"ashwini@pratilipi.com","p":"91 86007 10020","l":"http://www.linkedin.com/in/ashwini-swain-40b0b5163"},{"name":"Saurabh Verma","row":146,"e":"verma@pratilipi.com","p":"91 96253 09071","l":"http://www.linkedin.com/in/saurabhverma07"},{"name":"Mayank Drolia","row":147,"e":"mayank@pratilipi.com","p":"91 90019 08958","l":"http://www.linkedin.com/in/mayankdrolia"},{"name":"Naveen Gundu","row":148,"e":"naveen.gundu@pratilipi.com","p":"91 79898 01605","l":"http://www.linkedin.com/in/naveengunduofficial"}],"Purplle":[{"name":"Vijay Reddy","row":149,"e":"vk.reddy@purplle.com","p":"91 99307 92258","l":"http://www.linkedin.com/in/vijay-kumar-reddy"},{"name":"Jayesh Verma","row":150,"e":"jayesh.v@purplle.com","p":"91 87430 55084","l":"http://www.linkedin.com/in/jayesh-verma-564366141"},{"name":"Aditya Kulkarni","row":151,"e":"aditya.k@purplle.com","p":"91 79756 89903","l":"http://www.linkedin.com/in/aditya-kulkarni-896aa8260"},{"name":"Arhaan Chakravarthy","row":152,"e":"arhaan.c@purplle.com","l":"http://www.linkedin.com/in/arhaan-chakravarthy-071a8127a"}],"Regal Jewellers":[{"name":"Ajmal Yousuf","row":154,"e":"ajmal@regaljewellers.net","p":"+91 99950 58800","l":"http://www.linkedin.com/in/ajmalyousuf"},{"name":"Shuhaib Aliyar","row":155,"p":"+91 88483 47190","l":"http://www.linkedin.com/in/shuhaib-aliyar-392a04201"},{"name":"Anjana Aneesh","row":156,"l":"http://www.linkedin.com/in/anjana-aneesh-7b128b271"}],"Royal Brothers":[{"name":"Meghana Banumaiah","row":157,"e":"meghana.banumaiah@royalbrothers.com","l":"http://www.linkedin.com/in/meghana-marketing-manager"},{"name":"Abhishek Chandrashekar","row":158,"e":"abhishek@royalbrothers.com","p":"+91 99166 11179","l":"http://www.linkedin.com/in/abhishek-chandrashekar-45500b32"},{"name":"Kuldip","row":159,"e":"kuldip@royalbrothers.com","p":"81426 40006"}],"Rupeezy":[{"name":"Ovesh Qureshi","row":165,"e":"ovesh.qureshi@rupeezy.in","p":"+91 95117 34644","l":"http://www.linkedin.com/in/ovesh-qureshi-655771213"},{"name":"Abhishek Khanna","row":166,"e":"abhishek.khanna@rupeezy.in","p":"+91 98717 41322","l":"http://www.linkedin.com/in/abhishek-khanna-91b7512a5"},{"name":"Aman Srivastava","row":167,"e":"asrivastava@rupeezy.in","p":"+91 99000 55135","l":"http://www.linkedin.com/in/aman-srivastava-b88240110"},{"name":"Kaushal Kishor","row":168,"e":"kaushal@asthatrade.com","p":"+91 96869 96682","l":"http://www.linkedin.com/in/kaushal-kishor-b2675946"}],"Samco Securities":[{"name":"Akshay Mense","row":169,"e":"akshay.mense@samco.in"},{"name":"Ayesha Shaikh","row":170,"e":"ayesha.shaikh@samco.in"},{"name":"Bhavya Pandya","row":171,"e":"bhavya.pandya@samco.in"},{"name":"Yesha Shah","row":172,"e":"yesha.shah@samco.in"}],"Scapia":[{"name":"Gitesh Aggarwal","row":173,"e":"gitesh@scapia.cards","p":"+91 87278 67007","l":"http://www.linkedin.com/in/gitesh1604"},{"name":"Aniruddh Agrawal","row":174,"e":"aniruddh.agrawal@scapia.cards","p":"+91 96207 89863","l":"http://www.linkedin.com/in/aniruddh-agrawal-flipkart"},{"name":"Mohammed Khan","row":175,"e":"umair@scapia.cards","p":"+91 76669 50990","l":"http://www.linkedin.com/in/mohammed-umair-khan-0b904416b"}],"Sid's Farm":[{"name":"Rishi Raj","row":178,"e":"rishi.raj@happynature.in","p":"+91 95825 97241","l":"http://www.linkedin.com/in/rishivy"},{"name":"Gaurav Singh","row":179,"e":"gauravsingh@happynature.in","p":"+91 96549 88844","l":"http://www.linkedin.com/in/gaurav-singh-972a7b18"},{"name":"Gunjan Samtani","row":180,"e":"gunjan.samtani@peekonow.com","p":"+91 96647 02795","l":"http://www.linkedin.com/in/gunjan-samtani-5a759716a"},{"name":"Rahul Dubey","row":181,"e":"rahul.dubey@peekonow.com","p":"+91 97171 85271","l":"http://www.linkedin.com/in/rahuldubeyy"},{"name":"Vivek Khetan","row":182,"e":"vivek.khetan@caviplanet.com","p":"+91 95357 83569","l":"http://www.linkedin.com/in/vivek-khetan-95004921"},{"name":"Tamal Chatterjee","row":183,"e":"tamal.chatterjee@sidsfarm.com","p":"91 95996 88781","l":"http://www.linkedin.com/in/tamalchatterjee"},{"name":"Akshith Reddy","row":184,"e":"akshith.mulamalla@sidsfarm.com","p":"91 63032 21079","l":"http://www.linkedin.com/in/akshith-reddy-29657a188"},{"name":"Sujal S","row":185,"l":"http://www.linkedin.com/in/sujal-s-109333299"},{"name":"Manisha Kar","row":186,"e":"manisha.kar@sidsfarm.com","p":"91 78270 01765","l":"http://www.linkedin.com/in/manisha-kar"}],"Sovrenn":[{"name":"Mohammad Alam","row":187,"p":"+91 70079 20213","l":"http://www.linkedin.com/in/apoorvajoshi28"},{"name":"Apoorva Joshi","row":188,"e":"apoorva.joshi@sovrenn.com","p":"+91 88009 47361","l":"http://www.linkedin.com/in/annu-singh-6b91802a8"},{"name":"Annu Singh","row":189,"e":"annu.singh@sovrenn.com","l":"http://www.linkedin.com/in/akritiswaroop"},{"name":"Akriti Swaroop","row":190,"e":"akriti.swaroop@sovrenn.com","p":"+91 77384 75959","l":"http://www.linkedin.com/in/annu-seepal"},{"name":"Annu Seepal","row":191,"e":"annu.seepal@sovrenn.com","p":"+91 87915 61569","l":"http://www.linkedin.com/in/sakshi-rajvansh-687b51214"}],"Swish":[{"name":"Abhinay Abhilash","row":195,"e":"abhinay@justswish.in","p":"+91 99103 85614","l":"http://www.linkedin.com/in/abhinay-a-5b6283115"},{"name":"Anand A","row":196,"e":"anand@justswish.in","p":"+91 99206 62232","l":"http://www.linkedin.com/in/anand-krishnan-a-01a45912b"},{"name":"Shaurya Pandey","row":197,"e":"shaurya@justswish.in","p":"+91 91986 07678","l":"http://www.linkedin.com/in/shaurya-pandey-b8154a173"},{"name":"Gaurav Rawat","row":198,"e":"gauravr@justswish.in","p":"97696 57773"}],"Vama":[{"name":"Aayushi Mogha","row":203,"e":"aayushi@vama.app","l":"http://www.linkedin.com/in/aayushi-mogha-40b202223"},{"name":"Pratik Misal","row":204,"e":"pratik@vama.app","p":"+91 80551 13512","l":"http://www.linkedin.com/in/pratikmisal6988"},{"name":"Himanshu Semwal","row":205,"e":"hs@vama.app","p":"+91 98180 85550","l":"http://www.linkedin.com/in/himanshu-semwal-7814aa14"}],"Wedmegood":[{"name":"Anshul Gupta","row":206,"e":"anshul_gupta@wedmegood.com","p":"+91 98712 77522","l":"http://www.linkedin.com/in/anshul-gupta-4a675654"},{"name":"Jyoti Mali","row":207,"e":"jyoti_mali@wedmegood.com","p":"+91 98997 77258","l":"http://www.linkedin.com/in/jyotimali"},{"name":"Himanshi Singla","row":208,"e":"himanshi_singla@wedmegood.com","p":"+91 98181 92513","l":"http://www.linkedin.com/in/himanshi-singla-93a88710a"}],"Wishlink":[{"name":"Aditya Govil","row":209,"e":"aditya.govil@wishlink.com","p":"+91 88005 65820","l":"http://www.linkedin.com/in/adityagovil03"},{"name":"Shubham Pandey","row":210,"e":"shubham.pandey1@wishlink.com","p":"+91 80774 66242","l":"http://www.linkedin.com/in/shubham-pandey-181871190"}],"Yesmadam":[{"name":"Sumit Seth","row":211,"l":"http://www.linkedin.com/in/sumittsethh"},{"name":"Kushank Jain","row":212,"l":"http://www.linkedin.com/in/kushank-jain-059a66241"},{"name":"Praduman Gupta","row":213,"e":"praduman.gupta@yesmadam.com","p":"91 91165 00161","l":"http://www.linkedin.com/in/praduman-gupta-7a3406192"},{"name":"Dhruva Kakkar","row":214,"l":"http://www.linkedin.com/in/dhruva-kakkar"},{"name":"Adarsh Singh","row":215,"e":"adarsh.singh@yesmadam.com","p":"91 95693 76478","l":"http://www.linkedin.com/in/adarsh-singh-a067a5135"}],"Zfunds":[{"name":"Vidhi Tuteja","row":216,"e":"v@zfunds.in","l":"http://www.linkedin.com/in/vidhi-tuteja-138553a1"},{"name":"Sakshi Baliyan","row":217,"e":"sakshi@zfunds.in","p":"+91 96507 88035","l":"http://www.linkedin.com/in/sakshi-baliyan-386612145"},{"name":"Bhupender Bichhal","row":218,"l":"http://www.linkedin.com/in/bhupender-bichhal-6b1393216"},{"name":"Neha Kadam","row":219,"p":"+91 93101 56300","l":"http://www.linkedin.com/in/neha-kadam07"}],"Zingbus":[{"name":"Ankit Kumar","row":220,"e":"ankitkumar@zingbus.com","p":"91 98204 96988","l":"http://www.linkedin.com/in/ankit-kumar-472a4516a"},{"name":"Mratunjay Beniwal","row":221,"e":"mratunjay@zingbus.com","p":"91 91766 11299","l":"http://www.linkedin.com/in/mratunjay-beniwal-60870626"},{"name":"Mahima Parwani","row":222,"e":"mahima.parwani@zingbus.com","p":"91 73571 03554","l":"http://www.linkedin.com/in/mahima-parwani-951847201"},{"name":"Vivek Kumar","row":223,"e":"vivek@zingbus.com","p":"91 94003 00946","l":"http://www.linkedin.com/in/vivek-mohana-kumar"}],"Zypp":[{"name":"Vishwajeet Singh","row":224,"e":"vishy@zypp.app","p":"+91 97183 76117","l":"http://www.linkedin.com/in/vishwajeet-singh8"},{"name":"Dheeraj Prarthi","row":225,"e":"dheeraj.prarthi@zypp.app","p":"+91 98783 38971","l":"http://www.linkedin.com/in/dheerajprarthi"}]};
+
+function getCompanyContacts(companyName) {
+  if (!companyName) return [];
+  const cn = companyName.toLowerCase().trim();
+  for (const [co, contacts] of Object.entries(CDIR)) {
+    if (co.toLowerCase() === cn || cn.includes(co.toLowerCase()) || co.toLowerCase().includes(cn)) {
+      return contacts;
+    }
+  }
+  return [];
 }
 
 // ─── Columns ───────────────────────────────────────────────────────────────
@@ -1993,31 +2031,136 @@ function readModalContacts() {
 function esc(s) { const d = document.createElement('div'); d.textContent = s; return d.innerHTML; }
 
 // Add-contact button handlers
+let acSelectedData = null;
+let acActiveIdx = -1;
+
 document.getElementById('addContactBtn').addEventListener('click', () => {
   document.getElementById('addContactBtn').style.display = 'none';
   const inp = document.getElementById('addContactInput');
   inp.classList.add('visible');
-  document.getElementById('newContactName').focus();
+  acSelectedData = null;
+  acActiveIdx = -1;
+  const nameInput = document.getElementById('newContactName');
+  nameInput.value = '';
+  nameInput.focus();
+  updateContactAc('');
 });
+
 document.getElementById('cancelAddContact').addEventListener('click', () => {
   document.getElementById('addContactInput').classList.remove('visible');
   document.getElementById('addContactBtn').style.display = '';
   document.getElementById('newContactName').value = '';
+  document.getElementById('contactAcList').classList.remove('open');
+  acSelectedData = null;
 });
+
 document.getElementById('confirmAddContact').addEventListener('click', () => {
-  const name = document.getElementById('newContactName').value.trim();
-  if (!name) return;
-  // Add a new contact row
+  const nameInput = document.getElementById('newContactName');
+  const name = nameInput.value.trim();
+  if (!name && !acSelectedData) return;
   const contacts = readModalContacts();
-  contacts.push({ name, role: '', email: '', phone: '', linkedin: '' });
+  if (acSelectedData) {
+    contacts.push({
+      name: acSelectedData.name, role: '',
+      sheetRow: acSelectedData.row || null,
+      email: acSelectedData.e || '', phone: acSelectedData.p || '',
+      linkedin: acSelectedData.l || ''
+    });
+  } else {
+    contacts.push({ name, role: '', email: '', phone: '', linkedin: '' });
+  }
   renderModalContacts(contacts);
-  document.getElementById('newContactName').value = '';
+  nameInput.value = '';
+  acSelectedData = null;
+  document.getElementById('contactAcList').classList.remove('open');
   document.getElementById('addContactInput').classList.remove('visible');
   document.getElementById('addContactBtn').style.display = '';
 });
+
+function updateContactAc(query) {
+  const companyName = document.getElementById('f-name').value.trim();
+  const allContacts = getCompanyContacts(companyName);
+  const list = document.getElementById('contactAcList');
+  acActiveIdx = -1;
+
+  if (!allContacts.length) {
+    list.innerHTML = '<div class="contact-ac-empty">No contacts in directory for this company</div>';
+    list.classList.add('open');
+    return;
+  }
+
+  const q = query.toLowerCase();
+  const filtered = q
+    ? allContacts.filter(c => c.name && c.name.toLowerCase().includes(q))
+    : allContacts.filter(c => c.name);
+
+  const existing = readModalContacts().map(c => c.name.toLowerCase());
+  const available = filtered.filter(c => !existing.includes(c.name.toLowerCase()));
+
+  if (!available.length) {
+    list.innerHTML = q
+      ? '<div class="contact-ac-empty">No matches — press Add for manual entry</div>'
+      : '<div class="contact-ac-empty">All contacts already added</div>';
+    list.classList.add('open');
+    return;
+  }
+
+  list.innerHTML = available.map((c, i) => {
+    const parts = [c.e, c.p].filter(Boolean);
+    const detail = parts.join(' · ');
+    return `<div class="contact-ac-item" data-idx="${i}">
+      <span class="ac-name">${esc(c.name)}</span>
+      ${detail ? `<span class="ac-detail">${esc(detail)}</span>` : ''}
+    </div>`;
+  }).join('');
+  list.classList.add('open');
+  list._data = available;
+
+  list.querySelectorAll('.contact-ac-item').forEach((item, i) => {
+    item.addEventListener('click', () => selectAcItem(i));
+    item.addEventListener('mouseenter', () => {
+      list.querySelectorAll('.contact-ac-item').forEach(el => el.classList.remove('active'));
+      item.classList.add('active');
+      acActiveIdx = i;
+    });
+  });
+}
+
+function selectAcItem(idx) {
+  const list = document.getElementById('contactAcList');
+  const data = list._data;
+  if (!data || !data[idx]) return;
+  acSelectedData = data[idx];
+  document.getElementById('newContactName').value = data[idx].name;
+  list.classList.remove('open');
+  document.getElementById('confirmAddContact').click();
+}
+
+document.getElementById('newContactName').addEventListener('input', e => {
+  acSelectedData = null;
+  updateContactAc(e.target.value.trim());
+});
+
 document.getElementById('newContactName').addEventListener('keydown', e => {
-  if (e.key === 'Enter') { e.preventDefault(); document.getElementById('confirmAddContact').click(); }
-  if (e.key === 'Escape') { document.getElementById('cancelAddContact').click(); }
+  const list = document.getElementById('contactAcList');
+  const items = list.querySelectorAll('.contact-ac-item');
+  if (e.key === 'ArrowDown') {
+    e.preventDefault();
+    acActiveIdx = Math.min(acActiveIdx + 1, items.length - 1);
+    items.forEach((el, i) => el.classList.toggle('active', i === acActiveIdx));
+    if (items[acActiveIdx]) items[acActiveIdx].scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'ArrowUp') {
+    e.preventDefault();
+    acActiveIdx = Math.max(acActiveIdx - 1, 0);
+    items.forEach((el, i) => el.classList.toggle('active', i === acActiveIdx));
+    if (items[acActiveIdx]) items[acActiveIdx].scrollIntoView({ block: 'nearest' });
+  } else if (e.key === 'Enter') {
+    e.preventDefault();
+    if (acActiveIdx >= 0 && items[acActiveIdx]) selectAcItem(acActiveIdx);
+    else document.getElementById('confirmAddContact').click();
+  } else if (e.key === 'Escape') {
+    document.getElementById('cancelAddContact').click();
+  }
 });
 
 // ─── Card modal ────────────────────────────────────────────────────────────
