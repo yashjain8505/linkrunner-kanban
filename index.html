@@ -692,44 +692,27 @@
   }
   .cal-day {
     background: rgba(255,255,255,0.6); backdrop-filter: blur(6px);
-    height: 120px; padding: 6px 8px;
+    min-height: 110px; padding: 6px 8px;
     vertical-align: top; position: relative;
-    overflow: hidden; cursor: pointer;
-    transition: height 0.25s ease, box-shadow 0.2s;
-  }
-  .cal-day.expanded {
-    height: auto; min-height: 120px; overflow: visible;
-    background: rgba(255,255,255,0.9);
-    box-shadow: 0 4px 16px rgba(15,23,42,0.1);
-    z-index: 5;
   }
   .cal-day.other-month { background: rgba(239,245,250,0.4); }
   .cal-day.today { background: rgba(224,231,255,0.45); }
-  .cal-day.today.expanded { background: rgba(224,231,255,0.7); }
   .cal-day-num {
-    font-size: 14px; color: var(--text-2); font-weight: 600; margin-bottom: 4px;
+    font-size: 12px; color: var(--muted); font-weight: 500; margin-bottom: 4px;
   }
-  .cal-day.other-month .cal-day-num { color: var(--border-strong); }
   .cal-day.today .cal-day-num {
-    color: var(--accent); font-weight: 800;
+    color: var(--accent); font-weight: 700;
   }
   .cal-day.today .cal-day-num::after {
     content: ' Today'; font-size: 10px; font-weight: 600; color: var(--accent);
   }
-  .cal-more {
-    font-size: 10.5px; font-weight: 600; color: var(--accent);
-    padding: 2px 0; cursor: pointer;
-  }
-  .cal-day.expanded .cal-more { display: none; }
   .cal-card {
     background: rgba(255,255,255,0.7); border: 1px solid rgba(212,223,233,0.5);
-    border-radius: 6px; padding: 3px 7px; margin-bottom: 3px;
+    border-radius: 7px; padding: 4px 7px; margin-bottom: 3px;
     font-size: 11px; cursor: pointer; transition: all 0.12s;
-    white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
   }
-  .cal-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.9); }
-  .cal-card.cal-hidden { display: none; }
-  .cal-day.expanded .cal-card.cal-hidden { display: block; }
+  .cal-card:hover { border-color: var(--accent); background: rgba(255,255,255,0.85); }
   /* Card tint by stage */
   .cal-card.st-no-show           { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
   .cal-card.st-demo-next         { background: rgba(254,226,226,0.5); border-color: rgba(252,165,165,0.4); }
@@ -1978,21 +1961,16 @@ function renderCalendar() {
     const dateStr = `${year}-${String(month+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
     const isToday = dateStr === todayStr;
     const demos = demosByDate[dateStr] || [];
-    html += `<div class="cal-day${isToday ? ' today' : ''}" data-date="${dateStr}">`;
+    html += `<div class="cal-day${isToday ? ' today' : ''}">`;
     html += `<div class="cal-day-num">${d}</div>`;
-    const MAX_VISIBLE = 2;
-    demos.forEach((card, idx) => {
+    demos.forEach(card => {
       const stCls = 'st-' + card.stage;
-      const hiddenCls = idx >= MAX_VISIBLE ? ' cal-hidden' : '';
-      html += `<div class="cal-card ${stCls}${hiddenCls}" data-id="${card.id}">`;
+      html += `<div class="cal-card ${stCls}" data-id="${card.id}">`;
       html += `<div class="cal-name">${card.name}</div>`;
       if (card.contact) html += `<div class="cal-contact">${card.contact}</div>`;
       html += `<div class="cal-stage ${stCls}">${getStageLabel(card.stage)}</div>`;
       html += `</div>`;
     });
-    if (demos.length > MAX_VISIBLE) {
-      html += `<div class="cal-more">+${demos.length - MAX_VISIBLE} more</div>`;
-    }
     html += `</div>`;
   }
 
@@ -2020,20 +1998,9 @@ function renderCalendar() {
     renderCalendar();
   });
 
-  // Click day to expand/collapse
-  cal.querySelectorAll('.cal-day[data-date]').forEach(dayEl => {
-    dayEl.addEventListener('click', e => {
-      if (e.target.closest('.cal-card')) return;
-      const wasExpanded = dayEl.classList.contains('expanded');
-      cal.querySelectorAll('.cal-day.expanded').forEach(el => el.classList.remove('expanded'));
-      if (!wasExpanded) dayEl.classList.add('expanded');
-    });
-  });
-
   // Click card to edit
   cal.querySelectorAll('.cal-card').forEach(el => {
-    el.addEventListener('click', e => {
-      e.stopPropagation();
+    el.addEventListener('click', () => {
       const card = state.cards[el.dataset.id];
       if (card) openCardModal(card.id, card.stage);
     });
