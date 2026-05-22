@@ -2182,7 +2182,7 @@ function saveRevenue() {
   const val = parseFloat(raw) || 0;
   state.currentARR = val;
   closeRevenueModal();
-  debounceSave();
+  scheduleSave();
 }
 
 document.getElementById('revCancelBtn').addEventListener('click', closeRevenueModal);
