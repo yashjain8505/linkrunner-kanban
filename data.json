@@ -859,7 +859,7 @@
       "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779090414060,
+      "updated": 1779483190112,
       "demoDate": "2026-04-16",
       "inbound": true,
       "contacts": [],
@@ -867,8 +867,13 @@
         {
           "date": "2026-05-18",
           "channel": "meeting"
+        },
+        {
+          "date": "2026-04-18",
+          "channel": "email"
         }
-      ]
+      ],
+      "acv": ""
     },
     "33y7lvb2": {
       "id": "33y7lvb2",
