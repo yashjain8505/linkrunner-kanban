@@ -108,11 +108,12 @@
     flex-shrink: 0;
   }
   header h1 .logo-icon {
-    width: 20px; height: 26px; flex-shrink: 0;
+    width: 22px; height: 22px; flex-shrink: 0;
   }
-  header h1 .sub { color: var(--muted); font-weight: 400; font-size: 13px; letter-spacing: 0; margin-left: 2px; }
 
-  .toolbar { display: flex; gap: 6px; align-items: center; }
+  .toolbar { display: flex; gap: 8px; align-items: center; }
+  .toolbar-group { display: flex; gap: 6px; align-items: center; }
+  .toolbar-divider { width: 1px; height: 20px; background: rgba(212,223,233,0.5); flex-shrink: 0; }
 
   /* ─── Search ──────────────────────────────────────────────── */
   .search-wrap {
@@ -763,7 +764,7 @@
 
 <div class="pw-gate" id="pwGate">
   <div class="pw-box">
-    <h2><svg width="20" height="26" viewBox="0 0 24 32" fill="none"><rect x="0" y="0" width="10" height="9" rx="1.5" fill="#4F46E5"/><rect x="12" y="0" width="10" height="9" rx="1.5" fill="#A5B4FC"/><rect x="0" y="11" width="10" height="9" rx="1.5" fill="#4338CA"/><rect x="12" y="11" width="10" height="9" rx="1.5" fill="#C7D2FE"/><rect x="0" y="22" width="10" height="9" rx="1.5" fill="#4F46E5"/><rect x="12" y="22" width="10" height="9" rx="1.5" fill="#4338CA"/></svg>Linkrunner</h2>
+    <h2><svg width="20" height="20" viewBox="0 0 22 22" fill="none"><rect x="0" y="0" width="10" height="10" rx="2" fill="#4F46E5"/><rect x="12" y="0" width="10" height="10" rx="2" fill="#818CF8"/><rect x="0" y="12" width="10" height="10" rx="2" fill="#6366F1"/><rect x="12" y="12" width="10" height="10" rx="2" fill="#C7D2FE"/></svg>Linkrunner</h2>
     <div class="pw-sub">Enter password to continue</div>
     <input type="password" id="pwInput" placeholder="Password" autocomplete="off" />
     <button class="pw-btn" id="pwBtn">Unlock</button>
@@ -777,23 +778,23 @@
 
 <header>
   <h1>
-    <svg class="logo-icon" viewBox="0 0 24 32" fill="none">
-      <rect x="0" y="0" width="10" height="9" rx="1.5" fill="#4F46E5"/>
-      <rect x="12" y="0" width="10" height="9" rx="1.5" fill="#A5B4FC"/>
-      <rect x="0" y="11" width="10" height="9" rx="1.5" fill="#4338CA"/>
-      <rect x="12" y="11" width="10" height="9" rx="1.5" fill="#C7D2FE"/>
-      <rect x="0" y="22" width="10" height="9" rx="1.5" fill="#4F46E5"/>
-      <rect x="12" y="22" width="10" height="9" rx="1.5" fill="#4338CA"/>
+    <svg class="logo-icon" viewBox="0 0 22 22" fill="none">
+      <rect x="0" y="0" width="10" height="10" rx="2" fill="#4F46E5"/>
+      <rect x="12" y="0" width="10" height="10" rx="2" fill="#818CF8"/>
+      <rect x="0" y="12" width="10" height="10" rx="2" fill="#6366F1"/>
+      <rect x="12" y="12" width="10" height="10" rx="2" fill="#C7D2FE"/>
     </svg>
-    Linkrunner <span class="sub">Customer Status</span>
+    Linkrunner
   </h1>
   <div class="toolbar">
     <div class="lead-counts" id="leadCounts"></div>
+    <div class="toolbar-divider"></div>
     <div class="search-wrap" id="searchWrap">
       <svg class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><line x1="16.5" y1="16.5" x2="21" y2="21"/></svg>
       <input class="search-input" id="searchInput" type="text" placeholder="Search companies..." autocomplete="off" />
       <div class="search-results" id="searchResults"></div>
     </div>
+    <div class="toolbar-divider"></div>
     <div class="view-toggle">
       <button class="active" id="viewBoard">Board</button>
       <button id="viewCalendar">Calendar</button>
@@ -802,11 +803,12 @@
       <span class="sync-dot"></span>
       <span id="syncLabel">Read-only</span>
     </div>
-    <button class="btn small" id="refreshBtn" title="Refresh data">Refresh</button>
-    <button class="btn small" id="exportBtn">Export</button>
-    <button class="btn primary" id="addBtn">+ Add company</button>
+    <button class="btn primary" id="addBtn">+ Add</button>
   </div>
 </header>
+<!-- Hidden buttons for JS references -->
+<button id="refreshBtn" style="display:none"></button>
+<button id="exportBtn" style="display:none"></button>
 
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
