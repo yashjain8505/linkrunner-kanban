@@ -858,16 +858,12 @@
       "notes": "Cordova Integration",
       "stage": "follow-up-2-done",
       "channel": "none",
-      "touchDate": "2026-05-18",
-      "updated": 1779483190112,
+      "touchDate": "2026-04-18",
+      "updated": 1779483200034,
       "demoDate": "2026-04-16",
       "inbound": true,
       "contacts": [],
       "touchpoints": [
-        {
-          "date": "2026-05-18",
-          "channel": "meeting"
-        },
         {
           "date": "2026-04-18",
           "channel": "email"
