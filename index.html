@@ -362,6 +362,13 @@
   }
   .pipeline-overlay.visible { opacity: 1; pointer-events: auto; }
 
+  .pipeline-brand {
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: 32px; font-weight: 800; color: #fff;
+    letter-spacing: -0.03em; margin-bottom: 28px;
+  }
+
   /* Gathered card grid */
   .pipeline-grid {
     display: flex; flex-wrap: wrap; gap: 10px;
@@ -1271,6 +1278,15 @@ function triggerPipeline() {
   const daysLeft = getDaysToDeadline();
 
   overlay.innerHTML = `
+    <div class="pipeline-brand">
+      <svg width="28" height="28" viewBox="0 0 22 22" fill="none">
+        <rect x="0" y="0" width="10" height="10" rx="2" fill="#818CF8"/>
+        <rect x="12" y="0" width="10" height="10" rx="2" fill="#A5B4FC"/>
+        <rect x="0" y="12" width="10" height="10" rx="2" fill="#6366F1"/>
+        <rect x="12" y="12" width="10" height="10" rx="2" fill="#C7D2FE"/>
+      </svg>
+      Linkrunner
+    </div>
     <div class="pipeline-grid" id="pipelineGrid"></div>
     <div class="pipeline-result" id="pipelineResult">
       <div class="pr-label">ESTIMATED PIPELINE</div>
