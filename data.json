@@ -376,23 +376,31 @@
     "2p2bekng": {
       "id": "2p2bekng",
       "name": "Sid's Farm",
-      "contact": "Manisha Kar",
+      "contact": "Manisha Kar, Tamal Chatterjee",
       "notes": "Convinced about Linkrunner\nReachout Mid June, they don't run much ads in May",
       "stage": "snoozed-date",
       "channel": "none",
       "touchDate": "2026-06-15",
-      "updated": 1779372530999,
+      "updated": 1779480784305,
       "demoDate": "2026-04-08",
       "inbound": false,
       "acv": "10k-20k",
       "contacts": [
         {
           "name": "Manisha Kar",
-          "role": "",
           "sheetRow": 186,
           "email": "manisha.kar@sidsfarm.com",
           "phone": "91 78270 01765",
-          "linkedin": "http://www.linkedin.com/in/manisha-kar"
+          "linkedin": "http://www.linkedin.com/in/manisha-kar",
+          "role": "champion"
+        },
+        {
+          "name": "Tamal Chatterjee",
+          "sheetRow": 183,
+          "email": "tamal.chatterjee@sidsfarm.com",
+          "phone": "91 95996 88781",
+          "linkedin": "http://www.linkedin.com/in/tamalchatterjee",
+          "role": "decision-maker"
         }
       ]
     },
