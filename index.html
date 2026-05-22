@@ -2056,7 +2056,7 @@ ${context}`;
         body: JSON.stringify({
           system_instruction: { parts: [{ text: systemPrompt }] },
           contents: [{ parts: [{ text: question }] }],
-          generationConfig: { maxOutputTokens: 300, temperature: 0.7 },
+          generationConfig: { maxOutputTokens: 800, temperature: 0.7 },
         }),
       });
 
@@ -2075,9 +2075,6 @@ ${context}`;
       reply = data.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I couldn\'t process that. Try again!';
       break;
     }
-
-    typingEl.remove();
-    addChatMsg(reply, 'bot');
 
     typingEl.remove();
     addChatMsg(reply, 'bot');
