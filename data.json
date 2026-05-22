@@ -622,12 +622,16 @@
         {
           "name": "Harshal Tiwari",
           "role": "champion",
-          "email": "harshal.tiwari@vedicrishiastro.com"
+          "email": "harshal.tiwari@vedicrishiastro.com",
+          "phone": "+91 82912 77099",
+          "linkedin": "http://www.linkedin.com/in/harshaltiwari"
         },
         {
           "name": "Chandan Tiwari",
           "role": "",
-          "email": "chandan@astrologyapi.com"
+          "email": "chandan@astrologyapi.com",
+          "phone": "+91 91676 93390",
+          "linkedin": "http://www.linkedin.com/in/chandan-tiwari-b9b42412"
         }
       ],
       "inbound": false,
