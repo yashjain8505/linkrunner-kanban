@@ -242,27 +242,31 @@
     "bkzuzvd2": {
       "id": "bkzuzvd2",
       "name": "IndiaBonds",
-      "contact": "Himanshi and Sir Ram",
+      "contact": "Himanshi, Sir Ram",
       "notes": "Price negotiations",
       "stage": "attention-needed",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779373062451,
+      "updated": 1779480773405,
       "demoDate": "2026-03-31",
       "inbound": false,
       "acv": "10k-20k",
       "contacts": [
         {
           "name": "Himanshi",
-          "role": ""
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "champion"
         },
         {
           "name": "Sir Ram",
-          "role": "",
           "sheetRow": 80,
           "email": "sriram.subramanian@indiabonds.com",
           "phone": "+91 90296 79643",
-          "linkedin": "http://www.linkedin.com/in/srirams92"
+          "linkedin": "http://www.linkedin.com/in/srirams92",
+          "role": "decision-maker"
         }
       ]
     },
