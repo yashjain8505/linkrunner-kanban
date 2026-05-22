@@ -1045,15 +1045,7 @@
       <label>Stage</label>
       <select id="f-stage"></select>
     </div>
-    <div class="field">
-      <label>Communication channel</label>
-      <select id="f-channel">
-        <option value="none">Not set up</option>
-        <option value="whatsapp">WhatsApp</option>
-        <option value="slack">Slack</option>
-        <option value="email">Email</option>
-      </select>
-    </div>
+    <select id="f-channel" style="display:none"><option value="none"></option></select>
     <div class="field" style="display:flex;align-items:center;gap:8px;">
       <input id="f-inbound" type="checkbox" style="width:auto;margin:0;" />
       <label for="f-inbound" style="margin:0;cursor:pointer;">Inbound lead</label>
