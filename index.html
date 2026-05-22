@@ -2207,7 +2207,7 @@ function renderGranolaLinks(granolaLinks) {
   granolaLinks.forEach(g => {
     const a = document.createElement('a');
     a.className = 'granola-link';
-    a.href = `https://notes.granola.ai/notes/${g.id}`;
+    a.href = `https://notes.granola.ai/t/${g.id}`;
     a.target = '_blank';
     a.rel = 'noopener';
     a.addEventListener('click', e => e.stopPropagation());
