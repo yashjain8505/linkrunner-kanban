@@ -500,9 +500,9 @@
       "stage": "paying-customer",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779450421120,
+      "updated": 1779450468787,
       "demoDate": "2026-04-14",
-      "inbound": false,
+      "inbound": true,
       "acv": ""
     },
     "c522yy4q": {
