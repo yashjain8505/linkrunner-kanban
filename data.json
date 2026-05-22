@@ -1046,6 +1046,19 @@
       "updated": 1779427080019,
       "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
       "calEmail": "dheeraj.prarthi@zypp.app"
+    },
+    "8l4hlwf4": {
+      "id": "8l4hlwf4",
+      "name": "Haptik (Mycallgenie)",
+      "contact": "Dharmil Shanishwara (Champion)",
+      "notes": "Very busy tech team, will need to follow up to get the integration done",
+      "stage": "email-first-sent",
+      "channel": "none",
+      "inbound": true,
+      "acv": "",
+      "demoDate": "2026-05-18",
+      "touchDate": "2026-05-18",
+      "updated": 1779450966573
     }
   },
   "order": {
@@ -1087,6 +1100,7 @@
       "av70z6q0"
     ],
     "email-first-sent": [
+      "8l4hlwf4",
       "5z3o34x4",
       "w23yl5x0",
       "lmyry6va",
