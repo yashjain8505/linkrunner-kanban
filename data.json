@@ -611,7 +611,7 @@
     "pt0qyu7q": {
       "id": "pt0qyu7q",
       "name": "Vedic Rishi Astro",
-      "contact": "Harshal",
+      "contact": "Harshal Tiwari",
       "notes": "They want web attribution also",
       "stage": "demo-next",
       "channel": "none",
@@ -620,12 +620,14 @@
       "demoDate": "2026-04-17",
       "contacts": [
         {
-          "name": "Harshal",
-          "sheetRow": null,
-          "email": "",
-          "phone": "",
-          "linkedin": "",
-          "role": "champion"
+          "name": "Harshal Tiwari",
+          "role": "champion",
+          "email": "harshal.tiwari@vedicrishiastro.com"
+        },
+        {
+          "name": "Chandan Tiwari",
+          "role": "",
+          "email": "chandan@astrologyapi.com"
         }
       ],
       "inbound": false,
