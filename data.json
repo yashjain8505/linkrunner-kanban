@@ -773,14 +773,25 @@
     "r86mapmi": {
       "id": "r86mapmi",
       "name": "Regal Jewellers",
-      "contact": "",
+      "contact": "Shuhaib Aliyar",
       "notes": "On Basic plan of Appsflyer - not a priority",
       "stage": "demo-no-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923760763,
+      "updated": 1779481212292,
       "demoDate": "2026-04-21",
-      "contacts": []
+      "contacts": [
+        {
+          "name": "Shuhaib Aliyar",
+          "sheetRow": 155,
+          "email": "",
+          "phone": "+91 88483 47190",
+          "linkedin": "http://www.linkedin.com/in/shuhaib-aliyar-392a04201",
+          "role": ""
+        }
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "temuo6y6": {
       "id": "temuo6y6",
