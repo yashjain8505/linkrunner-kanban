@@ -948,12 +948,13 @@
       "notes": "",
       "stage": "email-first-sent",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1779449972947,
+      "touchDate": "2026-05-21",
+      "updated": 1779449995593,
       "calBookingId": "fillout-qbhi2g0scbflgdf9h1oan5cios@google.com",
       "calEmail": "andru@prosperitaso.com",
       "inbound": true,
-      "demoDate": "2026-05-20"
+      "demoDate": "2026-05-20",
+      "acv": ""
     },
     "hldvvkyi": {
       "id": "hldvvkyi",
