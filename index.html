@@ -32,23 +32,38 @@
   body {
     font-family: 'Inter', ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", system-ui, sans-serif;
     color: var(--text);
-    background:
-      radial-gradient(ellipse at 15% 45%, rgba(164,218,240,0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at 75% 25%, rgba(186,205,240,0.25) 0%, transparent 50%),
-      radial-gradient(ellipse at 55% 80%, rgba(176,220,240,0.2) 0%, transparent 45%),
-      linear-gradient(160deg, #ECF3F9 0%, #E4EEF6 25%, #EDF4FA 50%, #E6EFF7 75%, #EAF2F8 100%);
-    background-attachment: fixed;
+    background-color: #E9F1F7;
     overflow: hidden;
     -webkit-font-smoothing: antialiased;
+  }
+  body::before {
+    content: '';
+    position: fixed; inset: 0; z-index: -1;
+    background:
+      /* Visible brushstroke streaks — thin diagonal bands */
+      linear-gradient(22deg, transparent 38%, rgba(160,210,235,0.28) 40%, rgba(155,215,240,0.38) 42%, rgba(165,220,240,0.22) 44%, transparent 46%),
+      linear-gradient(28deg, transparent 52%, rgba(170,215,238,0.2) 54%, rgba(165,218,242,0.32) 56%, rgba(175,222,245,0.18) 58%, transparent 60%),
+      linear-gradient(18deg, transparent 65%, rgba(155,208,232,0.18) 67%, rgba(150,212,238,0.28) 69%, rgba(160,216,240,0.15) 71%, transparent 73%),
+      linear-gradient(32deg, transparent 20%, rgba(180,220,240,0.15) 22%, rgba(175,225,245,0.25) 24%, rgba(185,228,248,0.12) 26%, transparent 28%),
+      linear-gradient(15deg, transparent 78%, rgba(148,205,230,0.14) 80%, rgba(145,210,236,0.22) 82%, transparent 84%),
+      /* Wider soft washes underneath */
+      radial-gradient(ellipse at 10% 40%, rgba(158,215,238,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(175,208,238,0.22) 0%, transparent 45%),
+      radial-gradient(ellipse at 50% 85%, rgba(168,218,240,0.18) 0%, transparent 40%),
+      radial-gradient(ellipse at 90% 70%, rgba(180,212,235,0.15) 0%, transparent 35%),
+      /* Base */
+      linear-gradient(155deg, #EBF2F8 0%, #E4EDF5 30%, #EAF1F7 55%, #E6EEF5 80%, #E9F0F7 100%);
   }
 
   /* Loading overlay */
   .loading-overlay {
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse at 15% 45%, rgba(164,218,240,0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at 75% 25%, rgba(186,205,240,0.25) 0%, transparent 50%),
-      linear-gradient(160deg, #ECF3F9 0%, #E4EEF6 50%, #EAF2F8 100%);
+      linear-gradient(22deg, transparent 38%, rgba(160,210,235,0.28) 40%, rgba(155,215,240,0.38) 42%, rgba(165,220,240,0.22) 44%, transparent 46%),
+      linear-gradient(28deg, transparent 52%, rgba(170,215,238,0.2) 54%, rgba(165,218,242,0.32) 56%, transparent 58%),
+      radial-gradient(ellipse at 10% 40%, rgba(158,215,238,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(175,208,238,0.22) 0%, transparent 45%),
+      linear-gradient(155deg, #EBF2F8 0%, #E4EDF5 50%, #E9F0F7 100%);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -97,7 +112,7 @@
   }
   header h1 .sub { color: var(--muted); font-weight: 400; font-size: 13px; letter-spacing: 0; margin-left: 2px; }
 
-  .toolbar { display: flex; gap: 6px; align-items: center; flex-wrap: wrap; height: 34px; }
+  .toolbar { display: flex; gap: 6px; align-items: center; }
 
   /* ─── Search ──────────────────────────────────────────────── */
   .search-wrap {
@@ -627,9 +642,11 @@
   .pw-gate {
     position: fixed; inset: 0;
     background:
-      radial-gradient(ellipse at 15% 45%, rgba(164,218,240,0.35) 0%, transparent 55%),
-      radial-gradient(ellipse at 75% 25%, rgba(186,205,240,0.25) 0%, transparent 50%),
-      linear-gradient(160deg, #ECF3F9 0%, #E4EEF6 50%, #EAF2F8 100%);
+      linear-gradient(22deg, transparent 38%, rgba(160,210,235,0.28) 40%, rgba(155,215,240,0.38) 42%, rgba(165,220,240,0.22) 44%, transparent 46%),
+      linear-gradient(28deg, transparent 52%, rgba(170,215,238,0.2) 54%, rgba(165,218,242,0.32) 56%, transparent 58%),
+      radial-gradient(ellipse at 10% 40%, rgba(158,215,238,0.3) 0%, transparent 50%),
+      radial-gradient(ellipse at 70% 20%, rgba(175,208,238,0.22) 0%, transparent 45%),
+      linear-gradient(155deg, #EBF2F8 0%, #E4EDF5 50%, #E9F0F7 100%);
     display: flex; align-items: center; justify-content: center;
     z-index: 200;
     transition: opacity 0.3s;
