@@ -616,14 +616,20 @@
       "stage": "demo-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778922692404,
+      "updated": 1779481294480,
       "demoDate": "2026-04-17",
       "contacts": [
         {
           "name": "Harshal",
-          "role": ""
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "champion"
         }
-      ]
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "cm1lafe7": {
       "id": "cm1lafe7",
