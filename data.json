@@ -102,7 +102,7 @@
     "e0187631": {
       "id": "e0187631",
       "name": "Univest",
-      "contact": "Mohit",
+      "contact": "Mohit Mandal",
       "notes": "",
       "stage": "no-show",
       "channel": "none",
@@ -111,15 +111,17 @@
       "demoDate": "2026-03-23",
       "contacts": [
         {
-          "name": "Mohit",
-          "role": ""
+          "name": "Mohit Mandal",
+          "role": "",
+          "email": "mohit.mandal@univest.in",
+          "linkedin": "https://www.linkedin.com/in/mohit-mandal-254074189/"
         }
       ]
     },
     "vob9lx36": {
       "id": "vob9lx36",
       "name": "POP Club",
-      "contact": "Mirza",
+      "contact": "Mirza Abdullah Beig",
       "notes": "Will try to use for Influencer Campaign - Never got back",
       "stage": "demo-no-next",
       "channel": "none",
@@ -128,15 +130,17 @@
       "demoDate": "2026-03-25",
       "contacts": [
         {
-          "name": "Mirza",
-          "role": ""
+          "name": "Mirza Abdullah Beig",
+          "role": "",
+          "email": "mirza@popclub.co",
+          "linkedin": "https://www.linkedin.com/in/mirza-abdullah-beig-/"
         }
       ]
     },
     "m40phmwr": {
       "id": "m40phmwr",
       "name": "Onescore",
-      "contact": "Rohti",
+      "contact": "Rohit Kothawade",
       "notes": "",
       "stage": "demo-no-next",
       "channel": "none",
@@ -145,8 +149,10 @@
       "demoDate": "2026-03-25",
       "contacts": [
         {
-          "name": "Rohti",
-          "role": ""
+          "name": "Rohit Kothawade",
+          "role": "",
+          "email": "rohit.kothawade@fplabs.tech",
+          "linkedin": "https://www.linkedin.com/in/rohit-r-kothawade/"
         }
       ]
     },
@@ -175,7 +181,10 @@
       "contacts": [
         {
           "name": "Ved Prakash",
-          "role": ""
+          "role": "",
+          "email": "ved.prakash@bachatt.app",
+          "linkedin": "https://www.linkedin.com/in/vedprakashchoudhary2601/",
+          "phone": "+91 82396 78200"
         }
       ]
     },
@@ -223,7 +232,9 @@
       "contacts": [
         {
           "name": "Mahesh J",
-          "role": ""
+          "role": "",
+          "email": "mahesh.j@nirafinance.com",
+          "linkedin": "https://www.linkedin.com/in/mahesh-reddy-50a85a25a/"
         }
       ]
     },
@@ -273,7 +284,7 @@
     "gcz7ymaj": {
       "id": "gcz7ymaj",
       "name": "FRND",
-      "contact": "Sampath",
+      "contact": "Sampath Boda",
       "notes": "Sampath liked the product, they have a year long contract with Appsflyer. Reachout in January 2027",
       "stage": "snoozed-cycle",
       "channel": "none",
@@ -282,10 +293,12 @@
       "demoDate": "2026-04-07",
       "contacts": [
         {
-          "name": "Sampath",
+          "name": "Sampath Boda",
           "role": "",
           "sheetRow": 56,
-          "email": "sampath.boda@frnd.app"
+          "email": "sampath.boda@frnd.app",
+          "phone": "+91 74310 77968",
+          "linkedin": "http://www.linkedin.com/in/sampath-boda-2a547b199"
         }
       ]
     },
@@ -313,7 +326,7 @@
     "k3455fqr": {
       "id": "k3455fqr",
       "name": "Kindlife",
-      "contact": "Shubham",
+      "contact": "Shubhanshu Mishra",
       "notes": "They are happy using Adjust - Chief of Staff is the decision maker\n\nCan try to re-engage around December 2026",
       "stage": "demo-no-next",
       "channel": "none",
@@ -322,8 +335,11 @@
       "demoDate": "2026-04-08",
       "contacts": [
         {
-          "name": "Shubham",
-          "role": ""
+          "name": "Shubhanshu Mishra",
+          "role": "",
+          "email": "shubhanshu.mishra@kindlife.in",
+          "phone": "91 62614 12464",
+          "linkedin": "http://www.linkedin.com/in/shubhanshu-mishra-74336a1a4"
         }
       ]
     },
@@ -407,7 +423,7 @@
     "fw4loszp": {
       "id": "fw4loszp",
       "name": "Namma Yatri",
-      "contact": "Aswin, Janice's Friend",
+      "contact": "Aswin Kumar, Janice's Friend",
       "notes": "",
       "stage": "attention-needed",
       "channel": "none",
@@ -416,7 +432,7 @@
       "demoDate": "2026-04-09",
       "contacts": [
         {
-          "name": "Aswin",
+          "name": "Aswin Kumar",
           "sheetRow": 132,
           "email": "aswin.sk@nammayatri.in",
           "phone": "91 70106 69103",
@@ -497,7 +513,7 @@
     "78q13wkn": {
       "id": "78q13wkn",
       "name": "Royal Brothers",
-      "contact": "Meghna",
+      "contact": "Meghana Banumaiah",
       "notes": "",
       "stage": "email-second-sent",
       "channel": "none",
@@ -506,15 +522,17 @@
       "demoDate": "2026-04-09",
       "contacts": [
         {
-          "name": "Meghna",
-          "role": ""
+          "name": "Meghana Banumaiah",
+          "role": "",
+          "email": "meghana.banumaiah@royalbrothers.com",
+          "linkedin": "http://www.linkedin.com/in/meghana-marketing-manager"
         }
       ]
     },
     "blcof8hu": {
       "id": "blcof8hu",
       "name": "Pratilipi",
-      "contact": "Navneeth",
+      "contact": "Naveen Gundu",
       "notes": "He liked the product, contract ending in September",
       "stage": "snoozed-date",
       "channel": "none",
@@ -523,8 +541,11 @@
       "demoDate": "2026-04-16",
       "contacts": [
         {
-          "name": "Navneeth",
-          "role": ""
+          "name": "Naveen Gundu",
+          "role": "",
+          "email": "naveen.gundu@pratilipi.com",
+          "phone": "91 79898 01605",
+          "linkedin": "http://www.linkedin.com/in/naveengunduofficial"
         }
       ]
     },
@@ -592,7 +613,7 @@
     "czl1xufg": {
       "id": "czl1xufg",
       "name": "Bounce",
-      "contact": "Prudhvi",
+      "contact": "Prudhvi Raju",
       "notes": "",
       "stage": "paying-customer",
       "channel": "none",
@@ -601,10 +622,12 @@
       "demoDate": "2026-05-05",
       "contacts": [
         {
-          "name": "Prudhvi",
+          "name": "Prudhvi Raju",
           "role": "",
           "sheetRow": 27,
-          "email": "prudhvi@bounceshare.com"
+          "email": "prudhvi@bounceshare.com",
+          "phone": "+91 88007 94011",
+          "linkedin": "http://www.linkedin.com/in/prudhvi-raju-r"
         }
       ]
     },
@@ -652,7 +675,10 @@
       "contacts": [
         {
           "name": "Shail Patel",
-          "role": ""
+          "role": "",
+          "email": "shail.patel@ozi.in",
+          "phone": "+91 96240 21371",
+          "linkedin": "http://www.linkedin.com/in/shail-patel-327b4a1b2"
         }
       ]
     },
@@ -1050,7 +1076,7 @@
     "5z3o34x4": {
       "id": "5z3o34x4",
       "name": "Flattrade",
-      "contact": "Manoj",
+      "contact": "Manoj Kumar",
       "notes": "High Intent",
       "stage": "email-first-sent",
       "channel": "none",
@@ -1061,8 +1087,11 @@
       "acv": "5k-10k",
       "contacts": [
         {
-          "name": "Manoj",
-          "role": "champion"
+          "name": "Manoj Kumar",
+          "role": "champion",
+          "email": "manojkumar@flattrade.in",
+          "phone": "+91 97886 83324",
+          "linkedin": "http://www.linkedin.com/in/arokia-manoj-kumar"
         }
       ]
     },
