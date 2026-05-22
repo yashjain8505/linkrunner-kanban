@@ -918,24 +918,24 @@
     "9mbxstiy": {
       "id": "9mbxstiy",
       "name": "Wedmegood",
-      "contact": "Himanshi and Anshul",
+      "contact": "Himanshi, Anshul",
       "notes": "They want to focus on App campaigns, interested | High Intent",
       "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779373083834,
+      "updated": 1779472409895,
       "demoDate": "2026-05-12",
       "inbound": false,
       "acv": "5k-10k",
       "contacts": [
         {
           "name": "Himanshi",
-          "role": "",
+          "role": "champion",
           "sheetRow": 208
         },
         {
           "name": "Anshul",
-          "role": "",
+          "role": "decision-maker",
           "sheetRow": 206
         }
       ]
