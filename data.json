@@ -596,10 +596,10 @@
       "name": "Zavo",
       "contact": "",
       "notes": "",
-      "stage": "integration-started",
+      "stage": "paying-customer",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778923832330,
+      "updated": 1779450108266,
       "demoDate": "2026-05-11",
       "inbound": true
     },
@@ -1106,7 +1106,6 @@
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
-      "9k1vcmcu",
       "rgdd3lli"
     ],
     "paying-customer": [
@@ -1115,7 +1114,8 @@
       "vam3d726",
       "k1mnj1sy",
       "wuenmqqy",
-      "czl1xufg"
+      "czl1xufg",
+      "9k1vcmcu"
     ],
     "attention-needed": [
       "szcuv1bn",
