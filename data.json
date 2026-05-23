@@ -2027,14 +2027,8 @@
   ],
   "currentARR": 48000,
   "channels": {
-    "email": [
-      "zugpsqkx"
-    ],
-    "linkedin": [
-      "zugpsqkx"
-    ],
-    "coldcall": [
-      "zugpsqkx"
-    ]
+    "email": [],
+    "linkedin": [],
+    "coldcall": []
   }
 }
