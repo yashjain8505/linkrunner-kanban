@@ -373,23 +373,34 @@
     "k3455fqr": {
       "id": "k3455fqr",
       "name": "Kindlife",
-      "contact": "Shubhanshu Mishra",
+      "contact": "Shubhanshu Mishra, Vineeth Gunda",
       "notes": "They are happy using Adjust - Chief of Staff is the decision maker\n\nCan try to re-engage around December 2026",
       "stage": "demo-no-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778921023161,
+      "updated": 1779514468881,
       "demoDate": "2026-04-08",
       "contacts": [
         {
           "name": "Shubhanshu Mishra",
-          "role": "",
-          "email": "shubhanshu.mishra@kindlife.in",
-          "phone": "91 62614 12464",
-          "linkedin": "http://www.linkedin.com/in/shubhanshu-mishra-74336a1a4"
+          "sheetRow": 92,
+          "email": "",
+          "phone": "",
+          "linkedin": "http://www.linkedin.com/in/shubhanshu-mishra-74336a1a4",
+          "role": ""
+        },
+        {
+          "name": "Vineeth Gunda",
+          "sheetRow": 93,
+          "email": "vineeth.gunda@kindlife.in",
+          "phone": "91 94409 39945",
+          "linkedin": "http://www.linkedin.com/in/vineeth-gunda-49559a13b",
+          "role": "decision-maker"
         }
       ],
-      "touchpoints": []
+      "touchpoints": [],
+      "inbound": false,
+      "acv": ""
     },
     "bqtdyyj6": {
       "id": "bqtdyyj6",
