@@ -2025,5 +2025,12 @@
     "attention-needed",
     "snoozed"
   ],
-  "currentARR": 48000
+  "currentARR": 48000,
+  "channels": {
+    "email": [
+      "zugpsqkx"
+    ],
+    "linkedin": [],
+    "coldcall": []
+  }
 }
