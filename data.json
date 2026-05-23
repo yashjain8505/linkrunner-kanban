@@ -1750,10 +1750,10 @@
       "name": "Hoora",
       "contact": "Chetan",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1716422400000,
+      "updated": 1779547217260,
       "calBookingId": "v4fTKAHKGv5tHemGvTnXW5",
       "calEmail": "marketing@hoora.in",
       "demoDate": "2026-05-22",
@@ -1762,8 +1762,11 @@
       "contacts": [
         {
           "name": "Chetan",
-          "role": "",
-          "email": "marketing@hoora.in"
+          "sheetRow": null,
+          "email": "marketing@hoora.in",
+          "phone": "",
+          "linkedin": "",
+          "role": ""
         }
       ],
       "touchpoints": [
@@ -1939,7 +1942,8 @@
       "47er1lbe",
       "pstfria7",
       "v5ehnmlp",
-      "c4zpuhr8"
+      "c4zpuhr8",
+      "hhq7mas8"
     ],
     "email-second-sent": [
       "9mbxstiy",
@@ -1998,7 +2002,6 @@
     "demo-scheduled": [
       "nqdo6xbj",
       "dz8tn98d",
-      "hhq7mas8",
       "doteifrp",
       "0ums1cr6",
       "6hkztyr6",
