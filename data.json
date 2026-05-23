@@ -1258,14 +1258,23 @@
     "iy385rul": {
       "id": "iy385rul",
       "name": "Cambaytiger",
-      "contact": "",
+      "contact": "Shrusti Naik",
       "notes": "",
       "stage": "demo-no-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1778925531689,
+      "updated": 1779514456027,
       "demoDate": "2026-05-11",
-      "contacts": [],
+      "contacts": [
+        {
+          "name": "Shrusti Naik",
+          "sheetRow": 33,
+          "email": "shrusti@cambaytiger.com",
+          "phone": "",
+          "linkedin": "http://www.linkedin.com/in/shrusti-naik-3274a8169",
+          "role": ""
+        }
+      ],
       "touchpoints": [],
       "granolaLinks": [
         {
@@ -1273,7 +1282,9 @@
           "title": "Linkrunner <> Shrusti || Intro call",
           "date": "2026-05-11"
         }
-      ]
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "5z3o34x4": {
       "id": "5z3o34x4",
