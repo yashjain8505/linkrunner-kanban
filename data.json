@@ -2027,15 +2027,8 @@
   ],
   "currentARR": 48000,
   "channels": {
-    "email": [
-      "csp5s88v"
-    ],
-    "linkedin": [
-      "czl1xufg",
-      "n5qjsfkv"
-    ],
-    "coldcall": [
-      "70itspid"
-    ]
+    "email": [],
+    "linkedin": [],
+    "coldcall": []
   }
 }
