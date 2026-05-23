@@ -1709,13 +1709,13 @@
     },
     "w23yl5x0": {
       "id": "w23yl5x0",
-      "name": "anindyahp1994@gmail.com",
+      "name": "Wavelength Comp.",
       "contact": "Anindya Pal",
       "notes": "Wavelength compt.",
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1716422400000,
+      "updated": 1779544407224,
       "calBookingId": "fillout-s46b0sd8p8m1i2i1mnb7g6snl0@google.com",
       "calEmail": "anindyahp1994@gmail.com",
       "demoDate": "2026-05-22",
@@ -1724,8 +1724,11 @@
       "contacts": [
         {
           "name": "Anindya Pal",
-          "role": "",
-          "email": "anindyahp1994@gmail.com"
+          "sheetRow": null,
+          "email": "anindyahp1994@gmail.com",
+          "phone": "",
+          "linkedin": "",
+          "role": ""
         }
       ],
       "touchpoints": [
