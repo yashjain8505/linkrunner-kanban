@@ -1488,7 +1488,7 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-19",
-      "updated": 1779434513762,
+      "updated": 1779514492766,
       "calBookingId": "5aDPY1GBRQyNTHST17AvVE",
       "calEmail": "kevin@ariai.in",
       "demoDate": "2026-05-19",
@@ -1497,11 +1497,11 @@
       "contacts": [
         {
           "name": "Kevin",
-          "role": "",
           "sheetRow": 6,
           "email": "kevin@decimlindia.com",
           "phone": "+91 88888 79237",
-          "linkedin": "http://www.linkedin.com/in/kevin-joseph-67a47521b"
+          "linkedin": "http://www.linkedin.com/in/kevin-joseph-67a47521b",
+          "role": "champion"
         }
       ],
       "touchpoints": [
