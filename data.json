@@ -1802,7 +1802,7 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-22",
-      "updated": 1779451010512,
+      "updated": 1779514486583,
       "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
       "calEmail": "shashwat.r@kiddopia.com",
       "demoDate": "2026-05-22",
@@ -1811,11 +1811,11 @@
       "contacts": [
         {
           "name": "Shashwat",
-          "role": "",
           "sheetRow": 91,
           "email": "shashwat.r@kiddopia.com",
           "phone": "+91 99538 28905",
-          "linkedin": "http://www.linkedin.com/in/shashwat-rai-22357a72"
+          "linkedin": "http://www.linkedin.com/in/shashwat-rai-22357a72",
+          "role": "champion"
         }
       ],
       "touchpoints": [
