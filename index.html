@@ -887,6 +887,133 @@
   }
   .lr-universe-placeholder p { font-size: 14px; margin: 0; max-width: 400px; line-height: 1.5; }
 
+  /* ─── Funnel ─────────────────────────────────────────────── */
+  .uni-top { display: flex; gap: 32px; align-items: flex-start; margin-bottom: 32px; }
+  .funnel-wrap { flex: 0 0 420px; }
+  .funnel-title { font-size: 13px; font-weight: 600; color: var(--muted); letter-spacing: 0.04em; text-transform: uppercase; margin-bottom: 14px; }
+  .funnel { display: flex; flex-direction: column; align-items: center; gap: 0; }
+  .funnel-tier {
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+    height: 54px; border-radius: 6px; position: relative;
+    color: #fff; font-family: inherit; transition: transform 0.15s, box-shadow 0.15s;
+    cursor: default;
+  }
+  .funnel-tier:hover { transform: scale(1.02); box-shadow: 0 4px 16px rgba(0,0,0,0.12); z-index: 2; }
+  .funnel-tier .ft-count { font-size: 22px; font-weight: 800; letter-spacing: -0.02em; }
+  .funnel-tier .ft-label { font-size: 12.5px; font-weight: 500; opacity: 0.9; }
+  .ft-1 { width: 100%; background: linear-gradient(135deg, #6366F1, #818CF8); border-radius: 8px 8px 4px 4px; }
+  .ft-2 { width: 78%; background: linear-gradient(135deg, #8B5CF6, #A78BFA); }
+  .ft-3 { width: 56%; background: linear-gradient(135deg, #F59E0B, #FBBF24); }
+  .ft-4 { width: 38%; background: linear-gradient(135deg, #10B981, #34D399); border-radius: 4px 4px 8px 8px; }
+  .funnel-drop {
+    display: flex; align-items: center; justify-content: center; gap: 4px;
+    height: 22px; font-size: 10.5px; font-weight: 600; color: var(--muted);
+  }
+  .funnel-drop svg { width: 10px; height: 10px; opacity: 0.4; }
+
+  /* Funnel summary cards */
+  .funnel-summary { flex: 1; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .fs-card {
+    background: rgba(255,255,255,0.7); border: 1px solid var(--border);
+    border-radius: 10px; padding: 14px 16px;
+  }
+  .fs-card .fs-num { font-size: 26px; font-weight: 800; letter-spacing: -0.03em; }
+  .fs-card .fs-label { font-size: 11.5px; color: var(--muted); font-weight: 500; margin-top: 2px; }
+  .fs-card .fs-sub { font-size: 10.5px; color: var(--muted); margin-top: 4px; }
+  .fs-purple .fs-num { color: #6366F1; }
+  .fs-violet .fs-num { color: #8B5CF6; }
+  .fs-amber .fs-num { color: #D97706; }
+  .fs-green .fs-num { color: #059669; }
+
+  /* ─── Company Directory ──────────────────────────────────── */
+  .dir-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px; gap: 12px;
+  }
+  .dir-header h3 { font-size: 15px; font-weight: 700; margin: 0; }
+  .dir-search {
+    width: 200px; height: 32px; padding: 0 10px; border: 1px solid var(--border);
+    border-radius: 8px; font-size: 12px; font-family: inherit;
+    background: rgba(255,255,255,0.6); color: var(--text);
+  }
+  .dir-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,70,229,0.08); }
+  .dir-filters { display: flex; gap: 6px; flex: 1; }
+  .dir-filter {
+    padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 11px; font-family: inherit; font-weight: 500; cursor: pointer;
+    background: rgba(255,255,255,0.5); color: var(--muted); transition: all 0.12s;
+  }
+  .dir-filter.active { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .dir-filter:not(.active):hover { background: rgba(255,255,255,0.8); border-color: var(--border-strong); }
+
+  .dir-table { width: 100%; border-collapse: separate; border-spacing: 0; }
+  .dir-table th {
+    text-align: left; font-size: 10.5px; font-weight: 600; color: var(--muted);
+    text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 12px;
+    border-bottom: 1px solid var(--border); position: sticky; top: 0;
+    background: rgba(232,240,246,0.95); backdrop-filter: blur(8px); z-index: 1;
+  }
+  .dir-table td {
+    padding: 10px 12px; border-bottom: 1px solid rgba(212,223,233,0.3);
+    font-size: 13px; vertical-align: middle;
+  }
+  .dir-table tr:hover td { background: rgba(255,255,255,0.5); }
+
+  .co-logo-wrap { display: flex; align-items: center; gap: 10px; }
+  .co-logo {
+    width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px; font-weight: 700; color: #fff; overflow: hidden;
+    background: linear-gradient(135deg, #6366F1, #818CF8);
+  }
+  .co-logo img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+  .co-name { font-weight: 600; white-space: nowrap; }
+  .co-contact-name { font-size: 11px; color: var(--muted); }
+
+  .mmp-badge {
+    display: inline-flex; align-items: center; gap: 4px;
+    padding: 3px 8px; border-radius: 5px; font-size: 11px; font-weight: 600;
+    white-space: nowrap;
+  }
+  .mmp-appsflyer { background: #E0F2FE; color: #0369A1; }
+  .mmp-branch { background: #ECFDF5; color: #047857; }
+  .mmp-adjust { background: #FEF3C7; color: #92400E; }
+  .mmp-singular { background: #F3E8FF; color: #7C3AED; }
+  .mmp-none { background: #F1F5F9; color: #64748B; }
+  .mmp-inhouse { background: #FFF7ED; color: #C2410C; }
+
+  .contract-info { font-size: 12px; white-space: nowrap; }
+  .contract-info .ci-date { font-weight: 600; }
+  .contract-info .ci-sub { font-size: 10.5px; color: var(--muted); }
+
+  .re-score { display: flex; align-items: center; gap: 6px; }
+  .re-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+  .re-hot .re-dot { background: #EF4444; }
+  .re-warm .re-dot { background: #F59E0B; }
+  .re-cool .re-dot { background: #6366F1; }
+  .re-cold .re-dot { background: #94A3B8; }
+  .re-label { font-size: 11.5px; font-weight: 600; }
+  .re-hot .re-label { color: #DC2626; }
+  .re-warm .re-label { color: #D97706; }
+  .re-cool .re-label { color: #4F46E5; }
+  .re-cold .re-label { color: #94A3B8; }
+
+  .tp-mini { display: flex; align-items: center; gap: 5px; font-size: 12px; white-space: nowrap; }
+  .tp-mini svg { width: 13px; height: 13px; flex-shrink: 0; }
+  .tp-mini .tp-mini-date { color: var(--muted); font-size: 11px; }
+
+  .stage-pill {
+    display: inline-block; padding: 2px 8px; border-radius: 4px;
+    font-size: 10.5px; font-weight: 600; white-space: nowrap;
+  }
+  .sp-paying { background: #DCFCE7; color: #15803D; }
+  .sp-integration { background: #DBEAFE; color: #1D4ED8; }
+  .sp-demo { background: #FEF3C7; color: #92400E; }
+  .sp-outreach { background: #F1F5F9; color: #475569; }
+  .sp-snoozed { background: #F3E8FF; color: #7C3AED; }
+  .sp-lost { background: #FEE2E2; color: #DC2626; }
+  .sp-attention { background: #FFF7ED; color: #C2410C; }
+
   .cal-header {
     display: flex; align-items: center; justify-content: space-between;
     margin-bottom: 16px;
@@ -1173,15 +1300,31 @@
 <div class="board" id="board"></div>
 <div class="calendar" id="calendar"></div>
 <div class="lr-universe" id="lrUniverse">
-  <div class="lr-universe-placeholder">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="10"/>
-      <path d="M2 12h20"/>
-      <path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/>
-    </svg>
-    <h2>LR Universe</h2>
-    <p>The full funnel of every company Linkrunner has reached out to — coming soon.</p>
+  <div class="uni-top">
+    <div class="funnel-wrap">
+      <div class="funnel-title">Outreach Funnel</div>
+      <div class="funnel" id="uniFunnel"></div>
+    </div>
+    <div class="funnel-summary" id="uniSummary"></div>
   </div>
+  <div class="dir-header">
+    <h3>All Companies</h3>
+    <div class="dir-filters" id="dirFilters"></div>
+    <input class="dir-search" id="dirSearch" type="text" placeholder="Search companies..." autocomplete="off" />
+  </div>
+  <table class="dir-table">
+    <thead>
+      <tr>
+        <th>Company</th>
+        <th>Stage</th>
+        <th>Current MMP</th>
+        <th>Contract</th>
+        <th>Last Touchpoint</th>
+        <th>Re-engagement</th>
+      </tr>
+    </thead>
+    <tbody id="dirBody"></tbody>
+  </table>
 </div>
 
 <!-- Card modal -->
@@ -2703,6 +2846,213 @@ function getStageLabel(stageId) {
   return stageId;
 }
 
+// ─── LR Universe ──────────────────────────────────────────────────────────
+const FUNNEL_STAGES = [
+  { key: 'reached',   label: 'Reached Out',       cls: 'ft-1', match: () => true },
+  { key: 'interested',label: 'Showed Interest',    cls: 'ft-2', match: s => !['email-first-sent','email-second-sent','follow-up-2-done'].includes(s) },
+  { key: 'demo',      label: 'Had a Demo',         cls: 'ft-3', match: s => ['demo-scheduled','no-show','demo-no-next','demo-next','integration-started','paying-customer','attention-needed'].includes(s) },
+  { key: 'converted', label: 'Converted',          cls: 'ft-4', match: s => s === 'paying-customer' },
+];
+
+const MMP_PATTERNS = [
+  { re: /appsflyer/i,  label: 'AppsFlyer',  cls: 'mmp-appsflyer' },
+  { re: /branch/i,     label: 'Branch',     cls: 'mmp-branch' },
+  { re: /adjust/i,     label: 'Adjust',     cls: 'mmp-adjust' },
+  { re: /singular/i,   label: 'Singular',   cls: 'mmp-singular' },
+  { re: /kochava/i,    label: 'Kochava',    cls: 'mmp-adjust' },
+  { re: /in[\-\s]?house/i, label: 'In-house', cls: 'mmp-inhouse' },
+  { re: /everflow/i,   label: 'Everflow',   cls: 'mmp-inhouse' },
+];
+
+function detectMMP(notes) {
+  if (!notes) return null;
+  for (const p of MMP_PATTERNS) { if (p.re.test(notes)) return { label: p.label, cls: p.cls }; }
+  return null;
+}
+
+function detectContract(notes) {
+  if (!notes) return null;
+  const m = notes.match(/contract\s*(?:ending|ends?|expir\w*|renewal)?\s*(?:in\s+)?(\w+(?:\s+\d{4})?)/i);
+  if (m) return m[1];
+  const m2 = notes.match(/reachout\s+(?:in\s+)?(\w+)/i);
+  if (m2) return m2[1] + ' (re-engage)';
+  return null;
+}
+
+function getCompanyDomain(card) {
+  const contacts = card.contacts || [];
+  for (const c of contacts) {
+    if (c.email && c.email.includes('@')) {
+      const d = c.email.split('@')[1];
+      if (d && d !== 'gmail.com' && d !== 'yahoo.com' && d !== 'hotmail.com' && d !== 'outlook.com')
+        return d;
+    }
+  }
+  return null;
+}
+
+function reEngagement(card) {
+  const notes = (card.notes || '').toLowerCase();
+  const stage = card.stage;
+  if (stage === 'paying-customer' || stage === 'integration-started') return { level: 'hot', label: 'Active' };
+  if (/high intent|convinced|interested to switch|liked the product|utmost priority/i.test(card.notes || ''))
+    return { level: 'hot', label: 'High Intent' };
+  if (/contract ending|contract ends|reachout in/i.test(card.notes || ''))
+    return { level: 'warm', label: 'Warm' };
+  if (['demo-scheduled','attention-needed'].includes(stage))
+    return { level: 'warm', label: 'Warm' };
+  if (['snoozed-date','snoozed-cycle'].includes(stage))
+    return { level: 'cool', label: 'Nurture' };
+  if (['demo-no-next','no-show','demo-next'].includes(stage))
+    return { level: 'cold', label: 'Cold' };
+  return { level: 'cold', label: 'Cold' };
+}
+
+function stagePill(stage) {
+  const map = {
+    'paying-customer': ['Paying', 'sp-paying'],
+    'integration-started': ['Integration', 'sp-integration'],
+    'demo-scheduled': ['Demo Sched.', 'sp-demo'],
+    'no-show': ['No Show', 'sp-lost'],
+    'demo-no-next': ['Demo — No Next', 'sp-attention'],
+    'demo-next': ['Not Interested', 'sp-lost'],
+    'email-first-sent': ['Email Sent', 'sp-outreach'],
+    'email-second-sent': ['Follow-up 1', 'sp-outreach'],
+    'follow-up-2-done': ['Follow-up 2', 'sp-outreach'],
+    'attention-needed': ['Attention', 'sp-attention'],
+    'snoozed-date': ['Snoozed', 'sp-snoozed'],
+    'snoozed-cycle': ['Long Cycle', 'sp-snoozed'],
+  };
+  const [text, cls] = map[stage] || [stage, 'sp-outreach'];
+  return `<span class="stage-pill ${cls}">${text}</span>`;
+}
+
+function getLogoColors(name) {
+  let h = 0; for (let i = 0; i < name.length; i++) h = name.charCodeAt(i) + ((h << 5) - h);
+  const hue = Math.abs(h) % 360;
+  return `hsl(${hue}, 55%, 50%)`;
+}
+
+let uniFilter = 'all';
+let uniSearch = '';
+
+function renderUniverse() {
+  const cards = Object.values(state.cards);
+
+  // ── Funnel ──
+  const counts = FUNNEL_STAGES.map(f => ({ ...f, count: cards.filter(c => f.match(c.stage)).length }));
+  const funnelEl = document.getElementById('uniFunnel');
+  let fhtml = '';
+  counts.forEach((f, i) => {
+    fhtml += `<div class="funnel-tier ${f.cls}"><span class="ft-count">${f.count}</span><span class="ft-label">${f.label}</span></div>`;
+    if (i < counts.length - 1) {
+      const pct = counts[i + 1].count && f.count ? Math.round((counts[i + 1].count / f.count) * 100) : 0;
+      fhtml += `<div class="funnel-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>${pct}% conversion</div>`;
+    }
+  });
+  funnelEl.innerHTML = fhtml;
+
+  // ── Summary cards ──
+  const mmpCounts = {};
+  cards.forEach(c => { const m = detectMMP(c.notes); if (m) mmpCounts[m.label] = (mmpCounts[m.label] || 0) + 1; });
+  const topMMP = Object.entries(mmpCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
+  const hotCount = cards.filter(c => reEngagement(c).level === 'hot').length;
+  const warmCount = cards.filter(c => reEngagement(c).level === 'warm').length;
+  const withContract = cards.filter(c => detectContract(c.notes)).length;
+
+  document.getElementById('uniSummary').innerHTML = `
+    <div class="fs-card fs-purple"><div class="fs-num">${cards.length}</div><div class="fs-label">Total Companies</div><div class="fs-sub">In the LR Universe</div></div>
+    <div class="fs-card fs-green"><div class="fs-num">${hotCount}</div><div class="fs-label">High Intent</div><div class="fs-sub">${warmCount} more warm leads</div></div>
+    <div class="fs-card fs-amber"><div class="fs-num">${withContract}</div><div class="fs-label">Contract Intel</div><div class="fs-sub">Known expiry dates</div></div>
+    <div class="fs-card fs-violet"><div class="fs-num">${topMMP.length ? topMMP.map(m => m[1]).reduce((a, b) => a + b, 0) : 0}</div><div class="fs-label">Using an MMP</div><div class="fs-sub">${topMMP.map(m => m[0]).join(', ') || 'None detected'}</div></div>
+  `;
+
+  // ── Filters ──
+  const filterDefs = [
+    { key: 'all', label: 'All' },
+    { key: 'hot', label: 'High Intent' },
+    { key: 'warm', label: 'Warm' },
+    { key: 'has-mmp', label: 'Using MMP' },
+    { key: 'contract', label: 'Contract Intel' },
+  ];
+  document.getElementById('dirFilters').innerHTML = filterDefs.map(f =>
+    `<button class="dir-filter${uniFilter === f.key ? ' active' : ''}" data-flt="${f.key}">${f.label}</button>`
+  ).join('');
+  document.querySelectorAll('.dir-filter').forEach(btn => {
+    btn.addEventListener('click', () => { uniFilter = btn.dataset.flt; renderUniverse(); });
+  });
+
+  // ── Directory ──
+  let filtered = cards.slice();
+  if (uniFilter === 'hot') filtered = filtered.filter(c => reEngagement(c).level === 'hot');
+  else if (uniFilter === 'warm') filtered = filtered.filter(c => ['hot', 'warm'].includes(reEngagement(c).level));
+  else if (uniFilter === 'has-mmp') filtered = filtered.filter(c => detectMMP(c.notes));
+  else if (uniFilter === 'contract') filtered = filtered.filter(c => detectContract(c.notes));
+
+  if (uniSearch) {
+    const q = uniSearch.toLowerCase();
+    filtered = filtered.filter(c =>
+      c.name.toLowerCase().includes(q) ||
+      (c.contact || '').toLowerCase().includes(q) ||
+      (c.notes || '').toLowerCase().includes(q)
+    );
+  }
+
+  // Sort: hot first, then warm, then by name
+  const reOrder = { hot: 0, warm: 1, cool: 2, cold: 3 };
+  filtered.sort((a, b) => (reOrder[reEngagement(a).level] || 9) - (reOrder[reEngagement(b).level] || 9) || a.name.localeCompare(b.name));
+
+  const tbody = document.getElementById('dirBody');
+  tbody.innerHTML = filtered.map(c => {
+    const domain = getCompanyDomain(c);
+    const initials = c.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+    const bgColor = getLogoColors(c.name);
+    const logoHtml = domain
+      ? `<div class="co-logo"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
+      : `<div class="co-logo" style="background:${bgColor}">${initials}</div>`;
+
+    const mmp = detectMMP(c.notes);
+    const mmpHtml = mmp ? `<span class="mmp-badge ${mmp.cls}">${mmp.label}</span>` : `<span class="mmp-badge mmp-none">Unknown</span>`;
+
+    const contract = detectContract(c.notes);
+    const contractHtml = contract ? `<div class="contract-info"><span class="ci-date">${contract}</span></div>` : `<span style="color:var(--muted);font-size:12px">—</span>`;
+
+    const tp = getLatestTouchpoint(c.touchpoints || []);
+    let tpHtml = '<span style="color:var(--muted);font-size:12px">—</span>';
+    if (tp) {
+      const ch = TP_CHANNELS[tp.channel] || TP_CHANNELS.meeting;
+      tpHtml = `<div class="tp-mini"><span class="tp-ch-icon ${ch.cls}" style="width:13px;height:13px;border-radius:3px;display:flex;align-items:center;justify-content:center">${ch.icon}</span>${formatDateOrdinal(tp.date)}</div>`;
+    }
+
+    const re = reEngagement(c);
+    const contactName = c.contact || (c.contacts && c.contacts[0] ? c.contacts[0].name : '');
+
+    return `<tr data-id="${c.id}">
+      <td><div class="co-logo-wrap">${logoHtml}<div><div class="co-name">${c.name}</div>${contactName ? `<div class="co-contact-name">${contactName}</div>` : ''}</div></div></td>
+      <td>${stagePill(c.stage)}</td>
+      <td>${mmpHtml}</td>
+      <td>${contractHtml}</td>
+      <td>${tpHtml}</td>
+      <td><div class="re-score re-${re.level}"><span class="re-dot"></span><span class="re-label">${re.label}</span></div></td>
+    </tr>`;
+  }).join('');
+
+  // Click to open card
+  tbody.querySelectorAll('tr').forEach(tr => {
+    tr.style.cursor = 'pointer';
+    tr.addEventListener('click', () => {
+      const card = state.cards[tr.dataset.id];
+      if (card) openCardModal(card.id, card.stage);
+    });
+  });
+}
+
+// Wire directory search
+document.getElementById('dirSearch').addEventListener('input', e => {
+  uniSearch = e.target.value.trim();
+  renderUniverse();
+});
+
 function renderCalendar() {
   const cal = document.getElementById('calendar');
   const year = calendarMonth.getFullYear();
@@ -2821,6 +3171,7 @@ function switchView(view) {
   } else if (view === 'universe') {
     uniEl.classList.add('visible');
     uniBtn.classList.add('active');
+    renderUniverse();
   } else {
     boardEl.classList.remove('hidden');
     boardBtn.classList.add('active');
