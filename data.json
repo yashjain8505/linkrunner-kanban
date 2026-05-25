@@ -1260,13 +1260,17 @@
       "notes": "\"Had a chat with the Co - Founder / CMO - Shashwat. They are fairly new to performance marketing. They have around 100k downloads ( all organic ), using branch to create deep links only. \n\nHe thought that Branch and MMP are two different things, need to handhold him for things like conversion postbacks etc.\"",
       "stage": "follow-up-2-done",
       "channel": "none",
-      "touchDate": "2026-05-18",
-      "updated": 1779696132507,
+      "touchDate": "2026-05-25",
+      "updated": 1779696140031,
       "demoDate": "2026-05-07",
       "inbound": false,
       "acv": "0-5k",
       "contacts": [],
       "touchpoints": [
+        {
+          "date": "2026-05-25",
+          "channel": "email"
+        },
         {
           "date": "2026-05-18",
           "channel": "meeting"
