@@ -1921,6 +1921,19 @@
           "date": "2026-05-18"
         }
       ]
+    },
+    "7sx6nie2": {
+      "id": "7sx6nie2",
+      "name": "Linearloop",
+      "contact": "Rushi Patel",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-26",
+      "touchDate": "",
+      "updated": 1779700507886,
+      "calBookingId": "3pPKsGDmRT537KKFNCM3yv",
+      "calEmail": "partners@linearloop.io"
     }
   },
   "order": {
@@ -2037,7 +2050,8 @@
       "6dt3jz7j",
       "xwscrsz2",
       "hmuplodt",
-      "xzvfucgg"
+      "xzvfucgg",
+      "7sx6nie2"
     ]
   },
   "columnOrder": [
