@@ -932,7 +932,7 @@
       "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779090387760,
+      "updated": 1779693834138,
       "inbound": true,
       "contacts": [],
       "touchpoints": [
@@ -940,7 +940,9 @@
           "date": "2026-05-18",
           "channel": "meeting"
         }
-      ]
+      ],
+      "acv": "",
+      "demoDate": ""
     },
     "r86mapmi": {
       "id": "r86mapmi",
