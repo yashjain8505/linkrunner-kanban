@@ -1315,21 +1315,26 @@
       "notes": "High Intent",
       "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-15",
-      "updated": 1779696439388,
+      "touchDate": "2026-05-25",
+      "updated": 1779696446510,
       "demoDate": "2026-05-15",
       "inbound": false,
       "acv": "5k-10k",
       "contacts": [
         {
           "name": "Manoj Kumar",
-          "role": "champion",
+          "sheetRow": null,
           "email": "manojkumar@flattrade.in",
           "phone": "+91 97886 83324",
-          "linkedin": "http://www.linkedin.com/in/arokia-manoj-kumar"
+          "linkedin": "http://www.linkedin.com/in/arokia-manoj-kumar",
+          "role": "champion"
         }
       ],
       "touchpoints": [
+        {
+          "date": "2026-05-25",
+          "channel": "email"
+        },
         {
           "date": "2026-05-15",
           "channel": "meeting"
