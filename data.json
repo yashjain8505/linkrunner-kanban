@@ -1884,24 +1884,26 @@
       "name": "Zypp",
       "contact": "Dheeraj",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "paying-customer",
       "channel": "none",
       "demoDate": "2026-05-25",
       "touchDate": "",
-      "updated": 1779427080019,
+      "updated": 1779715269298,
       "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
       "calEmail": "dheeraj.prarthi@zypp.app",
       "contacts": [
         {
           "name": "Dheeraj",
-          "role": "",
           "sheetRow": 225,
           "email": "dheeraj.prarthi@zypp.app",
           "phone": "+91 98783 38971",
-          "linkedin": "http://www.linkedin.com/in/dheerajprarthi"
+          "linkedin": "http://www.linkedin.com/in/dheerajprarthi",
+          "role": ""
         }
       ],
-      "touchpoints": []
+      "touchpoints": [],
+      "inbound": false,
+      "acv": ""
     },
     "8l4hlwf4": {
       "id": "8l4hlwf4",
@@ -2023,7 +2025,8 @@
       "k1mnj1sy",
       "wuenmqqy",
       "czl1xufg",
-      "9k1vcmcu"
+      "9k1vcmcu",
+      "xzvfucgg"
     ],
     "attention-needed": [
       "szcuv1bn",
@@ -2063,7 +2066,6 @@
       "tp4rhmtb",
       "xwscrsz2",
       "hmuplodt",
-      "xzvfucgg",
       "7sx6nie2"
     ]
   },
