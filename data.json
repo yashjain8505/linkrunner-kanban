@@ -1313,10 +1313,10 @@
       "name": "Flattrade",
       "contact": "Manoj Kumar",
       "notes": "High Intent",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-15",
-      "updated": 1779472393428,
+      "updated": 1779696439388,
       "demoDate": "2026-05-15",
       "inbound": false,
       "acv": "5k-10k",
@@ -1950,7 +1950,6 @@
     ],
     "email-first-sent": [
       "8l4hlwf4",
-      "5z3o34x4",
       "70itspid",
       "w23yl5x0",
       "lmyry6va",
@@ -1963,7 +1962,8 @@
     "email-second-sent": [
       "9mbxstiy",
       "78q13wkn",
-      "csp5s88v"
+      "csp5s88v",
+      "5z3o34x4"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
