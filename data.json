@@ -1655,12 +1655,12 @@
       "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "2026-05-25",
-      "updated": 1779702532279,
+      "updated": 1779702547601,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
       "demoDate": "2026-05-25",
       "inbound": false,
-      "acv": "",
+      "acv": "10k-20k",
       "contacts": [
         {
           "name": "Aditya",
