@@ -600,23 +600,31 @@
       "notes": "",
       "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-18",
-      "updated": 1779090228102,
+      "touchDate": "2026-05-25",
+      "updated": 1779697154808,
       "demoDate": "2026-04-09",
       "contacts": [
         {
           "name": "Meghana Banumaiah",
-          "role": "",
+          "sheetRow": null,
           "email": "meghana.banumaiah@royalbrothers.com",
-          "linkedin": "http://www.linkedin.com/in/meghana-marketing-manager"
+          "phone": "",
+          "linkedin": "http://www.linkedin.com/in/meghana-marketing-manager",
+          "role": ""
         }
       ],
       "touchpoints": [
         {
+          "date": "2026-05-25",
+          "channel": "email"
+        },
+        {
           "date": "2026-05-18",
           "channel": "meeting"
         }
-      ]
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "blcof8hu": {
       "id": "blcof8hu",
