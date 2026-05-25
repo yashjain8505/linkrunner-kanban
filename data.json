@@ -598,10 +598,10 @@
       "name": "Royal Brothers",
       "contact": "Meghana Banumaiah",
       "notes": "",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-25",
-      "updated": 1779697154808,
+      "updated": 1779697157644,
       "demoDate": "2026-04-09",
       "contacts": [
         {
@@ -1974,7 +1974,6 @@
     ],
     "email-second-sent": [
       "9mbxstiy",
-      "78q13wkn",
       "csp5s88v",
       "5z3o34x4"
     ],
@@ -1982,7 +1981,8 @@
       "aqbhlx5y",
       "j74u2llv",
       "3l9o1g32",
-      "ea8fs65h"
+      "ea8fs65h",
+      "78q13wkn"
     ],
     "comms-setup": [],
     "price-negotiations": [],
