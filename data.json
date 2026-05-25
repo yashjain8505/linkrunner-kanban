@@ -931,11 +931,15 @@
       "notes": "",
       "stage": "follow-up-2-done",
       "channel": "none",
-      "touchDate": "2026-05-18",
-      "updated": 1779693834138,
+      "touchDate": "2026-05-25",
+      "updated": 1779693848345,
       "inbound": true,
       "contacts": [],
       "touchpoints": [
+        {
+          "date": "2026-05-25",
+          "channel": "email"
+        },
         {
           "date": "2026-05-18",
           "channel": "meeting"
