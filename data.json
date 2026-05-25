@@ -1132,18 +1132,15 @@
       "name": "Bhanzu",
       "contact": "",
       "notes": "Ask if their director of product is back",
-      "stage": "email-second-sent",
+      "stage": "snoozed-date",
       "channel": "none",
-      "touchDate": "2026-05-18",
-      "updated": 1779090044466,
+      "touchDate": "",
+      "updated": 1779694257747,
       "inbound": true,
       "contacts": [],
-      "touchpoints": [
-        {
-          "date": "2026-05-18",
-          "channel": "meeting"
-        }
-      ]
+      "touchpoints": [],
+      "acv": "",
+      "demoDate": ""
     },
     "n5qjsfkv": {
       "id": "n5qjsfkv",
@@ -1957,7 +1954,6 @@
     ],
     "email-second-sent": [
       "9mbxstiy",
-      "vvk5pc8n",
       "3l9o1g32",
       "78q13wkn",
       "csp5s88v",
@@ -2000,7 +1996,8 @@
       "pdcwgw12",
       "k0b1maan",
       "pvp5qqng",
-      "fr65wkiv"
+      "fr65wkiv",
+      "vvk5pc8n"
     ],
     "snoozed-cycle": [
       "gz295rcq",
