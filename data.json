@@ -1362,10 +1362,10 @@
       "name": "Sovrenn",
       "contact": "",
       "notes": "High Intent",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779373100418,
+      "updated": 1779696143084,
       "demoDate": "2026-05-15",
       "inbound": false,
       "acv": "5k-10k",
@@ -1959,13 +1959,13 @@
     "email-second-sent": [
       "9mbxstiy",
       "78q13wkn",
-      "csp5s88v",
-      "ea8fs65h"
+      "csp5s88v"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
       "j74u2llv",
-      "3l9o1g32"
+      "3l9o1g32",
+      "ea8fs65h"
     ],
     "comms-setup": [],
     "price-negotiations": [],
