@@ -1654,8 +1654,8 @@
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1779702518926,
+      "touchDate": "2026-05-25",
+      "updated": 1779702528343,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
       "demoDate": "2026-05-25",
@@ -1679,7 +1679,12 @@
           "role": "both"
         }
       ],
-      "touchpoints": []
+      "touchpoints": [
+        {
+          "date": "2026-05-25",
+          "channel": "email"
+        }
+      ]
     },
     "xwscrsz2": {
       "id": "xwscrsz2",
