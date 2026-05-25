@@ -1258,10 +1258,10 @@
       "name": "Misfits",
       "contact": "",
       "notes": "\"Had a chat with the Co - Founder / CMO - Shashwat. They are fairly new to performance marketing. They have around 100k downloads ( all organic ), using branch to create deep links only. \n\nHe thought that Branch and MMP are two different things, need to handhold him for things like conversion postbacks etc.\"",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-18",
-      "updated": 1779373088801,
+      "updated": 1779696132507,
       "demoDate": "2026-05-07",
       "inbound": false,
       "acv": "0-5k",
@@ -1954,14 +1954,14 @@
     ],
     "email-second-sent": [
       "9mbxstiy",
-      "3l9o1g32",
       "78q13wkn",
       "csp5s88v",
       "ea8fs65h"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
-      "j74u2llv"
+      "j74u2llv",
+      "3l9o1g32"
     ],
     "comms-setup": [],
     "price-negotiations": [],
