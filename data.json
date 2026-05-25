@@ -1650,12 +1650,12 @@
     "6dt3jz7j": {
       "id": "6dt3jz7j",
       "name": "Cash247",
-      "contact": "Aditya",
+      "contact": "Aditya, Apoorva Anand",
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779444748627,
+      "updated": 1779702518926,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
       "demoDate": "2026-05-25",
@@ -1664,11 +1664,19 @@
       "contacts": [
         {
           "name": "Aditya",
-          "role": "",
           "sheetRow": 39,
           "email": "aditya.nair@cash247.in",
           "phone": "+91 94079 33286",
-          "linkedin": "http://www.linkedin.com/in/apoorva-anand-a19409380"
+          "linkedin": "http://www.linkedin.com/in/apoorva-anand-a19409380",
+          "role": "both"
+        },
+        {
+          "name": "Apoorva Anand",
+          "sheetRow": 38,
+          "email": "apoorva.anand@cash247.in",
+          "phone": "",
+          "linkedin": "http://www.linkedin.com/in/ashish-kamble-78471918",
+          "role": "both"
         }
       ],
       "touchpoints": []
