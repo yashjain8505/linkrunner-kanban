@@ -2228,7 +2228,17 @@
     "coldcall": []
   },
   "partners": {
-    "solo": [],
+    "solo": [
+      {
+        "id": "gu1q22zm",
+        "name": "Akshay Thakur",
+        "email": "akshaythakur2904@gmail.com",
+        "linkedin": "http://www.linkedin.com/in/akshay-thakur-useracquisitionspecialist",
+        "phone": "NA",
+        "touchpoint": "4th May",
+        "notes": "He'll make a warm intro with his Brazilian Client (Fitness App)"
+      }
+    ],
     "agency": []
   }
 }
