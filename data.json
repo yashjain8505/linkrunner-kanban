@@ -1102,13 +1102,17 @@
       "notes": "Utmost priority - $25k customer",
       "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-15",
-      "updated": 1779373096618,
+      "touchDate": "2026-05-26",
+      "updated": 1779778932718,
       "demoDate": "2026-05-11",
       "inbound": false,
       "acv": "20k-50k",
       "contacts": [],
       "touchpoints": [
+        {
+          "date": "2026-05-26",
+          "channel": "email"
+        },
         {
           "date": "2026-05-15",
           "channel": "meeting"
