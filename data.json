@@ -1888,11 +1888,11 @@
       "name": "Zypp",
       "contact": "Dheeraj",
       "notes": "",
-      "stage": "integration-started",
+      "stage": "paying-customer",
       "channel": "none",
       "demoDate": "2026-05-25",
       "touchDate": "",
-      "updated": 1779777038158,
+      "updated": 1779812707483,
       "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
       "calEmail": "dheeraj.prarthi@zypp.app",
       "contacts": [
@@ -2147,8 +2147,7 @@
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
-      "rgdd3lli",
-      "xzvfucgg"
+      "rgdd3lli"
     ],
     "paying-customer": [
       "n5qjsfkv",
@@ -2157,7 +2156,8 @@
       "k1mnj1sy",
       "wuenmqqy",
       "czl1xufg",
-      "9k1vcmcu"
+      "9k1vcmcu",
+      "xzvfucgg"
     ],
     "attention-needed": [
       "szcuv1bn",
