@@ -2040,26 +2040,6 @@
         }
       ],
       "touchpoints": []
-    },
-    "xkxop2f1": {
-      "id": "xkxop2f1",
-      "name": "Scripbox",
-      "contact": "Arpit",
-      "notes": "",
-      "stage": "demo-scheduled",
-      "channel": "none",
-      "demoDate": "2026-06-02",
-      "touchDate": "",
-      "updated": 1779799618617,
-      "calBookingId": "1vEX2wQqiP9aDwGXhpk4gc",
-      "calEmail": "arpit.uppal@scripbox.com",
-      "contacts": [
-        {
-          "name": "Arpit",
-          "role": ""
-        }
-      ],
-      "touchpoints": []
     }
   },
   "order": {
@@ -2181,8 +2161,7 @@
       "mwadgjbq",
       "56ejow7l",
       "0nhinqw6",
-      "9w9m1m38",
-      "xkxop2f1"
+      "9w9m1m38"
     ]
   },
   "columnOrder": [
