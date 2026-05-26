@@ -1066,10 +1066,18 @@
   .co-logo {
     width: 30px; height: 30px; border-radius: 7px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    font-size: 12px; font-weight: 700; color: #fff; overflow: hidden;
+    font-size: 12px; font-weight: 700; color: #fff; overflow: visible;
     background: linear-gradient(135deg, #6366F1, #818CF8);
+    position: relative;
   }
-  .co-logo img { width: 100%; height: 100%; object-fit: contain; background: #fff; }
+  .co-logo img { width: 100%; height: 100%; object-fit: contain; background: #fff; border-radius: 7px; }
+  .co-logo.highlighted { box-shadow: 0 0 0 3px #22C55E; }
+  .co-logo.highlighted::after {
+    content: '✓'; position: absolute; bottom: -3px; right: -3px;
+    width: 14px; height: 14px; background: #22C55E; color: #fff;
+    border-radius: 50%; font-size: 9px; display: flex;
+    align-items: center; justify-content: center; line-height: 1;
+  }
   .co-name { font-weight: 600; white-space: nowrap; }
   .co-contact-name { font-size: 11px; color: var(--muted); }
 
@@ -1819,6 +1827,7 @@ function ensureColumns(s) {
   ['email','linkedin','coldcall'].forEach(ch => { if (!s.channels[ch]) s.channels[ch] = []; });
   if (!s.partners) s.partners = { solo: [], agency: [] };
   ['solo','agency'].forEach(t => { if (!s.partners[t]) s.partners[t] = []; });
+  if (!s.highlighted) s.highlighted = [];
 }
 
 function uid() { return Math.random().toString(36).slice(2, 10); }
@@ -3327,9 +3336,10 @@ function renderUniverse() {
     const domain = c.domain || getCompanyDomain(c);
     const initials = c.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
     const bgColor = getLogoColors(c.name);
+    const hl = (state.highlighted || []).includes(c.name) ? ' highlighted' : '';
     const logoHtml = domain
-      ? `<div class="co-logo"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
-      : `<div class="co-logo" style="background:${bgColor}">${initials}</div>`;
+      ? `<div class="co-logo${hl}" data-company="${c.name}"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
+      : `<div class="co-logo${hl}" data-company="${c.name}" style="background:${bgColor}">${initials}</div>`;
 
     const indCls = INDUSTRY_CLS[c.industry] || 'ind-other';
     const indHtml = `<span class="industry-pill ${indCls}">${c.industry}</span>`;
@@ -3363,6 +3373,20 @@ function renderUniverse() {
       <td>${contractHtml}</td>
     </tr>`;
   }).join('');
+
+  // Logo highlight click handler
+  tbody.querySelectorAll('.co-logo[data-company]').forEach(logo => {
+    logo.style.cursor = 'pointer';
+    logo.addEventListener('click', e => {
+      e.stopPropagation();
+      const name = logo.dataset.company;
+      if (!state.highlighted) state.highlighted = [];
+      const idx = state.highlighted.indexOf(name);
+      if (idx >= 0) { state.highlighted.splice(idx, 1); logo.classList.remove('highlighted'); }
+      else { state.highlighted.push(name); logo.classList.add('highlighted'); }
+      scheduleSave();
+    });
+  });
 
   tbody.querySelectorAll('tr').forEach(tr => {
     tr.style.cursor = 'pointer';
