@@ -2228,17 +2228,7 @@
     "coldcall": []
   },
   "partners": {
-    "solo": [
-      {
-        "id": "jog9y8zm",
-        "name": "Rahul Sharma",
-        "email": "rahul@example.com",
-        "linkedin": "linkedin.com/in/rahulsharma",
-        "phone": "+91 98765 43210",
-        "touchpoint": "May 2025",
-        "notes": "Experienced mobile marketing consultant. Previously worked with fintech apps."
-      }
-    ],
+    "solo": [],
     "agency": []
   }
 }
