@@ -1961,19 +1961,6 @@
       ],
       "touchpoints": []
     },
-    "ep6hxdiz": {
-      "id": "ep6hxdiz",
-      "name": "Stucred",
-      "contact": "Deepak kumar",
-      "notes": "",
-      "stage": "demo-scheduled",
-      "channel": "none",
-      "demoDate": "2026-05-27",
-      "touchDate": "",
-      "updated": 1779787825064,
-      "calBookingId": "q4yoHDhasr1njbusP4pNLt",
-      "calEmail": "deepak.k@stucred.com"
-    },
     "mwadgjbq": {
       "id": "mwadgjbq",
       "name": "Stucred",
@@ -2104,7 +2091,6 @@
       "xwscrsz2",
       "hmuplodt",
       "7sx6nie2",
-      "ep6hxdiz",
       "mwadgjbq"
     ]
   },
