@@ -1344,6 +1344,90 @@
     margin-bottom: 6px; padding-left: 2px;
   }
 
+  /* ─── Partners Tab ──────────────────────────────────────── */
+  .partners-view { display: none; padding: 24px 32px; max-width: 1400px; margin: 0 auto; }
+  .partners-view.visible { display: block; }
+  .partners-columns { display: flex; gap: 24px; align-items: flex-start; }
+  .partners-col { flex: 1; min-width: 0; }
+  .partners-col-header {
+    display: flex; align-items: center; justify-content: space-between;
+    margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid var(--border);
+  }
+  .partners-col-title { font-size: 15px; font-weight: 700; color: var(--text); display: flex; align-items: center; gap: 8px; }
+  .partners-col-title .pc-icon {
+    width: 28px; height: 28px; border-radius: 7px; display: flex;
+    align-items: center; justify-content: center; font-size: 13px;
+  }
+  .pc-solo .pc-icon { background: #EEF2FF; color: #4F46E5; }
+  .pc-agency .pc-icon { background: #ECFDF5; color: #059669; }
+  .partners-col-count { font-size: 12px; color: var(--muted); font-weight: 500; }
+  .pc-add-btn {
+    padding: 5px 12px; border: 1px dashed var(--border); border-radius: 6px;
+    background: none; cursor: pointer; font-size: 11px; font-family: inherit;
+    color: var(--muted); font-weight: 500; transition: all 0.12s;
+  }
+  .pc-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,102,241,0.04); }
+  .pc-list { display: flex; flex-direction: column; gap: 10px; }
+  .pc-card {
+    background: rgba(255,255,255,0.75); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px 16px; transition: box-shadow 0.15s;
+    position: relative;
+  }
+  .pc-card:hover { box-shadow: 0 3px 12px rgba(0,0,0,0.06); }
+  .pc-card-top { display: flex; align-items: flex-start; gap: 10px; margin-bottom: 8px; }
+  .pc-name {
+    font-size: 14px; font-weight: 700; color: var(--text); flex: 1;
+  }
+  .pc-actions { display: flex; gap: 4px; opacity: 0; transition: opacity 0.12s; }
+  .pc-card:hover .pc-actions { opacity: 1; }
+  .pc-action-btn {
+    width: 24px; height: 24px; border: none; background: none; cursor: pointer;
+    color: var(--muted); font-size: 12px; border-radius: 5px;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .pc-action-btn:hover { background: var(--bg); color: var(--text); }
+  .pc-action-btn.delete:hover { color: #EF4444; }
+  .pc-fields { display: grid; grid-template-columns: 1fr 1fr; gap: 6px 14px; }
+  .pc-field { display: flex; align-items: center; gap: 6px; font-size: 12px; min-width: 0; }
+  .pc-field-icon { color: var(--muted); flex-shrink: 0; font-size: 11px; width: 14px; text-align: center; }
+  .pc-field-val { color: var(--text); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .pc-field-val a { color: var(--accent); text-decoration: none; }
+  .pc-field-val a:hover { text-decoration: underline; }
+  .pc-field-empty { color: var(--muted); font-style: italic; font-weight: 400; }
+  .pc-touch { grid-column: 1 / -1; margin-top: 2px; }
+  .pc-notes {
+    grid-column: 1 / -1; margin-top: 4px; padding-top: 6px;
+    border-top: 1px solid var(--border); font-size: 11.5px;
+    color: #475569; line-height: 1.45; white-space: pre-wrap; word-break: break-word;
+  }
+  .pc-empty { text-align: center; color: var(--muted); padding: 32px 16px; font-size: 13px; }
+
+  /* Partner add/edit form */
+  .pc-form {
+    background: rgba(255,255,255,0.85); border: 1px solid var(--accent);
+    border-radius: 12px; padding: 14px 16px; margin-bottom: 10px;
+    box-shadow: 0 4px 16px rgba(99,102,241,0.1);
+  }
+  .pc-form-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+  .pc-form-full { grid-column: 1 / -1; }
+  .pc-form input, .pc-form textarea {
+    width: 100%; height: 30px; padding: 0 8px; border: 1px solid var(--border);
+    border-radius: 6px; font-size: 12px; font-family: inherit; box-sizing: border-box;
+    background: #fff; color: var(--text);
+  }
+  .pc-form input:focus, .pc-form textarea:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,70,229,0.08); }
+  .pc-form textarea { height: 48px; padding: 6px 8px; resize: vertical; }
+  .pc-form label { font-size: 10px; font-weight: 600; color: var(--muted); text-transform: uppercase; letter-spacing: 0.04em; margin-bottom: 2px; display: block; }
+  .pc-form-actions { display: flex; gap: 6px; justify-content: flex-end; margin-top: 8px; }
+  .pc-form-actions button {
+    padding: 5px 14px; border-radius: 6px; font-size: 11px; font-family: inherit;
+    font-weight: 600; cursor: pointer; border: 1px solid var(--border);
+  }
+  .pc-form-actions .pc-save { background: var(--accent); color: #fff; border-color: var(--accent); }
+  .pc-form-actions .pc-save:hover { background: #4338CA; }
+  .pc-form-actions .pc-cancel { background: #fff; color: var(--muted); }
+  .pc-form-actions .pc-cancel:hover { background: var(--bg); }
+
 </style>
 </head>
 <body>
@@ -1385,6 +1469,7 @@
       <button class="active" id="viewBoard">Board</button>
       <button id="viewCalendar">Calendar</button>
       <button id="viewUniverse">LR Universe</button>
+      <button id="viewPartners">Partners</button>
     </div>
     <div class="sync-status readonly" id="syncStatus">
       <span class="sync-dot"></span>
@@ -1445,6 +1530,25 @@
     </thead>
     <tbody id="dirBody"></tbody>
   </table>
+</div>
+
+<div class="partners-view" id="partnersView">
+  <div class="partners-columns">
+    <div class="partners-col pc-solo" id="pcSolo">
+      <div class="partners-col-header">
+        <div class="partners-col-title"><div class="pc-icon">👤</div>Solo Consultants / Freelancers <span class="partners-col-count" id="pcSoloCount"></span></div>
+        <button class="pc-add-btn" id="pcAddSolo">+ Add</button>
+      </div>
+      <div class="pc-list" id="pcSoloList"></div>
+    </div>
+    <div class="partners-col pc-agency" id="pcAgency">
+      <div class="partners-col-header">
+        <div class="partners-col-title"><div class="pc-icon">🏢</div>Agencies <span class="partners-col-count" id="pcAgencyCount"></span></div>
+        <button class="pc-add-btn" id="pcAddAgency">+ Add</button>
+      </div>
+      <div class="pc-list" id="pcAgencyList"></div>
+    </div>
+  </div>
 </div>
 
 <!-- Card modal -->
@@ -1713,6 +1817,8 @@ function ensureColumns(s) {
   if (!s.cards) s.cards = {};
   if (!s.channels) s.channels = { email: [], linkedin: [], coldcall: [] };
   ['email','linkedin','coldcall'].forEach(ch => { if (!s.channels[ch]) s.channels[ch] = []; });
+  if (!s.partners) s.partners = { solo: [], agency: [] };
+  ['solo','agency'].forEach(t => { if (!s.partners[t]) s.partners[t] = []; });
 }
 
 function uid() { return Math.random().toString(36).slice(2, 10); }
@@ -3441,6 +3547,134 @@ document.getElementById('dirSearch').addEventListener('input', e => {
   renderUniverse();
 });
 
+// ─── Partners ────────────────────────────────────────────────────────────
+let partnerEditId = null;
+
+function renderPartnerForm(type, existing) {
+  const isEdit = !!existing;
+  return `<div class="pc-form" data-type="${type}" data-id="${existing?.id || ''}">
+    <div class="pc-form-grid">
+      <div><label>Name *</label><input type="text" data-f="name" value="${existing?.name || ''}" placeholder="Full name" /></div>
+      <div><label>Email</label><input type="email" data-f="email" value="${existing?.email || ''}" placeholder="email@example.com" /></div>
+      <div><label>LinkedIn</label><input type="text" data-f="linkedin" value="${existing?.linkedin || ''}" placeholder="linkedin.com/in/..." /></div>
+      <div><label>Phone</label><input type="text" data-f="phone" value="${existing?.phone || ''}" placeholder="+91..." /></div>
+      <div><label>Last Touchpoint</label><input type="text" data-f="touchpoint" value="${existing?.touchpoint || ''}" placeholder="e.g. May 2025" /></div>
+      <div></div>
+      <div class="pc-form-full"><label>Notes</label><textarea data-f="notes" placeholder="Any relevant notes...">${existing?.notes || ''}</textarea></div>
+    </div>
+    <div class="pc-form-actions">
+      <button class="pc-cancel" data-type="${type}">Cancel</button>
+      <button class="pc-save" data-type="${type}">${isEdit ? 'Save' : 'Add Partner'}</button>
+    </div>
+  </div>`;
+}
+
+function renderPartners() {
+  const editable = isEditable();
+  ['solo', 'agency'].forEach(type => {
+    const list = state.partners[type] || [];
+    const listEl = document.getElementById(type === 'solo' ? 'pcSoloList' : 'pcAgencyList');
+    const countEl = document.getElementById(type === 'solo' ? 'pcSoloCount' : 'pcAgencyCount');
+    const addBtn = document.getElementById(type === 'solo' ? 'pcAddSolo' : 'pcAddAgency');
+
+    countEl.textContent = `(${list.length})`;
+
+    let html = '';
+
+    // Show form if adding new
+    if (partnerEditId === 'new-' + type) {
+      html += renderPartnerForm(type, null);
+    }
+
+    if (list.length === 0 && partnerEditId !== 'new-' + type) {
+      html += '<div class="pc-empty">No partners added yet</div>';
+    }
+
+    list.forEach(p => {
+      if (partnerEditId === p.id) {
+        html += renderPartnerForm(type, p);
+        return;
+      }
+      const emailHtml = p.email ? `<a href="mailto:${p.email}">${p.email}</a>` : `<span class="pc-field-empty">—</span>`;
+      const linkedinHtml = p.linkedin ? `<a href="${p.linkedin.startsWith('http') ? p.linkedin : 'https://' + p.linkedin}" target="_blank">Profile</a>` : `<span class="pc-field-empty">—</span>`;
+      const phoneHtml = p.phone ? `<a href="tel:${p.phone}">${p.phone}</a>` : `<span class="pc-field-empty">—</span>`;
+      const touchHtml = p.touchpoint || `<span class="pc-field-empty">—</span>`;
+
+      html += `<div class="pc-card" data-id="${p.id}">
+        <div class="pc-card-top">
+          <div class="pc-name">${p.name}</div>
+          ${editable ? `<div class="pc-actions">
+            <button class="pc-action-btn edit" data-type="${type}" data-id="${p.id}" title="Edit">✎</button>
+            <button class="pc-action-btn delete" data-type="${type}" data-id="${p.id}" title="Delete">✕</button>
+          </div>` : ''}
+        </div>
+        <div class="pc-fields">
+          <div class="pc-field"><span class="pc-field-icon">✉</span><span class="pc-field-val">${emailHtml}</span></div>
+          <div class="pc-field"><span class="pc-field-icon">in</span><span class="pc-field-val">${linkedinHtml}</span></div>
+          <div class="pc-field"><span class="pc-field-icon">📞</span><span class="pc-field-val">${phoneHtml}</span></div>
+          <div class="pc-field pc-touch"><span class="pc-field-icon">📅</span><span class="pc-field-val">${touchHtml}</span></div>
+          ${p.notes ? `<div class="pc-notes">${p.notes}</div>` : ''}
+        </div>
+      </div>`;
+    });
+
+    listEl.innerHTML = html;
+
+    // Wire add button (always visible, prompts unlock if needed)
+    addBtn.onclick = () => { requireEdit(() => { partnerEditId = 'new-' + type; renderPartners(); }); };
+
+    // Wire form save/cancel
+    listEl.querySelectorAll('.pc-save').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const form = btn.closest('.pc-form');
+        const t = form.dataset.type;
+        const id = form.dataset.id;
+        const name = form.querySelector('[data-f="name"]').value.trim();
+        if (!name) { form.querySelector('[data-f="name"]').style.borderColor = '#EF4444'; return; }
+        const entry = {
+          id: id || uid(),
+          name,
+          email: form.querySelector('[data-f="email"]').value.trim(),
+          linkedin: form.querySelector('[data-f="linkedin"]').value.trim(),
+          phone: form.querySelector('[data-f="phone"]').value.trim(),
+          touchpoint: form.querySelector('[data-f="touchpoint"]').value.trim(),
+          notes: form.querySelector('[data-f="notes"]').value.trim(),
+        };
+        if (id) {
+          const idx = state.partners[t].findIndex(p => p.id === id);
+          if (idx >= 0) state.partners[t][idx] = entry;
+        } else {
+          state.partners[t].unshift(entry);
+        }
+        partnerEditId = null;
+        scheduleSave();
+        renderPartners();
+      });
+    });
+    listEl.querySelectorAll('.pc-cancel').forEach(btn => {
+      btn.addEventListener('click', () => { partnerEditId = null; renderPartners(); });
+    });
+
+    // Wire edit/delete
+    listEl.querySelectorAll('.pc-action-btn.edit').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        partnerEditId = btn.dataset.id;
+        renderPartners();
+      });
+    });
+    listEl.querySelectorAll('.pc-action-btn.delete').forEach(btn => {
+      btn.addEventListener('click', e => {
+        e.stopPropagation();
+        const t = btn.dataset.type;
+        state.partners[t] = state.partners[t].filter(p => p.id !== btn.dataset.id);
+        scheduleSave();
+        renderPartners();
+      });
+    });
+  });
+}
+
 function renderCalendar() {
   const cal = document.getElementById('calendar');
   const year = calendarMonth.getFullYear();
@@ -3540,17 +3774,21 @@ function switchView(view) {
   const boardEl = document.getElementById('board');
   const calEl = document.getElementById('calendar');
   const uniEl = document.getElementById('lrUniverse');
+  const partEl = document.getElementById('partnersView');
   const boardBtn = document.getElementById('viewBoard');
   const calBtn = document.getElementById('viewCalendar');
   const uniBtn = document.getElementById('viewUniverse');
+  const partBtn = document.getElementById('viewPartners');
 
   // Reset all
   boardEl.classList.add('hidden');
   calEl.classList.remove('visible');
   uniEl.classList.remove('visible');
+  partEl.classList.remove('visible');
   boardBtn.classList.remove('active');
   calBtn.classList.remove('active');
   uniBtn.classList.remove('active');
+  partBtn.classList.remove('active');
 
   if (view === 'calendar') {
     calEl.classList.add('visible');
@@ -3560,6 +3798,10 @@ function switchView(view) {
     uniEl.classList.add('visible');
     uniBtn.classList.add('active');
     renderUniverse();
+  } else if (view === 'partners') {
+    partEl.classList.add('visible');
+    partBtn.classList.add('active');
+    renderPartners();
   } else {
     boardEl.classList.remove('hidden');
     boardBtn.classList.add('active');
@@ -3614,6 +3856,7 @@ document.getElementById('exportBtn').addEventListener('click', exportJSON);
 document.getElementById('viewBoard').addEventListener('click', () => switchView('board'));
 document.getElementById('viewCalendar').addEventListener('click', () => switchView('calendar'));
 document.getElementById('viewUniverse').addEventListener('click', () => switchView('universe'));
+document.getElementById('viewPartners').addEventListener('click', () => switchView('partners'));
 
 document.addEventListener('keydown', e => {
   if (e.key === 'Escape') {
