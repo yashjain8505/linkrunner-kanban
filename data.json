@@ -1884,11 +1884,11 @@
       "name": "Zypp",
       "contact": "Dheeraj",
       "notes": "",
-      "stage": "paying-customer",
+      "stage": "integration-started",
       "channel": "none",
       "demoDate": "2026-05-25",
       "touchDate": "",
-      "updated": 1779715269298,
+      "updated": 1779777038158,
       "calBookingId": "a7dmeLTpDk7ULuEN4UFz82",
       "calEmail": "dheeraj.prarthi@zypp.app",
       "contacts": [
@@ -1948,7 +1948,14 @@
       "touchDate": "",
       "updated": 1779700507886,
       "calBookingId": "3pPKsGDmRT537KKFNCM3yv",
-      "calEmail": "partners@linearloop.io"
+      "calEmail": "partners@linearloop.io",
+      "contacts": [
+        {
+          "name": "Rushi Patel",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     }
   },
   "order": {
@@ -2016,7 +2023,8 @@
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
-      "rgdd3lli"
+      "rgdd3lli",
+      "xzvfucgg"
     ],
     "paying-customer": [
       "n5qjsfkv",
@@ -2025,8 +2033,7 @@
       "k1mnj1sy",
       "wuenmqqy",
       "czl1xufg",
-      "9k1vcmcu",
-      "xzvfucgg"
+      "9k1vcmcu"
     ],
     "attention-needed": [
       "szcuv1bn",
