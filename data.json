@@ -2012,6 +2012,19 @@
       "updated": 1779798026928,
       "calBookingId": "jpZ4M6W4sfyJ7MHX1R2iXd",
       "calEmail": "mahesh.shetty@fatakpay.com"
+    },
+    "9w9m1m38": {
+      "id": "9w9m1m38",
+      "name": "Scripbox",
+      "contact": "Arpit",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-06-02",
+      "touchDate": "",
+      "updated": 1779799617272,
+      "calBookingId": "1vEX2wQqiP9aDwGXhpk4gc",
+      "calEmail": "arpit.uppal@scripbox.com"
     }
   },
   "order": {
@@ -2133,7 +2146,8 @@
       "mwadgjbq",
       "56ejow7l",
       "b1lnj0ol",
-      "0nhinqw6"
+      "0nhinqw6",
+      "9w9m1m38"
     ]
   },
   "columnOrder": [
