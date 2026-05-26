@@ -1999,6 +1999,19 @@
       "updated": 1779794054260,
       "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
       "calEmail": "mitali.rajiv@khelomore.com"
+    },
+    "0nhinqw6": {
+      "id": "0nhinqw6",
+      "name": "Fatakpay",
+      "contact": "Mahesh",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-27",
+      "touchDate": "",
+      "updated": 1779798026928,
+      "calBookingId": "jpZ4M6W4sfyJ7MHX1R2iXd",
+      "calEmail": "mahesh.shetty@fatakpay.com"
     }
   },
   "order": {
@@ -2119,7 +2132,8 @@
       "7sx6nie2",
       "mwadgjbq",
       "56ejow7l",
-      "b1lnj0ol"
+      "b1lnj0ol",
+      "0nhinqw6"
     ]
   },
   "columnOrder": [
