@@ -1973,6 +1973,19 @@
       "updated": 1779787825064,
       "calBookingId": "q4yoHDhasr1njbusP4pNLt",
       "calEmail": "deepak.k@stucred.com"
+    },
+    "mwadgjbq": {
+      "id": "mwadgjbq",
+      "name": "Stucred",
+      "contact": "Deepak kumar",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-27",
+      "touchDate": "",
+      "updated": 1779787826543,
+      "calBookingId": "q4yoHDhasr1njbusP4pNLt",
+      "calEmail": "deepak.k@stucred.com"
     }
   },
   "order": {
@@ -2091,7 +2104,8 @@
       "xwscrsz2",
       "hmuplodt",
       "7sx6nie2",
-      "ep6hxdiz"
+      "ep6hxdiz",
+      "mwadgjbq"
     ]
   },
   "columnOrder": [
