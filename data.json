@@ -1972,7 +1972,14 @@
       "touchDate": "",
       "updated": 1779787826543,
       "calBookingId": "q4yoHDhasr1njbusP4pNLt",
-      "calEmail": "deepak.k@stucred.com"
+      "calEmail": "deepak.k@stucred.com",
+      "contacts": [
+        {
+          "name": "Deepak kumar",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     },
     "56ejow7l": {
       "id": "56ejow7l",
@@ -1985,7 +1992,14 @@
       "touchDate": "",
       "updated": 1779794052443,
       "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
-      "calEmail": "mitali.rajiv@khelomore.com"
+      "calEmail": "mitali.rajiv@khelomore.com",
+      "contacts": [
+        {
+          "name": "Mitali Rajiv",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     },
     "b1lnj0ol": {
       "id": "b1lnj0ol",
@@ -1998,7 +2012,14 @@
       "touchDate": "",
       "updated": 1779794054260,
       "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
-      "calEmail": "mitali.rajiv@khelomore.com"
+      "calEmail": "mitali.rajiv@khelomore.com",
+      "contacts": [
+        {
+          "name": "Mitali Rajiv",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     },
     "0nhinqw6": {
       "id": "0nhinqw6",
@@ -2011,7 +2032,14 @@
       "touchDate": "",
       "updated": 1779798026928,
       "calBookingId": "jpZ4M6W4sfyJ7MHX1R2iXd",
-      "calEmail": "mahesh.shetty@fatakpay.com"
+      "calEmail": "mahesh.shetty@fatakpay.com",
+      "contacts": [
+        {
+          "name": "Mahesh",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     },
     "9w9m1m38": {
       "id": "9w9m1m38",
@@ -2024,7 +2052,14 @@
       "touchDate": "",
       "updated": 1779799617272,
       "calBookingId": "1vEX2wQqiP9aDwGXhpk4gc",
-      "calEmail": "arpit.uppal@scripbox.com"
+      "calEmail": "arpit.uppal@scripbox.com",
+      "contacts": [
+        {
+          "name": "Arpit",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     },
     "xkxop2f1": {
       "id": "xkxop2f1",
@@ -2037,7 +2072,14 @@
       "touchDate": "",
       "updated": 1779799618617,
       "calBookingId": "1vEX2wQqiP9aDwGXhpk4gc",
-      "calEmail": "arpit.uppal@scripbox.com"
+      "calEmail": "arpit.uppal@scripbox.com",
+      "contacts": [
+        {
+          "name": "Arpit",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     }
   },
   "order": {
@@ -2184,5 +2226,19 @@
     ],
     "linkedin": [],
     "coldcall": []
+  },
+  "partners": {
+    "solo": [
+      {
+        "id": "jog9y8zm",
+        "name": "Rahul Sharma",
+        "email": "rahul@example.com",
+        "linkedin": "linkedin.com/in/rahulsharma",
+        "phone": "+91 98765 43210",
+        "touchpoint": "May 2025",
+        "notes": "Experienced mobile marketing consultant. Previously worked with fintech apps."
+      }
+    ],
+    "agency": []
   }
 }
