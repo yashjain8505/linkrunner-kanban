@@ -1973,6 +1973,19 @@
       "updated": 1779787826543,
       "calBookingId": "q4yoHDhasr1njbusP4pNLt",
       "calEmail": "deepak.k@stucred.com"
+    },
+    "56ejow7l": {
+      "id": "56ejow7l",
+      "name": "Khelomore",
+      "contact": "Mitali Rajiv",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-27",
+      "touchDate": "",
+      "updated": 1779794052443,
+      "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
+      "calEmail": "mitali.rajiv@khelomore.com"
     }
   },
   "order": {
@@ -2091,7 +2104,8 @@
       "xwscrsz2",
       "hmuplodt",
       "7sx6nie2",
-      "mwadgjbq"
+      "mwadgjbq",
+      "56ejow7l"
     ]
   },
   "columnOrder": [
