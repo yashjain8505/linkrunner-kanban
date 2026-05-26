@@ -4204,7 +4204,7 @@ async function sha256(str) {
   return [...new Uint8Array(buf)].map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
-async function checkPassword() {
+async function checkLoginPassword() {
   const input = document.getElementById('pwInput').value;
   const hash = await sha256(input);
   if (hash === PW_HASH) {
@@ -4221,9 +4221,9 @@ async function checkPassword() {
 }
 
 // Always require password on page load
-document.getElementById('pwBtn').addEventListener('click', checkPassword);
+document.getElementById('pwBtn').addEventListener('click', checkLoginPassword);
 document.getElementById('pwInput').addEventListener('keydown', e => {
-  if (e.key === 'Enter') checkPassword();
+  if (e.key === 'Enter') checkLoginPassword();
 });
 </script>
 </body>
