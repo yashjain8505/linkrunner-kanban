@@ -925,6 +925,78 @@
   .fs-amber .fs-num { color: #D97706; }
   .fs-green .fs-num { color: #059669; }
 
+  /* ─── Channel Cards ──────────────────────────────────────── */
+  .channel-cards { flex: 1; display: flex; gap: 14px; min-width: 0; }
+  .ch-card {
+    flex: 1; background: rgba(255,255,255,0.7); border: 1px solid var(--border);
+    border-radius: 12px; padding: 14px; display: flex; flex-direction: column;
+    max-height: 340px; min-width: 0;
+  }
+  .ch-card-header {
+    display: flex; align-items: center; gap: 8px; margin-bottom: 10px;
+    padding-bottom: 8px; border-bottom: 1px solid var(--border);
+  }
+  .ch-card-icon {
+    width: 28px; height: 28px; border-radius: 6px; display: flex;
+    align-items: center; justify-content: center; font-size: 14px; flex-shrink: 0;
+  }
+  .ch-icon-email { background: #EEF2FF; color: #4F46E5; }
+  .ch-icon-linkedin { background: #EFF6FF; color: #2563EB; }
+  .ch-icon-coldcall { background: #FEF3C7; color: #D97706; }
+  .ch-card-title { font-size: 13px; font-weight: 700; color: var(--text); }
+  .ch-card-count { font-size: 11px; color: var(--muted); font-weight: 500; margin-left: auto; }
+  .ch-list { flex: 1; overflow-y: auto; display: flex; flex-wrap: wrap; gap: 4px; min-height: 0; align-content: flex-start; }
+  .ch-item {
+    display: flex; align-items: center; gap: 4px; padding: 3px 6px 3px 3px;
+    border-radius: 14px; background: rgba(255,255,255,0.5); border: 1px solid var(--border);
+    transition: background 0.12s; position: relative;
+  }
+  .ch-item:hover { background: rgba(255,255,255,0.9); }
+  .ch-item .co-logo { width: 18px; height: 18px; border-radius: 4px; font-size: 7px; flex-shrink: 0; line-height: 18px; text-align: center; }
+  .ch-item .co-logo img { width: 18px; height: 18px; border-radius: 4px; }
+  .ch-item-info { min-width: 0; }
+  .ch-item-name { font-size: 10.5px; font-weight: 600; color: var(--text); white-space: nowrap; }
+  .ch-item-stage { display: none; }
+  .ch-item-rm {
+    width: 14px; height: 14px; border: none; background: rgba(239,68,68,0.9); cursor: pointer;
+    color: #fff; font-size: 8px; opacity: 0; transition: opacity 0.12s;
+    display: flex; align-items: center; justify-content: center; flex-shrink: 0;
+    border-radius: 50%; position: absolute; top: -4px; right: -4px;
+  }
+  .ch-item:hover .ch-item-rm { opacity: 1; }
+  .ch-item-rm:hover { background: #DC2626; }
+  .ch-add-wrap { margin-top: 8px; position: relative; }
+  .ch-add-btn {
+    width: 100%; padding: 6px 0; border: 1px dashed var(--border); border-radius: 6px;
+    background: none; cursor: pointer; font-size: 12px; font-family: inherit;
+    color: var(--muted); font-weight: 500; transition: all 0.12s;
+  }
+  .ch-add-btn:hover { border-color: var(--accent); color: var(--accent); background: rgba(99,102,241,0.04); }
+  .ch-picker {
+    position: absolute; top: 100%; left: 0; right: 0; margin-top: 4px;
+    background: #fff; border: 1px solid var(--border); border-radius: 8px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.12); z-index: 50; max-height: 220px;
+    display: flex; flex-direction: column;
+  }
+  .ch-picker-search {
+    padding: 8px; border-bottom: 1px solid var(--border);
+  }
+  .ch-picker-search input {
+    width: 100%; height: 28px; padding: 0 8px; border: 1px solid var(--border);
+    border-radius: 5px; font-size: 11px; font-family: inherit; box-sizing: border-box;
+  }
+  .ch-picker-search input:focus { outline: none; border-color: var(--accent); }
+  .ch-picker-list { flex: 1; overflow-y: auto; padding: 4px; }
+  .ch-picker-item {
+    display: flex; align-items: center; gap: 8px; padding: 5px 8px;
+    border-radius: 5px; cursor: pointer; transition: background 0.1s;
+  }
+  .ch-picker-item:hover { background: #F1F5F9; }
+  .ch-picker-item .co-logo { width: 22px; height: 22px; border-radius: 4px; font-size: 8px; flex-shrink: 0; }
+  .ch-picker-item .co-logo img { width: 22px; height: 22px; border-radius: 4px; }
+  .ch-picker-item span { font-size: 12px; font-weight: 500; color: var(--text); }
+  .ch-empty { font-size: 11px; color: var(--muted); text-align: center; padding: 16px 8px; line-height: 1.4; }
+
   /* ─── Company Directory ──────────────────────────────────── */
   .dir-header {
     display: flex; align-items: center; justify-content: space-between;
@@ -937,7 +1009,7 @@
     background: rgba(255,255,255,0.6); color: var(--text);
   }
   .dir-search:focus { outline: none; border-color: var(--accent); box-shadow: 0 0 0 3px rgba(79,70,229,0.08); }
-  .dir-filters { display: flex; gap: 6px; flex: 1; }
+  .dir-filters { display: flex; gap: 6px; flex: 1; flex-wrap: wrap; align-items: center; }
   .dir-filter {
     padding: 5px 10px; border: 1px solid var(--border); border-radius: 6px;
     font-size: 11px; font-family: inherit; font-weight: 500; cursor: pointer;
@@ -945,6 +1017,37 @@
   }
   .dir-filter.active { background: var(--accent); color: #fff; border-color: var(--accent); }
   .dir-filter:not(.active):hover { background: rgba(255,255,255,0.8); border-color: var(--border-strong); }
+  .dir-select {
+    height: 30px; padding: 0 8px; border: 1px solid var(--border); border-radius: 6px;
+    font-size: 11px; font-family: inherit; font-weight: 500; cursor: pointer;
+    background: rgba(255,255,255,0.5); color: var(--text); appearance: none;
+    -webkit-appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6'%3E%3Cpath d='M0 0l5 6 5-6z' fill='%2394a3b8'/%3E%3C/svg%3E");
+    background-repeat: no-repeat; background-position: right 8px center; padding-right: 22px;
+  }
+  .dir-select:focus { outline: none; border-color: var(--accent); }
+  .campaign-tags { display: flex; gap: 3px; flex-wrap: wrap; }
+  .campaign-tag {
+    display: inline-block; padding: 1px 6px; border-radius: 3px;
+    font-size: 10px; font-weight: 700; letter-spacing: 0.02em;
+    background: #EEF2FF; color: #4F46E5;
+  }
+  .industry-pill {
+    display: inline-block; padding: 2px 7px; border-radius: 4px;
+    font-size: 10.5px; font-weight: 600; white-space: nowrap;
+  }
+  .ind-fintech { background: #DBEAFE; color: #1D4ED8; }
+  .ind-ecommerce { background: #FCE7F3; color: #BE185D; }
+  .ind-health { background: #DCFCE7; color: #15803D; }
+  .ind-food { background: #FEF3C7; color: #92400E; }
+  .ind-travel { background: #E0E7FF; color: #3730A3; }
+  .ind-edtech { background: #F3E8FF; color: #7C3AED; }
+  .ind-social { background: #FFF1F2; color: #E11D48; }
+  .ind-realestate { background: #F0FDF4; color: #166534; }
+  .ind-media { background: #FFF7ED; color: #C2410C; }
+  .ind-b2b { background: #F1F5F9; color: #334155; }
+  .ind-lifestyle { background: #FDF4FF; color: #A21CAF; }
+  .ind-insurance { background: #ECFDF5; color: #047857; }
+  .ind-other { background: #F1F5F9; color: #64748B; }
 
   .dir-table { width: 100%; border-collapse: separate; border-spacing: 0; }
   .dir-table th {
@@ -979,8 +1082,25 @@
   .mmp-branch { background: #ECFDF5; color: #047857; }
   .mmp-adjust { background: #FEF3C7; color: #92400E; }
   .mmp-singular { background: #F3E8FF; color: #7C3AED; }
-  .mmp-none { background: #F1F5F9; color: #64748B; }
+  .mmp-none { background: #F1F5F9; color: #64748B; cursor: pointer; }
   .mmp-inhouse { background: #FFF7ED; color: #C2410C; }
+  .mmp-trackier { background: #FEE2E2; color: #991B1B; }
+  .mmp-badge.editable { cursor: pointer; transition: box-shadow 0.12s; }
+  .mmp-badge.editable:hover { box-shadow: 0 0 0 2px rgba(99,102,241,0.25); }
+  .mmp-select {
+    height: 26px; padding: 0 6px; border: 1px solid var(--accent); border-radius: 5px;
+    font-size: 11px; font-family: inherit; font-weight: 600; background: #fff;
+    color: var(--text); cursor: pointer; outline: none;
+  }
+  .contract-edit {
+    height: 26px; width: 110px; padding: 0 6px; border: 1px solid var(--accent);
+    border-radius: 5px; font-size: 11px; font-family: inherit; font-weight: 600;
+    background: #fff; color: var(--text); outline: none;
+  }
+  .contract-info .ci-date { font-weight: 600; cursor: pointer; transition: box-shadow 0.12s; padding: 2px 4px; border-radius: 4px; }
+  .contract-info .ci-date.editable:hover { box-shadow: 0 0 0 2px rgba(99,102,241,0.25); }
+  .contract-dash { color: var(--muted); font-size: 12px; cursor: pointer; padding: 2px 6px; border-radius: 4px; }
+  .contract-dash.editable:hover { background: #F1F5F9; }
 
   .contract-info { font-size: 12px; white-space: nowrap; }
   .contract-info .ci-date { font-weight: 600; }
@@ -1302,13 +1422,13 @@
 <div class="lr-universe" id="lrUniverse">
   <div class="uni-top">
     <div class="funnel-wrap">
-      <div class="funnel-title">Outreach Funnel</div>
+      <div class="funnel-title">Outreach Funnel (Outbound only)</div>
       <div class="funnel" id="uniFunnel"></div>
     </div>
-    <div class="funnel-summary" id="uniSummary"></div>
+    <div class="channel-cards" id="channelCards"></div>
   </div>
   <div class="dir-header">
-    <h3>All Companies</h3>
+    <h3 id="dirCount">All Companies</h3>
     <div class="dir-filters" id="dirFilters"></div>
     <input class="dir-search" id="dirSearch" type="text" placeholder="Search companies..." autocomplete="off" />
   </div>
@@ -1316,11 +1436,11 @@
     <thead>
       <tr>
         <th>Company</th>
+        <th>Industry</th>
+        <th>Campaign</th>
         <th>Stage</th>
         <th>Current MMP</th>
         <th>Contract</th>
-        <th>Last Touchpoint</th>
-        <th>Re-engagement</th>
       </tr>
     </thead>
     <tbody id="dirBody"></tbody>
@@ -1517,14 +1637,14 @@ function unlock() {
   _unlocked = true;
   sessionStorage.setItem('kb_unlocked', '1');
   updateLockUI();
-  renderBoard();
+  render();
 }
 
 function lock() {
   _unlocked = false;
   sessionStorage.removeItem('kb_unlocked');
   updateLockUI();
-  renderBoard();
+  render();
 }
 
 function updateLockUI() {
@@ -1591,6 +1711,8 @@ function ensureColumns(s) {
     COLUMNS.forEach(c => { if (!s.columnOrder.includes(c.id)) s.columnOrder.push(c.id); });
   }
   if (!s.cards) s.cards = {};
+  if (!s.channels) s.channels = { email: [], linkedin: [], coldcall: [] };
+  ['email','linkedin','coldcall'].forEach(ch => { if (!s.channels[ch]) s.channels[ch] = []; });
 }
 
 function uid() { return Math.random().toString(36).slice(2, 10); }
@@ -2254,6 +2376,7 @@ function moveCard(cardId, toStage, toIndex) {
   card.updated = Date.now();
   scheduleSave();
   render();
+  if (currentView === 'universe') renderUniverse();
 }
 
 function deleteCard(id) {
@@ -2847,10 +2970,18 @@ function getStageLabel(stageId) {
 }
 
 // ─── LR Universe ──────────────────────────────────────────────────────────
+const CAMPAIGN_DATES = {1:'2025-03-23',2:'2025-03-30',3:'2025-04-06',4:'2025-04-13',5:'2025-05-04',6:'2025-05-11',7:'2025-05-18',8:'2025-05-25'};
+const CAMPAIGN_MONTHS = {1:'Mar 2025',2:'Mar 2025',3:'Apr 2025',4:'Apr 2025',5:'May 2025',6:'May 2025',7:'May 2025',8:'May 2025'};
+const UNIVERSE_COMPANIES = [
+  {n:'5paisa',d:'5paisa.com',c:[2],i:'Fintech'},{n:'99acres',d:'99acres.com',c:[2],i:'Real Estate'},{n:'AbhiBus',d:'abhibus.com',c:[2],i:'Travel'},{n:'AGRIM',d:'agrim.app',c:[5],i:'B2B'},{n:'aha',d:'ahavideos.com',c:[8],i:'Media'},{n:'Aisle',d:'aisle.co',c:[3],i:'Social'},{n:'Akshayakalpa Organic',d:'akshayakalpa.org',c:[3],i:'Food'},{n:'Alive',d:'alive.app',c:[3],i:'Health'},{n:'Amber',d:'amberstudent.com',c:[8],i:'Travel'},{n:'Anveshan',d:'anveshan.farm',c:[3],i:'Food'},{n:'Anytime Rupee',d:'anytimerupee.com',c:[2],i:'Fintech'},{n:'Apna Mart',d:'apnamart.in',c:[2,5],i:'Food'},{n:'AssetPlus',d:'assetplus.in',c:[4],i:'Fintech'},{n:'Astrotalk',d:'astrotalk.com',c:[3],i:'Media'},{n:'Atlys',d:'atlys.com',c:[4],i:'Travel'},{n:'Aura Gold',d:'auragold.in',c:[5],i:'Fintech'},{n:'Bachatt',d:'bachatt.in',c:[1],i:'Fintech'},{n:'Banza',d:'banza.in',c:[6],i:'B2B'},{n:'Battery Smart',d:'batterysmart.in',c:[6],i:'Travel'},{n:'Beep App',d:'beepapp.in',c:[7],i:'Media'},{n:'Belong',d:'belong.co',c:[4],i:'Real Estate'},{n:'Bhanzu',d:'bhanzu.com',c:[4],i:'EdTech'},{n:'BharatLoan',d:'bharatloan.co.in',c:[2,6,8],i:'Fintech'},{n:'BharatNXT',d:'bharatnxt.com',c:[5],i:'Fintech'},{n:'BHIM',d:'bhimupi.org.in',c:[1],i:'Fintech'},{n:'BigHaat India',d:'bighaat.com',c:[5],i:'Food'},{n:'Biznext',d:'biznext.in',c:[6],i:'Fintech'},{n:'BlinkX',d:'blinkx.in',c:[2],i:'Fintech'},{n:'Blissclub',d:'blissclub.com',c:[4],i:'E-commerce'},{n:'Blynkk',d:'blynkk.com',c:[7],i:'Social'},{n:'Bondbazaar',d:'bondbazaar.com',c:[6],i:'Fintech'},{n:'BookMyForex',d:'bookmyforex.com',c:[5],i:'Fintech'},{n:'Borzo',d:'borzo.com',c:[6],i:'Travel'},{n:'Bounce',d:'bounceshare.com',c:[5],i:'Travel'},{n:'Brevistay',d:'brevistay.com',c:[2],i:'Real Estate'},{n:'Bright DiGi Gold',d:'brightdigigold.com',c:[6],i:'Fintech'},{n:'Brightpoint Studios',d:'brightpoint.com',c:[6],i:'B2B'},{n:'Buyhatke',d:'buyhatke.com',c:[6],i:'E-commerce'},{n:'Cab Bazar',d:'cabbazar.com',c:[5],i:'Travel'},{n:'Cambay Tiger',d:'cambaytiger.com',c:[6],i:'Food'},{n:'Campus Sutra',d:'campussutra.com',c:[8],i:'E-commerce'},{n:'CaratLane',d:'caratlane.com',c:[8],i:'E-commerce'},{n:'Cars24',d:'cars24.com',c:[6],i:'Travel'},{n:'Cash 24x7',d:'cash24x7.com',c:[7],i:'Fintech'},{n:'CASHe',d:'cashe.co.in',c:[7],i:'Fintech'},{n:'Chai Point',d:'chaipoint.com',c:[4],i:'Food'},{n:'Chai Shots',d:'chaishots.com',c:[8],i:'Food'},{n:'Chalo',d:'chalo.com',c:[3],i:'Travel'},{n:'ChefKart',d:'chefkart.com',c:[3],i:'Lifestyle'},{n:'CheQ',d:'cheq.one',c:[1],i:'Fintech'},{n:'Cherry',d:'cherry.app',c:[5],i:'Lifestyle'},{n:'Chinmay Finlease',d:'chinmayfinlease.com',c:[2],i:'Fintech'},{n:'CITYFURNISH',d:'cityfurnish.com',c:[8],i:'Real Estate'},{n:'Clarity',d:'clarity.fm',c:[3],i:'Lifestyle'},{n:'ClearIAS',d:'clearias.com',c:[5],i:'EdTech'},{n:'Coinswitch',d:'coinswitch.co',c:[1],i:'Fintech'},{n:'Convin',d:'convin.ai',c:[3],i:'B2B'},{n:'CookandChef',d:'cookandchef.in',c:[5],i:'Lifestyle'},{n:'Cookd',d:'cookd.in',c:[4],i:'Lifestyle'},{n:'Cookzy',d:'cookzy.in',c:[5],i:'Food'},{n:'Country Delight',d:'countrydelight.in',c:[3,6],i:'Food'},{n:'CRED',d:'cred.club',c:[1],i:'Fintech'},{n:'CredFlow',d:'credflow.in',c:[6],i:'Fintech'},{n:'Credilio',d:'credilio.in',c:[6],i:'Fintech'},{n:'CreditSea',d:'creditsea.com',c:[8],i:'Fintech'},{n:'Creditt+',d:'creditt.in',c:[8],i:'Fintech'},{n:'CricHeroes',d:'cricheroes.com',c:[8],i:'Media'},{n:'Cureskin',d:'cureskin.com',c:[8],i:'Health'},{n:'Currently',d:'currently.in',c:[7],i:'Social'},{n:'DailyObjects',d:'dailyobjects.com',c:[3],i:'E-commerce'},{n:'DaMENSCH',d:'damensch.com',c:[4],i:'E-commerce'},{n:'Deciml',d:'deciml.com',c:[5],i:'Fintech'},{n:'Delta Exchange',d:'delta.exchange',c:[1],i:'Fintech'},{n:'Dentalkart',d:'dentalkart.com',c:[8],i:'Health'},{n:'Desi Farms',d:'desifarms.in',c:[5],i:'Food'},{n:'Dhan',d:'dhan.co',c:[1],i:'Fintech'},{n:'DhobiLite',d:'dhobilite.com',c:[6],i:'Lifestyle'},{n:'Digit Insurance',d:'godigit.com',c:[8],i:'Insurance'},{n:'Dil Mil',d:'dilmil.co',c:[3],i:'Social'},{n:'Disha AI',d:'disha.ai',c:[8],i:'B2B'},{n:'Ditto Insurance',d:'joinditto.in',c:[4],i:'Insurance'},{n:'DMI Finance',d:'dmifinance.in',c:[1],i:'Fintech'},{n:'Doodhvale Farms',d:'doodhvale.in',c:[3],i:'Food'},{n:'Dot & Key Skincare',d:'dotandkey.com',c:[8],i:'E-commerce'},{n:'DriveU',d:'driveu.in',c:[6],i:'Travel'},{n:'EATCLUB Brands',d:'eatclub.in',c:[3],i:'Food'},{n:'EduFund',d:'edufund.in',c:[7],i:'Fintech'},{n:'Eloelo',d:'eloelo.in',c:[2],i:'Social'},{n:'Enrich Money',d:'enrichmoney.in',c:[8],i:'Fintech'},{n:'Epik',d:'epik.in',c:[4],i:'E-commerce'},{n:'Equity Master',d:'equitymaster.com',c:[7],i:'Fintech'},{n:'ET Money',d:'etmoney.com',c:[7],i:'Fintech'},{n:'Fam Pay',d:'fampay.in',c:[6],i:'Fintech'},{n:'FanCode',d:'fancode.com',c:[2],i:'Media'},{n:'FatakPay',d:'fatakpay.com',c:[1,7],i:'Fintech'},{n:'Fibe',d:'fibe.in',c:[1],i:'Fintech'},{n:'Filo',d:'askfilo.com',c:[5],i:'EdTech'},{n:'FinCrif',d:'fincrif.com',c:[8],i:'Fintech'},{n:'Finnable',d:'finnable.com',c:[2],i:'Fintech'},{n:'FinoPay',d:'finobank.com',c:[1],i:'Fintech'},{n:'FirstClub',d:'firstclub.in',c:[4],i:'Lifestyle'},{n:'Fitelo',d:'fitelo.co',c:[7],i:'Health'},{n:'FITPASS',d:'fitpass.co.in',c:[2],i:'Health'},{n:'FITTR',d:'fittr.com',c:[3,6],i:'Health'},{n:'Flattrade',d:'flattrade.in',c:[5],i:'Fintech'},{n:'Fleek',d:'fleek.co',c:[3],i:'Social'},{n:'fleetx.io',d:'fleetx.io',c:[3],i:'B2B'},{n:'flutrr',d:'flutrr.com',c:[5],i:'Social'},{n:'FREED',d:'freed.care',c:[4],i:'Fintech'},{n:'Freo',d:'freo.in',c:[2],i:'Fintech'},{n:'Freshly',d:'freshly.in',c:[8],i:'Food'},{n:'Freshma',d:'freshma.in',c:[6],i:'Food'},{n:'FreshToHome',d:'freshtohome.com',c:[3,6],i:'Food'},{n:'FRND',d:'frnd.app',c:[2],i:'Social'},{n:'FuelBuddy',d:'fuelbuddy.in',c:[6],i:'B2B'},{n:'Funngro',d:'funngro.com',c:[6],i:'Fintech'},{n:'Furlenco',d:'furlenco.com',c:[2],i:'Real Estate'},{n:'FYERS',d:'fyers.in',c:[6],i:'Fintech'},{n:'GimBooks',d:'gimbooks.com',c:[2],i:'B2B'},{n:'GIVA',d:'giva.co',c:[6],i:'E-commerce'},{n:'GoMechanic',d:'gomechanic.in',c:[6],i:'Travel'},{n:'GoodScore',d:'goodscore.in',c:[2],i:'Fintech'},{n:'Grip Invest',d:'gripinvest.in',c:[4],i:'Fintech'},{n:'Growfitter',d:'growfitter.com',c:[6],i:'Health'},{n:'Groww',d:'groww.in',c:[1],i:'Fintech'},{n:'Gullak',d:'gullak.money',c:[1],i:'Fintech'},{n:'Handpickd',d:'handpickd.in',c:[5],i:'E-commerce'},{n:'Happy Nature',d:'happynature.in',c:[6],i:'Health'},{n:'HappyEasyGo',d:'happyeasygo.com',c:[6],i:'Travel'},{n:'Heads Up For Tails',d:'headsupfortails.com',c:[4],i:'Lifestyle'},{n:'Healofy',d:'healofy.com',c:[3],i:'Health'},{n:'Healthians',d:'healthians.com',c:[2,6],i:'Health'},{n:'Healthify',d:'healthifyme.com',c:[3],i:'Health'},{n:'HexaHealth',d:'hexahealth.com',c:[5],i:'Health'},{n:'HiAstro',d:'hiastro.com',c:[6],i:'Media'},{n:'hitch',d:'hitch.in',c:[4],i:'Lifestyle'},{n:'Home Credit',d:'homecredit.co.in',c:[1],i:'Fintech'},{n:'Home Triangle',d:'hometriangle.com',c:[7],i:'Lifestyle'},{n:'Hoora',d:'hoora.in',c:[7],i:'Social'},{n:'Hopscotch',d:'hopscotch.in',c:[2],i:'E-commerce'},{n:'House of Chikankari',d:'houseofchikankari.in',c:[6],i:'E-commerce'},{n:'Housing.com',d:'housing.com',c:[3],i:'Real Estate'},{n:'Hubble Money',d:'hubble.money',c:[3],i:'Fintech'},{n:'Hubhopper',d:'hubhopper.com',c:[4],i:'Media'},{n:'Hudle',d:'hudle.in',c:[3],i:'Lifestyle'},{n:'HyugaLife',d:'hyugalife.com',c:[6],i:'Health'},{n:'Idanim',d:'idanim.com',c:[3,5],i:'Lifestyle'},{n:'Impact App',d:'impactapp.in',c:[7],i:'Media'},{n:'ImpactGuru',d:'impactguru.com',c:[4],i:'Lifestyle'},{n:'iMumz',d:'imumz.com',c:[3,6],i:'Health'},{n:'InCred Money',d:'incredmoney.com',c:[2],i:'Fintech'},{n:'IndiaBonds',d:'indiabonds.com',c:[2],i:'Fintech'},{n:'IndiaLends',d:'indialends.com',c:[6],i:'Fintech'},{n:'INDmoney',d:'indmoney.com',c:[1],i:'Fintech'},{n:'Indus Appstore',d:'indusappstore.com',c:[3],i:'Media'},{n:'InterMiles',d:'intermiles.com',c:[5],i:'Travel'},{n:'Jar',d:'myjar.app',c:[1],i:'Fintech'},{n:'Jeevansathi',d:'jeevansathi.com',c:[2],i:'Social'},{n:'Jiraaf',d:'jiraaf.com',c:[4],i:'Fintech'},{n:'JOBOY',d:'joboy.in',c:[7],i:'Lifestyle'},{n:'Jugnoo',d:'jugnoo.in',c:[3],i:'Travel'},{n:'Junio',d:'junio.in',c:[2,7],i:'Fintech'},{n:'Juno',d:'juno.finance',c:[3],i:'Fintech'},{n:'Jupiter',d:'jupiter.money',c:[1],i:'Fintech'},{n:'Kapiva',d:'kapiva.in',c:[8],i:'E-commerce'},{n:'Katyayani Organics',d:'katyayaniorganics.com',c:[7],i:'Food'},{n:'KheloMore',d:'khelomore.com',c:[4,8],i:'Lifestyle'},{n:'Khyaal',d:'khyaal.co',c:[2],i:'Social'},{n:'Kiddopia',d:'kiddopia.com',c:[6],i:'EdTech'},{n:'Kindlife',d:'kindlife.in',c:[3],i:'E-commerce'},{n:'Kirana Club',d:'kiranaclub.in',c:[7],i:'B2B'},{n:'KisanKonnect',d:'kisankonnect.com',c:[3],i:'Food'},{n:'Kissht',d:'kissht.com',c:[1],i:'Fintech'},{n:'Kiwi',d:'gokiwi.in',c:[1],i:'Fintech'},{n:'KNOT',d:'knot.in',c:[7],i:'Social'},{n:'KOINPARK',d:'koinpark.com',c:[4,6],i:'Fintech'},{n:'KPN Fresh',d:'kpnfresh.com',c:[5],i:'Food'},{n:'KreditBee',d:'kreditbee.in',c:[1],i:'Fintech'},{n:'KreditPe',d:'kreditpe.in',c:[6],i:'Fintech'},{n:'Kult',d:'kult.in',c:[5],i:'E-commerce'},{n:'Kutumb',d:'kutumb.app',c:[3],i:'Social'},{n:'Leeford',d:'leeford.in',c:[4],i:'E-commerce'},{n:'Legistify',d:'legistify.com',c:[3],i:'B2B'},{n:'Lemonn',d:'lemonn.in',c:[2],i:'Fintech'},{n:'LenDenClub',d:'lendenclub.com',c:[2],i:'Fintech'},{n:'lendingplate',d:'lendingplate.com',c:[6],i:'Fintech'},{n:'Libas',d:'libas.in',c:[4],i:'E-commerce'},{n:'Licious',d:'licious.in',c:[3,5],i:'Food'},{n:'LifeGuru',d:'lifeguru.me',c:[3],i:'Health'},{n:'Liquide',d:'liquide.in',c:[4],i:'Fintech'},{n:'Liquify',d:'liquify.in',c:[6],i:'Fintech'},{n:'Littlebox India',d:'littleboxindia.com',c:[5],i:'E-commerce'},{n:'LoanTap',d:'loantap.in',c:[6],i:'Fintech'},{n:'LoveLocal',d:'lovelocal.in',c:[4],i:'E-commerce'},{n:'LUZO',d:'luzo.app',c:[4],i:'Travel'},{n:'Lxme',d:'lxme.in',c:[5],i:'Fintech'},{n:'Maccaron',d:'maccaron.in',c:[6],i:'E-commerce'},{n:'Mahila Money',d:'mahilamoney.com',c:[7],i:'Fintech'},{n:'MathonGo',d:'mathongo.com',c:[5],i:'EdTech'},{n:'Matrimony.com',d:'matrimony.com',c:[6],i:'Social'},{n:'MFine',d:'mfine.co',c:[7],i:'Health'},{n:'Milkbasket',d:'milkbasket.com',c:[3,6],i:'Food'},{n:'Mint (Livemint)',d:'livemint.com',c:[1],i:'Media'},{n:'Mirae Asset Mutual Fund',d:'miraeassetmf.co.in',c:[2],i:'Fintech'},{n:'Misfits',d:'misfits.in',c:[4],i:'Lifestyle'},{n:'MobiKwik',d:'mobikwik.com',c:[1],i:'Fintech'},{n:'moneyHOP',d:'moneyhop.co',c:[7],i:'Fintech'},{n:'Moneyview',d:'moneyview.in',c:[2],i:'Fintech'},{n:'mPokket',d:'mpokket.in',c:[1],i:'Fintech'},{n:'Multipl',d:'multipl.app',c:[4],i:'Fintech'},{n:'Multyfi',d:'multyfi.com',c:[4],i:'Fintech'},{n:'MyJobee India',d:'myjobee.com',c:[7],i:'Lifestyle'},{n:'Mylo',d:'mylo.in',c:[3],i:'Health'},{n:'MyShubhLife',d:'myshubhlife.com',c:[7],i:'Other'},{n:'MyWealth',d:'mywealth.in',c:[6],i:'Fintech'},{n:'Namma Yatri',d:'nammayatri.in',c:[3],i:'Travel'},{n:'Nat Habit',d:'nathabit.in',c:[8],i:'E-commerce'},{n:'Navi',d:'navi.com',c:[1],i:'Fintech'},{n:'nearbuy.com',d:'nearbuy.com',c:[6],i:'Real Estate'},{n:'NEETPrep',d:'neetprep.com',c:[2],i:'EdTech'},{n:'Nestaway',d:'nestaway.com',c:[6],i:'Real Estate'},{n:'NEWME',d:'newme.asia',c:[2],i:'E-commerce'},{n:'NIRA',d:'nirafinance.com',c:[1],i:'Fintech'},{n:'Niva Bupa',d:'nivabupa.com',c:[1],i:'Insurance'},{n:'Niyo Solutions',d:'goniyo.com',c:[2,5],i:'Fintech'},{n:'NoBroker',d:'nobroker.in',c:[3],i:'Real Estate'},{n:'NueGo',d:'nuego.in',c:[8],i:'Travel'},{n:'Nutrabay',d:'nutrabay.com',c:[7],i:'Health'},{n:'Nyakka',d:'nyakka.com',c:[1],i:'Fintech'},{n:'Olyv',d:'olyv.in',c:[1],i:'Fintech'},{n:'OneScore',d:'onescore.app',c:[1],i:'Fintech'},{n:'Oolka',d:'oolka.in',c:[1],i:'Fintech'},{n:'OZi',d:'ozi.in',c:[5],i:'Health'},{n:'OZiva',d:'oziva.in',c:[3],i:'E-commerce'},{n:'Padhle',d:'padhle.in',c:[4],i:'EdTech'},{n:'PagarBook',d:'pagarbook.com',c:[2],i:'Fintech'},{n:'Paisabazaar',d:'paisabazaar.com',c:[1],i:'Fintech'},{n:'PALMONAS',d:'palmonas.com',c:[8],i:'E-commerce'},{n:'Park+',d:'getpark.io',c:[7],i:'Travel'},{n:'Pay10 India',d:'pay10.in',c:[8],i:'Fintech'},{n:'PayMe',d:'payme.in',c:[2],i:'Fintech'},{n:'PayRup',d:'payrup.in',c:[5],i:'Fintech'},{n:'PayU India',d:'payu.in',c:[1],i:'Fintech'},{n:'PB Health',d:'pbhealthcare.in',c:[5],i:'Health'},{n:'Peeko',d:'peeko.ai',c:[5,7],i:'Media'},{n:'Peerlist',d:'peerlist.io',c:[6],i:'B2B'},{n:'Phocket',d:'phocket.in',c:[8],i:'Fintech'},{n:'Plazza',d:'plazza.io',c:[7],i:'Social'},{n:'Plix',d:'plixlife.com',c:[8],i:'E-commerce'},{n:'Pluckk',d:'pluckk.com',c:[8],i:'Food'},{n:'Plum',d:'plumhq.com',c:[8],i:'Health'},{n:'Pocketly',d:'pocketly.in',c:[2],i:'Fintech'},{n:'POP',d:'popclub.co',c:[1],i:'Fintech'},{n:'Potafo',d:'potafo.com',c:[6],i:'Food'},{n:'Powerplay',d:'powerplay.co',c:[3],i:'B2B'},{n:'PowerUp Money',d:'powerupmoney.com',c:[6],i:'Fintech'},{n:'Pratilipi',d:'pratilipi.com',c:[3],i:'Media'},{n:'Pristyn Care',d:'pristyncare.com',c:[5],i:'Health'},{n:'Pronto',d:'pronto.app',c:[3],i:'Travel'},{n:'Punch',d:'punch.trade',c:[6],i:'Fintech'},{n:'Purplle',d:'purplle.com',c:[3],i:'E-commerce'},{n:'Pync',d:'pync.app',c:[3],i:'Social'},{n:'QuackQuack',d:'quackquack.in',c:[3],i:'Social'},{n:'Quickinsure',d:'quickinsure.co.in',c:[5],i:'Insurance'},{n:'R for Rabbit',d:'rforrabbit.com',c:[6],i:'Lifestyle'},{n:'RedTaxi',d:'redtaxi.in',c:[6],i:'Travel'},{n:'Regal Jewellers',d:'regaljewellers.in',c:[4],i:'E-commerce'},{n:'RentoMojo',d:'rentomojo.com',c:[2],i:'Real Estate'},{n:'RENÉE Cosmetics',d:'reneecosmetics.com',c:[3],i:'E-commerce'},{n:'Revv',d:'revv.co.in',c:[7],i:'Travel'},{n:'RING',d:'paywithring.com',c:[1],i:'Fintech'},{n:'Rooter',d:'rooter.gg',c:[8],i:'Media'},{n:'Royal Brothers',d:'royalbrothers.com',c:[2],i:'Travel'},{n:'rumik',d:'rumik.in',c:[5],i:'B2B'},{n:'Rupee112',d:'rupee112.com',c:[6,8],i:'Fintech'},{n:'RupeeRedee',d:'rupeeredee.com',c:[2,7],i:'Fintech'},{n:'Rupeezy',d:'rupeezy.in',c:[4],i:'Fintech'},{n:'Sahi',d:'sahi.co',c:[4],i:'Lifestyle'},{n:'SalaryOnTime',d:'salaryontime.com',c:[1],i:'Fintech'},{n:'SalarySe',d:'salaryse.com',c:[8],i:'Fintech'},{n:'Samco Securities',d:'samco.in',c:[5],i:'Fintech'},{n:'SaveSage',d:'savesage.club',c:[1],i:'Fintech'},{n:'Scapia',d:'scapia.com',c:[2],i:'Fintech'},{n:'Schmooze',d:'schmooze.app',c:[4],i:'Social'},{n:'Scripbox',d:'scripbox.com',c:[7],i:'Fintech'},{n:'Sensibull',d:'sensibull.com',c:[6],i:'Fintech'},{n:'Shoffr',d:'shoffr.com',c:[5],i:'E-commerce'},{n:'Shyft',d:'shyft.in',c:[5],i:'Health'},{n:"Sid's Farm",d:'sidsfarm.com',c:[3],i:'Food'},{n:'slice',d:'sliceit.com',c:[1],i:'Fintech'},{n:'Slikk',d:'slikk.club',c:[2],i:'Fintech'},{n:'SmallCase',d:'smallcase.com',c:[1],i:'Fintech'},{n:'Snabbit',d:'snabbit.in',c:[2],i:'Lifestyle'},{n:'SNITCH',d:'snitch.co.in',c:[5,7],i:'E-commerce'},{n:'SortMyScene',d:'sortmyscene.com',c:[4],i:'Lifestyle'},{n:'Sovrenn',d:'sovrenn.com',c:[7],i:'EdTech'},{n:'SpeakX',d:'speakx.co',c:[3],i:'EdTech'},{n:'Spice Money',d:'spicemoney.com',c:[8],i:'Fintech'},{n:'Spinny',d:'spinny.com',c:[6],i:'Travel'},{n:'sploot',d:'sploot.co',c:[5],i:'Health'},{n:'SportVot',d:'sportvot.com',c:[6],i:'B2B'},{n:'Stable Money',d:'stablemoney.in',c:[1],i:'Fintech'},{n:'STAGE',d:'stage.in',c:[8],i:'Media'},{n:'Stashfin',d:'stashfin.com',c:[1],i:'Fintech'},{n:'StepSetGo',d:'stepsetgo.com',c:[3],i:'Health'},{n:'Stock Edge',d:'stockedge.com',c:[1],i:'Fintech'},{n:'StockGro',d:'stockgro.club',c:[1],i:'Fintech'},{n:'Stoxkart',d:'stoxkart.com',c:[4],i:'Fintech'},{n:'sugar.fit',d:'sugar.fit',c:[3],i:'Health'},{n:'super.money',d:'super.money',c:[1],i:'Fintech'},{n:'Supernova AI',d:'getsupernova.com',c:[2,7],i:'B2B'},{n:'SuperPe',d:'superpe.in',c:[5],i:'Fintech'},{n:'Supertails',d:'supertails.com',c:[3],i:'Health'},{n:'SwipeLoan',d:'swipeloan.in',c:[1],i:'Fintech'},{n:'Swish',d:'swish.club',c:[2],i:'Lifestyle'},{n:'TagMango',d:'tagmango.com',c:[8],i:'EdTech'},{n:'Taplend',d:'taplend.com',c:[8],i:'Fintech'},{n:'Teachmint',d:'teachmint.com',c:[2],i:'EdTech'},{n:'The Bear House',d:'thebearhouse.in',c:[6],i:'E-commerce'},{n:'The Quint',d:'thequint.com',c:[5],i:'Media'},{n:'The Souled Store',d:'thesouledstore.com',c:[2],i:'E-commerce'},{n:'Third Wave Coffee',d:'thirdwavecoffee.in',c:[4],i:'Food'},{n:'TO THE NEW',d:'tothenew.com',c:[5],i:'B2B'},{n:'Torus',d:'torus.in',c:[6],i:'B2B'},{n:'Trackk',d:'trackk.in',c:[4],i:'B2B'},{n:'Travelxp',d:'travelxp.com',c:[8],i:'Travel'},{n:'Trendlyne',d:'trendlyne.com',c:[4],i:'Fintech'},{n:'Trinkerr',d:'trinkerr.com',c:[5],i:'Fintech'},{n:'Tripoto',d:'tripoto.com',c:[7],i:'Travel'},{n:'TrueBalance',d:'truebalance.io',c:[1],i:'Fintech'},{n:'Truemeds',d:'truemeds.in',c:[7],i:'Health'},{n:'TrulyMadly',d:'trulymadly.com',c:[2],i:'Social'},{n:'Tumbledry',d:'tumbledry.com',c:[5],i:'Lifestyle'},{n:'Twid',d:'twid.in',c:[8],i:'Fintech'},{n:'Two Brothers Organic Farms',d:'twobrothersindiashop.com',c:[4],i:'Food'},{n:'Ugaoo',d:'ugaoo.com',c:[4],i:'Food'},{n:'Ultrahuman',d:'ultrahuman.com',c:[5],i:'Health'},{n:'Uncle Delivery',d:'uncledelivery.com',c:[6],i:'B2B'},{n:'Uni Cards',d:'uni.cards',c:[1],i:'Fintech'},{n:'University Living',d:'universityliving.com',c:[5],i:'Travel'},{n:'Univest',d:'univest.in',c:[1],i:'Fintech'},{n:'Unocoin',d:'unocoin.com',c:[6],i:'Fintech'},{n:'Upstox',d:'upstox.com',c:[1],i:'Fintech'},{n:'Urban Money',d:'urbanmoney.com',c:[8],i:'Fintech'},{n:'Vahak',d:'vahak.in',c:[3],i:'Travel'},{n:'VAMA App',d:'vama.app',c:[4],i:'Other'},{n:'Vedic Rishi',d:'vedicrishi.in',c:[4],i:'Media'},{n:'Vetic',d:'vetic.in',c:[7],i:'Health'},{n:'Vitto',d:'vitto.in',c:[4],i:'Lifestyle'},{n:'VIVA Money',d:'vivamoney.in',c:[2,8],i:'Fintech'},{n:'Vivifi',d:'vivifi.in',c:[8],i:'Fintech'},{n:'Vyapar',d:'vyaparapp.in',c:[6],i:'B2B'},{n:'Wealthy',d:'wealthy.in',c:[5],i:'Fintech'},{n:'WedMeGood',d:'wedmegood.com',c:[4],i:'Lifestyle'},{n:'Wint Wealth',d:'wintwealth.com',c:[1,6],i:'Fintech'},{n:'Wishlink',d:'wishlink.com',c:[2],i:'E-commerce'},{n:'YesMadam',d:'yesmadam.com',c:[3],i:'Lifestyle'},{n:'Yocket',d:'yocket.com',c:[7],i:'EdTech'},{n:'Yulu',d:'yulu.bike',c:[4],i:'Travel'},{n:'ZappFresh',d:'zappfresh.com',c:[4],i:'Food'},{n:'ZebPay',d:'zebpay.com',c:[8],i:'Fintech'},{n:'ZET',d:'zetapp.in',c:[1,8],i:'Fintech'},{n:'ZFunds',d:'zfranchise.in',c:[7],i:'Fintech'},{n:'ZILO',d:'zilo.in',c:[6],i:'Media'},{n:'zingbus',d:'zingbus.com',c:[3],i:'Travel'},{n:'Zoomcar',d:'zoomcar.com',c:[6],i:'Travel'},{n:'Zostel',d:'zostel.com',c:[5],i:'Travel'},{n:'Zouk',d:'zouk.co.in',c:[7],i:'E-commerce'},{n:'Zype',d:'getzype.com',c:[1],i:'Fintech'},{n:'Zypp Electric',d:'zypp.app',c:[7],i:'Travel'},
+];
+
+const INDUSTRY_CLS = {'Fintech':'ind-fintech','E-commerce':'ind-ecommerce','Health':'ind-health','Food':'ind-food','Travel':'ind-travel','EdTech':'ind-edtech','Social':'ind-social','Real Estate':'ind-realestate','Media':'ind-media','B2B':'ind-b2b','Lifestyle':'ind-lifestyle','Insurance':'ind-insurance','Other':'ind-other'};
+
 const FUNNEL_STAGES = [
   { key: 'reached',   label: 'Reached Out',       cls: 'ft-1', match: () => true },
-  { key: 'interested',label: 'Showed Interest',    cls: 'ft-2', match: s => !['email-first-sent','email-second-sent','follow-up-2-done'].includes(s) },
-  { key: 'demo',      label: 'Had a Demo',         cls: 'ft-3', match: s => ['demo-scheduled','no-show','demo-no-next','demo-next','integration-started','paying-customer','attention-needed'].includes(s) },
+  { key: 'demo',      label: 'Had a Demo',         cls: 'ft-2', match: s => !['email-first-sent','email-second-sent','follow-up-2-done','outreach-only'].includes(s) },
+  { key: 'interested',label: 'Still Interested',   cls: 'ft-3', match: (s, c) => ['snoozed-date','snoozed-cycle','paying-customer','integration-started'].includes(s) || (c && normName(c.name) === 'indiabonds') },
   { key: 'converted', label: 'Converted',          cls: 'ft-4', match: s => s === 'paying-customer' },
 ];
 
@@ -2859,15 +2990,34 @@ const MMP_PATTERNS = [
   { re: /branch/i,     label: 'Branch',     cls: 'mmp-branch' },
   { re: /adjust/i,     label: 'Adjust',     cls: 'mmp-adjust' },
   { re: /singular/i,   label: 'Singular',   cls: 'mmp-singular' },
+  { re: /trackier/i,   label: 'Trackier',   cls: 'mmp-trackier' },
   { re: /kochava/i,    label: 'Kochava',    cls: 'mmp-adjust' },
   { re: /in[\-\s]?house/i, label: 'In-house', cls: 'mmp-inhouse' },
   { re: /everflow/i,   label: 'Everflow',   cls: 'mmp-inhouse' },
 ];
 
-function detectMMP(notes) {
+const MMP_OPTIONS = [
+  { value: '', label: '—', cls: 'mmp-none' },
+  { value: 'AppsFlyer', label: 'AppsFlyer', cls: 'mmp-appsflyer' },
+  { value: 'Adjust', label: 'Adjust', cls: 'mmp-adjust' },
+  { value: 'Branch', label: 'Branch', cls: 'mmp-branch' },
+  { value: 'Singular', label: 'Singular', cls: 'mmp-singular' },
+  { value: 'Trackier', label: 'Trackier', cls: 'mmp-trackier' },
+];
+
+function detectMMP(notes, card) {
+  if (card && card.mmp) {
+    const opt = MMP_OPTIONS.find(o => o.value === card.mmp);
+    if (opt) return { label: opt.label, cls: opt.cls };
+  }
   if (!notes) return null;
   for (const p of MMP_PATTERNS) { if (p.re.test(notes)) return { label: p.label, cls: p.cls }; }
   return null;
+}
+
+function getCardContract(card) {
+  if (card && card.contractDate) return card.contractDate;
+  return detectContract(card ? card.notes : '');
 }
 
 function detectContract(notes) {
@@ -2892,8 +3042,8 @@ function getCompanyDomain(card) {
 }
 
 function reEngagement(card) {
-  const notes = (card.notes || '').toLowerCase();
   const stage = card.stage;
+  if (stage === 'outreach-only') return { level: 'cold', label: 'Outreach' };
   if (stage === 'paying-customer' || stage === 'integration-started') return { level: 'hot', label: 'Active' };
   if (/high intent|convinced|interested to switch|liked the product|utmost priority/i.test(card.notes || ''))
     return { level: 'hot', label: 'High Intent' };
@@ -2935,114 +3085,352 @@ function getLogoColors(name) {
 
 let uniFilter = 'all';
 let uniSearch = '';
+let uniIndustry = '';
+let uniCampaign = '';
+let uniMonth = '';
+
+const UNI_ALIASES = {
+  'fino pay':'finopay','pop club':'pop','stockedge ( e-learning )':'stock edge','nira finance':'nira',
+  'doodhvaale':'doodhvale farms','payme india':'payme','mirrae assest':'mirae asset mutual fund',
+  'rumik ai':'rumik','neet prep':'neetprep','vedic rishi astro':'vedic rishi','ozi kids':'ozi',
+  'kredit.pe':'kreditpe','borzodelivery':'borzo','vama':'vama app','cambaytiger':'cambay tiger',
+  'decimlindia':'deciml','katyayani organic':'katyayani organics','powerup':'powerup money',
+  'cash247':'cash 24x7','zypp':'zypp electric',
+};
+
+function normName(n) { return (n||'').toLowerCase().replace(/[^a-z0-9]/g,''); }
+
+function buildUniverseList() {
+  const uniByNorm = {};
+  UNIVERSE_COMPANIES.forEach(u => { uniByNorm[normName(u.n)] = u; });
+  Object.entries(UNI_ALIASES).forEach(([alias, canon]) => {
+    const u = uniByNorm[normName(canon)];
+    if (u) uniByNorm[normName(alias)] = u;
+  });
+
+  const matchedUniKeys = new Set();
+  const cardToUni = {};
+  Object.values(state.cards).forEach(c => {
+    const key = normName(c.name);
+    const u = uniByNorm[key];
+    if (u) { cardToUni[c.id] = u; matchedUniKeys.add(normName(u.n)); }
+  });
+
+  const list = UNIVERSE_COMPANIES.map(u => {
+    const card = Object.values(state.cards).find(c => cardToUni[c.id] === u);
+    return {
+      name: u.n, domain: u.d, campaigns: u.c, industry: u.i,
+      stage: card ? card.stage : 'outreach-only',
+      notes: card ? card.notes : '',
+      contacts: card ? card.contacts : [],
+      touchpoints: card ? card.touchpoints : [],
+      contact: card ? card.contact : '',
+      id: card ? card.id : null,
+      firstCampaign: CAMPAIGN_DATES[u.c[0]] || '',
+    };
+  });
+
+  Object.values(state.cards).forEach(c => {
+    if (cardToUni[c.id]) return;
+    const domain = getCompanyDomain(c);
+    list.push({
+      name: c.name, domain: domain || '', campaigns: [], industry: 'Other',
+      stage: c.stage, notes: c.notes || '', contacts: c.contacts || [],
+      touchpoints: c.touchpoints || [], contact: c.contact || '',
+      id: c.id, firstCampaign: '',
+    });
+  });
+
+  return list;
+}
 
 function renderUniverse() {
-  const cards = Object.values(state.cards);
+  const all = buildUniverseList();
 
-  // ── Funnel ──
-  const counts = FUNNEL_STAGES.map(f => ({ ...f, count: cards.filter(c => f.match(c.stage)).length }));
+  // Apply filters to get the working set for directory
+  let working = all.slice();
+  if (uniIndustry) working = working.filter(c => c.industry === uniIndustry);
+  if (uniCampaign) working = working.filter(c => c.campaigns.includes(+uniCampaign));
+  if (uniMonth) working = working.filter(c => c.campaigns.some(cn => CAMPAIGN_MONTHS[cn] === uniMonth));
+
+  // ── Funnel (outbound only, respects filters) ──
+  const inboundIds = new Set(Object.values(state.cards).filter(c => c.inbound).map(c => c.id));
+  const outbound = working.filter(c => !inboundIds.has(c.id));
+  const counts = FUNNEL_STAGES.map(f => ({ ...f, count: outbound.filter(c => f.match(c.stage, c)).length }));
+  const base = counts[0].count || 1;
   const funnelEl = document.getElementById('uniFunnel');
   let fhtml = '';
   counts.forEach((f, i) => {
     fhtml += `<div class="funnel-tier ${f.cls}"><span class="ft-count">${f.count}</span><span class="ft-label">${f.label}</span></div>`;
     if (i < counts.length - 1) {
-      const pct = counts[i + 1].count && f.count ? Math.round((counts[i + 1].count / f.count) * 100) : 0;
-      fhtml += `<div class="funnel-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>${pct}% conversion</div>`;
+      const pct = Math.round((counts[i + 1].count / base) * 100);
+      fhtml += `<div class="funnel-drop"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12l7 7 7-7"/></svg>${pct}%</div>`;
     }
   });
   funnelEl.innerHTML = fhtml;
 
-  // ── Summary cards ──
-  const mmpCounts = {};
-  cards.forEach(c => { const m = detectMMP(c.notes); if (m) mmpCounts[m.label] = (mmpCounts[m.label] || 0) + 1; });
-  const topMMP = Object.entries(mmpCounts).sort((a, b) => b[1] - a[1]).slice(0, 3);
-  const hotCount = cards.filter(c => reEngagement(c).level === 'hot').length;
-  const warmCount = cards.filter(c => reEngagement(c).level === 'warm').length;
-  const withContract = cards.filter(c => detectContract(c.notes)).length;
-
-  document.getElementById('uniSummary').innerHTML = `
-    <div class="fs-card fs-purple"><div class="fs-num">${cards.length}</div><div class="fs-label">Total Companies</div><div class="fs-sub">In the LR Universe</div></div>
-    <div class="fs-card fs-green"><div class="fs-num">${hotCount}</div><div class="fs-label">High Intent</div><div class="fs-sub">${warmCount} more warm leads</div></div>
-    <div class="fs-card fs-amber"><div class="fs-num">${withContract}</div><div class="fs-label">Contract Intel</div><div class="fs-sub">Known expiry dates</div></div>
-    <div class="fs-card fs-violet"><div class="fs-num">${topMMP.length ? topMMP.map(m => m[1]).reduce((a, b) => a + b, 0) : 0}</div><div class="fs-label">Using an MMP</div><div class="fs-sub">${topMMP.map(m => m[0]).join(', ') || 'None detected'}</div></div>
-  `;
+  // ── Channel Cards ──
+  renderChannelCards();
 
   // ── Filters ──
-  const filterDefs = [
+  const industries = [...new Set(UNIVERSE_COMPANIES.map(u => u.i))].sort();
+  const months = [...new Set(Object.values(CAMPAIGN_MONTHS))];
+  const quickFilters = [
     { key: 'all', label: 'All' },
-    { key: 'hot', label: 'High Intent' },
-    { key: 'warm', label: 'Warm' },
-    { key: 'has-mmp', label: 'Using MMP' },
+    { key: 'on-kanban', label: 'On Kanban' },
     { key: 'contract', label: 'Contract Intel' },
   ];
-  document.getElementById('dirFilters').innerHTML = filterDefs.map(f =>
-    `<button class="dir-filter${uniFilter === f.key ? ' active' : ''}" data-flt="${f.key}">${f.label}</button>`
-  ).join('');
+
+  document.getElementById('dirFilters').innerHTML =
+    quickFilters.map(f =>
+      `<button class="dir-filter${uniFilter === f.key ? ' active' : ''}" data-flt="${f.key}">${f.label}</button>`
+    ).join('') +
+    `<select class="dir-select" id="fltIndustry"><option value="">All Industries</option>${industries.map(i => `<option value="${i}"${uniIndustry===i?' selected':''}>${i}</option>`).join('')}</select>` +
+    `<select class="dir-select" id="fltCampaign"><option value="">All Campaigns</option>${[1,2,3,4,5,6,7,8].map(n => `<option value="${n}"${uniCampaign==n?' selected':''}>#${n} — ${CAMPAIGN_DATES[n]}</option>`).join('')}</select>` +
+    `<select class="dir-select" id="fltMonth"><option value="">All Months</option>${months.map(m => `<option value="${m}"${uniMonth===m?' selected':''}>${m}</option>`).join('')}</select>`;
+
   document.querySelectorAll('.dir-filter').forEach(btn => {
     btn.addEventListener('click', () => { uniFilter = btn.dataset.flt; renderUniverse(); });
   });
+  document.getElementById('fltIndustry').addEventListener('change', e => { uniIndustry = e.target.value; renderUniverse(); });
+  document.getElementById('fltCampaign').addEventListener('change', e => { uniCampaign = e.target.value; renderUniverse(); });
+  document.getElementById('fltMonth').addEventListener('change', e => { uniMonth = e.target.value; renderUniverse(); });
 
   // ── Directory ──
-  let filtered = cards.slice();
-  if (uniFilter === 'hot') filtered = filtered.filter(c => reEngagement(c).level === 'hot');
-  else if (uniFilter === 'warm') filtered = filtered.filter(c => ['hot', 'warm'].includes(reEngagement(c).level));
-  else if (uniFilter === 'has-mmp') filtered = filtered.filter(c => detectMMP(c.notes));
+  let filtered = working.slice();
+  if (uniFilter === 'on-kanban') filtered = filtered.filter(c => c.id);
   else if (uniFilter === 'contract') filtered = filtered.filter(c => detectContract(c.notes));
 
   if (uniSearch) {
     const q = uniSearch.toLowerCase();
     filtered = filtered.filter(c =>
       c.name.toLowerCase().includes(q) ||
+      c.industry.toLowerCase().includes(q) ||
       (c.contact || '').toLowerCase().includes(q) ||
       (c.notes || '').toLowerCase().includes(q)
     );
   }
 
-  // Sort: hot first, then warm, then by name
   const reOrder = { hot: 0, warm: 1, cool: 2, cold: 3 };
   filtered.sort((a, b) => (reOrder[reEngagement(a).level] || 9) - (reOrder[reEngagement(b).level] || 9) || a.name.localeCompare(b.name));
 
+  document.getElementById('dirCount').textContent = `All Companies (${filtered.length})`;
+
   const tbody = document.getElementById('dirBody');
   tbody.innerHTML = filtered.map(c => {
-    const domain = getCompanyDomain(c);
+    const domain = c.domain || getCompanyDomain(c);
     const initials = c.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
     const bgColor = getLogoColors(c.name);
     const logoHtml = domain
       ? `<div class="co-logo"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
       : `<div class="co-logo" style="background:${bgColor}">${initials}</div>`;
 
-    const mmp = detectMMP(c.notes);
-    const mmpHtml = mmp ? `<span class="mmp-badge ${mmp.cls}">${mmp.label}</span>` : `<span class="mmp-badge mmp-none">Unknown</span>`;
+    const indCls = INDUSTRY_CLS[c.industry] || 'ind-other';
+    const indHtml = `<span class="industry-pill ${indCls}">${c.industry}</span>`;
 
-    const contract = detectContract(c.notes);
-    const contractHtml = contract ? `<div class="contract-info"><span class="ci-date">${contract}</span></div>` : `<span style="color:var(--muted);font-size:12px">—</span>`;
+    const campHtml = `<div class="campaign-tags">${c.campaigns.map(cn => `<span class="campaign-tag">C${cn}</span>`).join('')}</div>`;
 
-    const tp = getLatestTouchpoint(c.touchpoints || []);
-    let tpHtml = '<span style="color:var(--muted);font-size:12px">—</span>';
-    if (tp) {
-      const ch = TP_CHANNELS[tp.channel] || TP_CHANNELS.meeting;
-      tpHtml = `<div class="tp-mini"><span class="tp-ch-icon ${ch.cls}" style="width:13px;height:13px;border-radius:3px;display:flex;align-items:center;justify-content:center">${ch.icon}</span>${formatDateOrdinal(tp.date)}</div>`;
-    }
+    const stageHtml = c.stage === 'outreach-only'
+      ? `<span class="stage-pill sp-outreach">Emailed</span>`
+      : stagePill(c.stage);
 
-    const re = reEngagement(c);
+    const card = c.id ? state.cards[c.id] : null;
+    const mmp = detectMMP(c.notes, card);
+    const editable = isEditable() && c.id;
+    const mmpHtml = mmp
+      ? `<span class="mmp-badge ${mmp.cls}${editable ? ' editable' : ''}" data-field="mmp">${mmp.label}</span>`
+      : `<span class="mmp-badge mmp-none${editable ? ' editable' : ''}" data-field="mmp">—</span>`;
+
+    const contract = getCardContract(card || c);
+    const contractHtml = contract
+      ? `<div class="contract-info"><span class="ci-date${editable ? ' editable' : ''}" data-field="contract">${contract}</span></div>`
+      : `<span class="contract-dash${editable ? ' editable' : ''}" data-field="contract">—</span>`;
+
     const contactName = c.contact || (c.contacts && c.contacts[0] ? c.contacts[0].name : '');
 
-    return `<tr data-id="${c.id}">
+    return `<tr data-id="${c.id || ''}" data-name="${c.name}">
       <td><div class="co-logo-wrap">${logoHtml}<div><div class="co-name">${c.name}</div>${contactName ? `<div class="co-contact-name">${contactName}</div>` : ''}</div></div></td>
-      <td>${stagePill(c.stage)}</td>
+      <td>${indHtml}</td>
+      <td>${campHtml}</td>
+      <td>${stageHtml}</td>
       <td>${mmpHtml}</td>
       <td>${contractHtml}</td>
-      <td>${tpHtml}</td>
-      <td><div class="re-score re-${re.level}"><span class="re-dot"></span><span class="re-label">${re.label}</span></div></td>
     </tr>`;
   }).join('');
 
-  // Click to open card
   tbody.querySelectorAll('tr').forEach(tr => {
     tr.style.cursor = 'pointer';
-    tr.addEventListener('click', () => {
-      const card = state.cards[tr.dataset.id];
+    tr.addEventListener('click', (e) => {
+      const cardId = tr.dataset.id;
+      const card = state.cards[cardId];
+      const target = e.target.closest('[data-field]');
+
+      if (target && target.dataset.field === 'mmp' && card && isEditable()) {
+        e.stopPropagation();
+        const td = target.closest('td');
+        const currentMmp = card.mmp || '';
+        const sel = document.createElement('select');
+        sel.className = 'mmp-select';
+        MMP_OPTIONS.forEach(o => {
+          const opt = document.createElement('option');
+          opt.value = o.value;
+          opt.textContent = o.label;
+          if (o.value === currentMmp) opt.selected = true;
+          sel.appendChild(opt);
+        });
+        td.innerHTML = '';
+        td.appendChild(sel);
+        sel.focus();
+        const finish = () => {
+          card.mmp = sel.value || '';
+          scheduleSave();
+          renderUniverse();
+        };
+        sel.addEventListener('change', finish);
+        sel.addEventListener('blur', finish);
+        return;
+      }
+
+      if (target && target.dataset.field === 'contract' && card && isEditable()) {
+        e.stopPropagation();
+        const td = target.closest('td');
+        const currentVal = card.contractDate || detectContract(card.notes) || '';
+        const input = document.createElement('input');
+        input.type = 'text';
+        input.className = 'contract-edit';
+        input.value = currentVal;
+        input.placeholder = 'e.g. June 2025';
+        td.innerHTML = '';
+        td.appendChild(input);
+        input.focus();
+        input.select();
+        const finish = () => {
+          card.contractDate = input.value.trim();
+          scheduleSave();
+          renderUniverse();
+        };
+        input.addEventListener('blur', finish);
+        input.addEventListener('keydown', (ev) => { if (ev.key === 'Enter') input.blur(); });
+        return;
+      }
+
       if (card) openCardModal(card.id, card.stage);
+    });
+  });
+}
+
+const CHANNELS = [
+  { key: 'email', label: 'Email', icon: '✉', iconCls: 'ch-icon-email' },
+  { key: 'linkedin', label: 'LinkedIn', icon: 'in', iconCls: 'ch-icon-linkedin' },
+  { key: 'coldcall', label: 'Cold Call', icon: '📞', iconCls: 'ch-icon-coldcall' },
+];
+
+let activeChPicker = null;
+
+function renderChannelCards() {
+  const container = document.getElementById('channelCards');
+  const allCards = Object.values(state.cards);
+  const editable = isEditable();
+
+  container.innerHTML = CHANNELS.map(ch => {
+    const ids = (state.channels[ch.key] || []).filter(id => state.cards[id]);
+    const items = ids.map(id => {
+      const card = state.cards[id];
+      const domain = getCompanyDomain(card);
+      const initials = card.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+      const bgColor = getLogoColors(card.name);
+      const logoHtml = domain
+        ? `<div class="co-logo"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
+        : `<div class="co-logo" style="background:${bgColor}">${initials}</div>`;
+      const stHtml = stagePill(card.stage);
+      return `<div class="ch-item" data-id="${id}">
+        ${logoHtml}
+        <div class="ch-item-info">
+          <div class="ch-item-name">${card.name}</div>
+          <div class="ch-item-stage">${stHtml}</div>
+        </div>
+        ${editable ? `<button class="ch-item-rm" data-ch="${ch.key}" data-id="${id}" title="Remove">✕</button>` : ''}
+      </div>`;
+    }).join('');
+
+    return `<div class="ch-card" data-channel="${ch.key}">
+      <div class="ch-card-header">
+        <div class="ch-card-icon ${ch.iconCls}">${ch.icon}</div>
+        <div class="ch-card-title">${ch.label}</div>
+        <div class="ch-card-count">${ids.length}</div>
+      </div>
+      <div class="ch-list">${items || `<div class="ch-empty">No companies yet</div>`}</div>
+      ${editable ? `<div class="ch-add-wrap"><button class="ch-add-btn" data-ch="${ch.key}">+ Add</button></div>` : ''}
+    </div>`;
+  }).join('');
+
+  container.querySelectorAll('.ch-item-rm').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const ch = btn.dataset.ch;
+      const id = btn.dataset.id;
+      state.channels[ch] = state.channels[ch].filter(x => x !== id);
+      scheduleSave();
+      renderChannelCards();
+    });
+  });
+
+  container.querySelectorAll('.ch-add-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.stopPropagation();
+      const ch = btn.dataset.ch;
+      const wrap = btn.parentElement;
+      if (activeChPicker) { activeChPicker.remove(); activeChPicker = null; }
+      const usedIds = new Set(state.channels[ch] || []);
+      const available = allCards
+        .filter(c => !c.inbound && !usedIds.has(c.id))
+        .sort((a, b) => a.name.localeCompare(b.name));
+
+      const picker = document.createElement('div');
+      picker.className = 'ch-picker';
+      picker.innerHTML = `<div class="ch-picker-search"><input type="text" placeholder="Search companies..." autocomplete="off" /></div><div class="ch-picker-list"></div>`;
+      wrap.appendChild(picker);
+      activeChPicker = picker;
+
+      const input = picker.querySelector('input');
+      const list = picker.querySelector('.ch-picker-list');
+
+      function renderPickerList(q) {
+        const filtered = q ? available.filter(c => c.name.toLowerCase().includes(q.toLowerCase())) : available;
+        list.innerHTML = filtered.slice(0, 30).map(c => {
+          const domain = getCompanyDomain(c);
+          const initials = c.name.replace(/[^A-Za-z0-9 ]/g, '').split(/\s+/).map(w => w[0]).join('').slice(0, 2).toUpperCase();
+          const bgColor = getLogoColors(c.name);
+          const logoHtml = domain
+            ? `<div class="co-logo"><img src="https://www.google.com/s2/favicons?domain=${domain}&sz=64" onerror="this.parentElement.innerHTML='${initials}';this.parentElement.style.background='${bgColor}'" /></div>`
+            : `<div class="co-logo" style="background:${bgColor}">${initials}</div>`;
+          return `<div class="ch-picker-item" data-id="${c.id}">${logoHtml}<span>${c.name}</span></div>`;
+        }).join('') || '<div class="ch-empty">No matches</div>';
+
+        list.querySelectorAll('.ch-picker-item').forEach(item => {
+          item.addEventListener('click', () => {
+            if (!state.channels[ch]) state.channels[ch] = [];
+            state.channels[ch].push(item.dataset.id);
+            scheduleSave();
+            picker.remove();
+            activeChPicker = null;
+            renderChannelCards();
+          });
+        });
+      }
+
+      renderPickerList('');
+      input.focus();
+      input.addEventListener('input', () => renderPickerList(input.value.trim()));
+
+      const closeOnClick = (evt) => {
+        if (!picker.contains(evt.target) && evt.target !== btn) {
+          picker.remove();
+          activeChPicker = null;
+          document.removeEventListener('click', closeOnClick);
+        }
+      };
+      setTimeout(() => document.addEventListener('click', closeOnClick), 100);
     });
   });
 }
