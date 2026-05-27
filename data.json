@@ -2023,22 +2023,41 @@
     "0nhinqw6": {
       "id": "0nhinqw6",
       "name": "Fatakpay",
-      "contact": "Mahesh",
+      "contact": "Mahesh, Namita",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "demoDate": "2026-05-27",
-      "touchDate": "",
-      "updated": 1779798026928,
+      "touchDate": "2026-05-27",
+      "updated": 1779878274734,
       "calBookingId": "jpZ4M6W4sfyJ7MHX1R2iXd",
       "calEmail": "mahesh.shetty@fatakpay.com",
       "contacts": [
         {
           "name": "Mahesh",
-          "role": ""
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "champion"
+        },
+        {
+          "name": "Namita",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "both"
         }
       ],
-      "touchpoints": []
+      "touchpoints": [
+        {
+          "date": "2026-05-27",
+          "channel": "email"
+        }
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "9w9m1m38": {
       "id": "9w9m1m38",
@@ -2127,7 +2146,8 @@
       "v5ehnmlp",
       "c4zpuhr8",
       "hhq7mas8",
-      "nqdo6xbj"
+      "nqdo6xbj",
+      "0nhinqw6"
     ],
     "email-second-sent": [
       "csp5s88v",
@@ -2196,7 +2216,6 @@
       "7sx6nie2",
       "mwadgjbq",
       "56ejow7l",
-      "0nhinqw6",
       "9w9m1m38",
       "zvk09fip"
     ]
