@@ -2008,17 +2008,28 @@
       "stage": "demo-scheduled",
       "channel": "none",
       "demoDate": "2026-05-27",
-      "touchDate": "",
-      "updated": 1779794052443,
+      "touchDate": "2026-05-27",
+      "updated": 1779878669519,
       "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
       "calEmail": "mitali.rajiv@khelomore.com",
       "contacts": [
         {
           "name": "Mitali Rajiv",
-          "role": ""
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "both"
         }
       ],
-      "touchpoints": []
+      "touchpoints": [
+        {
+          "date": "2026-05-27",
+          "channel": "email"
+        }
+      ],
+      "inbound": false,
+      "acv": ""
     },
     "0nhinqw6": {
       "id": "0nhinqw6",
