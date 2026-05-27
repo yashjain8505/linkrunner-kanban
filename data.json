@@ -1206,10 +1206,10 @@
       "name": "Wedmegood",
       "contact": "Himanshi, Anshul",
       "notes": "They want to focus on App campaigns, interested | High Intent",
-      "stage": "email-second-sent",
+      "stage": "follow-up-2-done",
       "channel": "none",
       "touchDate": "2026-05-27",
-      "updated": 1779864363811,
+      "updated": 1779864366407,
       "demoDate": "2026-05-12",
       "inbound": false,
       "acv": "5k-10k",
@@ -2113,12 +2113,12 @@
       "nqdo6xbj"
     ],
     "email-second-sent": [
-      "9mbxstiy",
       "csp5s88v",
       "5z3o34x4"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
+      "9mbxstiy",
       "j74u2llv",
       "3l9o1g32",
       "ea8fs65h",
