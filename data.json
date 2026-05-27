@@ -2072,6 +2072,19 @@
       "updated": 1779868115080,
       "calBookingId": "hraJpoEKrNbFWgBVmYctDg",
       "calEmail": "mit.thakkar@rforrabbit.com"
+    },
+    "zvk09fip": {
+      "id": "zvk09fip",
+      "name": "Rforrabbit",
+      "contact": "Mit",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-27",
+      "touchDate": "",
+      "updated": 1779868116329,
+      "calBookingId": "hraJpoEKrNbFWgBVmYctDg",
+      "calEmail": "mit.thakkar@rforrabbit.com"
     }
   },
   "order": {
@@ -2194,7 +2207,8 @@
       "56ejow7l",
       "0nhinqw6",
       "9w9m1m38",
-      "4twsm843"
+      "4twsm843",
+      "zvk09fip"
     ]
   },
   "columnOrder": [
