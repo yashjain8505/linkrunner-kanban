@@ -1208,30 +1208,34 @@
       "notes": "They want to focus on App campaigns, interested | High Intent",
       "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-15",
-      "updated": 1779472409895,
+      "touchDate": "2026-05-27",
+      "updated": 1779864363811,
       "demoDate": "2026-05-12",
       "inbound": false,
       "acv": "5k-10k",
       "contacts": [
         {
           "name": "Himanshi",
-          "role": "champion",
           "sheetRow": 208,
           "email": "himanshi_singla@wedmegood.com",
           "phone": "+91 98181 92513",
-          "linkedin": "http://www.linkedin.com/in/himanshi-singla-93a88710a"
+          "linkedin": "http://www.linkedin.com/in/himanshi-singla-93a88710a",
+          "role": "champion"
         },
         {
           "name": "Anshul",
-          "role": "decision-maker",
           "sheetRow": 206,
           "email": "anshul_gupta@wedmegood.com",
           "phone": "+91 98712 77522",
-          "linkedin": "http://www.linkedin.com/in/anshul-gupta-4a675654"
+          "linkedin": "http://www.linkedin.com/in/anshul-gupta-4a675654",
+          "role": "decision-maker"
         }
       ],
       "touchpoints": [
+        {
+          "date": "2026-05-27",
+          "channel": "email"
+        },
         {
           "date": "2026-05-15",
           "channel": "meeting"
