@@ -1985,20 +1985,31 @@
       "name": "Stucred",
       "contact": "Deepak kumar",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "demoDate": "2026-05-27",
-      "touchDate": "",
-      "updated": 1779787826543,
+      "touchDate": "2026-05-27",
+      "updated": 1779882035241,
       "calBookingId": "q4yoHDhasr1njbusP4pNLt",
       "calEmail": "deepak.k@stucred.com",
       "contacts": [
         {
           "name": "Deepak kumar",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
           "role": ""
         }
       ],
-      "touchpoints": []
+      "touchpoints": [
+        {
+          "date": "2026-05-27",
+          "channel": "email"
+        }
+      ],
+      "inbound": false,
+      "acv": "10k-20k"
     },
     "56ejow7l": {
       "id": "56ejow7l",
@@ -2040,7 +2051,7 @@
       "channel": "none",
       "demoDate": "2026-05-27",
       "touchDate": "2026-05-27",
-      "updated": 1779878274734,
+      "updated": 1779882028224,
       "calBookingId": "jpZ4M6W4sfyJ7MHX1R2iXd",
       "calEmail": "mahesh.shetty@fatakpay.com",
       "contacts": [
@@ -2068,7 +2079,7 @@
         }
       ],
       "inbound": false,
-      "acv": ""
+      "acv": "10k-20k"
     },
     "9w9m1m38": {
       "id": "9w9m1m38",
@@ -2159,7 +2170,8 @@
       "hhq7mas8",
       "nqdo6xbj",
       "0nhinqw6",
-      "56ejow7l"
+      "56ejow7l",
+      "mwadgjbq"
     ],
     "email-second-sent": [
       "csp5s88v",
@@ -2226,23 +2238,22 @@
       "xwscrsz2",
       "hmuplodt",
       "7sx6nie2",
-      "mwadgjbq",
       "9w9m1m38",
       "zvk09fip"
     ]
   },
   "columnOrder": [
-    "no-show",
     "demo-scheduled",
     "demo-no-next",
-    "demo-next",
     "email-first-sent",
     "email-second-sent",
     "follow-up-2-done",
     "integration-started",
     "paying-customer",
     "attention-needed",
-    "snoozed"
+    "snoozed",
+    "no-show",
+    "demo-next"
   ],
   "currentARR": 50000,
   "channels": {
