@@ -2005,11 +2005,11 @@
       "name": "Khelomore",
       "contact": "Mitali Rajiv",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "demoDate": "2026-05-27",
       "touchDate": "2026-05-27",
-      "updated": 1779878669519,
+      "updated": 1779878677810,
       "calBookingId": "vq2Q1w9QjWpWzfLjCaZcLm",
       "calEmail": "mitali.rajiv@khelomore.com",
       "contacts": [
@@ -2158,7 +2158,8 @@
       "c4zpuhr8",
       "hhq7mas8",
       "nqdo6xbj",
-      "0nhinqw6"
+      "0nhinqw6",
+      "56ejow7l"
     ],
     "email-second-sent": [
       "csp5s88v",
@@ -2226,7 +2227,6 @@
       "hmuplodt",
       "7sx6nie2",
       "mwadgjbq",
-      "56ejow7l",
       "9w9m1m38",
       "zvk09fip"
     ]
