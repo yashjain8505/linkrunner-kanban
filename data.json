@@ -1479,16 +1479,31 @@
     "nqdo6xbj": {
       "id": "nqdo6xbj",
       "name": "Cars24",
-      "contact": "",
+      "contact": "Ria Sengupta",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
-      "touchDate": "",
-      "updated": 1779342931781,
+      "touchDate": "2026-05-27",
+      "updated": 1779864034054,
       "inbound": false,
-      "demoDate": "2026-05-26",
-      "contacts": [],
-      "touchpoints": []
+      "demoDate": "2026-05-27",
+      "contacts": [
+        {
+          "name": "Ria Sengupta",
+          "sheetRow": 36,
+          "email": "",
+          "phone": "",
+          "linkedin": "http://www.linkedin.com/in/ria-sengupta-767b89105",
+          "role": "champion"
+        }
+      ],
+      "touchpoints": [
+        {
+          "date": "2026-05-27",
+          "channel": "email"
+        }
+      ],
+      "acv": ""
     },
     "wgfbn9li": {
       "id": "wgfbn9li",
@@ -2090,7 +2105,8 @@
       "pstfria7",
       "v5ehnmlp",
       "c4zpuhr8",
-      "hhq7mas8"
+      "hhq7mas8",
+      "nqdo6xbj"
     ],
     "email-second-sent": [
       "9mbxstiy",
@@ -2149,7 +2165,6 @@
       "gcz7ymaj"
     ],
     "demo-scheduled": [
-      "nqdo6xbj",
       "dz8tn98d",
       "doteifrp",
       "0ums1cr6",
