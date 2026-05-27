@@ -2062,16 +2062,20 @@
     },
     "zvk09fip": {
       "id": "zvk09fip",
-      "name": "Rforrabbit",
-      "contact": "Mit",
+      "name": "R for Rabbit",
+      "contact": "",
       "notes": "",
       "stage": "demo-scheduled",
       "channel": "none",
       "demoDate": "2026-05-27",
       "touchDate": "",
-      "updated": 1779868116329,
+      "updated": 1779868277117,
       "calBookingId": "ayUNqLFtypUmS1VzH1bwWG",
-      "calEmail": "mit.thakkar@rforrabbit.com"
+      "calEmail": "mit.thakkar@rforrabbit.com",
+      "contacts": [],
+      "inbound": false,
+      "acv": "",
+      "touchpoints": []
     }
   },
   "order": {
