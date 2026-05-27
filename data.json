@@ -2214,7 +2214,7 @@
     "attention-needed",
     "snoozed"
   ],
-  "currentARR": 500000,
+  "currentARR": 50000,
   "channels": {
     "email": [
       "csp5s88v",
