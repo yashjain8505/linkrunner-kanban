@@ -1367,16 +1367,26 @@
     "doteifrp": {
       "id": "doteifrp",
       "name": "Purplle",
-      "contact": "",
+      "contact": "Vijay Reddy",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "email-first-sent",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779342915998,
+      "updated": 1779957430759,
       "inbound": false,
       "demoDate": "2026-05-28",
-      "contacts": [],
-      "touchpoints": []
+      "contacts": [
+        {
+          "name": "Vijay Reddy",
+          "sheetRow": 149,
+          "email": "vk.reddy@purplle.com",
+          "phone": "91 99307 92258",
+          "linkedin": "http://www.linkedin.com/in/vijay-kumar-reddy",
+          "role": "decision-maker"
+        }
+      ],
+      "touchpoints": [],
+      "acv": ""
     },
     "ea8fs65h": {
       "id": "ea8fs65h",
@@ -2181,7 +2191,8 @@
       "nqdo6xbj",
       "0nhinqw6",
       "56ejow7l",
-      "mwadgjbq"
+      "mwadgjbq",
+      "doteifrp"
     ],
     "email-second-sent": [
       "csp5s88v",
@@ -2242,7 +2253,6 @@
     ],
     "demo-scheduled": [
       "dz8tn98d",
-      "doteifrp",
       "0ums1cr6",
       "6hkztyr6",
       "tp4rhmtb",
