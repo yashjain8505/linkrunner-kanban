@@ -1845,24 +1845,26 @@
       "name": "Fuelbuddy",
       "contact": "Muskan Garg",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "no-show",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779366761287,
+      "updated": 1779952500638,
       "calBookingId": "fUgMe4Dk5Xe4nYm353AEb5",
       "calEmail": "muskan.garg@fuelbuddy.in",
       "demoDate": "2026-05-25",
       "contacts": [
         {
           "name": "Muskan Garg",
-          "role": "",
           "sheetRow": 62,
           "email": "muskan.garg@fuelbuddy.in",
           "phone": "+91 85128 44001",
-          "linkedin": "http://www.linkedin.com/in/muskan-garg-759280164"
+          "linkedin": "http://www.linkedin.com/in/muskan-garg-759280164",
+          "role": ""
         }
       ],
-      "touchpoints": []
+      "touchpoints": [],
+      "inbound": false,
+      "acv": ""
     },
     "70itspid": {
       "id": "70itspid",
@@ -2133,7 +2135,9 @@
       "touchDate": "",
       "updated": 1779948550678,
       "calBookingId": "fillout-66ubeqpl9lq4lm0is3ik2ahpdg@google.com",
-      "calEmail": "veens.yadav015@gmail.com"
+      "calEmail": "veens.yadav015@gmail.com",
+      "contacts": [],
+      "touchpoints": []
     }
   },
   "order": {
@@ -2153,7 +2157,8 @@
       "bqtdyyj6",
       "k4ouwf33",
       "a2it8i56",
-      "e0187631"
+      "e0187631",
+      "hmuplodt"
     ],
     "demo-no-next": [
       "iy385rul",
@@ -2253,7 +2258,6 @@
       "6hkztyr6",
       "tp4rhmtb",
       "xwscrsz2",
-      "hmuplodt",
       "7sx6nie2",
       "9w9m1m38",
       "zvk09fip",
