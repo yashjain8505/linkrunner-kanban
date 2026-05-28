@@ -2121,11 +2121,13 @@
       "channel": "none",
       "demoDate": "2026-05-28",
       "touchDate": "",
-      "updated": 1779948550678,
+      "updated": 1779953400378,
       "calBookingId": "fillout-66ubeqpl9lq4lm0is3ik2ahpdg@google.com",
       "calEmail": "veens.yadav015@gmail.com",
       "contacts": [],
-      "touchpoints": []
+      "touchpoints": [],
+      "inbound": true,
+      "acv": ""
     }
   },
   "order": {
