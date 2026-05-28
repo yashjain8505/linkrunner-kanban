@@ -2138,6 +2138,19 @@
       "touchpoints": [],
       "inbound": true,
       "acv": ""
+    },
+    "2hcyoa34": {
+      "id": "2hcyoa34",
+      "name": "Bodhiness",
+      "contact": "Ayush Srivastava",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-29",
+      "touchDate": "",
+      "updated": 1779962798930,
+      "calBookingId": "iivXcXfBLd8wgPGPycU2yt",
+      "calEmail": "ayush@bodhiness.com"
     }
   },
   "order": {
@@ -2260,7 +2273,8 @@
       "7sx6nie2",
       "9w9m1m38",
       "zvk09fip",
-      "8mbjt8jg"
+      "8mbjt8jg",
+      "2hcyoa34"
     ]
   },
   "columnOrder": [
