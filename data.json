@@ -1931,18 +1931,22 @@
     "8l4hlwf4": {
       "id": "8l4hlwf4",
       "name": "Haptik (Mycallgenie)",
-      "contact": "Dharmil Shanishwara (Champion)",
+      "contact": "Dharmil Shanishwara",
       "notes": "Very busy tech team, will need to follow up to get the integration done",
-      "stage": "email-first-sent",
+      "stage": "integration-started",
       "channel": "none",
       "inbound": true,
       "acv": "",
       "demoDate": "2026-05-20",
       "touchDate": "2026-05-18",
-      "updated": 1779451032507,
+      "updated": 1779946389376,
       "contacts": [
         {
           "name": "Dharmil Shanishwara",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
           "role": "champion"
         }
       ],
@@ -2159,7 +2163,6 @@
     ],
     "email-first-sent": [
       "6dt3jz7j",
-      "8l4hlwf4",
       "70itspid",
       "w23yl5x0",
       "lmyry6va",
@@ -2188,7 +2191,8 @@
     "comms-setup": [],
     "price-negotiations": [],
     "integration-started": [
-      "rgdd3lli"
+      "rgdd3lli",
+      "8l4hlwf4"
     ],
     "paying-customer": [
       "n5qjsfkv",
