@@ -1422,18 +1422,6 @@
       "contacts": [],
       "touchpoints": []
     },
-    "ajnjqch1": {
-      "id": "ajnjqch1",
-      "name": "Decimlindia",
-      "contact": "",
-      "notes": "",
-      "stage": "no-show",
-      "channel": "none",
-      "touchDate": "",
-      "updated": 1779170859072,
-      "contacts": [],
-      "touchpoints": []
-    },
     "v5ehnmlp": {
       "id": "v5ehnmlp",
       "name": "Mathongo",
@@ -2143,7 +2131,6 @@
   "order": {
     "no-show": [
       "hldvvkyi",
-      "ajnjqch1",
       "wgfbn9li",
       "j12sp53n",
       "o2nade60",
