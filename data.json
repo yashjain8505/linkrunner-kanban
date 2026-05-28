@@ -2121,6 +2121,19 @@
       "inbound": false,
       "acv": "",
       "touchpoints": []
+    },
+    "8mbjt8jg": {
+      "id": "8mbjt8jg",
+      "name": "📥 veens.yadav015@gmail.com",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-28",
+      "touchDate": "",
+      "updated": 1779948550678,
+      "calBookingId": "fillout-66ubeqpl9lq4lm0is3ik2ahpdg@google.com",
+      "calEmail": "veens.yadav015@gmail.com"
     }
   },
   "order": {
@@ -2243,7 +2256,8 @@
       "hmuplodt",
       "7sx6nie2",
       "9w9m1m38",
-      "zvk09fip"
+      "zvk09fip",
+      "8mbjt8jg"
     ]
   },
   "columnOrder": [
