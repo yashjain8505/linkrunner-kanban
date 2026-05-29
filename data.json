@@ -1678,10 +1678,10 @@
       "name": "Cash247",
       "contact": "Aditya, Apoorva Anand",
       "notes": "",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-25",
-      "updated": 1779702547601,
+      "touchDate": "2026-05-29",
+      "updated": 1780035112659,
       "calBookingId": "tVm1hfvqmhbU2FUaNnvsdM",
       "calEmail": "aditya.nair@cash247.in",
       "demoDate": "2026-05-25",
@@ -1706,6 +1706,10 @@
         }
       ],
       "touchpoints": [
+        {
+          "date": "2026-05-29",
+          "channel": "email"
+        },
         {
           "date": "2026-05-25",
           "channel": "email"
@@ -2213,7 +2217,6 @@
       "av70z6q0"
     ],
     "email-first-sent": [
-      "6dt3jz7j",
       "w23yl5x0",
       "lmyry6va",
       "47er1lbe",
@@ -2231,7 +2234,8 @@
       "csp5s88v",
       "5z3o34x4",
       "c4zpuhr8",
-      "70itspid"
+      "70itspid",
+      "6dt3jz7j"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
