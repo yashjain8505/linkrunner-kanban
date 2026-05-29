@@ -2189,6 +2189,19 @@
       "updated": 1780038249846,
       "calBookingId": "fillout-ismnndll5trgjohn3590iumcjk@google.com",
       "calEmail": "luohoufa@enodow.com"
+    },
+    "8v8rg07e": {
+      "id": "8v8rg07e",
+      "name": "Chaishots",
+      "contact": "Krishna",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-05-29",
+      "touchDate": "",
+      "updated": 1780038712728,
+      "calBookingId": "2P2Bbp1jJk9VG2tr55a5fg",
+      "calEmail": "krishna@chaishots.in"
     }
   },
   "order": {
@@ -2313,7 +2326,8 @@
       "9w9m1m38",
       "8mbjt8jg",
       "2hcyoa34",
-      "wmr3x5nb"
+      "wmr3x5nb",
+      "8v8rg07e"
     ]
   },
   "columnOrder": [
