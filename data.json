@@ -2176,6 +2176,19 @@
         }
       ],
       "touchpoints": []
+    },
+    "wmr3x5nb": {
+      "id": "wmr3x5nb",
+      "name": "📥 Enodow",
+      "contact": "",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-06-01",
+      "touchDate": "",
+      "updated": 1780038249846,
+      "calBookingId": "fillout-ismnndll5trgjohn3590iumcjk@google.com",
+      "calEmail": "luohoufa@enodow.com"
     }
   },
   "order": {
@@ -2299,7 +2312,8 @@
       "7sx6nie2",
       "9w9m1m38",
       "8mbjt8jg",
-      "2hcyoa34"
+      "2hcyoa34",
+      "wmr3x5nb"
     ]
   },
   "columnOrder": [
