@@ -294,10 +294,10 @@
       "name": "IndiaBonds",
       "contact": "Himanshi, Sir Ram",
       "notes": "Price negotiations",
-      "stage": "attention-needed",
+      "stage": "snoozed-cycle",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779480773405,
+      "updated": 1780032038128,
       "demoDate": "2026-03-31",
       "inbound": false,
       "acv": "10k-20k",
@@ -2253,7 +2253,6 @@
       "ac12ghnb",
       "a57swvwj",
       "fw4loszp",
-      "bkzuzvd2",
       "yrlt40z4",
       "1sstb062",
       "tqk99o89"
@@ -2275,7 +2274,8 @@
       "59kn0ucx",
       "chmufx22",
       "c522yy4q",
-      "gcz7ymaj"
+      "gcz7ymaj",
+      "bkzuzvd2"
     ],
     "demo-scheduled": [
       "dz8tn98d",
