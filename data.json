@@ -2211,6 +2211,30 @@
         }
       ],
       "touchpoints": []
+    },
+    "fczqt68x": {
+      "id": "fczqt68x",
+      "name": "Urban Money",
+      "contact": "Dewesh Agrawal - CEO",
+      "contacts": [
+        {
+          "name": "Dewesh Agrawal - CEO",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
+          "role": "champion"
+        }
+      ],
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "inbound": false,
+      "acv": "",
+      "demoDate": "",
+      "touchDate": "",
+      "touchpoints": [],
+      "updated": 1780048214256
     }
   },
   "order": {
@@ -2326,6 +2350,7 @@
       "bkzuzvd2"
     ],
     "demo-scheduled": [
+      "fczqt68x",
       "dz8tn98d",
       "0ums1cr6",
       "6hkztyr6",
