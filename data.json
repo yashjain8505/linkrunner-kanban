@@ -1611,33 +1611,38 @@
     "c4zpuhr8": {
       "id": "c4zpuhr8",
       "name": "Katyayani Organic",
-      "contact": "Robin Singh (Executioner) , Sagar Kulkarni (Boss + Champion)",
+      "contact": "Robin Singh, Sagar Kulkarni",
       "notes": "",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
-      "touchDate": "2026-05-20",
-      "updated": 1779451082823,
+      "touchDate": "2026-05-29",
+      "updated": 1780034809894,
       "demoDate": "2026-05-20",
       "inbound": false,
       "acv": "10k-20k",
       "contacts": [
         {
           "name": "Robin Singh",
-          "role": "",
           "sheetRow": 83,
+          "email": "",
           "phone": "+91 96173 33232",
-          "linkedin": "http://www.linkedin.com/in/ismail-patel-b55a84225"
+          "linkedin": "http://www.linkedin.com/in/ismail-patel-b55a84225",
+          "role": ""
         },
         {
           "name": "Sagar Kulkarni",
-          "role": "champion",
           "sheetRow": 82,
           "email": "sagarkulkarni@katyayaniorganics.com",
           "phone": "+91 90041 29010",
-          "linkedin": "http://www.linkedin.com/in/robin-singh-meena"
+          "linkedin": "http://www.linkedin.com/in/robin-singh-meena",
+          "role": "champion"
         }
       ],
       "touchpoints": [
+        {
+          "date": "2026-05-29",
+          "channel": "email"
+        },
         {
           "date": "2026-05-20",
           "channel": "meeting"
@@ -2211,7 +2216,6 @@
       "47er1lbe",
       "pstfria7",
       "v5ehnmlp",
-      "c4zpuhr8",
       "hhq7mas8",
       "nqdo6xbj",
       "0nhinqw6",
@@ -2222,7 +2226,8 @@
     ],
     "email-second-sent": [
       "csp5s88v",
-      "5z3o34x4"
+      "5z3o34x4",
+      "c4zpuhr8"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
