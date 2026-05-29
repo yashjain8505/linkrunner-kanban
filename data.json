@@ -1369,10 +1369,10 @@
       "name": "Purplle",
       "contact": "Vijay Reddy",
       "notes": "",
-      "stage": "email-first-sent",
+      "stage": "demo-next",
       "channel": "none",
       "touchDate": "",
-      "updated": 1779957430759,
+      "updated": 1780055629475,
       "inbound": false,
       "demoDate": "2026-05-28",
       "contacts": [
@@ -2299,7 +2299,8 @@
       "pt0qyu7q",
       "gufmt1s8",
       "ho5wxkdf",
-      "av70z6q0"
+      "av70z6q0",
+      "doteifrp"
     ],
     "email-first-sent": [
       "w23yl5x0",
@@ -2312,7 +2313,6 @@
       "0nhinqw6",
       "56ejow7l",
       "mwadgjbq",
-      "doteifrp",
       "zvk09fip"
     ],
     "email-second-sent": [
