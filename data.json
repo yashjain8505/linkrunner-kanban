@@ -1874,10 +1874,10 @@
       "name": "Kiddopia",
       "contact": "Shashwat",
       "notes": "",
-      "stage": "email-first-sent",
+      "stage": "email-second-sent",
       "channel": "none",
       "touchDate": "2026-05-29",
-      "updated": 1780035094843,
+      "updated": 1780035099743,
       "calBookingId": "8o1Do9eHpe3rFodPtVHkVQ",
       "calEmail": "shashwat.r@kiddopia.com",
       "demoDate": "2026-05-22",
@@ -2214,7 +2214,6 @@
     ],
     "email-first-sent": [
       "6dt3jz7j",
-      "70itspid",
       "w23yl5x0",
       "lmyry6va",
       "47er1lbe",
@@ -2231,7 +2230,8 @@
     "email-second-sent": [
       "csp5s88v",
       "5z3o34x4",
-      "c4zpuhr8"
+      "c4zpuhr8",
+      "70itspid"
     ],
     "follow-up-2-done": [
       "aqbhlx5y",
