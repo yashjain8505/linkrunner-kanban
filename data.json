@@ -1979,23 +1979,29 @@
     },
     "7sx6nie2": {
       "id": "7sx6nie2",
-      "name": "Linearloop",
+      "name": "Linearloop / saffronmellow",
       "contact": "Rushi Patel",
       "notes": "",
-      "stage": "demo-scheduled",
+      "stage": "integration-started",
       "channel": "none",
       "demoDate": "2026-05-26",
       "touchDate": "",
-      "updated": 1779700507886,
+      "updated": 1780055578358,
       "calBookingId": "3pPKsGDmRT537KKFNCM3yv",
       "calEmail": "partners@linearloop.io",
       "contacts": [
         {
           "name": "Rushi Patel",
+          "sheetRow": null,
+          "email": "",
+          "phone": "",
+          "linkedin": "",
           "role": ""
         }
       ],
-      "touchpoints": []
+      "touchpoints": [],
+      "inbound": false,
+      "acv": ""
     },
     "mwadgjbq": {
       "id": "mwadgjbq",
@@ -2328,7 +2334,8 @@
     "price-negotiations": [],
     "integration-started": [
       "rgdd3lli",
-      "8l4hlwf4"
+      "8l4hlwf4",
+      "7sx6nie2"
     ],
     "paying-customer": [
       "n5qjsfkv",
@@ -2376,7 +2383,6 @@
       "6hkztyr6",
       "tp4rhmtb",
       "xwscrsz2",
-      "7sx6nie2",
       "9w9m1m38",
       "8mbjt8jg",
       "2hcyoa34",
