@@ -2236,19 +2236,6 @@
       "touchpoints": [],
       "updated": 1780048214256
     },
-    "rkjr8gus": {
-      "id": "rkjr8gus",
-      "name": "Vasu",
-      "contact": "Vasu",
-      "notes": "",
-      "stage": "demo-scheduled",
-      "channel": "none",
-      "demoDate": "2026-05-29",
-      "touchDate": "",
-      "updated": 1780050340524,
-      "calBookingId": "jPaWunnZxFpGv39uDX7gG4",
-      "calEmail": "vasudevbellielaksh@gmail.com"
-    },
     "hunm4fj9": {
       "id": "hunm4fj9",
       "name": "Vasu",
@@ -2260,7 +2247,14 @@
       "touchDate": "",
       "updated": 1780050342263,
       "calBookingId": "jPaWunnZxFpGv39uDX7gG4",
-      "calEmail": "vasudevbellielaksh@gmail.com"
+      "calEmail": "vasudevbellielaksh@gmail.com",
+      "contacts": [
+        {
+          "name": "Vasu",
+          "role": ""
+        }
+      ],
+      "touchpoints": []
     }
   },
   "order": {
@@ -2388,7 +2382,6 @@
       "2hcyoa34",
       "wmr3x5nb",
       "jhq0nokc",
-      "rkjr8gus",
       "hunm4fj9"
     ]
   },
