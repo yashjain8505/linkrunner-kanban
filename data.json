@@ -2261,6 +2261,19 @@
         }
       ],
       "touchpoints": []
+    },
+    "e1f32qap": {
+      "id": "e1f32qap",
+      "name": "Sportvot",
+      "contact": "Aanchal",
+      "notes": "",
+      "stage": "demo-scheduled",
+      "channel": "none",
+      "demoDate": "2026-06-01",
+      "touchDate": "",
+      "updated": 1780058894071,
+      "calBookingId": "9ZR8RBQfzj96ziAbvo83tT",
+      "calEmail": "aanchal@sportvot.com"
     }
   },
   "order": {
@@ -2388,7 +2401,8 @@
       "2hcyoa34",
       "wmr3x5nb",
       "jhq0nokc",
-      "hunm4fj9"
+      "hunm4fj9",
+      "e1f32qap"
     ]
   },
   "columnOrder": [
